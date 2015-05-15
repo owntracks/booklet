@@ -1,0 +1,42 @@
+site_name: OwnTracksDoc
+pages:
+- [index.md, 'Intro']
+- [guide/what.md, 'Guide', 'What it does']
+- [guide/how.md, 'Guide', 'How it works']
+- [guide/ui.md, 'Guide', 'User interface']
+- [guide/scenarios.md, 'Guide', 'Scenarios']
+- [guide/mqtt.md, 'Guide', 'MQTT']
+- [guide/topics.md, 'Guide', 'Topics']
+- [guide/broker.md, 'Guide', 'Broker']
+- [guide/clients.md, 'Guide', 'Clients']
+- [guide/friends.md, 'Guide', 'Friends']
+- [guide/waypoints.md, 'Guide', 'Waypoints']
+- [guide/beacons.md, 'Guide', 'iBeacons']
+- [guide/bridge.md, 'Guide', 'Bridging']
+- [features/hosted.md, 'Features', 'Hosted']
+- [features/security.md, 'Features', 'Security']
+- [features/tid.md, 'Features', 'TID']
+- [features/friends.md, 'Features', 'Friends']
+- [features/card.md, 'Features', 'Card']
+- [features/waypoints.md, 'Features', 'Waypoints']
+- [features/beacons.md, 'Features', 'Beacons']
+- [features/pedometer.md, 'Features', 'Pedometer']
+- [features/settings.md, 'Features', 'Settings']
+- [features/debug.md, 'Features', 'Debugging']
+- [tech/json.md, 'API', 'JSON']
+- [tech/program.md, 'API', 'Code']
+- [terminology.md, 'Sundry', 'Terminology']
+- [people.md, 'Sundry', 'People']
+- [ideas.md, 'Sundry', 'Ideas']
+- [faq.md, 'Sundry', 'Answers']
+- [press.md, 'Sundry', 'Press']
+# theme: flatly
+# built-in themes: https://github.com/mkdocs/mkdocs/tree/master/mkdocs/themes
+theme: bootstrap
+# theme: journal
+# theme: readable
+# theme: readthedocs
+# theme: simplex
+# theme: slate
+#theme: yeti
+markdown_extensions: [abbr,attr_list,def_list,footnotes,tables,admonition,toc]
