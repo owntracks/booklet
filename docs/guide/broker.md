@@ -94,13 +94,6 @@ settings:
         IP Address:192.168.1.189, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1, DNS:broker.example.com, DNS:foo.example.de, DNS:localhost
 ```
 
-
-FIXME:  a few words about auth in mqtt.md page, ACL
-#FIXME: does broker.md contain ACL example?
-
-
-
-
 Will it work? Let's start the broker manually to see what it says:
 
 ```bash
@@ -158,7 +151,8 @@ Once you feel comfortable with what is going on, you should consider adding [TLS
 
 If you want to connect two (or more) brokers (e.g. yours and that of your friend) you can, and we've written up [how you can bridge brokers](bridge.md).
 
-## logging (broker.md)
+## Logging
+
 Before doing anything else, please consult the manual to determine where your Mosquitto logs are being written to. It's hard stabbing around in the dark when a glance at a log file can give you valuable tips on what is actually happening.
 
 Mosquitto typically logs via _syslog_, and _syslog_'s configuration defines where the log messages are actually written to. Your _syslog_ may be called _syslog_, _rsyslog_, _syslog-ng_, or anything else for that matter. In case of doubt, check the files in `/var/log`; one of them _ought_ to have what you're looking for (e..g `messages`, `syslog`, `localmessages`, or even `debugmessages`).
@@ -166,16 +160,30 @@ Mosquitto typically logs via _syslog_, and _syslog_'s configuration defines wher
 Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the [manpage for `mosquitto.conf`](http://mosquitto.org/FIXME) to learn how to configure logging.
 
 A successful publish of an OwnTracks location could look somewhat like this:
-FIXME: add log snippet
+
+```
+mosquitto[1366]: Received PUBLISH from jane-5s-m-o (d0, q2, r1, m7, 'owntracks/jane/5s', ... (159 bytes))
+mosquitto[1366]: Sending PUBREC to jane-5s-m-o (Mid: 7)
+mosquitto[1366]: Received PUBREL from jane-5s-m-o (Mid: 7)
+mosquitto[1366]: Sending PUBCOMP to jane-5s-m-o (Mid: 7)
+```
+
+## ACLs
+
+You will definitely want to set up Access Control Lists (ACLs) on your broker so that you can control who may see what. As an example, suppose Jane (username `jjolie`) should be able to publish to her [OwnTracks MQTT topics](topics.md) and Fred (username `fred`) should be allowed to see Jane's location, we could configure something like this:
+
+```
+user jjolie
+topic owntracks/jjolie/#
+
+user fred
+topic read owntracks/jjolie/5s
+topic owntracks/fred/nexus/#
+```
 
 ## Firewall
 
-If you want to run your _Private_ broker it's possibly going to be at home under your desk (or is it your bed?). Be that as it may, how does an OwnTracks app reach (network-wise) that broker?
-
-Chances are you have some form of router which connects the local network in your home to the Internet.
-
-FIXME: diag
-FIXME: photo of MR3020?
+If you want to run your _Private_ broker it's possibly going to be at home under your desk (or is it in your small office?). Be that as it may, how does an OwnTracks app reach (network-wise) that broker?  Chances are you have some form of router which connects the local network in your home to the Internet.
 
 OwnTracks runs on the device which is in your pocket or your purse, or wherever you placed it, and it must be able to connect to your MQTT broker, but it cannot: your router hopefully has a firewall configured on it which will allow outgoing (from your home outwards) connections, but it is sure to not allow incoming connections. We must change that, at least for MQTT, and we're going to assume you've configured TLS, i.e. your broker is (also) listening on TCP port 8883
 
@@ -183,7 +191,7 @@ What you need to do to get this working is to reconfigure your router to allow i
 
 What is also likely, or at least possible, is that your home doesn't have a fixed TCP/IP address, but one which changes periodically. The OwnTracks apps won't be able to find your home then, will they? If you keep "moving" (i.e changing addresses).
 
-A service which is typically (if maybe incorrectly) called dynamic DNS to the rescue. Organizations like FIXME and NoIP FIXME will help you configure a DNS name which always points to your changing address.
+A service which is typically (if maybe incorrectly) called dynamic DNS comes to the rescue. These services allow you to configure a DNS name (e.g. `freds-router.example.org`) which points to the changing IP address of your router.
 
 Once you've completed those steps, configure the OwnTracks apps to use the shiny new DNS name and TCP port number (8883) and you should be all set.
 
