@@ -1,4 +1,9 @@
 site_name: OwnTracksDoc
+site_url: http://owntracks.org
+site_author: OwnTracks.org
+site_favicon: favicon.ico
+repo_url: https://github.com/owntracks
+site_dir: ../owntracks/booklet/
 pages:
 - [index.md, 'Intro']
 - [guide/what.md, 'Guide', 'What it does']
@@ -8,6 +13,7 @@ pages:
 - [guide/mqtt.md, 'Guide', 'MQTT']
 - [guide/topics.md, 'Guide', 'Topics']
 - [guide/broker.md, 'Guide', 'Broker']
+- [guide/apps.md, 'Guide', 'Apps']
 - [guide/clients.md, 'Guide', 'Clients']
 - [guide/friends.md, 'Guide', 'Friends']
 - [guide/waypoints.md, 'Guide', 'Waypoints']

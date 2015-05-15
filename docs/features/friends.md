@@ -2,7 +2,7 @@
 
 OwnTracks has a so-called _Friends and Family_ capability which is enabled by
 default. The way this works is friends and/or family members who share a single
-[[MQTT broker|MQTTbroker]] can "see" eachother on the map, respectively on a
+[MQTT broker](../guide/broker.md) can "see" eachother on the map, respectively on a
 list of friends held by the app.  (This can be done either by configuring all
 apps to use the same broker or by what is called _bridging_.)
 
@@ -18,7 +18,7 @@ Let us further assume, that her friend John (user name `john`) has an Android Ne
 owntracks/john/nex4
 ```
 
-Let us further assume that access control on the [[MQTT broker|MQTTbroker]] allows both users to subscribe to eachother's topics.
+Let us further assume that access control on the [MQTT broker](../guide/broker.md) allows both users to subscribe to eachother's topics.
 
 Now, if *both* friends subscribe to a topic called `owntracks/+/+` (which the
 apps do by default) their devices will effectively receive published location

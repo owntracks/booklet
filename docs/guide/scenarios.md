@@ -8,6 +8,8 @@ There are three basic scenarios we have for you depending on your needs. It'll h
 
 The very first time you install OwnTracks it will be configured in _public mode_, and you'll be warned about this when you launch the app. In this mode, the app "just works". It connects to our public MQTT broker, and your location is published there anonymously. In the app you'll also see any other public users, although you won't be able to identify them (nor they you): there are, other than the location data, no personal details of any user. The one exception is a couple of pseudo-users we publish magically so that you have something nice to look at.
 
+![iPad Public Users](images/b-ipad-public-users.png)
+
 The data published by OwnTracks in this mode is not retained, and we don't store it.
 
 We mentioned earlier that this is not a mode in which you want to run OwnTracks; it's basically just a demonstration mode for you to get a whiff of what OwnTracks is and how it works.
@@ -23,12 +25,12 @@ We think it's best you forget about this as quickly as possible and chose one of
 
 If you don't want to go to the trouble of [hosting your own setup](#private), you can use our _hosted_ mode. We provide an MQTT broker for you to use with OwnTracks, and we do so on a _best-effort_ basis. No guarantees whatsoever as to availability, but our track record is pretty good so far.
 
-The first thing you do in order to use _Hosted_ mode is to sign up at  [OwnTracks Traction](https://traction.owntracks.org) where you create an account providing a _username_, a _password_, a valid _e-mail address_ for yourself, and your _name_. Simultaneously you specify a name for the device you'll be connecting, something like `samsung3`, `nexus5`, `iphone5`, etc. -- you get the idea.
+The first thing you do in order to use _Hosted_ mode is to sign up at  [OwnTracks Hosted](https://hosted.owntracks.org) where you create an account providing a _username_, a _password_, a valid _e-mail address_ for yourself, and your _name_. Simultaneously you specify a name for the device you'll be connecting, something like `samsung3`, `nexus5`, `iphone5`, etc. -- you get the idea.
 You may, of course, register more than just one device.
 
 ![Hosted UI](hosted/11-trackers-list-new-device.png)
 
-The _password_ is solely for accessing the Traction Web site and for nothing else; you will use it there only.
+The _password_ is solely for accessing the Hosted Web site and for nothing else; you will use it there only.
 
 Upon registering a device, you are shown an _access token_. This jumble of letters and numbers is case-sensitive and is displayed *once only*, so write it down somewhere; later this is replaced by a padlock symbol. (But no worries: if you misplace it, you can generate a new access token. And no: we cannot tell you what the token was.)
 

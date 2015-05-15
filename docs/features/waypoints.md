@@ -1,8 +1,10 @@
+# Waypoints
+
 The _base topic_ for publishes from the devices (OwnTracks apps) is what you configure it
 to be in the app's preferences/settings. For argument's sake we'll use
 `owntracks/<user>/<device>` as our example.
 
-This base topic is used for publishes of type `location` (see [[JSON|JSON]]).
+This base topic is used for publishes of type `location` (see [JSON](../tech/json.md)).
 All messages published to this base topic are retained if you have configured
 the app to retain them.
 
@@ -17,7 +19,7 @@ contain the elements:
 If you set up a shared waypoint, the app publishes that waypoint (without the retain flag,
 irrespective of your general preference) to the base topic with `/waypoints`
 tacked onto the topic (e.g. `owntracks/<user>/<device>/waypoints`) with the
-payload for `_type=waypoint` as specified in the [[JSON page|JSON]]. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a `location` message as described above.
+payload for `_type=waypoint` as specified in the [JSON page](../tech/json.md). For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a `location` message as described above.
 
 For example, If Jane configures a waypoint on her iPhone
 

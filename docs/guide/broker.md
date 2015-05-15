@@ -190,7 +190,7 @@ Once you've completed those steps, configure the OwnTracks apps to use the shiny
 ### OwnTracks
 
 So, you've configured your broker and you are familiar with the _mosquitto_ command-line
-clients, so now it's time to see if you can [get OwnTracks to speak to your broker](clients.md).
+clients, so now it's time to see if you can [get OwnTracks to speak to your broker](apps.md).
 
 
   [MQTT]: http://mqtt.org

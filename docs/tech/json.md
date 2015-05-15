@@ -1,3 +1,5 @@
+# JSON
+
 OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. The different payload types are identified by a `_type` element. Depending on the app platform, different payload types are supported. 
 
 | `_type`                                   |  iOS   | Android |
