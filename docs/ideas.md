@@ -53,4 +53,6 @@ Over the course of time, we've had people propose a number of ideas for OwnTrack
 
 * Maybe add remote-control for enabling "move-mode" on iOS (https://github.com/binarybucks/mqttitude/issues/139)
 * Interesting idea in [#227](https://github.com/binarybucks/mqttitude/issues/227): device can change mode (e.g. _silent_, _airplane mode_, etc.) depending on location and by listening to a remote-control topic with which it is instructed to switch modes.
+* Add remote-control for setting waypoints via MQTT
+
 

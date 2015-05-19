@@ -9,6 +9,7 @@ You add the UUID of the beacon to the description and may specify the major and 
 When the UUID is valid, iBeacon monitoring will start.
 
 Examples:
-* 'myBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE'
-* 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
+
+- 'myBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE'
+- 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
 
