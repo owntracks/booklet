@@ -10,9 +10,8 @@ The very first time you install OwnTracks it will be configured in _public mode_
 
 ![iPad Public Users](images/b-ipad-public-users.png)
 
-The data published by OwnTracks in this mode is not retained, and we don't store it.
 
-We mentioned earlier that this is not a mode in which you want to run OwnTracks; it's basically just a demonstration mode for you to get a whiff of what OwnTracks is and how it works.
+We mentioned earlier that this is not a mode in which you want to run OwnTracks; it's basically just a demonstration mode for you to get a feeling for how OwnTracks looks and works. The data published by OwnTracks in this mode is not retained, and we don't store it.
 
 Using _Public_ mode means you don't *have* to learn about [MQTT brokers](broker.md), [topics](topics.md), and all the rest of the stuff, but the downside is that you don't get to use any of the neat features _Hosted_ or _Private_ mode come with. For example, you can't set up [friends](friends.md) or configure [clients to use your data](clients.md) for the sole reason that we don't tell you the address or the authentication credentials for _Public_ mode. Yep, it's as they say: *you get what you pay for*. :-)
 
