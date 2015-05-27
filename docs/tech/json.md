@@ -64,7 +64,7 @@ This location object describes the location of the device that published it. **H
 * `alt` is the altitude measured in meters above sea level (_Optional_)
 * `batt` is the device's battery level in percent
 * `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_)
-* `desc` is the description of a [[waypoint|Waypoints]] 
+* `desc` is the description of a [waypoint](../features/waypoints.md)
 * `event` is one of `"enter"` or `"leave"` and tells if the app is entering or leaving a geofence 
 * `lat` is latitude as decimal, represented as a string
 * `lon` is longitude as decimal, represented as a string
@@ -137,7 +137,7 @@ The timestamp is the Unix epoch time at which the app first connected (and *not*
 
 ### `_type=waypoint`
 
-Waypoints denote a specific geographical location that you want to keep track of. 
+Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint to your broker (if the waypoint is marked `shared`). OwnTracks also monitors these waypoints and will publish a transition event (`_type: transition`) when entering or leaving the waypoint. Note, that a waypoint may also define a [Beacon](../features/beacons.md).
 
 ```json
 {
@@ -152,7 +152,29 @@ Waypoints denote a specific geographical location that you want to keep track of
 }
 ```
 * `shared` location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only
-* `tst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [[waypoints|Waypoints]].)
+* `wtst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).)
+
+
+### `_type=transition`
+
+A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic. In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
+
+```json
+{
+  "_type": "transition",
+  "wtst": 1425042603,           // time of waypoint creation
+  "lat": 12.34,                 // transition coordinates i.e. "here"
+  "lon": 44.5,
+  "tst": 1427634603,            // timestamp of transition (e.g. "now")
+  "acc": 130,                   // accuracy of lat, lon
+  "tid": "JP",
+  "event": "enter",
+  "desc": "my Indian restaurant"
+}
+```
+
+A transition event published as a result of a Beacon movement will have a `"t" : "b"` associated with it.
+
 
 ### `_type=configuration`
 The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. 
@@ -293,7 +315,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * "reportSteps" reports steps walked on iPhone 5s devices. <br>
       You may add "from":_timestamp_ and/or "to":_timestamp_" 
       which defaults to current time, from defaults to current date 00:00 am
-      (see [[pedometer|Pedometer]]).
+      (see [Pedometer](../features/pedometer.md)).
     * "reportLocation" triggers the publish of the current location
     * "dump" triggers the publish of a configuration message
 
@@ -308,23 +330,3 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * `from`        effective start of time period
 * `to`          effective end of time period
 
-
-### `_type=transition`
-
-A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic. In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
-
-```json
-{
-  "_type": "transition",
-  "wtst": 1425042603,           // time of waypoint creation
-  "lat": 12.34,                 // transition coordinates i.e. "here"
-  "lon": 44.5,
-  "tst": 1427634603,            // timestamp of transition (e.g. "now")
-  "acc": 130,                   // accuracy of lat, lon
-  "tid": "JP",
-  "event": "enter",
-  "desc": "my Indian restaurant"
-}
-```
-
-A transition event published as a result of a Beacon movement will have a `"t" : "b"` associated with it.
