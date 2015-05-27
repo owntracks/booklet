@@ -31,7 +31,16 @@ Correctly configured (and it's not trivial), _o2s_ connects to your broker and s
 
 The result of using _o2s_ is that you get a database table (several actually) in which your OwnTracks locations are stored.
 
-FIXME: show table select for jjolie
+```
++---------------------+-----+------------+------------+------+--------------------------------------+
+| tst                 | tid | lat        | lon        | cc   | addr                                 |
++---------------------+-----+------------+------------+------+--------------------------------------+
+| 2015-05-27 06:23:36 | jJ  | 46.7835540 | 17.2073088 | HU   | Keszthely, Hévízi út, 8360 Ungarn    |
+| 2015-05-26 20:10:52 | jJ  | 46.7710135 | 17.1829915 | HU   | Alsópáhok, 760, 8394 Ungarn          |
+| 2015-05-26 14:32:50 | jJ  | 46.9557636 | 19.4132377 | HU   | Kerekegyháza, 5211, 6041 Ungarn      |
+| 2015-05-23 22:42:27 | jJ  | 47.4986630 | 19.0438124 | HU   | Budapest, Eötvös tér, 1051 Ungarn    |
++---------------------+-----+------------+------------+------+--------------------------------------+
+```
 
 So, now that you have the OwnTracks locations being neatly stored for you, how do you visualize them on, say, a map, at a later point in time? Enter _Pista_.
 
@@ -45,19 +54,9 @@ We'll concentrate on setting up _Pista_'s _Tracks_ utility which will enable you
 
 ## mqttwarn
 
-You'll recall (we hope) the discussion on [MQTT](mqtt.md) and the analogy with the cauldron. _mqttwarn_, while not specific to OwnTracks, is another client you connect to your [MQTT broker](broker.md). We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does), and as JP wrote this section, you'll have to live with it!
+You'll recall (we hope) the discussion on [MQTT](mqtt.md) and the analogy with the cauldron. _mqttwarn_, while not specific to OwnTracks, is another client you connect to your [MQTT broker](broker.md). We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).
 
-Let's for a moment assume you want to do something really stupid: tweet your location every time your OwnTracks app reports it. (Why is this stupid? Well, to be honest it isn't necessarily, but that depends on your desired _privacy level_; however, if you tweet with the Twitter location thing enabled, this won't hurt.
-
-The documentation of _mqttwarn_ is excellent (recall: JP is writing this) so you'll probably have no problems whatsoever. After installing _mqttwarn_, you create a configuration file which looks like this:
-
-FIXME: ini for twitter
-
-The funny numbers are called Twitter OAuth credentials and you get them on the Twitter developer site. When everything's been wired up to _mqttwarn_'s content, a location publish should result in a tweet:
-
-FIXME: show tweet for a jjolie location
-
-
+_mqttwarn_ lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you *really* want that), send an e-mail when a loved one enters a particular region, etc.
 
 
 ## openHAB

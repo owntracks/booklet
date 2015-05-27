@@ -70,10 +70,6 @@ Devices publish their [waypoints](waypoints.md) to the relative topic name
 `waypoint` and the corresponding events the transition into or out of a
 waypoint triggers, to the relative topic name `event`.
 
-#### Beacons
-
-FIXME: Christoph
-
 #### Summary
 
 A device (named `peter/iPhone` in this example) is connected to an [MQTT

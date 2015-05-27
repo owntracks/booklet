@@ -157,7 +157,7 @@ Before doing anything else, please consult the manual to determine where your Mo
 
 Mosquitto typically logs via _syslog_, and _syslog_'s configuration defines where the log messages are actually written to. Your _syslog_ may be called _syslog_, _rsyslog_, _syslog-ng_, or anything else for that matter. In case of doubt, check the files in `/var/log`; one of them _ought_ to have what you're looking for (e..g `messages`, `syslog`, `localmessages`, or even `debugmessages`).
 
-Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the [manpage for `mosquitto.conf`](http://mosquitto.org/FIXME) to learn how to configure logging.
+Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the [manpage for `mosquitto.conf`](http://mosquitto.org/man/mosquitto-conf-5.html) to learn how to configure logging.
 
 A successful publish of an OwnTracks location could look somewhat like this:
 
