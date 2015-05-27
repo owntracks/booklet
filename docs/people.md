@@ -12,7 +12,7 @@ Incidentally, [Ben Jones][sumnerboy], who works closely with us, has given us lo
 
 Many good people have assisted us, be it by testing, by contributing bits of code or documentation, or just by complaining loudly, and we want to acknowledge the following contributions. (If you think your name should be on this list, tell us, or forever hold your peace. :-)
 
-* Brad Pillatsch ([bpillatsch](https://github.com/bpillatsch)) wrote the initial implementation of PKCS#12 import for Android.
+* [Brad Pillatsch](https://github.com/bpillatsch) wrote the initial implementation of PKCS#12 import for Android.
 * [brunkj](https://github.com/brunkj) for help in tracking down an address book crash.
 * [Matthew Bordignon](https://github.com/matbor) for ideas and help with testing.
 * [Stefano Costa](https://github.com/bluewindthings) for bug reports.
