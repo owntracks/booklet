@@ -28,5 +28,5 @@ script:
 - cd ../owntracks/booklet/
 - git status
 - git add .
-- [ -n "$(git status --porcelain)" ] && git commit -m 'TravisCI rebuild' -a
+- if [ -n "$(git status --porcelain)" ]; then  git commit -m 'TravisCI rebuild' -a; fi
 - git push
