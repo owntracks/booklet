@@ -1,5 +1,3 @@
-# JSON
-
 OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. The different payload types are identified by a `_type` element. Depending on the app platform, different payload types are supported. 
 
 | `_type`                                   |  iOS   | Android |
@@ -163,8 +161,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 {
     "_type": "configuration",
     "mode": 0,
-    "deviceid": "phone",
-    "clientid": "jane-phone",
+    "deviceId": "phone",
+    "clientId": "jane-phone",
     "trackerId": "xx",
     "subTopic": "owntracks/#",
     "pubTopicBase": "owntracks/jane/phone",
@@ -227,6 +225,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `pubTopicBase`
 * `username`
 * `password`
+* `deviceId`
+* `tid`						 is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
 * `willTopic`
 * `subQos`
 * `pubQos`
@@ -308,7 +308,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 
 ### `_type=transition`
 
-As from XXXXX:
 A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic. In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
 
 ```json
@@ -324,3 +323,5 @@ A transition into or out of a previously configured waypoint is effected by publ
   "desc": "my Indian restaurant"
 }
 ```
+
+A transition event published as a result of a Beacon movement will have a `"t" : "b"` associated with it.
