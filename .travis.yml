@@ -23,6 +23,7 @@ script:
 - git clone https://github.com/owntracks/booklet.git
 - cd booklet
 - mkdocs build --clean
+- ls -l _site
 - cp -R _site/* ../owntracks/booklet/
 - cd ../owntracks/booklet/
 - git status
