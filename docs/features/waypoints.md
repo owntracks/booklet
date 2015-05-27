@@ -57,8 +57,6 @@ available with a subscription to `owntracks/#`.
 
 The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. 
 
-For convenience, waypoints can be loaded remotely: [[Remote-Loading-of-Waypoints]].
-
 ## iOS
 
 On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name `Center`, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.
@@ -66,3 +64,41 @@ On iOS you can navigate to the place where you want to put a waypoint, Tap long 
 # Setting up iBeacons
 
 On iOS you can [monitor an iBeacon region](beacons.md) in addition to circular regions.
+
+## Remote loading of waypoints
+
+Do you want to prepare your waypoints at home and load to your device?
+
+Here's what you can do with OwnTracks for [[iOS]]:
+
+* Create a configuration file in JSON with an `.otrw` suffix (for OwnTracks Configuration). (The legacy `.mqtw` suffix is also supported.)
+* Send the file to the device via email, http, dropbox, ... you name it.
+* Open the file on the device with OwnTracks
+
+Here is a sample waypoints file which follows the settings as explained
+in [[JSON]]. Boolean values are represented as `0` (false) or `1` (true).  The `_type`
+entry is mandatory, all other entries are optional; they are replaced by built-in
+defaults if not specified.
+
+```json
+{
+    "_type": "waypoints",
+    "waypoints" : [
+                    { "_type" : "waypoint",
+                      "tst": "100000000",
+                      "lat": "50.0",
+                      "lon": "8.0",
+                      "rad": "100",
+                      "desc" : "fifty/eight"
+                    }, 
+                    { "_type" : "waypoint",
+                      "tst": "100000001",
+                      "lat": "40.0",
+                      "lon": "-8.0",
+                      "rad": "500",
+                      "desc" : "forty/minus-eight"
+                    }
+                  ]
+}
+
+```

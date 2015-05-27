@@ -1,0 +1,121 @@
+Location data is obtained by your smartphone and published to the [MQTT broker](../guide/broker.md) as follows:
+
+### Android
+
+The way it currently works is by specifying an interval in which you want to receive updates (the one you configure in the settings). You only receive updates if this amount of time has passed and you moved more than 500m (when the app is in the background. The movement restriction is set to 50m or so when in the foreground).
+
+Say I set an interval of 10min and I don't move; will I get a PUBlish? No. 
+If you move more than 500 meters in 5 minutes you'll get a PUB after 10 minutes. You won't get a PUB after 5 minutes though.
+
+Additional restrictions apply regarding the update intervall. When switching into the background or foreground, a new location request is setup with a different granularity and energy requirement. As a result, a new location is received immedeately by the app. 
+
+Thus, when the app goes into the background, a new location is received. Most likely, this will not result in a publish as the last publish was not longer ago than 10 minutes. Say the last update was exactly 9 minutes ago when the background mode is enabled. In this case no publish will be sent. However, the next location will probably only be received after the specified 10 minutes. At this point, the time of the last publish is longer than 10 minutes ago. So in this worst case, around 20 will pass before a location will be sent. 
+
+If you switch on the app after one minute in the background (11 minutes after the last publish), a new report will be sent immediately as soon as a new location is available. 
+
+
+### iOS 
+
+The iOS app offers 3 modes of location publication:
+
+* _Manual_ mode
+* _Significant location change_ mode
+* _Move_ mode
+
+In addition to this, there's also _Region Monitoring_ (a.k.a. Geo Fence) and _iBeacon Monitoring_ and _iBeacon Ranging_.
+
+#### MOVE mode 
+
+In MOVE mode, the app monitors location permanently and publishes a new
+location as soon as the device moves `x` meters or after `t` seconds, whatever
+happens first. `x` and `t` can be adjusted by the user in the systems settings for
+OwnTracks. The defaults are 100m and 300 seconds (5 minutes). 
+
+The payoff is higher battery usage as high as in navigation or tracker app.
+So it is recommend to use MOVE mode while charging or during moves only - hence the name.
+
+Please note, MOVE mode is active when the app is active (a.k.a in foreground).
+
+#### SIGNIFICANT LOCATION CHANGE mode
+
+iOS defines a SIGNIFICANT LOCATION CHANGE as travelling a distance of at least
+500 meters in 5 minutes.  This mode allows the app to run in background and
+minimize the power consumption.
+
+This standard tracking mode reports significant location changes only (>500m
+and at most once every 5 minutes).  This is defined by Apple and is optimal
+with respect to battery usage.
+
+Examples:
+
+* if you don't move, no new location is published - even if you don't move for hours
+* if you move at least 500 meters, a new location will be published after 5 minutes
+* if you move 10 kilometers in 5 minutes, only one location will be published
+
+
+#### MANUAL mode
+
+The app doesn't monitor location changes in MANUAL mode while in background.
+The user has to publish the current location explicitly via the UI.
+
+#### REGION monitoring
+
+The app user may mark a previously manually published or manually created 
+location as a monitored circular region by specifying a monitoring radius in meters.
+The app will publish the location
+additionally everytime the device leaves or enters one of the regions, and the
+published data contains an indication of whether the device is entering or
+leaving the region.
+
+Region monitoring is not related to one of the location publication modes and
+works independently. It is switched on when a region is setup with description
+and radius. To switch region monitoring off, all regions have to be 
+unmarked (by setting radius to 0).
+
+Regions are shown on the map display in transparent blue or red circles. Red
+indicates the device is is within the region.
+
+#### iBeacon monitoring
+
+The app user may mark a previously manually published or manually created location
+as a monitored beacon region by appending a beacon uuid to the region's name.
+The app will publish the location
+additionally everytime the device leaves or enters one of the beacon regions, and the
+published data contains an indication of whether the device is entering or
+leaving the region.
+
+Region monitoring is not related to one of the location publication modes and
+works independently. It is switched on when a region's name has a valid uuid
+appended.
+
+If the device is within a monitored beacon region, the the beacon indicator
+is shown in red, otherwise blue meaning device is not in any iBeacon region.
+
+There are 2 kinds of locations:
+a) an `automatic location` created when iOS detects a change of location
+b) a `manual location` created by the user
+
+A `manual location` with a non-zero length remark (description) is a `waypoint`.
+
+If a `waypoint` is `shared`, its attributes are published when created or changed.
+
+If a `waypoint` specifies a radius, a `circular region` is monitored for `enter/leave events`.
+
+If a `waypoint` is not a `circular region` and the `waypoint`'s description contains a valid `iBeacon` specification, a `beacon region` is monitored for `enter/leave events`.
+
+If an `enter/leave event` occurs an event message is published with the `type` attribute set to `c`or `b`for (`circular region`or `beacon region`). The message contains an `event`attribute specifying either `enter`or `leave`.
+
+If the `waypoint`is `shared`, the description of the `waypoint`is added to the published `event`message.
+
+Automatic | Description | iBeacon | Radius | Shared | Event Message | /w Description | Waypoint Message | 
+---|---|---|---|---|---|---|---|---|
+Y | n/a |  n/a |  n/a |  n/a | N | N | N |
+N | N   | n/a |   n/a |  n/a | N | N | N |
+N | Y | N | N | N | N | N | N |
+N | Y | N | N | Y | N | N | Y |
+N | Y | N | Y | N | `c` | N | N |
+N | Y | N | Y | Y | `c` | Y | Y |
+N | Y | Y | N | N | `b` | N | N |
+N | Y | Y | N | Y | `b` | Y | Y |
+N | Y | Y | Y | N | `c` | N | N |
+N | Y | Y | Y | Y | `c` | Y | Y |
