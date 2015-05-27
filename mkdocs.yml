@@ -3,7 +3,8 @@ site_url: http://owntracks.org
 site_author: OwnTracks.org
 site_favicon: favicon.ico
 repo_url: https://github.com/owntracks
-site_dir: ../owntracks/booklet/
+# site_dir: ../owntracks/booklet/
+site_dir: _site
 pages:
 - [index.md, 'Intro']
 - [guide/what.md, 'Guide', 'What it does']
