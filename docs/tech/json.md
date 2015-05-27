@@ -261,6 +261,9 @@ The device configuration can be imported and exported as JSON. The exported conf
 
 
 ### `_type=beacon`
+
+These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.
+
 ```json
 {
         "_type":"beacon",
