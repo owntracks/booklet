@@ -46,11 +46,11 @@ pages:
 - [press.md, 'Sundry', 'Press']
 # theme: flatly
 # built-in themes: https://github.com/mkdocs/mkdocs/tree/master/mkdocs/themes
-theme: bootstrap
+# theme: bootstrap
 # theme: journal
 # theme: readable
-# theme: readthedocs
+theme: readthedocs
 # theme: simplex
 # theme: slate
-#theme: yeti
+# theme: yeti
 markdown_extensions: [abbr,attr_list,def_list,footnotes,tables,admonition,toc]
