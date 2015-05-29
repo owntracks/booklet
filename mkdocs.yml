@@ -7,6 +7,7 @@ repo_url: https://github.com/owntracks
 site_dir: _site
 pages:
 - [index.md, 'Intro']
+
 - [guide/what.md, 'Guide', 'What it does']
 - [guide/how.md, 'Guide', 'How it works']
 - [guide/ui.md, 'Guide', 'User interface']
@@ -20,6 +21,7 @@ pages:
 - [guide/waypoints.md, 'Guide', 'Waypoints']
 - [guide/beacons.md, 'Guide', 'iBeacons']
 - [guide/bridge.md, 'Guide', 'Bridging']
+
 - [features/hosted.md, 'Features', 'Hosted']
 - [features/security.md, 'Features', 'Security']
 - [features/tls.md, 'Features', 'TLS']
@@ -49,8 +51,11 @@ pages:
 # theme: bootstrap
 # theme: journal
 # theme: readable
-theme: readthedocs
+# theme: readthedocs
 # theme: simplex
 # theme: slate
 # theme: yeti
+# Next is from Sequelize: https://github.com/sequelize/sequelize/tree/master/docs
+theme: ""
+theme_dir: _themes/readthedocs_theme
 markdown_extensions: [abbr,attr_list,def_list,footnotes,tables,admonition,toc]

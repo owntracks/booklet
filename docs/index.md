@@ -1,4 +1,8 @@
-# Location? OwnTracks
+<div id="teaser-home">
+  <image src="images/logo-small.png" alt="OwnTracks">
+  <span>OwnTracks</span>
+</div>
+
 
 OwnTracks is an Open Source project which provides an iOS and an Android app with which your smartphone records its current location. While there are many smartphone apps available which can do that, we think OwnTracks is special.
 
