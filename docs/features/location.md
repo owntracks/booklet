@@ -78,34 +78,35 @@ indicates the device is is within the region.
 #### iBeacon monitoring
 
 The app user may mark a previously manually published or manually created location
-as a monitored beacon region by appending a beacon uuid to the region's name.
+as a monitored beacon region by appending a beacon UUID to the region's name.
 The app will publish the location
-additionally everytime the device leaves or enters one of the beacon regions, and the
+additionally every time the device leaves or enters one of the beacon regions, and the
 published data contains an indication of whether the device is entering or
 leaving the region.
 
 Region monitoring is not related to one of the location publication modes and
-works independently. It is switched on when a region's name has a valid uuid
-appended.
+works independently. It is switched on when a region's name has a valid UUID
+appended to it.
 
 If the device is within a monitored beacon region, the the beacon indicator
 is shown in red, otherwise blue meaning device is not in any iBeacon region.
 
 There are 2 kinds of locations:
-a) an `automatic location` created when iOS detects a change of location
-b) a `manual location` created by the user
 
-A `manual location` with a non-zero length remark (description) is a `waypoint`.
+* an _automatic location_ created when iOS detects a change of location
+* a _manual location_ created by the user
 
-If a `waypoint` is `shared`, its attributes are published when created or changed.
+A _manual location_ with a non-zero length remark (description) is a _waypoint_.
 
-If a `waypoint` specifies a radius, a `circular region` is monitored for `enter/leave events`.
+If a _waypoint_ is _shared_, its attributes are published when the waypoint is created or changed.
 
-If a `waypoint` is not a `circular region` and the `waypoint`'s description contains a valid `iBeacon` specification, a `beacon region` is monitored for `enter/leave events`.
+If a _waypoint_ specifies a radius, a _circular region_ is monitored for _enter/leave events_.
 
-If an `enter/leave event` occurs an event message is published with the `type` attribute set to `c`or `b`for (`circular region`or `beacon region`). The message contains an `event`attribute specifying either `enter`or `leave`.
+If a _waypoint_ is not a _circular region_ and the waypoint's description contains a valid iBeacon specification, a _beacon region_ is monitored for enter/leave events.
 
-If the `waypoint`is `shared`, the description of the `waypoint`is added to the published `event`message.
+If an enter/leave event occurs an event message is published with the `type` attribute set to `c`or `b`for (_circular region_or _beacon region_). The message contains an `event` attribute specifying either `enter`or `leave`.
+
+If the _waypoint_is _shared_, the description of the _waypoint_ is added to the published `event` message.
 
 Automatic | Description | iBeacon | Radius | Shared | Event Message | /w Description | Waypoint Message | 
 ---|---|---|---|---|---|---|---|---|
