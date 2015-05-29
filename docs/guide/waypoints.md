@@ -1,4 +1,4 @@
-# Waypoints
+## Waypoints
 
 
 f you've configured a geo-fence, a `location` message will

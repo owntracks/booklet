@@ -1,4 +1,4 @@
-# Topics
+## Topics
 
 You now know that [MQTT](mqtt.md) is a messaging protocol, and that it uses
 topic names to label messages.  topic names can be structured into multiple
@@ -12,14 +12,14 @@ The principles during the design of the OwnTracks topic-naming scheme were
 * traffic minimization
 * granular access control
 
-#### topic name Root
+## topic name Root
 
 Typically an MQTT broker hosts multiple applications. To create a separate name space
 for OwnTracks we use a topic name root as the beginning of a topic name. Per default
 this is `owntracks/`, but you may choose any other root (e.g. `peters/locations/`) or,
 if you prefer, the empty string.
 
-#### Device name
+## Device name
 
 Locations are captured in OwnTracks by devices (e.g. your Smartphone). The
 device name forms the second component of the topic name. In order to avoid
@@ -35,20 +35,20 @@ just one level `peters-iPhone` or multiple levels `aFamily/father/iPhone`), but
 under any one OwnTracks name root the number of levels used for device names
 have to the same.
 
-#### Base topic name
+## Base topic name
 
 Combining the topic name root and the device name result in what we call _base
 topic name_ for each device (e.g. `owntracks/peter/iPhone`).  The devices label
 their location messages with the _base topic name_ when publishing to the MQTT
 broker.
 
-#### Subscribing to location Messages
+## Subscribing to location Messages
 
 Given the structure explained above, the topic filter you can use to subscribe to the
 location messages of all devices is `owntracks/+/+` (the topic name root plus a so-called
 wild card (`+`) for each level of the device name.
 
-#### Additional topic names
+## Additional topic names
 
 For additional communication from and to devices, OwnTracks uses topic names relative
 to the base topic name.
@@ -70,7 +70,7 @@ Devices publish their [waypoints](waypoints.md) to the relative topic name
 `waypoint` and the corresponding events the transition into or out of a
 waypoint triggers, to the relative topic name `event`.
 
-#### Summary
+## Summary
 
 A device (named `peter/iPhone` in this example) is connected to an [MQTT
 Broker](broker.md) with the OwnTracks name Root `owntracks`. It publishes
@@ -93,7 +93,7 @@ commands; responses to these commands will be published and labeled `owntracks/p
 
 A full set of supported topic names and expected payloads is documented in [our JSON API](../tech/json.md).
 
-#### Terms used
+## Terms used
 
 * topic name
 * OwnTracks topic name root

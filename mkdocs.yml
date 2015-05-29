@@ -8,8 +8,8 @@ site_dir: _site
 pages:
 - [index.md, 'Intro']
 
-- [guide/what.md, 'Guide', 'What it does']
-- [guide/how.md, 'Guide', 'How it works']
+- [guide/whathow.md, 'Guide', 'What it does']
+# - [guide/how.md, 'Guide', 'How it works']
 - [guide/ui.md, 'Guide', 'User interface']
 - [guide/scenarios.md, 'Guide', 'Scenarios']
 - [guide/mqtt.md, 'Guide', 'MQTT']
@@ -38,8 +38,10 @@ pages:
 - [features/ios.md, 'Features', 'iOS']
 - [features/remoteconfig.md, 'Features', 'Remoteconfig']
 - [features/debug.md, 'Features', 'Debugging']
+
 - [tech/json.md, 'API', 'JSON']
 - [tech/program.md, 'API', 'Code']
+
 - [terminology.md, 'Sundry', 'Terminology']
 - [privacy.md, 'Sundry', 'Privacy']
 - [people.md, 'Sundry', 'People']

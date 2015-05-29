@@ -1,4 +1,4 @@
-# Bridging
+## Bridging
 
 In order to profit from the [Friends feature](friends) in
 OwnTracks, all contacts you want to be able to track on your your device must

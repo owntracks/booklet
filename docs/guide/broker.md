@@ -1,4 +1,4 @@
-# MQTT broker
+## MQTT broker
 
 An MQTT broker is a service to which MQTT clients connect. These clients publish
 data to specific _topics_ and they can subscribe to one or more _topics_ to receive
@@ -11,14 +11,14 @@ name if you prefer to. The reason we've chosen that structure is to accomodate
 friends and family on a single broker, taking into consideration that a particular
 user might have more than one device.
 
-### Private broker
+## Private broker
 
 Ideally, you set up a private broker under your control. This sounds more difficult
 than it actually is, and there are some very nice brokers you can use free of charge
 on your own infrastructure. As an example, we've written up how to install
 Mosquitto on a Raspberry Pi.
 
-### RasPi
+## RasPi
 
 ![Mosquitto on a Raspbi](images/raspi-broker.png)
 
@@ -121,7 +121,7 @@ That's it for the moment.
   [2]: http://www.raspberrypi.org/downloads
   [7]: https://github.com/owntracks/tools
 
-### Testing
+## Testing
 
 Once you've chosen an MQTT broker, make sure you feel comfortable with the
 utilities it provides to subscribe and publish to topics. We recommend the
@@ -147,7 +147,7 @@ _payload_.
 
 Once you feel comfortable with what is going on, you should consider adding [TLS].
 
-### Bridging
+## Bridging
 
 If you want to connect two (or more) brokers (e.g. yours and that of your friend) you can, and we've written up [how you can bridge brokers](bridge.md).
 
@@ -195,7 +195,7 @@ A service which is typically (if maybe incorrectly) called dynamic DNS comes to 
 
 Once you've completed those steps, configure the OwnTracks apps to use the shiny new DNS name and TCP port number (8883) and you should be all set.
 
-### OwnTracks
+## OwnTracks
 
 So, you've configured your broker and you are familiar with the _mosquitto_ command-line
 clients, so now it's time to see if you can [get OwnTracks to speak to your broker](apps.md).

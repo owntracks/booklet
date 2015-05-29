@@ -1,3 +1,5 @@
+## JSON
+
 OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. The different payload types are identified by a `_type` element. Depending on the app platform, different payload types are supported. 
 
 | `_type`                                   |  iOS   | Android |
@@ -12,7 +14,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `configuration`                           |   Y    |   Y     |
 
 
-### Topics
+## Topics
 
 Apps publish to:
 
@@ -36,7 +38,7 @@ In addition, the iOS app publishes to:
 - `owntracks/user/device/dump` for config dumps
 
 
-### `_type=location`
+## `_type=location`
 
 This location object describes the location of the device that published it. **Heads up: as from Android version 0.5.11 and from iOS version 8.0 numeric types are real numeric (`float`, `int`, boolean `true`/`false`) and no longer strings.**
 
@@ -84,7 +86,7 @@ This location object describes the location of the device that published it. **H
 
 (The IOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
-#### Greenwich
+### Greenwich
 
 The OwnTracks-edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `_type=location` message:
 
@@ -122,7 +124,7 @@ The OwnTracks-edition of the [Choral Greenwich](http://www.choral.it/greenwich&m
 (The device can be configured to produce or not produce fields marked as _optional_.)
 
 
-### `_type=lwt`
+## `_type=lwt`
 
 A _last will and testament_ is published automatically by the MQTT broker when it looses contact with the app. This typically looks like this:
 
@@ -135,7 +137,7 @@ A _last will and testament_ is published automatically by the MQTT broker when i
 
 The timestamp is the Unix epoch time at which the app first connected (and *not* the time at which the LWT was published).
 
-### `_type=waypoint`
+## `_type=waypoint`
 
 Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint to your broker (if the waypoint is marked `shared`). OwnTracks also monitors these waypoints and will publish a transition event (`_type: transition`) when entering or leaving the waypoint. Note, that a waypoint may also define a [Beacon](../features/beacons.md).
 
@@ -155,7 +157,7 @@ Waypoints denote specific geographical locations that you want to keep track of.
 * `wtst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).)
 
 
-### `_type=transition`
+## `_type=transition`
 
 A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic. In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
 
@@ -176,7 +178,7 @@ A transition into or out of a previously configured waypoint is effected by publ
 A transition event published as a result of a Beacon movement will have a `"t" : "b"` associated with it.
 
 
-### `_type=configuration`
+## `_type=configuration`
 The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. 
 
 ```json
@@ -282,7 +284,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `remoteConfiguration`				Android only, respond to remote configuration messages
 
 
-### `_type=beacon`
+## `_type=beacon`
 
 These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.
 
@@ -307,7 +309,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * 2 = the beacon is relatively close to the user.
     * 3 = the beacon is far away."
 
-### `_type=cmd`
+## `_type=cmd`
 ```json
 {"_type":"cmd","action":"reportSteps"}
 ```
@@ -319,7 +321,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * "reportLocation" triggers the publish of the current location
     * "dump" triggers the publish of a configuration message
 
-### `_type=steps`
+## `_type=steps`
 ```json
 {"_type":"steps","tst":1400455130,"steps":1234,"from":1400455130,"to":1400458000}
 ```

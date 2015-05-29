@@ -16,5 +16,5 @@ We've made OwnTracks very easy to try out without you having to do very much. Ev
 
 We think the best way to get started using OwnTracks is to follow this guide, chapter by chapter, but you certainly may fast-forward or even skip sections you're familiar with. Pressing _Next_ on each page will guide you (pun!) through the guide.
 
-We'll now move on to explain [what OwnTracks does](guide/what.md) and [how OwnTracks works](guide/how.md).
+We'll now move on to explain [what OwnTracks does and how it works](guide/whathow.md).
 

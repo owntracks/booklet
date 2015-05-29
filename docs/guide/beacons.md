@@ -1,4 +1,4 @@
-# iBeacons
+## iBeacons
 
 ![ibeacon logo](images/ibeacon.png)
 

@@ -1,4 +1,4 @@
-# MQTT
+## MQTT
 
 So what's this MQTT thing? Quoting directly [from the horse's mouth](http://mqtt.org):
 
@@ -12,7 +12,7 @@ It's lightweight. It's easy on a battery. It has a low overhead (important to sa
 
 In MQTT-speak, clients publish messages, which means they send or transmit them, and other clients subscribe to messages, meaning they receive them. Messages are published on [topics](topics.md), and the MQTT server, which is called a [broker](broker.md) is configured to permit or deny clients doing so.
 
-### Cauldron
+## Cauldron
 
 We like to imagine that MQTT makes something reminiscent of a large _cauldron_ available to publishing and subscribing clients. Publishers drop messages which are tagged [with topic names](topics.md) into the pot, and subscribers can, access-control permitting, slurp these out, store them, create new messages and ladle them back into the pot or simply throw them away after peeking at them. As a small example, assume a client periodically publishes a Celsius temperature measurement to a particular topic, but you want Fahrenheit (incomprehensible that you would, but anyway). You could [create a small client](../tech/program.md) which subscribed to the Celsius reading (from the topic, say, `temp/celsius` in the cauldron), converted to Fahrenheit or Kelvin or whatever, and republished the new value to a different topic, say, `temp/fahrenheit` back into the cauldron. It's important to understand that subscribing and receiving an MQTT message does _not remove_ it from the broker; the same message is available to all clients which are subscribed at the time the message was published. (So you could have one client doing Fahrenheit conversion and another doing Kelvin.)
 

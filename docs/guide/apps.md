@@ -1,4 +1,4 @@
-# OwnTracks apps
+## OwnTracks apps
 
 The OwnTracks apps operate in one of three modes (discussed in [scenarios](scenarios.md)], and you tell the app in which mode you want to use it.
 

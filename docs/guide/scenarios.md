@@ -1,4 +1,4 @@
-# Scenarios
+## Scenarios
 
 There are three basic scenarios we have for you depending on your needs. It'll help if you keep a copy of the [technical terminology](../terminology.md) handy.
 

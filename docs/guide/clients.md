@@ -1,4 +1,4 @@
-# Clients
+## Clients
 
 Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. _publish_) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in [_public mode_](scenarios.md).)
 
