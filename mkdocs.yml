@@ -1,63 +1,51 @@
-site_name: OwnTracksDoc
+site_name: OwnTracks Booklet
 site_url: http://owntracks.org
 site_author: OwnTracks.org
 site_favicon: favicon.ico
 repo_url: https://github.com/owntracks
-# site_dir: ../owntracks/booklet/
 site_dir: _site
 pages:
-- [index.md, 'Intro']
+- Intro: 'index.md'
+- Guide:
+    - 'What it does': 'guide/whathow.md'
+    - 'User interface': 'guide/ui.md'
+    - 'Scenarios': 'guide/scenarios.md'
+    - 'MQTT': 'guide/mqtt.md'
+    - 'Topics': 'guide/topics.md'
+    - 'Broker': 'guide/broker.md'
+    - 'Apps': 'guide/apps.md'
+    - 'Clients': 'guide/clients.md'
+    - 'Friends': 'guide/friends.md'
+    - 'Waypoints': 'guide/waypoints.md'
+    - 'Beacons': 'guide/beacons.md'
+    - 'Bridging': 'guide/bridge.md'
+- Features:
+    - 'Hosted': 'features/hosted.md'
+    - 'Security': 'features/security.md'
+    - 'TLS': 'features/tls.md'
+    - 'Location': 'features/location.md'
+    - 'TID': 'features/tid.md'
+    - 'Friends': 'features/friends.md'
+    - 'Card': 'features/card.md'
+    - 'Waypoints': 'features/waypoints.md'
+    - 'Beacons': 'features/beacons.md'
+    - 'Pedometer': 'features/pedometer.md'
+    - 'Settings': 'features/settings.md'
+    - 'Comparison': 'features/comparison.md'
+    - 'Android': 'features/android.md'
+    - 'iOS': 'features/ios.md'
+    - 'Remoteconfig': 'features/remoteconfig.md'
+    - 'Debugging': 'features/debug.md'
+- API:
+    - 'JSON': 'tech/json.md'
+    - 'Code': 'tech/program.md'
+- Sundry:
+    - 'Terminology': 'terminology.md'
+    - 'Privacy': 'privacy.md'
+    - 'People': 'people.md'
+    - 'Ideas': 'ideas.md'
+    - 'Answers': 'faq.md'
+    - 'Press': 'press.md'
 
-- [guide/whathow.md, 'Guide', 'What it does']
-# - [guide/how.md, 'Guide', 'How it works']
-- [guide/ui.md, 'Guide', 'User interface']
-- [guide/scenarios.md, 'Guide', 'Scenarios']
-- [guide/mqtt.md, 'Guide', 'MQTT']
-- [guide/topics.md, 'Guide', 'Topics']
-- [guide/broker.md, 'Guide', 'Broker']
-- [guide/apps.md, 'Guide', 'Apps']
-- [guide/clients.md, 'Guide', 'Clients']
-- [guide/friends.md, 'Guide', 'Friends']
-- [guide/waypoints.md, 'Guide', 'Waypoints']
-- [guide/beacons.md, 'Guide', 'iBeacons']
-- [guide/bridge.md, 'Guide', 'Bridging']
-
-- [features/hosted.md, 'Features', 'Hosted']
-- [features/security.md, 'Features', 'Security']
-- [features/tls.md, 'Features', 'TLS']
-- [features/location.md, 'Features', 'Location']
-- [features/tid.md, 'Features', 'TID']
-- [features/friends.md, 'Features', 'Friends']
-- [features/card.md, 'Features', 'Card']
-- [features/waypoints.md, 'Features', 'Waypoints']
-- [features/beacons.md, 'Features', 'Beacons']
-- [features/pedometer.md, 'Features', 'Pedometer']
-- [features/settings.md, 'Features', 'Settings']
-- [features/comparison.md, 'Features', 'Comparison']
-- [features/android.md, 'Features', 'Android']
-- [features/ios.md, 'Features', 'iOS']
-- [features/remoteconfig.md, 'Features', 'Remoteconfig']
-- [features/debug.md, 'Features', 'Debugging']
-
-- [tech/json.md, 'API', 'JSON']
-- [tech/program.md, 'API', 'Code']
-
-- [terminology.md, 'Sundry', 'Terminology']
-- [privacy.md, 'Sundry', 'Privacy']
-- [people.md, 'Sundry', 'People']
-- [ideas.md, 'Sundry', 'Ideas']
-- [faq.md, 'Sundry', 'Answers']
-- [press.md, 'Sundry', 'Press']
-# theme: flatly
-# built-in themes: https://github.com/mkdocs/mkdocs/tree/master/mkdocs/themes
-# theme: bootstrap
-# theme: journal
-# theme: readable
-# theme: readthedocs
-# theme: simplex
-# theme: slate
-# theme: yeti
-# Next is from Sequelize: https://github.com/sequelize/sequelize/tree/master/docs
-theme: ""
-theme_dir: _themes/readthedocs_theme
+theme: readthedocs
 markdown_extensions: [abbr,attr_list,def_list,footnotes,tables,admonition,toc]
