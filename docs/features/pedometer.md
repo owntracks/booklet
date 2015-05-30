@@ -7,7 +7,7 @@ can report these in a JSON payload upon request.
 ### Command
 
 In order for the app to actually report the steps counted by the device, you
-send it a specially formatted command:
+send it a specially formatted command. (The device does not periodically publish steps on its own -- you must trigger it.)
 
 ```
 mosquitto_pub -q 2 -t owntracks/jj/5s/cmd -m '{"_type" : "cmd", "action": "reportSteps"}'
@@ -15,7 +15,7 @@ mosquitto_pub -q 2 -t owntracks/jj/5s/cmd -m '{"_type" : "cmd", "action": "repor
 
 Note how we’re using QoS=2 here: the message is published to the MQTT broker,
 and when the phone next wakes up, which happens every few hundred seconds, it
-will obtain the message, and publish a [[JSON|JSON]] payload with the counted steps back
+will obtain the message, and publish a [JSON](../tech/json.md) payload with the counted steps back
 to your MQTT broker.
 
 ```json

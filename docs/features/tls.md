@@ -8,10 +8,10 @@ Configuring TLS ([Transport Layer Security](http://en.wikipedia.org/wiki/Transpo
 * Configure TLS on the MQTT broker
 * Configuring the app to use TLS
 
-You can share the cerficate if you want to (though not many people will want it ...)
+You can share the certificate if you want to (though not many people will want it ...)
 It's so public, that it's perfectly OK to send yourself the file by, say, e-mail.
 
-### Configure TLS on the Mosquitto broker
+## Configure TLS on the Mosquitto broker
 
 We'll first show you how to set up TLS on your Mosquitto [broker](../guide/broker.md).
 The basic configuration for TLS in [mosquitto.conf][mconf] is:
@@ -81,7 +81,7 @@ There you go! That's it: the certificate was installed.
 
 You're done, and if you no longer require the certificate file just delete the e-mail, though we recommend you keep it around for a bit.
 
-## manual configuration on Android
+### manual configuration on Android
 
 From the, say, e-mail you got with the certificate, click "save" on the attached `.crt` file which is stored on your device's `Download` folder.
 

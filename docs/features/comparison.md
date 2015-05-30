@@ -1,12 +1,12 @@
 ## iOS / Android compared
 
-The OwnTracks [[Android]] and [[iOS]] apps try to be on par as far as the list
+The OwnTracks [Android](android.md) and [iOS](ios.md) apps try to be on par as far as the list
 of supported features is concernened. This table summarizes the current status.
 
 | Feature                                   |  iOS   | Android |
 | ----------------------------------------- | :----: | :-----: |
-| [[Location reporting|Location]]           |   Y    |   Y     |
-| [[TLS]] with system cert                  |   Y    |   Y     |
+| [Location reporting](location.md)         |   Y    |   Y     |
+| [TLS](tls.md) with system certificate        |   Y    |   Y     |
 | TLS with cert in filesystem               |   -    |   Y     |
 | Plain connections (no TLS)                |   Y    |   Y     |
 | Username/password authentication          |   Y    |   Y     |
@@ -22,11 +22,11 @@ of supported features is concernened. This table summarizes the current status.
 | Move mode                                 |   Y    |         |
 | Friends list                              |   Y    |   Y     |
 | Geofencing                                |   Y    |   Y     |
-| [[Waypoints]]                             |   Y    |   Y     |
-| Location data (payload) [[published as JSON|JSON]] |   Y    |   Y     |
-| [[Remote configuration|RemoteConfig]]     |   Y    |         |
-| [[iBeacons]]                              |   Y    |         |
-| [[Step-Counting]]                         |   Y    |         |
+| [Waypoints](waypoints.md)                 |   Y    |   Y     |
+| Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
+| [Remote configuration](remoteconfig.md)   |   Y    |         |
+| [iBeacons](beacons.md)                    |   Y    |         |
+| [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
 
 
 ### Android
@@ -39,7 +39,7 @@ of supported features is concernened. This table summarizes the current status.
   * TLS with user-provided certificates via an absolute path (e.g. to Downloads).
     This doesn't require a password to be set on the device, but is a bit fiddly
     to set up.
-  * Username/password auth works.
+  * Username/password authentication to broker.
 
 * Automatic publishes at configurable intervals (disabled or > 1 minute)
 

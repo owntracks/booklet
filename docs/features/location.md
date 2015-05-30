@@ -26,21 +26,21 @@ The iOS app offers 3 modes of location publication:
 
 In addition to this, there's also _Region Monitoring_ (a.k.a. Geo Fence) and _iBeacon Monitoring_ and _iBeacon Ranging_.
 
-#### MOVE mode 
+#### _Move_ mode 
 
-In MOVE mode, the app monitors location permanently and publishes a new
+In _move_ mode, the app monitors location permanently and publishes a new
 location as soon as the device moves `x` meters or after `t` seconds, whatever
 happens first. `x` and `t` can be adjusted by the user in the systems settings for
 OwnTracks. The defaults are 100m and 300 seconds (5 minutes). 
 
 The payoff is higher battery usage as high as in navigation or tracker app.
-So it is recommend to use MOVE mode while charging or during moves only - hence the name.
+So it is recommend to use _move_ mode while charging or during moves only - hence the name.
 
-Please note, MOVE mode is active when the app is active (a.k.a in foreground).
+Please note, _move_ mode is active when the app is active (a.k.a in foreground).
 
-#### SIGNIFICANT LOCATION CHANGE mode
+#### _Significant location change_ mode
 
-iOS defines a SIGNIFICANT LOCATION CHANGE as travelling a distance of at least
+iOS defines a _Significant location change_ as travelling a distance of at least
 500 meters in 5 minutes.  This mode allows the app to run in background and
 minimize the power consumption.
 
@@ -50,29 +50,30 @@ with respect to battery usage.
 
 Examples:
 
-* if you don't move, no new location is published - even if you don't move for hours
+* if you don't move, no new location is published - even if you don't move for hours. (Note, however, that the app will publish a _ping_-type message once in a while.)
 * if you move at least 500 meters, a new location will be published after 5 minutes
 * if you move 10 kilometers in 5 minutes, only one location will be published
 
 
-#### MANUAL mode
+#### _Manual_ mode
 
-The app doesn't monitor location changes in MANUAL mode while in background.
-The user has to publish the current location explicitly via the UI.
+The app doesn't monitor location changes in _manual_ mode while in background.
+The user has to publish the current location explicitly via the UI. You use this if
+you want to (temporarily) avoid friends seeing where you are.
 
-#### REGION monitoring
+#### _Region_ monitoring
 
 The app user may mark a previously manually published or manually created 
-location as a monitored circular region by specifying a monitoring radius in meters.
+location as a monitored circular region by specifying a monitoring radius in meters. (See [Waypoints](waypoints.md).)
 The app will publish the location
 additionally everytime the device leaves or enters one of the regions, and the
 published data contains an indication of whether the device is entering or
 leaving the region.
 
 Region monitoring is not related to one of the location publication modes and
-works independently. It is switched on when a region is setup with description
+works independently thereof. It is switched on when a region is setup with description
 and radius. To switch region monitoring off, all regions have to be 
-unmarked (by setting radius to 0).
+unmarked (by setting their radius to 0).
 
 Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.

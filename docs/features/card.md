@@ -14,6 +14,4 @@ For _Hosted mode_ we developed a new feature we call a _card_ which you can also
 }
 ```
 
-
-
-
+If you are a _Hosted_ user, and you're wondering where your avatar comes from: we obtain it from [Gravatar.com](http://gravatar.com) when you sign up.
