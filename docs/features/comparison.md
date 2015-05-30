@@ -1,3 +1,4 @@
+## iOS / Android compared
 
 The OwnTracks [[Android]] and [[iOS]] apps try to be on par as far as the list
 of supported features is concernened. This table summarizes the current status.

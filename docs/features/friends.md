@@ -1,4 +1,4 @@
-# Friends
+## Friends
 
 OwnTracks has a so-called _Friends and Family_ capability which is enabled by
 default. The way this works is friends and/or family members who share a single

@@ -1,4 +1,4 @@
-# Debugging
+## Debugging
 
 Designing mobile apps is hard. Designing mobile apps which are killed off every once in a while by the underlying OS is harder (iOS). Designing mobile apps which reliable do what they should at all times is hardest. [Christoph and Alexander](../people.md) know this and they've done a hell of a job to get stability and reliability of OwnTracks to where it stands today.
 

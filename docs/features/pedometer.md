@@ -1,10 +1,10 @@
-# Pedometer
+## Pedometer
 
 The iPhone 5S has a built-in pedometer which we’ve leveraged into OwnTracks (iOS only).
 The way this works is that the iPhone counts the steps you take, and OwnTracks
 can report these in a JSON payload upon request.
 
-## Command
+### Command
 
 In order for the app to actually report the steps counted by the device, you
 send it a specially formatted command:
@@ -28,7 +28,7 @@ to your MQTT broker.
 }
 ```
 
-## Daily reports
+### Daily reports
 
 We use the following small program to issue the JSON needed to request the
 steps for the 00:00 - 23:59 time-frame of this particular day (or the day before, etc.)

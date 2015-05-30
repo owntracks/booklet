@@ -1,3 +1,5 @@
+## Remote config
+
 Getting bored and frustrated by telling other people how to edit settings on their iPhone to connect to your server?
 
 Here's what you can do with OwnTracks:

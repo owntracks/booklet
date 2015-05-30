@@ -1,4 +1,4 @@
-# Security
+## Security
 
 OwnTracks and its associated utilities have been designed foremost with data privacy in mind. We think your location or that of your loved ones is something only you respectively they should know. While we cannot help you (or ourselves for that matter) protect against NSA snooping, we do our best to protect your data from other people's eyes.
 

@@ -1,4 +1,4 @@
-# Hosted mode
+## Hosted mode
 
 As shortly described in [scenarios](../guide/scenarios.md), we offer a _Hosted_ mode on a best-effort basis. We provide an MQTT broker to which you can connect a device or two. Or three. You can also invite OwnTracks friends to share their location with you or, let them see where you are.
 

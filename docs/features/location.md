@@ -1,3 +1,5 @@
+## Location data
+
 Location data is obtained by your smartphone and published to the [MQTT broker](../guide/broker.md) as follows:
 
 ### Android

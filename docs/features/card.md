@@ -1,4 +1,4 @@
-# Card
+## Card
 
 OwnTracks typically displays the _TID_ of a [friend](friends.md) on the map, but you can associate an address book entry to that friend in order to see a friendly face (if you have you friend's photo in your device's address book) and/or a friendly name.
 

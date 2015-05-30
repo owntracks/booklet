@@ -1,4 +1,4 @@
-# Waypoints
+## Waypoints
 
 The _base topic_ for publishes from the devices (OwnTracks apps) is what you configure it
 to be in the app's preferences/settings. For argument's sake we'll use
@@ -57,7 +57,7 @@ available with a subscription to `owntracks/#`.
 
 The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. 
 
-## iOS
+### iOS
 
 On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name `Center`, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.
 

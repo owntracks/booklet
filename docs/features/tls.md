@@ -1,3 +1,5 @@
+## TLS
+
 You want data between your mobile device (a.k.a. smartphone) and the MQTT broker you use to be secured from eavesdropping. This is accomplished using _TLS_ (the artist formerly known as _SSL_). When you configure your broker you will generate what is called a CA certificate which is basically a large amount of bits. (See below for the nitty gritty.)
 
 Configuring TLS ([Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)) for OwnTracks involves doing three things:
@@ -31,7 +33,7 @@ keyfile .............
 * `keyfile` points to your server's secret key file (which you *never* divulge!)
 
 
-### Configure the OwnTracks app to use TLS
+## Configure the OwnTracks app to use TLS
 
 We show you here how to set up your iOS or Android device with that kind of certificate.
 
@@ -39,7 +41,7 @@ In both cases we assume you've got an e-mail in your inbox with the file you've 
 
 In our example, the CA certificate is called `MQTTitude-ca.crt`.
 
-## Android
+### Android
 
 Note that by following these instructions on Android you'll be prompted to set a device PIN or pattern to protect the device. If you already have that, just carry on. If you absolutely don't want to do that, you should download the certificate into, say, the Downloads folder, and configure it manually in OwnTracks (see below).
 
@@ -59,7 +61,7 @@ Note that installing a certificate into Android will, since Kitkat (4.4) bring u
 ![Android](https://raw.github.com/wiki/owntracks/owntracks/assets/tls/cert-alert.png)
 
 
-## iOS
+### iOS
 
 So, here's your e-mail containing the certificate file. Click on it to launch the profile installer. No worries: we're not going to break anything. We're just adding yet another certificate to iOS' certificate store, and you're going to say that you trust that certificate. You ought to trust it: you've just created it yourself!
 

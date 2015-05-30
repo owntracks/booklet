@@ -1,4 +1,4 @@
-# iBeacons
+## iBeacons
 
 If you want to monitor an iBeacon region rather than a circular region set the
 radius to zero (`0`), and add the beacon identifier to the description

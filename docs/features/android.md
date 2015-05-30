@@ -1,4 +1,4 @@
-### Setup
+## Setup
 The most important step to configure the OwnTracks Android app is to configure the broker connection. To do so, specify the hostname and port of your broker in the connection preferences. Additionally, specify a name of your device and the username and password that is used to authenticate yourself on the broker.
 
 In the unlikely case that your broker does not require a username and password, you can enable the advanced connection preferences `Preferences/Advanced`. Afterwards an additional menu to select anonymous authentication appears in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things. 

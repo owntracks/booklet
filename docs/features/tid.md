@@ -1,4 +1,4 @@
-# TID
+## TID
 
 A _TID_ is a _tracker ID_, a two-character identifier of your chosing, your initials, say. This _TID_ is published in the [JSON payload](../tech/json.md) of each message published by OwnTracks and is meant to be used as a short identifier which is easier to read than a rather [long topic name](../guide/topics.md).
 
