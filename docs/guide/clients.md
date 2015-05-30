@@ -50,8 +50,6 @@ So, now that you have the OwnTracks locations being neatly stored for you, how d
 
 _Pista_ is a word which signifies _track_ in Spanish and in Italian. It is, unfortunately, a very difficult bit of software to get installed, but we'll try to help you. _Pista_ contains a whole kitchen-sink of features, most of which you won't need to use with our OwnTracks apps. (These features were built for the OwnTracks Greenwich devices.)
 
-We'll concentrate on setting up _Pista_'s _Tracks_ utility which will enable you to view past locations directly from the database tables which are updated by _o2s_.
-
 ## mqttwarn
 
 You'll recall (we hope) the discussion on [MQTT](mqtt.md) and the analogy with the cauldron. _mqttwarn_, while not specific to OwnTracks, is another client you connect to your [MQTT broker](broker.md). We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).
