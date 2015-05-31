@@ -74,7 +74,7 @@ This location object describes the location of the device that published it. **H
 * `lon` is longitude as decimal, represented as a string
 * `rad` is the radius in meters around around the geo-fence when entering/leaving a geofence
 * `t` is the trigger for the publish x = 
-    * "p" ping, issued randomly by background task 
+    * "p" ping, issued randomly by background task. Note, that the `tst` in a ping is that of the [last location reported by iOS](https://github.com/owntracks/ios/issues/197), so this may look like a duplicate.
     * "c" circular region enter/leave event 
     * "b" beacon region enter/leave event
     * "r" response to a "reportLocation" request
