@@ -12,6 +12,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `cmd`                                     |   Y    |   Y     |
 | `steps`                                   |   Y    |   N     |
 | `configuration`                           |   Y    |   Y     |
+| `card`                                    |   Y    |   Y     |
 
 
 ## Topics
@@ -30,6 +31,7 @@ Apps subscribe to:
 - `owntracks/+/+` for seeing other user's locations, depending on broker ACL
 - `owntracks/+/+/event` (singular) for transition messages (`enter`/`leave`)
 - `owntracks/+/+/waypoint`  (singular) for Waypoint definitions/modifications
+- `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
 
 In addition, the iOS app publishes to:
 
@@ -331,4 +333,18 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
                 is invalid
 * `from`        effective start of time period
 * `to`          effective end of time period
+
+## `_type=card`
+
+As described in [Card](../features/card.md), apps read retained messages of `_type=card` on `owntracks/+/+/info` to find the _name_ and avatar (_face_) of a user.
+
+```json
+{
+  "_type": "card",
+  "name": "Jane Jolie"
+  "face": "iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==",
+}
+```
+
+The `name` element contains a name which is displayed by the apps to identify a user, and `face` contains the base64-encoded PNG image (40x40 px) which is displayed instead of a [TID](../features/tid.md).
 
