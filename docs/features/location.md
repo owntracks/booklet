@@ -59,7 +59,8 @@ Examples:
 
 The app doesn't monitor location changes in _manual_ mode while in background.
 The user has to publish the current location explicitly via the UI. You use this if
-you want to (temporarily) avoid friends seeing where you are.
+you want to (temporarily) avoid friends seeing where you are. Note that Beacon events
+are still published automatically whilst in _Manual_ mode.
 
 #### _Region_ monitoring
 
