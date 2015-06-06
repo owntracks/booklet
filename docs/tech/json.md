@@ -13,6 +13,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `steps`                                   |   Y    |   N     |
 | `configuration`                           |   Y    |   Y     |
 | `card`                                    |   Y    |   Y     |
+| `waypoints`                               |   Y    |         |
 
 
 ## Topics
@@ -348,3 +349,34 @@ As described in [Card](../features/card.md), apps read retained messages of `_ty
 
 The `name` element contains a name which is displayed by the apps to identify a user, and `face` contains the base64-encoded PNG image (40x40 px) which is displayed instead of a [TID](../features/tid.md).
 
+## `_type=waypoints`
+
+(currently iOS only)
+The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with `.otrw` extension. The list of waypoints looks like this.
+
+```json
+{
+    "_type": "waypoints",
+    "_creator": "OTwpDraw",
+    "waypoints": [
+        {
+            "_type": "waypoint",
+            "tst": 1433598071,
+            "lat": 47.580231298,
+            "lon": 9.525146484,
+            "rad": 25186,
+            "desc": "I went swimming here"
+        },
+        {
+            "_type": "waypoint",
+            "tst": 1430398091,
+            "lat": 46.517295754,
+            "lon": 9.871215820,
+            "rad": 500,
+            "desc": "Cheese fondue"
+        }
+    ]
+}
+```
+
+Note that `_type=waypoints` is *plural*.
