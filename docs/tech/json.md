@@ -174,7 +174,8 @@ A transition into or out of a previously configured waypoint is effected by publ
   "acc": 130,                   // accuracy of lat, lon
   "tid": "JP",
   "event": "enter",
-  "desc": "my Indian restaurant"
+  "desc": "my Indian restaurant",
+  "t": "b"			// trigger ("c" -default- for circular regions, "b" for beacons)
 }
 ```
 
