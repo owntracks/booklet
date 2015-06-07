@@ -34,6 +34,7 @@ Over the course of time, we've had people propose a number of ideas for OwnTrack
 * <del>Add presence. Are my friends in the area?</del>
   * <del>Needs friends/family on same broker</del>
   * <del>Needs 'standardized' topic names (maybe with Twitter id in topic?)</del>
+* Add transportation info (e.g. trains) as friends
 * Queue updates on device (with `tst` etc) to be PUBlished upon available connection
 * Corner-pegging [#94](https://github.com/binarybucks/mqttitude/issues/94)
 
