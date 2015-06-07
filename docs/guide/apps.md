@@ -8,7 +8,7 @@ In _Private_ mode, you configure our iOS and Android app to access your broker.
 
 ##  iOS
 
-[![Hosted UI](hosted/11-trackers-list-new-device.png)](https://itunes.apple.com/us/app/mqttitude/id692424691?mt=8>)
+[![AppStore](imges/appstore.png)](https://itunes.apple.com/us/app/mqttitude/id692424691?mt=8>)
 
 ##  Android
 
