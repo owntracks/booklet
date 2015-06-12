@@ -245,8 +245,7 @@ The device configuration can be imported and exported as JSON. The exported conf
                       "lon": nn.nnn,
                       "rad": nnn,
                       "shared": true,
-                      "desc" : "blabla",
-                      "transition": true,
+                      "desc" : "blabla"
                     } 
                   ]
 }
