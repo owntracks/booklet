@@ -321,12 +321,12 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"reportSteps"}
 ```
 * `action`      action to be performed by the device
-    * "reportSteps" reports steps walked on iPhone 5s devices. <br>
+    * `reportSteps` reports steps walked on iPhone 5s devices. <br>
       You may add "from":_timestamp_ and/or "to":_timestamp_" 
       which defaults to current time, from defaults to current date 00:00 am
       (see [Pedometer](../features/pedometer.md)).
-    * "reportLocation" triggers the publish of the current location
-    * "dump" triggers the publish of a configuration message
+    * `reportLocation` triggers the publish of the current location
+    * `dump` triggers the publish of a configuration message
 
 ## `_type=steps`
 ```json
