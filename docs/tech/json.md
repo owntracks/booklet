@@ -65,15 +65,15 @@ This location object describes the location of the device that published it. **H
 }
 ```
 
-* `acc` is accuracy of the reported location in meters without unit. 
-* `alt` is the altitude measured in meters above sea level (_Optional_)
-* `batt` is the device's battery level in percent
-* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_)
+* `acc` is accuracy of the reported location in meters without unit (integer)
+* `alt` is the altitude measured in meters above sea level (_Optional_, integer)
+* `batt` is the device's battery level in percent (integer)
+* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer)
 * `desc` is the description of a [waypoint](../features/waypoints.md)
 * `event` is one of `"enter"` or `"leave"` and tells if the app is entering or leaving a geofence 
-* `lat` is latitude as decimal, represented as a string
-* `lon` is longitude as decimal, represented as a string
-* `rad` is the radius in meters around around the geo-fence when entering/leaving a geofence
+* `lat` is latitude as decimal, represented as a floating point number
+* `lon` is longitude as decimal, represented as a floating point number
+* `rad` is the radius in meters around around the geo-fence when entering/leaving a geofence (integer)
 * `t` is the trigger for the publish x = 
     * "p" ping, issued randomly by background task. Note, that the `tst` in a ping is that of the [last location reported by iOS](https://github.com/owntracks/ios/issues/197), so this may look like a duplicate.
     * "c" circular region enter/leave event 
@@ -83,11 +83,16 @@ This location object describes the location of the device that published it. **H
     * "t" timer based publish in move move
     * "a" or missing `t` indicates automatic location update
 * `tid` is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
-* `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published.
-* `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_)
-* `vel` is the velocity (speed) in km/h (_Optional_)
+* `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
+* `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer)
+* `vel` is the velocity (speed) in km/h (_Optional_, integer)
 
 (The IOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
+
+Notes:
+* A publish with of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
+
+
 
 ### Greenwich
 
@@ -241,8 +246,7 @@ The device configuration can be imported and exported as JSON. The exported conf
                       "lon": nn.nnn,
                       "rad": nnn,
                       "shared": true,
-                      "desc" : "blabla",
-                      "transition": true,
+                      "desc" : "blabla"
                     } 
                   ]
 }
@@ -318,12 +322,12 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"reportSteps"}
 ```
 * `action`      action to be performed by the device
-    * "reportSteps" reports steps walked on iPhone 5s devices. <br>
+    * `reportSteps` reports steps walked on iPhone 5s devices. <br>
       You may add "from":_timestamp_ and/or "to":_timestamp_" 
       which defaults to current time, from defaults to current date 00:00 am
       (see [Pedometer](../features/pedometer.md)).
-    * "reportLocation" triggers the publish of the current location
-    * "dump" triggers the publish of a configuration message
+    * `reportLocation` triggers the publish of the current location
+    * `dump` triggers the publish of a configuration message
 
 ## `_type=steps`
 ```json
