@@ -38,6 +38,7 @@ pages:
     - 'Debugging': 'features/debug.md'
 - API:
     - 'JSON': 'tech/json.md'
+    - 'QR': 'tech/qr.md'
     - 'Code': 'tech/program.md'
 - Sundry:
     - 'Terminology': 'terminology.md'
