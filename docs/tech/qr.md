@@ -12,7 +12,7 @@ The QR codes can be scanned from the settings tab within the app, using an exter
 QR codes can be prepared with a number of tools: there are online offerings, and there is a standalone C program by the name of [qrencode](https://fukuchi.org/works/qrencode/) which works very well:
 
 ```
-qrencode -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=2&minor=1'
+qrencode -l H -v 10 -d 300 -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=2&minor=1'
 ```
 
 ### iBeacon QR URL
