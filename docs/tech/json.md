@@ -252,7 +252,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 }
 ```
 
-* `mode`					0 == Own mode, 1 == Hosted mode (for registered users), 2 = Public mode	
+* `mode`					0 == _Private_ mode, 1 == _Hosted_ mode (for registered users), 2 == _Public_ mode	
 * `subTopic`
 * `pubTopicBase`
 * `username`
