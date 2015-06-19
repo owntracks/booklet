@@ -1,11 +1,15 @@
 ## QR codes
 
-To setup the OwnTracks app (iOS only currently), you can use QR codes or URLs to configure the app for
+To setup the OwnTracks app (iOS only currently), you can use QR codes or specially-constructed URLs to configure the app. This is currently implemented for
 
 * Hosted mode and
 * iBeacons.
 
-The QR codes can be scanned from the settings tab within the app, using an external QR reader app (such as _Qrafter_) or by providing the URL in the device's browser.
+The QR codes can be scanned from the settings tab within the app
+
+![iOS settings](images/b-ios-scan-setting.png)
+
+Alternatively, you can use an external QR reader app (such as _Qrafter_) or, even easier, you provide the URL and view it through the device's mobile Web browser.
 
 ![QRafter](images/b-qrafter.png)
 
