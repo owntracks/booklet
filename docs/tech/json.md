@@ -14,7 +14,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `configuration`                           |   Y    |   Y     |
 | `card`                                    |   Y    |   Y     |
 | `waypoints`                               |   Y    |         |
-| `lbs`                                     |   Y    |   Y     |
+| `msg`                                     |   Y    |   Y     |
 
 
 ## Topics
@@ -391,11 +391,11 @@ The app can export a list of configured waypoints (separate from the configurati
 
 Note that `_type=waypoints` is *plural*.
 
-## `_type=lbs`
+## `_type=msg`
 
 ```json
 {
-    "_type"        : "lbs",
+    "_type"        : "msg",
     "lat"          : n.nnnn,          // latitude of message (e.g. to navigate thereto)
     "lon"          : n.nnnnn,         // longitude
     "title"        : "Lunch",         // string, title of message
