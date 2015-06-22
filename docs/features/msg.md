@@ -29,4 +29,4 @@ Thanks to the wonderful [page on Geohashes by Chris Veness](http://www.movable-t
 
 ![lbs geohash](images/lbs-geohash.png)
 
-
+Received messages are destroyed when you switch modes in the app from, say, _Private_ to _Hosted_, etc.
