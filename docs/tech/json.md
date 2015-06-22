@@ -14,6 +14,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `configuration`                           |   Y    |   Y     |
 | `card`                                    |   Y    |   Y     |
 | `waypoints`                               |   Y    |         |
+| `lbs`                                     |   Y    |   Y     |
 
 
 ## Topics
@@ -52,11 +53,11 @@ This location object describes the location of the device that published it. **H
     "alt"   : 13,
     "batt"  : nnn,              
     "cog"   : 270,
-    "desc"  : "sssss",		
-    "event" : "sssss",		
+    "desc"  : "sssss",
+    "event" : "sssss",
     "lat"   : x.xxxxxx,       
     "lon"   : y.yyyyyy,        
-    "rad"   : nnn,		 
+    "rad"   : nnn, 
     "t"     : "x",
     "tid"   : "YY",
     "tst"   : 1376715317,      
@@ -389,3 +390,23 @@ The app can export a list of configured waypoints (separate from the configurati
 ```
 
 Note that `_type=waypoints` is *plural*.
+
+## `_type=lbs`
+
+```json
+{
+    "_type"        : "lbs",
+    "lat"          : n.nnnn,          // latitude of message (e.g. to navigate thereto)
+    "lon"          : n.nnnnn,         // longitude
+    "title"        : "Lunch",         // string, title of message
+    "desc"         : "special offer"  // content of message
+    "url"          : "http://xxxx"    // URL on which to click
+    "icon"         : "fa-eye",        // FA icon
+    "iconurl"      : "http://xxx"     // URL to icon if `icon' not set (iOS only)
+    "prio"         : 0,               // background color for `icon'
+    "ttl"          : 86400            // Time to Live (in seconds) until message is deleted
+}
+```
+
+* `prio` is `0` (OwnTracks blue), `1` (Yellow), `2` (Red)
+
