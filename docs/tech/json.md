@@ -398,8 +398,6 @@ Note that `_type=waypoints` is *plural*.
 ```json
 {
     "_type"        : "msg",
-    "lat"          : n.nnnn,          // latitude of message (e.g. to navigate thereto)
-    "lon"          : n.nnnnn,         // longitude
     "title"        : "Lunch",         // string, title of message
     "desc"         : "special offer"  // content of message
     "url"          : "http://xxxx"    // URL on which to click
