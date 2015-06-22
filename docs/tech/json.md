@@ -34,7 +34,6 @@ Apps subscribe to:
 - `owntracks/+/+/event` (singular) for transition messages (`enter`/`leave`)
 - `owntracks/+/+/waypoint`  (singular) for Waypoint definitions/modifications
 - `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
-
 - `owntracks/user/device/msg` if messaging is enabled
 - `msg/+/<ghash>` if messaging is enabled (see below and [Messages](../features/msg.md))
 
@@ -408,7 +407,8 @@ Note that `_type=waypoints` is *plural*.
     "iconurl"      : "http://xxx"     // URL to icon if `icon' not set (iOS only)
     "prio"         : 0,               // background color for `icon'
     "tst"          : nnnnnn,          // Unix epoch time in seconds when message is published
-    "ttl"          : 86400            // Time to Live (in seconds) until message is deleted
+    "ttl"          : 86400,           // Time to Live (in seconds) until message is deleted
+    "sender"       : <topic>          // MQTT topic name of sender
 }
 ```
 
