@@ -187,7 +187,7 @@ A transition into or out of a previously configured waypoint is effected by publ
   "tid": "JP",
   "event": "enter",
   "desc": "my Indian restaurant",
-  "t": "b"			// trigger ("c" -default- for circular regions, "b" for beacons)
+  "t": "b"			// trigger ("c" -default- for circular regions, "b" for beacons, "w" for WiFi (Android only))
 }
 ```
 
