@@ -404,6 +404,7 @@ Note that `_type=waypoints` is *plural*.
     "icon"         : "fa-eye",        // FA icon
     "iconurl"      : "http://xxx"     // URL to icon if `icon' not set (iOS only)
     "prio"         : 0,               // background color for `icon'
+    "tst"          : nnnnnn,          // Unix epoch time in seconds when message is published
     "ttl"          : 86400            // Time to Live (in seconds) until message is deleted
 }
 ```
@@ -411,4 +412,5 @@ Note that `_type=waypoints` is *plural*.
 * `icon` is the name of a [Font-Awesome icon](http://fortawesome.github.io/Font-Awesome/cheatsheet/)
 * `prio` is `0` (OwnTracks blue), `1` (Yellow), `2` (Red)
 * `urlicon` (iOS only) should be the URL to a 40x40px image, but you should prefer `icon` as it avoids a HTTP round trip.
+* `ttl` defaults to 0 which means messages don't expire
 
