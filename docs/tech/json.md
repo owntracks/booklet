@@ -64,7 +64,8 @@ This location object describes the location of the device that published it. **H
     "tid"   : "YY",
     "tst"   : 1376715317,      
     "vacc"  : 10,
-    "vel"   : 54 
+    "vel"   : 54,
+    "p"     : nnn
 }
 ```
 
@@ -89,6 +90,7 @@ This location object describes the location of the device that published it. **H
 * `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
 * `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer)
 * `vel` is the velocity (speed) in km/h (_Optional_, integer)
+* `p` is barometric pressure (iOS > 8.1.1 only with _Extended data_ enabled)
 
 (The IOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
