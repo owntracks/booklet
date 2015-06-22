@@ -35,6 +35,9 @@ Apps subscribe to:
 - `owntracks/+/+/waypoint`  (singular) for Waypoint definitions/modifications
 - `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
 
+- `owntracks/user/device/msg` if messaging is enabled
+- `msg/+/<ghash>` if messaging is enabled (see below and [Messages](../features/msg.md))
+
 In addition, the iOS app publishes to:
 
 - `owntracks/user/device/step` to report step counter
