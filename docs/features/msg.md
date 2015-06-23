@@ -14,7 +14,7 @@ The full description of the supported JSON payload in messages [described here](
 }
 ```
 
-If messaging is enabled, the apps additionally subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a `"_type" : "location"` message because it has detected the user has moved, the apps subscribe to four (4) [GeoHash](https://en.wikipedia.org/wiki/Geohash) specific topics (levels 2 through 6 inclusive).
+If messaging is enabled, the apps additionally subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a `"_type" : "location"` message because it has detected the user has moved, the apps subscribe to four (4) [GeoHash](https://en.wikipedia.org/wiki/Geohash) specific topics (levels 3 through 6 inclusive).
 
 A point in Madrid, Spain is, for example `40.426979, -3.703913` (lat, lon), which resolves to the Geohash `ezjmgxwbhx47` (precision 12 == 12 characters).
 
