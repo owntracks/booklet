@@ -36,6 +36,7 @@ Apps subscribe to:
 - `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
 - `owntracks/user/device/msg` if messaging is enabled
 - `msg/+/<ghash>` if messaging is enabled (see below and [Messages](../features/msg.md))
+- `msg/system` if messaging is enabled; for very occasional messages, e.g. maintenance related.
 
 In addition, the iOS app publishes to:
 
@@ -396,6 +397,8 @@ The app can export a list of configured waypoints (separate from the configurati
 Note that `_type=waypoints` is *plural*.
 
 ## `_type=msg`
+
+The `msg/` prefix for messaging is not configurable in the apps.
 
 ```json
 {
