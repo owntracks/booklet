@@ -399,16 +399,16 @@ Note that `_type=waypoints` is *plural*.
 
 ```json
 {
-    "_type"        : "msg",
-    "title"        : "Lunch",         // string, title of message
-    "desc"         : "special offer"  // content of message
-    "url"          : "http://xxxx"    // URL on which to click
-    "icon"         : "fa-eye",        // FA icon
+    "_type"        : "msg",           // mandatory
+    "title"        : "Lunch",         // string, title of message; mandatory
+    "desc"         : "special offer"  // string, content of message; mandatory
+    "url"          : "http://xxxx"    // URL on which to click; optional
+    "icon"         : "fa-eye",        // string, FA icon; optional
     "iconurl"      : "http://xxx"     // URL to icon if `icon' not set (iOS only)
-    "prio"         : 0,               // background color for `icon'
-    "tst"          : nnnnnn,          // Unix epoch time in seconds when message is published
-    "ttl"          : 86400,           // Time to Live (in seconds) until message is deleted
-    "sender"       : <topic>          // MQTT topic name of sender
+    "prio"         : 0,               // background color for `icon'; default: `0`
+    "tst"          : nnnnnn,          // Unix epoch time in seconds when message is published; mandatory
+    "ttl"          : 86400,           // Time to Live (in seconds) until message is expired; default `0`
+    "sender"       : <topic>          // MQTT topic name of sender; optional
 }
 ```
 
