@@ -229,6 +229,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     "locatorInterval": 180,
     "locatorAccuracyBackground" : 2,
     "locatorAccuracyForeground" : 0,
+    "messaging": true,
     "monitoring": 1,
     "ranging": "",
     "positions": 50,
