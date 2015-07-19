@@ -314,9 +314,9 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `validatedomainname`				IOS only, validate domain main during TLS handshake
 * `validatecertificatechain`			IOS only, validate the whole certificate chain or just the server certificate
 * `policymode`					IOS only, 
-** 0 = Do not used pinned certificates to validate servers.
-** 1 = Validate host certificates against public keys of pinned certificates.
-** 2 = Validate host certificates against pinned certificates.
+	* 0 = Do not used pinned certificates to validate servers.
+	* 1 = Validate host certificates against public keys of pinned certificates.
+	* 2 = Validate host certificates against pinned certificates.
 * `servercer`					IOS only, name of the server cer file in PEM format
 * `clientpkcs`					IOS only, name of the client pkcs12 file or empty 
 * `passphrase`					IOS only, passphrase for client pkcs12 file 
