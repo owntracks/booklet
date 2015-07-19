@@ -14,6 +14,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `configuration`                           |   Y    |   Y     |
 | `card`                                    |   Y    |   Y     |
 | `waypoints`                               |   Y    |         |
+| `msg`                                     |   Y    |   Y     |
 
 
 ## Topics
@@ -33,6 +34,9 @@ Apps subscribe to:
 - `owntracks/+/+/event` (singular) for transition messages (`enter`/`leave`)
 - `owntracks/+/+/waypoint`  (singular) for Waypoint definitions/modifications
 - `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
+- `owntracks/user/device/msg` if messaging is enabled
+- `msg/+/<ghash>` if messaging is enabled (see below and [Messages](../features/msg.md))
+- `msg/system` if messaging is enabled; for very occasional messages, e.g. maintenance related.
 
 In addition, the iOS app publishes to:
 
@@ -52,16 +56,17 @@ This location object describes the location of the device that published it. **H
     "alt"   : 13,
     "batt"  : nnn,              
     "cog"   : 270,
-    "desc"  : "sssss",		
-    "event" : "sssss",		
+    "desc"  : "sssss",
+    "event" : "sssss",
     "lat"   : x.xxxxxx,       
     "lon"   : y.yyyyyy,        
-    "rad"   : nnn,		 
+    "rad"   : nnn, 
     "t"     : "x",
     "tid"   : "YY",
     "tst"   : 1376715317,      
     "vacc"  : 10,
-    "vel"   : 54 
+    "vel"   : 54,
+    "p"     : nnn
 }
 ```
 
@@ -86,6 +91,7 @@ This location object describes the location of the device that published it. **H
 * `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
 * `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer)
 * `vel` is the velocity (speed) in km/h (_Optional_, integer)
+* `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
 
 (The IOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
@@ -164,6 +170,10 @@ Waypoints denote specific geographical locations that you want to keep track of.
 * `shared` location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only
 * `wtst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).)
 
+#### Android
+
+If you configure a waypoint description (`desc`) containing a dollar character (`$`) followed by a WiFi SSID, our Android app will trigger a transition event when it recognizes it is entering that WiFi SSID. For example, a `desc` of `Mi casa$homeNetwork` will trigger upon the device detecting WiFi connectivity at the SSID `homeNetwork`.
+
 
 ## `_type=transition`
 
@@ -180,7 +190,7 @@ A transition into or out of a previously configured waypoint is effected by publ
   "tid": "JP",
   "event": "enter",
   "desc": "my Indian restaurant",
-  "t": "b"			// trigger ("c" -default- for circular regions, "b" for beacons)
+  "t": "b"			// trigger ("c" -default- for circular regions, "b" for beacons, "w" for WiFi (Android only))
 }
 ```
 
@@ -219,6 +229,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     "locatorInterval": 180,
     "locatorAccuracyBackground" : 2,
     "locatorAccuracyForeground" : 0,
+    "messaging": true,
     "monitoring": 1,
     "ranging": "",
     "positions": 50,
@@ -260,7 +271,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 }
 ```
 
-* `mode`					0 == Own mode, 1 == Hosted mode (for registered users), 2 = Public mode	
+* `mode`					0 == _Private_ mode, 1 == _Hosted_ mode (for registered users), 2 == _Public_ mode	
 * `subTopic`
 * `pubTopicBase`
 * `username`
@@ -405,3 +416,28 @@ The app can export a list of configured waypoints (separate from the configurati
 ```
 
 Note that `_type=waypoints` is *plural*.
+
+## `_type=msg`
+
+The `msg/` prefix for messaging is not configurable in the apps.
+
+```json
+{
+    "_type"        : "msg",           // mandatory
+    "title"        : "Lunch",         // string, title of message; mandatory
+    "desc"         : "special offer"  // string, content of message; mandatory
+    "url"          : "http://xxxx"    // URL on which to click; optional
+    "icon"         : "fa-eye",        // string, FA icon; optional
+    "iconurl"      : "http://xxx"     // URL to icon if `icon' not set (iOS only)
+    "prio"         : 0,               // background color for `icon'; default: `0`
+    "tst"          : nnnnnn,          // Unix epoch time in seconds when message is published; mandatory
+    "ttl"          : 86400,           // Time to Live (in seconds) until message is expired; default `0`
+    "sender"       : <topic>          // MQTT topic name of sender; optional
+}
+```
+
+* `icon` is the name of a [Font-Awesome icon](http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+* `prio` is `0` (OwnTracks blue), `1` (Yellow), `2` (Red)
+* `urlicon` (iOS only) should be the URL to a 40x40px image, but you should prefer `icon` as it avoids a HTTP round trip.
+* `ttl` defaults to 0 which means messages don't expire. Otherwise, messages are deleted or grayed out if `now() - ttl >= tst`.
+
