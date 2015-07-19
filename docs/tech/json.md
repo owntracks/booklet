@@ -239,6 +239,14 @@ The device configuration can be imported and exported as JSON. The exported conf
     "allowRemoteLocation" : false,
     "extendedData" : false,
     "remoteConfiguration" : false,
+    "usepolicy" : false,
+    "policymode" : 0,
+    "allowinvalidcerts" : false,
+    "validatedomainname" : false,
+    "validatecertificatechain" : false,
+    "servercer" : "",
+    "clientpkcs" : "",
+    "passphrase" : "",
     "waypoints" : [
                     { "_type" : "waypoint",
                       "tst": nnnnnnnnnn,
@@ -290,6 +298,18 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `allowRemoteLocation`				IOS only, respond to remote location request even if monitoring mode is set to manual
 * `extendedData`				IOS only, add altitude, vertical accuracy, velocity and course over ground to published data
 * `remoteConfiguration`				Android only, respond to remote configuration messages
+* `usepolicy`					IOS only, use user defined security policy
+* `allowinvalidcerts`				IOS only, allow self signed certificates in user defined security policy
+* `validatedomainname`				IOS only, validate domain main during TLS handshake
+* `validatecertificatechain`			IOS only, validate the whole certificate chain or just the server certificate
+* `policymode`					IOS only, 
+** 0 = Do not used pinned certificates to validate servers.
+** 1 = Validate host certificates against public keys of pinned certificates.
+** 2 = Validate host certificates against pinned certificates.
+* `servercer`					IOS only, name of the server cer file in PEM format
+* `clientpkcs`					IOS only, name of the client pkcs12 file or empty 
+* `passphrase`					IOS only, passphrase for client pkcs12 file 
+
 
 
 ## `_type=beacon`
