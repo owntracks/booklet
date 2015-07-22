@@ -349,6 +349,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * 3 = the beacon is far away."
 
 ## `_type=cmd`
+
 ```json
 {"_type":"cmd","action":"reportSteps"}
 ```
@@ -359,8 +360,10 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
       (see [Pedometer](../features/pedometer.md)).
     * `reportLocation` triggers the publish of the current location
     * `dump` triggers the publish of a configuration message
+    * `setWaypoints` configures new waypoints. (iOS only; [details](../features/remoteconfig.md) )
 
 ## `_type=steps`
+
 ```json
 {"_type":"steps","tst":1400455130,"steps":1234,"from":1400455130,"to":1400458000}
 ```

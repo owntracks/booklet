@@ -41,3 +41,31 @@ defaults if not specified.
 ```
 
 A list of all possible settings is described [on the JSON page](../tech/json.md).
+
+## setWaypoints
+
+(iOS only)
+
+Waypoints can be configured remotely if _Remote Commands_ is enabled on the device, by publishing a JSON payload which is merged into existing waypoints. (Note: the "key" for a waypoint is the `tst` timestamp, so overwriting an existing `tst` actually overwrites an existing waypoint.)
+
+```json
+{
+  "_type": "cmd",
+  "action": "setWaypoints",
+  "payload": {
+    "waypoints": [
+      {
+        "desc": "Some place",
+        "rad": 8867,
+        "lon": 10.428771973,
+        "lat": 46.935260881,
+        "tst": 1437552714,
+        "_type": "waypoint"
+      }
+    ],
+    "_type": "waypoints"
+  }
+}
+```
+
+Publishing the above payload to an OwnTracks iOS device will create/modify said waypoint. This also works for Beacon configurations, which are basically waypoints.
