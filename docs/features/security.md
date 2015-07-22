@@ -5,4 +5,5 @@ OwnTracks and its associated utilities have been designed foremost with data pri
 * If your broker supports it, and if you configure OwnTracks to do so, OwnTracks uses MQTT over [TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security) when connecting to your broker.
 * The apps support authenticating to the broker with _username_ and _password_ which can be as strong (or as convoluted) as your broker supports.
 * Credentials you configure (i.e. _username_ and _password_) are thus protected from snooping, at least until they get to your broker. The same applies to location data our app transmits.
+* The apps support using [TLS client certificates](../tech/tlscert.md) for authentication to the broker.
 
