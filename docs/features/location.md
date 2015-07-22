@@ -20,6 +20,7 @@ If you switch on the app after one minute in the background (11 minutes after th
 
 The iOS app offers 3 modes of location publication:
 
+* _Quiet_ mode
 * _Manual_ mode
 * _Significant location change_ mode
 * _Move_ mode
@@ -59,8 +60,13 @@ Examples:
 
 The app doesn't monitor location changes in _manual_ mode while in background.
 The user has to publish the current location explicitly via the UI. You use this if
-you want to (temporarily) avoid friends seeing where you are. Note that Beacon events
+you want to (temporarily) avoid friends seeing where you are. Note that Region events
+triggered by entering or leaving Geo Fence or Beacon regions
 are still published automatically whilst in _Manual_ mode.
+
+#### _Quiet_ mode
+
+Same as _Manual_ mode except that even
 
 #### _Region_ monitoring
 
