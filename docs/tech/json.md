@@ -317,8 +317,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 	* 0 = Do not used pinned certificates to validate servers.
 	* 1 = Validate host certificates against public keys of pinned certificates.
 	* 2 = Validate host certificates against pinned certificates.
-* `servercer`					IOS only, name of the server cer file in PEM format
-* `clientpkcs`					IOS only, name of the client pkcs12 file or empty 
+* `servercer`					IOS only, blank separated list of certificate file names in DER format, or empty
+* `clientpkcs`					IOS only, name of the client pkcs12 file,or empty 
 * `passphrase`					IOS only, passphrase for client pkcs12 file 
 
 
