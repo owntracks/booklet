@@ -23,6 +23,7 @@ pages:
     - 'Hosted': 'features/hosted.md'
     - 'Security': 'features/security.md'
     - 'TLS': 'features/tls.md'
+    - 'TLS client': 'features/tlscert.md'
     - 'Location': 'features/location.md'
     - 'TID': 'features/tid.md'
     - 'Friends': 'features/friends.md'
