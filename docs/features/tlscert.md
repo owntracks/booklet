@@ -55,10 +55,15 @@ configure settings
 
 ### iOS
 
-open the file in OwnTracks.
+We recommend you proceed as follows:
 
+1. Install the [TLS](tls.md) CA certificate in your system keystore by sending it (e.g. via e-mail) to your device and installing it in the system profile. (Click on the certificate and follow iOS' instructions.)
+2. Send the prepared PKCS#12 file (with an `.otrp` extension) to your device, and open it. It will be imported into OwnTracks
+3. Launch OwnTracks, select Settings and TLS. Select the `otrp` file you just imported as Client Certificate Filename, and below that, enter its passphrase.
+4. Leave _Use Custom Security Policy_ disabled.
+5. Verify the connection to your broker.
 
-There are a number of settings available to fine-tune TLS connections between the app and the broker. The button _Use Custom Security Policy_ can be enabled to do so.
+If need be, you can adjust a great number of parameters regarding how TLS connections will be verified: there are a number of settings available to fine-tune TLS connections between the app and the broker. The button _Use Custom Security Policy_ can be enabled to do so.
 
 * Mode
     - None; do not use pinned certificates to validate servers
@@ -71,4 +76,11 @@ There are a number of settings available to fine-tune TLS connections between th
 * Validate Domain Name; whether or not to validate the domain name in the certificate's `CN` field.
 
 If you wish to use certificate pinning, you must provide a DER-encoded file with an `.otre` extension to the device containing the pinned certificate.
+
+```bash
+openssl x509 \
+   -in ca.crt \
+   -out ca.otre \
+   -outform DER
+```
 
