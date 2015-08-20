@@ -273,7 +273,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 ```
 
 * `mode`					0 == _Private_ mode, 1 == _Hosted_ mode (for registered users), 2 == _Public_ mode	
-* `locked`					if set to true, locks settings screen on device for editing. View only. Default = false
+* `locked`					if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via `.otrc` import.
 * `subTopic`
 * `pubTopicBase`
 * `username`
@@ -323,6 +323,9 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `clientpkcs`					IOS only, name of the client pkcs12 file,or empty 
 * `passphrase`					IOS only, passphrase for client pkcs12 file 
 
+#### Notes
+
+* Imagine you are operating an OwnTracks backend for e.g. your family, and you want to avoid your family members accidentally switching modes or modifying settings locally on the device. You can export their configuration, add a `locked: true` to it and re-import it onto the iOS device. The settings will then be visible, but cannot be changed.
 
 
 ## `_type=beacon`
