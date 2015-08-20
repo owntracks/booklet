@@ -204,6 +204,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 {
     "_type": "configuration",
     "mode": 0,
+    "locked": false,
     "deviceId": "phone",
     "clientId": "jane-phone",
     "trackerId": "xx",
@@ -272,6 +273,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 ```
 
 * `mode`					0 == _Private_ mode, 1 == _Hosted_ mode (for registered users), 2 == _Public_ mode	
+* `locked`					if set to true, locks settings screen on device for editing. View only. Default = false
 * `subTopic`
 * `pubTopicBase`
 * `username`
