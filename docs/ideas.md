@@ -37,6 +37,7 @@ Over the course of time, we've had people propose a number of ideas for OwnTrack
 * Add transportation info (e.g. trains) as friends
 * Queue updates on device (with `tst` etc) to be PUBlished upon available connection
 * Corner-pegging [#94](https://github.com/binarybucks/mqttitude/issues/94)
+* NFC support, [suggested by mrizvic](https://community.owntracks.org/topic/38/nfc-support)
 
 ## Very-long term, a.k.a. "Neat ideas"
 
