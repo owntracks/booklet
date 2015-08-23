@@ -170,11 +170,6 @@ Waypoints denote specific geographical locations that you want to keep track of.
 * `shared` location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only
 * `wtst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).)
 
-#### Android
-
-If you configure a waypoint description (`desc`) containing a dollar character (`$`) followed by a WiFi SSID, our Android app will trigger a transition event when it recognizes it is entering that WiFi SSID. For example, a `desc` of `Mi casa$homeNetwork` will trigger upon the device detecting WiFi connectivity at the SSID `homeNetwork`.
-
-
 ## `_type=transition`
 
 A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic. In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
