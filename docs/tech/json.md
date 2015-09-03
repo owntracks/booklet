@@ -283,8 +283,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `tlsCrtPath`					not in IOS
 * `cleanSession`
 * `willRetain`
-* `locatorDisplacement`	
-* `locatorInterval`
+* `locatorDisplacement`				in meters
+* `locatorInterval`				in seconds
 * `locatorAccuracyBackground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
 * `locatorAccuracyForeground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
 * `monitoring`					IOS only, set in UI
