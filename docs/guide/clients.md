@@ -18,6 +18,11 @@ mosquitto_sub -h localhost -p 1883 -v -t 'owntracks/#'
 
 _mosquitto_sub_ and it's counterpart, _mosquitto_pub_ for publishing to a broker, support a slew of options. It'll be worth your while to study their [manual page](http://mosquitto.org/man/mosquitto_sub-1.html).
 
+## Recorder
+
+We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/recorder) because it's lightweight, relatively simple to set up, and because it offers a lot of features. It stores location data published by the apps by subscribing to an MQTT broker, and it enables you to access that data in a variety of formats. The best part is: it doesn't require a heavy external database of any kind.
+
+![Recorder](images/demo-geojson-linestring.png)
 
 ## o2s
 
