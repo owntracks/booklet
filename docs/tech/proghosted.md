@@ -17,7 +17,6 @@ The following small program accounts for that. You will need:
 
 import paho.mqtt.client as mqtt
 import ssl
-import json
 import os
 import sys
 
