@@ -42,6 +42,7 @@ pages:
     - 'JSON': 'tech/json.md'
     - 'QR': 'tech/qr.md'
     - 'Code': 'tech/program.md'
+    - 'Code (Hosted)': 'tech/proghosted.md'
 - Sundry:
     - 'Terminology': 'terminology.md'
     - 'Privacy': 'privacy.md'
