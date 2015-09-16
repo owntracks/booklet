@@ -1,9 +1,10 @@
-# Programming
+# Programming for Hosted
 
 We've [shown you how to start with Python](program.md), but if you're trying to access our Hosted platform from within Python you'll need a bit more:
 
 * We use TLS only
 * We require authentication
+* Note also, that we require you use clientIDs which tell us who you are (e.g. as below: `username-device-xxx`). We do not (yet) enforce adherence that that but may well in future.
 
 The following small program accounts for that. You will need:
 
