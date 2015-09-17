@@ -67,3 +67,11 @@ client.connect("hosted-mqtt.owntracks.org", 8883, 60)
 
 client.loop_forever()
 ```
+
+In other words:
+
+1. Use TLS with the appropriate CA certificate file.
+2. The hostname is `hosted-mqtt.owntracks.org`.
+3. The TCP port number is `8883`
+4. The MQTT username for authentication is your _Hosted_ user name and your _Hosted_ device name concatenated together, separated by a vertical bar (`|`).
+5. The MQTT password is your _Hosted_ device _token_.
