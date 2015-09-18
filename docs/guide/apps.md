@@ -12,5 +12,6 @@ In _Private_ mode, you configure our iOS and Android app to access your broker.
 
 ##  Android
 
+[![PlayStore](images/playstore.png)](https://play.google.com/store/apps/details?id=org.owntracks.android>)
 
 There are other [clients](clients.md) you can use with OwnTracks.
