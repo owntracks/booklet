@@ -44,7 +44,7 @@ Now we can go ahead and install [Mosquitto] proper. There are three packages:
 These packages together require about 665Kb of space, which we can easily afford even on the tiny Pi.
 
 ```bash
-sudo apt-get install mosquitto mosquitto-clients python-mosquitto
+sudo apt-get install mosquitto mosquitto-clients
 ```
 
 Regrettably, as with most Debian packages, the broker is immediately started; stop it.
