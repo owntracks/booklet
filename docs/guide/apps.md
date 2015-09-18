@@ -8,10 +8,10 @@ In _Private_ mode, you configure our iOS and Android app to access your broker.
 
 ##  iOS
 
-[![AppStore](images/appstore.png)](https://itunes.apple.com/us/app/mqttitude/id692424691?mt=8>)
+[![AppStore](images/appstore.png)](https://itunes.apple.com/us/app/mqttitude/id692424691?mt=8)
 
 ##  Android
 
-[![PlayStore](images/playstore.png)](https://play.google.com/store/apps/details?id=org.owntracks.android>)
+[![PlayStore](images/playstore.png)](https://play.google.com/store/apps/details?id=org.owntracks.android)
 
 There are other [clients](clients.md) you can use with OwnTracks.
