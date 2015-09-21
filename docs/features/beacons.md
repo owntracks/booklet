@@ -5,7 +5,7 @@ radius to zero (`0`) or a negative value, and add the beacon UUID, major, and mi
 
 ![Beacon configuration](images/b-waypoint-config-ibeacon.jpg)
 
-You add the UUID of the beacon to the description, and you can optionally specify the major and/or
+Set the UUID of the beacon, and you can optionally specify the major and/or
 minor identifier numbers of the beacons as a decimal number ranging from 1 to 65535 if you desire finer control over which beacons OwnTracks will monitor.
 Setting major or minor number to zero (`0`) means no major or minor number is specified.
 
@@ -14,8 +14,15 @@ If the UUID is valid, iBeacon monitoring will start.
 Examples:
 
 ```
-myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
-mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:1:33000
+Name  myBeacons
+UUID  CA271EAE-5FA8-4E80-8F08-2A302A95A959
+Major 0
+Minor 0
+
+Name  mySpecificBeacon
+UUID  CA271EAE-5FA8-4E80-8F08-2A302A95A959
+Major 1
+Minor 33000
 ```
 
 In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
@@ -34,7 +41,7 @@ Beacons use Bluetooth low energy to transmit a UUID (typically modifiable) toget
 
 Let's assume the office we're discussing has a few beacons. Let's further assume we do not want to track people within a particular room; instead we just want to capture whether an employee is in this particular office building. We can configure all beacons with the same UUID, and we will ignore the _major_ and _minor_ numbers. (How a beacon gets it's UUID, _major_, and _minor_ set depends on the product.)
 
-We define a UUID, say, `DEADBEEF-ABBA-CDEF-1001-000000000001` which we assign to all beacons, and configure them accordingly. (The [Blukii] iBeacons we use have a utility with which we can configure them accordingly.)
+We define a UUID, say, `DEADBEEF-ABBA-CAFE-AFFE-123456789012` which we assign to all beacons, and configure them accordingly. (The [Blukii] iBeacons we use have a utility with which we can configure them accordingly.)
 
 What we then do is configure a waypoint within the iOS OwnTracks app. The values for latitude/longitude are irrelevant. What is important is the UUID separated from the name of the beacon (I chose `Main@WestWing` here) by a colon. A beacon's _major_ and _minor_ are optionally concatenated to that string, also colon-separated.
 
