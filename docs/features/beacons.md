@@ -1,13 +1,13 @@
 ## iBeacons
 
 If you want to monitor an iBeacon region rather than a circular region set the
-radius to zero (`0`), and add the beacon identifier to the description
-separated by a colon (:).
+radius to zero (`0`) or a negative value, and add the beacon UUID, major, and minor numbers.
 
 ![Beacon configuration](images/b-waypoint-config-ibeacon.jpg)
 
 You add the UUID of the beacon to the description, and you can optionally specify the major and/or
-minor identifier numbers of the beacons in hex if you desire finer control over which beacons OwnTracks will monitor.
+minor identifier numbers of the beacons as a decimal number ranging from 1 to 65535 if you desire finer control over which beacons OwnTracks will monitor.
+Setting major or minor number to zero (`0`) means no major or minor number is specified.
 
 If the UUID is valid, iBeacon monitoring will start.
 
@@ -15,11 +15,11 @@ Examples:
 
 ```
 myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
-mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE
+mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:1:33000
 ```
 
 In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
-in the second example, OwnTracks would monitor just that one specific beacon with the major number `0001` and the minor number `CAFE`.
+in the second example, OwnTracks would monitor just that one specific beacon with the major number `1` and the minor number `33000`.
 
 ## Example: office
 
@@ -36,10 +36,7 @@ Let's assume the office we're discussing has a few beacons. Let's further assume
 
 We define a UUID, say, `DEADBEEF-ABBA-CDEF-1001-000000000001` which we assign to all beacons, and configure them accordingly. (The [Blukii] iBeacons we use have a utility with which we can configure them accordingly.)
 
-What we then do is configure a waypoint within the iOS OwnTracks app. The values for latitude/longitude are irrelevant. What is important is the UUID separated from the name of the beacon (I chose `*Main@WestWing` here) by a colon. A beacon's _major_ and _minor_ are optionally concatenated to that string, also colon-separated.
-
-
-![OwnTracks beacon settings](images/ot-beacon-waypoint-config.png)
+What we then do is configure a waypoint within the iOS OwnTracks app. The values for latitude/longitude are irrelevant. What is important is the UUID separated from the name of the beacon (I chose `Main@WestWing` here) by a colon. A beacon's _major_ and _minor_ are optionally concatenated to that string, also colon-separated.
 
 Instead of painstakingly configuring this on the device proper, I prepare a small file called `office.otrw` (the `.otrw` extension is important), with the following [JSON](../tech/json.md) payload:
 
@@ -50,9 +47,9 @@ Instead of painstakingly configuring this on the device proper, I prepare a smal
       "tst" : 1432817332,
       "lat" : 52.0,
       "_type" : "waypoint",
-      "lon" : 13.0,
+      "lon" : 6.0,
       "rad" : 0,
-      "desc" : "*Main@WestWing:DEADBEEF-ABBA-CDEF-1001-000000000001:0001"
+      "desc" : "Main@WestWing:DEADBEEF-ABBA-CAFE-AFFE-123456789012:0001"
     }
   ],
   "_type" : "waypoints"
@@ -72,7 +69,7 @@ We publish these [events as JSON](../tech/json.md) via MQTT to the MQTT broker t
 {
     "_type": "transition",
     "acc": 65,
-    "desc": "*Main@WestWing",
+    "desc": "Main@WestWing",
     "event": "enter",
     "lat": 2.2222,
     "lon": 1.1111,
@@ -90,7 +87,13 @@ To summarize: OwnTracks can monitor beacons by configuring it either with:
 * a _UUID_ with a _major_ number: the app would report iBeacons with the specified UUID and exactly that _major_ number
 * all three: the _UUID_, the _major_ and _minor_ numbers, in which case the app reports events on precisely that beacon.
 
+## Notes
+
 The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.
+
+If you use a `-` as the first character in your Waypoint description e.g. `-MyBeacon`, the app will ignore short disruptions of the connection to the beacon (hold down).
+
+Setting the radius to a negative value (e.g. `-1`), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the `share` option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.
 
 
   [blukii]: http://www.blukii.com/beacons_en.html

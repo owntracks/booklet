@@ -18,6 +18,7 @@ Position an iBeacon in your study and get enter- and leave-events from that room
 
 * Use an iBeacon to connect yourself with a vehicle  
 Equip your car with an iBeacon and monitor how much time you spend commuting.
+Always see where you parked your car.
 
 * Use an iBeacon to track a valuable accessory  
 Fit an iBeacon to your keys/luggage/expensive equipement and get alarmed when you leave them behind.
