@@ -66,7 +66,7 @@ are still published automatically whilst in _Manual_ mode.
 
 #### _Quiet_ mode
 
-Same as _Manual_ mode except that even
+Same as _Manual_ mode except that no region events are published.
 
 #### _Region_ monitoring
 
