@@ -22,7 +22,7 @@ Mosquitto on a Raspberry Pi.
 
 ![Mosquitto on a Raspbi](images/raspi-broker.png)
 
-The hardest bit is installing an OS, say, [Raspbian Wheezy][2], onto an SD card, but there are many tutorials on how to do that. (Here's an example [using Mac OS X][1].) A basic install will suffice, and after logging in with Raspbian's default username and password, we'll get started from there.
+The hardest bit is installing an OS, say, [Raspbian Wheezy][2], onto an SD card, but there are many tutorials on how to do that. (Here's an example [using Mac OS X][1].) A basic install will suffice, and after logging in with Raspbian's default username and password, we'll get started from there. Note that the current Raspbian Wheezy mosquitto package does NOT contain the ``mosquitto_passwd`` tool. If you want to use it, make sure you install the package from a mosquitto repo:
 
 Roger Light, [Mosquitto]'s creator has thankfully (!) set up a few [Mosquitto repositories][6] we can use to obtain the latest and greatest version, so we'll do just that. We first perform the required steps to add and activate the repository. The last step in particular can take a few moments.
 
@@ -41,8 +41,6 @@ Now we can go ahead and install [Mosquitto] proper. There are three packages:
 * `mosquitto-clients` are the command-line clients, which I recommend you install
 * Don't install `python-mosquitto`; if you want to do programming with Python and MQTT, we [show you how to do so with the Paho Python module](../tech/program.md).
 
-These packages together require about 665Kb of space, which we can easily afford even on the tiny Pi.
-
 ```bash
 sudo apt-get install mosquitto mosquitto-clients
 ```
@@ -58,10 +56,17 @@ its configuration. This section is geared towards a configuration of [Mosquitto]
 work well with OwnTracks. In particular we want the following features enabled
 by default:
 
-* Connections to the broker must be [TLS] protected. This requires a TLS certificate and key which will be configured automatically.
+* Connections to the broker must be authenticated either against user/password or using client certificates.
+* Connections to the broker shall also be [TLS] protected. This requires a (server-side) TLS certificate and key which will be configured automatically.
 * ACLs will restrict who may access what.
 
-Over at the [OwnTracks repository][7], we've got some utilities which are going to automate this. It's a work-in-progress (of course), but this is what `sudo ./mosquitto-setup.sh` looks like at the moment:
+
+To create a ``mosquitto`` user database, use ``sudo mosquitto_passwd -c /etc/mosquitto/passwd <username>``.
+
+You will be prompted to enter a password. That will be the password required to connect to the server (with the username you chose). If you want to add more users, repeat the command without ``-c`` as that will create (i.e. overwrite) the passwd file.
+Add a config line ``password_file /etc/mosquitto/passwd`` to ``/etc/mosquitto/mosquitto.conf``.
+
+If you want to use certificates to identify yourself to the broker and/or to TLS-encrypt the TCP session, we've got some utilities over at the [OwnTracks repository][7] which are going to automate this process for you. It's a work-in-progress (of course), but this is what `sudo ./mosquitto-setup.sh` looks like at the moment:
 
 ```bash
 Saving previous configuration as mosquitto.conf-20130901-133525
@@ -92,6 +97,24 @@ settings:
 ```
     X509v3 Subject Alternative Name:
         IP Address:192.168.1.189, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1, DNS:broker.example.com, DNS:foo.example.de, DNS:localhost
+```
+
+Check for a couple of broker settings in ``/etc/mosquitto/mosquitto.conf``.
+Your mileage may vary, but you might want to set the following parameters:
+```
+listener 8883 <yourIP>
+persistence_file mosquitto.db
+log_dest syslog
+log_dest stdout
+log_dest topic
+log_type error
+log_type warning
+log_type notice
+log_type information```
+connection_messages true
+log_timestamp true
+allow_anonymous false
+password_file /etc/mosquitto/passwd
 ```
 
 Will it work? Let's start the broker manually to see what it says:
