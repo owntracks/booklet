@@ -168,7 +168,7 @@ Waypoints denote specific geographical locations that you want to keep track of.
 }
 ```
 * `shared` location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only
-* `wtst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).)
+* `tst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).) It is copied into the `wtst` of the transition event (`type: transition`) when an event pertaining to this waypoint fires.
 
 ## `_type=transition`
 
