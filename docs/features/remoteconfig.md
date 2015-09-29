@@ -42,6 +42,8 @@ defaults if not specified.
 
 A list of all possible settings is described [on the JSON page](../tech/json.md).
 
+Over the Air configuration is possible on Android using JSON payloads with `_type: configuration` which is described [on the JSON page](../tech/json.md).
+
 ## setWaypoints
 
 (iOS only)
