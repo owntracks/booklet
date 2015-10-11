@@ -269,8 +269,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 
 * `mode`					0 == _Private_ mode, 1 == _Hosted_ mode (for registered users), 2 == _Public_ mode	
 * `locked`					if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via `.otrc` import.
-* `subTopic`
-* `pubTopicBase`
+* `subTopic`                                    is what the apps subscribe to
+* `pubTopicBase`                                is the prefix under which the apps will publish
 * `username`
 * `password`
 * `deviceId`
