@@ -70,10 +70,10 @@ This location object describes the location of the device that published it. **H
 }
 ```
 
-* `acc` is accuracy of the reported location in meters without unit (integer)
-* `alt` is the altitude measured in meters above sea level (_Optional_, integer)
+* `acc` is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it >= 0.
+* `alt` is the altitude measured in meters above sea level (_Optional_, integer). iOS adds this element only if it >= 0.
 * `batt` is the device's battery level in percent (integer)
-* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer)
+* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer). iOS adds this element only if it >= 0.. iOS adds this element only if it >= 0.
 * `desc` is the description of a [waypoint](../features/waypoints.md)
 * `event` is one of `"enter"` or `"leave"` and tells if the app is entering or leaving a geofence 
 * `lat` is latitude as decimal, represented as a floating point number
@@ -89,8 +89,8 @@ This location object describes the location of the device that published it. **H
     * "a" or missing `t` indicates automatic location update
 * `tid` is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
 * `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
-* `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer)
-* `vel` is the velocity (speed) in km/h (_Optional_, integer)
+* `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer). iOS adds this element only if it >= 0.
+* `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
 * `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
 
 (The IOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
