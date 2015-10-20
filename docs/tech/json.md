@@ -361,6 +361,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `reportLocation` triggers the publish of the current location
     * `dump` triggers the publish of a configuration message
     * `setWaypoints` configures new waypoints. (iOS only; [details](../features/remoteconfig.md) )
+    * `waypoints` triggers a publish of all waypoints configured on the device. These are published in `.otrw` format to the `../waypoints` topic.
 
 ## `_type=steps`
 
