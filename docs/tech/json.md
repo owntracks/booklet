@@ -93,7 +93,7 @@ This location object describes the location of the device that published it. **H
 * `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
 * `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
 
-(The IOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
+(The iOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
 Notes:
 * A publish with of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
@@ -280,43 +280,43 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `pubQos`
 * `willQos`
 * `pubRetain`
-* `tlsCrtPath`					not in IOS
+* `tlsCrtPath`					not in iOS
 * `cleanSession`
 * `willRetain`
 * `locatorDisplacement`				in meters
 * `locatorInterval`				in seconds
 * `locatorAccuracyBackground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
 * `locatorAccuracyForeground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
-* `monitoring`					IOS only, set in UI
-* `ranging`					IOS only, set in UI
-* `positions`					IOS only, number of positions to keep and display
+* `monitoring`					iOS only, set in UI
+* `ranging`					iOS only, set in UI
+* `positions`					iOS only, number of positions to keep and display
 * `autostartOnBoot`				Android only
-* `pubIncludeBattery`				Android only, in IOS alway on
-* `sub`						Android only, subscription enabled for contacts, in IOS always subscribed
-* `pub`						Android only, auto publish, in IOS controlled by `monitoring`
+* `pubIncludeBattery`				Android only, in iOS alway on
+* `sub`						Android only, subscription enabled for contacts, in iOS always subscribed
+* `pub`						Android only, auto publish, in iOS controlled by `monitoring`
 * `updateAddressBook`
 * `notification`				Android only, show notifications
-* `notificationLocation`			Android only, show last reported location in notification, off in IOS
-* `notificationGeocoder`			Android only, resolve location in notification to address, in IOS only resolved when in show details
-* `notificationTickerOnPublish`			Android only, show a ticker on successful publishes, always off in IOS", 
-* `notificationTickerOnGeofenceTransition`	Android only, show a ticker when the devices enters or leaves a geofence, always on in IOS", 
+* `notificationLocation`			Android only, show last reported location in notification, off in iOS
+* `notificationGeocoder`			Android only, resolve location in notification to address, in iOS only resolved when in show details
+* `notificationTickerOnPublish`			Android only, show a ticker on successful publishes, always off in iOS", 
+* `notificationTickerOnGeofenceTransition`	Android only, show a ticker when the devices enters or leaves a geofence, always on in iOS", 
 * `remoteCommandReportLocation`			Android only, respond to reportLocation remote command
 * `remoteCommandDump`				Android only, respond to dump remote command
-* `cmd`						IOS only, respond to remote commands
-* `allowRemoteLocation`				IOS only, respond to remote location request even if monitoring mode is set to manual
-* `extendedData`				IOS only, add altitude, vertical accuracy, velocity and course over ground to published data
+* `cmd`						iOS only, respond to remote commands
+* `allowRemoteLocation`				iOS only, respond to remote location request even if monitoring mode is set to manual
+* `extendedData`				iOS only, add altitude, vertical accuracy, velocity and course over ground to published data
 * `remoteConfiguration`				Android only, respond to remote configuration messages
-* `usepolicy`					IOS only, use user defined security policy
-* `allowinvalidcerts`				IOS only, allow self signed certificates in user defined security policy
-* `validatedomainname`				IOS only, validate domain main during TLS handshake
-* `validatecertificatechain`			IOS only, validate the whole certificate chain or just the server certificate
-* `policymode`					IOS only, 
+* `usepolicy`					iOS only, use user defined security policy
+* `allowinvalidcerts`				iOS only, allow self signed certificates in user defined security policy
+* `validatedomainname`				iOS only, validate domain main during TLS handshake
+* `validatecertificatechain`			iOS only, validate the whole certificate chain or just the server certificate
+* `policymode`					iOS only, 
 	* 0 = Do not used pinned certificates to validate servers.
 	* 1 = Validate host certificates against public keys of pinned certificates.
 	* 2 = Validate host certificates against pinned certificates.
-* `servercer`					IOS only, blank separated list of certificate file names in DER format, or empty
-* `clientpkcs`					IOS only, name of the client pkcs12 file,or empty 
-* `passphrase`					IOS only, passphrase for client pkcs12 file 
+* `servercer`					iOS only, blank separated list of certificate file names in DER format, or empty
+* `clientpkcs`					iOS only, name of the client pkcs12 file,or empty 
+* `passphrase`					iOS only, passphrase for client pkcs12 file 
 
 #### Notes
 

@@ -240,7 +240,7 @@ started. If there is an error, connect will be retried after 2, 4, 8, ..., 64,
 BUT...
 
 If the application is in background or is sent to the background, retries are
-restarted eventually - depending on IOS' background execution model about every 10 minutes.
+restarted eventually - depending on iOS' background execution model about every 10 minutes.
 
 With automatic modes switched off, even when bringing the app to foreground, no
 new location updates are generated.
