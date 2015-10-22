@@ -26,7 +26,7 @@ We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/reco
 
 ## o2s
 
-One of the clients we provide as part of the Open Source OwnTracks project is called _o2s_; the strange name stands for _OwnTracks to Storage_, and we think you're going to want to have this connected to your [MQTT broker](broker.md), particularly in [Private mode](scenarios.md).
+One of the clients we provide as part of the Open Source OwnTracks project is called _o2s_; the strange name stands for _OwnTracks to Storage_, and you can use this connected to your [MQTT broker](broker.md) in [Private mode](scenarios.md), if you need a MySQL or PostgreSQL database. (We do recommend, however, that you use our _Recorder_ (see above).)
 
 Correctly configured (and it's not trivial), _o2s_ connects to your broker and subscribes to location messages and other [OwnTracks payloads](../tech/json.md). Upon receiving a location update, _o2s_ will do a number of things:
 
