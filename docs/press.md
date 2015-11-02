@@ -2,9 +2,9 @@
 
 ## English
 
-![OwnTracks Poster](../images/OwnTracksPosterA4.jpg)
+![OwnTracks Poster](images/OwnTracksPosterA4.jpg)
 
-[OwnTracks Poster @ eclipsecon Europe 2015](../images/OwnTracksPosterA1.pdf)
+[OwnTracks Poster @ eclipsecon Europe 2015](images/OwnTracksPosterA1.pdf)
 
 ## German
 
