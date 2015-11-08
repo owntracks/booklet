@@ -79,7 +79,7 @@ See the [demo][ha-demo] for an example of the map with OwnTracks devices or read
 
 [ha-demo]: https://home-assistant.io/demo/
 [ha-mqtt]: https://home-assistant.io/components/mqtt/
-[ha-owntracks]: https://home-assistant.io/components/owntracks/
+[ha-owntracks]: https://home-assistant.io/components/device_tracker.owntracks/
 [ha-zone]: https://home-assistant.io/components/automation/#zone-trigger
 
 ## Roll your own
