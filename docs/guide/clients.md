@@ -70,6 +70,18 @@ This is where OwnTracks steps in. In its simplest form it can be configured with
 
 Read more about [openHAB and OwnTracks](https://github.com/openhab/openhab/wiki/Mqttitude-Binding).
 
+
+## Home Assistant
+
+Another home automation solution that can be used with OwnTracks is Home Assistant. Home Assistant allows you to track the location of people connected to your personal [MQTT broker](broker.md). It has a map to show their current location and can trigger automations based on entering and leaving zones.
+
+See the [demo][ha-demo] for an example of the map with OwnTracks devices or read more about how [Home Assistant connects to your private MQTT broker][ha-mqtt], [enable OwnTracks support in Home Assistant][ha-owntracks] and [configure automations based on zones][ha-zone].
+
+[ha-demo]: https://home-assistant.io/demo/
+[ha-mqtt]: https://home-assistant.io/components/mqtt/
+[ha-owntracks]: https://home-assistant.io/components/owntracks/
+[ha-zone]: https://home-assistant.io/components/automation/#zone-trigger
+
 ## Roll your own
 
 If you feel really brave, you can [write your own program](../tech/program.md) which subscribes to OwnTracks data, but don't forget to tell us about it!
