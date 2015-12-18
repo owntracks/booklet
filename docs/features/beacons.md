@@ -28,6 +28,15 @@ Minor 33000
 In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
 in the second example, OwnTracks would monitor just that one specific beacon with the major number `1` and the minor number `33000`.
 
+## Notes
+
+The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.
+
+If you use a `-` as the first character in your Waypoint description e.g. `-MyBeacon`, the app will ignore short disruptions of the connection to the beacon (hold down).
+
+Setting the radius to a negative value (e.g. `-1`), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the `share` option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.
+
+
 ## Example: office
 
 Upon arriving at our Frankfurt location, I see from the monitor panel at the reception that Jane is in the office, so I'll pop in to ask a question.
@@ -93,14 +102,5 @@ To summarize: OwnTracks can monitor beacons by configuring it either with:
 * a _UUID_ only, in which case the app would report any beacon with that UUID, irrespective of its _major_/_minor_ numbers.
 * a _UUID_ with a _major_ number: the app would report iBeacons with the specified UUID and exactly that _major_ number
 * all three: the _UUID_, the _major_ and _minor_ numbers, in which case the app reports events on precisely that beacon.
-
-## Notes
-
-The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.
-
-If you use a `-` as the first character in your Waypoint description e.g. `-MyBeacon`, the app will ignore short disruptions of the connection to the beacon (hold down).
-
-Setting the radius to a negative value (e.g. `-1`), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the `share` option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.
-
 
   [blukii]: http://www.blukii.com/beacons_en.html
