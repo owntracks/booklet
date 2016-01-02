@@ -103,4 +103,8 @@ To summarize: OwnTracks can monitor beacons by configuring it either with:
 * a _UUID_ with a _major_ number: the app would report iBeacons with the specified UUID and exactly that _major_ number
 * all three: the _UUID_, the _major_ and _minor_ numbers, in which case the app reports events on precisely that beacon.
 
+## More examples
+
+* [Where exactly did I park my car?](http://jpmens.net/2016/01/02/where-exactly-did-i-park-my-car/)
+
   [blukii]: http://www.blukii.com/beacons_en.html
