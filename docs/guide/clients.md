@@ -24,6 +24,8 @@ We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/reco
 
 ![Recorder](images/demo-geojson-linestring.png)
 
+Read [more about the Recorder](clients/recorder.md)
+
 ## o2s
 
 One of the clients we provide as part of the Open Source OwnTracks project is called _o2s_; the strange name stands for _OwnTracks to Storage_, and you can use this connected to your [MQTT broker](broker.md) in [Private mode](scenarios.md), if you need a MySQL or PostgreSQL database. (We do recommend, however, that you use our _Recorder_ (see above).)
