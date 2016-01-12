@@ -24,6 +24,14 @@ docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083
 
 That should download the Docker image (if necessary) and launch a container accordingly. At first run, the TLS certificates are created in the `/owntracks` volume (which was mounted onto `/var/owntracks` on the host). The host's directory will also contain a `mosquitto/` directory which Mosquitto's configuration file, and the Recorder will use `/owntracks/recorder/` as its persistent storage.
 
+The above script will surface the port numbers as follows:
+
+* MQTT will be on 11883
+* MQTT over TLS on 18883
+* and the Recorder's Web interface on 8083
+
+You can assign these as you wish. Recall, that if you use our example, your OwnTracks apps will also have to access 18883 over TLS (instead of the default 8883 over TLS).
+
 ### Synology
 
 A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, [this page](http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/) describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image and launch a container.
@@ -59,6 +67,8 @@ The container can then be launched by pressing the "on" switch.
 The Docker container log will show console output.
 
 ![](jmbp-2278.png)
+
+The Recorder running on the Synology DiskStation will be accessible via the host port numbers you configured (see above for more information).
 
   [1]: https://github.com/owntracks/recorder
   [mosquitto]: http://mosquitto.org
