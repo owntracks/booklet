@@ -46,6 +46,7 @@ pages:
     - 'Code (Hosted)': 'tech/proghosted.md'
 - Sundry:
     - 'Terminology': 'terminology.md'
+    - 'Docker' : 'clients/recorder.md'
     - 'Privacy': 'privacy.md'
     - 'People': 'people.md'
     - 'Ideas': 'ideas.md'
