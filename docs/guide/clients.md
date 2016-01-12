@@ -24,7 +24,7 @@ We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/reco
 
 ![Recorder](images/demo-geojson-linestring.png)
 
-Read [more about the Recorder](clients/recorder.md)
+Read [more about the Recorder](../clients/recorder.md).
 
 ## o2s
 
