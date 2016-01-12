@@ -6,6 +6,8 @@ The [OwnTracks Recorder][1] is a lightweight program for storing and accessing l
 
 We have an [experimental Docker image](https://hub.docker.com/r/owntracks/backend/) which you can use to launch the Recorder and its associated [Mosquitto] broker. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. 
 
+![architecture](owntracks-docker-host.png)
+
 As an example, let's assume the host on which the Docker container will run has two IP addresses, `192.168.1.82` and `10.0.1.83`. We will also assume that you want the MQTT port on the host to be `11883` and its TLS port to be `18883`. Let's further assume that one of these addresses is DNS accessible as `ds415.ww.mens.de` and the other as `mqtt.ww.mens.de`. We want the TLS certificates for the container's Mosquitto broke to contain subjAltNames for these, so we will proceed as follows:
 
 1. Create a directory which will be mounted into the container for persistent data: `mkdir /var/owntracks`, say.
