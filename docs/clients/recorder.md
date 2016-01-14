@@ -52,7 +52,7 @@ docker exec -ti 5c8800a4ab78  mosquitto_sub -d -v -t '#'
 
 ### Synology
 
-A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, [this page](http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/) describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image and launch a container.
+A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, [this page](http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/) describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image and launch a container. (This was tested on DSM 5.2.)
 
 Launch container creation with the wizard, and give the container a name, e.g. `owntracks-recorder`.
 
