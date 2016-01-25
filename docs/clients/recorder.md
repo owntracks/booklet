@@ -4,7 +4,7 @@ The [OwnTracks Recorder][1] is a lightweight program for storing and accessing l
 
 ### Docker
 
-We have an [experimental Docker image](https://hub.docker.com/r/owntracks/backend/) which you can use to launch the Recorder and its associated [Mosquitto] broker. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. 
+We have an [experimental Docker image](https://hub.docker.com/r/owntracks/recorderd/) which you can use to launch the Recorder and its associated [Mosquitto] broker. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. 
 
 ![architecture](owntracks-docker-host.png)
 
@@ -17,11 +17,12 @@ As an example, let's assume the host on which the Docker container will run has 
 #!/bin/sh
 
 docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083 \
+	--name owntracks-recorder
 	--hostname ds415.ww.mens.de \
 	-e MQTTHOSTNAME="ds415.ww.mens.de" \
 	-e IPLIST="192.168.1.1 192.168.1.82" \
 	-e HOSTLIST="mqtt.ww.mens.de ds415.ww.mens.de" \
-	owntracks/backend:v01
+	owntracks/recorderd
 ```
 
 That should download the Docker image (if necessary) and launch a container accordingly. At first run, the TLS certificates are created in the `/owntracks` volume (which was mounted onto `/var/owntracks` on the host). The host's directory will also contain a `mosquitto/` directory which Mosquitto's configuration file, and the Recorder will use `/owntracks/recorder/` as its persistent storage.
@@ -41,7 +42,7 @@ If you want to see what's going on within the container, try launching an MQTT s
 ```sh
 docker ps
 CONTAINER ID        IMAGE                   ...
-5c8800a4ab78        owntracks/backend:v01   ...
+5c8800a4ab78        owntracks/recorderd     ...
 ```
 
 Then, say, point `mosquitto_sub` to the broker from within the container:
@@ -52,7 +53,7 @@ docker exec -ti 5c8800a4ab78  mosquitto_sub -d -v -t '#'
 
 ### Synology
 
-A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, [this page](http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/) describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image and launch a container. (This was tested on DSM 5.2.)
+A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, [this page](http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/) describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image (search for `owntracks-recorder`; the image you want is called `owntracks-recorderd` with a trailing `d` on it) and launch a container. (This was tested on DSM 5.2.)
 
 Launch container creation with the wizard, and give the container a name, e.g. `owntracks-recorder`.
 
