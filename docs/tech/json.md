@@ -15,7 +15,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `card`                                    |   Y    |   Y     |
 | `waypoints`                               |   Y    |         |
 | `msg`                                     |   Y    |   Y     |
-| `encrypted                                |   Y    |   Y     |
+| `encrypted`                               |   Y    |   Y     |
 
 
 ## Topics
