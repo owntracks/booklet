@@ -11,7 +11,7 @@ You configure a _secret_ (which you keep secret) in the app's settings. From thi
 }
 ```
 
-If you want to share location with a friend, both you and your friend need to share the same _secret_. A _secret_ should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads.
+If you want to share location with a friend, both you and your friend need to share the same _secret_. A _secret_ should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads. It is not possible to share locations with a friend's device using different _secret_ keys.
 
 ### Recorder
 
