@@ -17,12 +17,12 @@ If you want to share location with a friend, both you and your friend need to sh
 
 You can set up multiple decryption keys on the Recorder (but not in the apps). This is to enable, say, different people to use different secrets on the same Recorder.
 
-Add a key by determining the _username_ and the _device name_ of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the _username_ is `jjolie` and the _device name_ is `iphone`, the result will be `jjolie-iphone`.
+Add a key by determining the _username_ and the _device name_ of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the _username_ is `jjolie` and the _device name_ is `phone`, the result will be `jjolie-phone`.
 
 Load the key into the (running) Recorder:
 
 ```bash
-echo "jjolie-iphone mysecreTpass01" | ocat --load=keys
+echo "jjolie-phone mysecreTpass01" | ocat --load=keys
 ```
 
 From this moment onwards, the Recorder will use this secret key for this username/device combination when it receives JSON payloads of `_type: encrypted`. The Recorder will decrypt the payload and will store the result in plain text in its storage.
