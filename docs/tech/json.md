@@ -15,6 +15,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `card`                                    |   Y    |   Y     |
 | `waypoints`                               |   Y    |         |
 | `msg`                                     |   Y    |   Y     |
+| `encrypted                                |   Y    |   Y     |
 
 
 ## Topics
@@ -447,3 +448,13 @@ The `msg/` prefix for messaging is not configurable in the apps.
 * `urlicon` (iOS only) should be the URL to a 40x40px image, but you should prefer `icon` as it avoids a HTTP round trip.
 * `ttl` defaults to 0 which means messages don't expire. Otherwise, messages are deleted or grayed out if `now() - ttl >= tst`.
 
+## `_type=encrypted`
+
+This payload type contains a single `data` element with the original JSON object `_type` (e.g. `_location`, `msg`, etc.) [encrypted payload](../features/encrypt.md) in it.
+
+```json
+{
+  "_type": "encrypted",
+  "data": "1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg="
+}
+```

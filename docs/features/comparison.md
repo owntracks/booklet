@@ -27,6 +27,7 @@ of supported features is concernened. This table summarizes the current status.
 | [Remote configuration](remoteconfig.md)   |   Y    |         |
 | [iBeacons](beacons.md)                    |   Y    |         |
 | [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
+| [Payload encryption](encrypt.md)          |   Y    |    Y    |
 
 
 ### Android

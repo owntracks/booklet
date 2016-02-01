@@ -36,6 +36,7 @@ pages:
     - 'Comparison': 'features/comparison.md'
     - 'Android': 'features/android.md'
     - 'iOS': 'features/ios.md'
+    - 'Encryption': 'features/encrypt.md'
     - 'Remoteconfig': 'features/remoteconfig.md'
     - 'Debugging': 'features/debug.md'
 - API:
