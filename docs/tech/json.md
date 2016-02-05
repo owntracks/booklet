@@ -354,7 +354,12 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 ## `_type=cmd`
 
 ```json
+{"_type":"cmd","action":"reportLocation"}
 {"_type":"cmd","action":"reportSteps"}
+{"_type":"cmd","action":"dump"}
+{"_type":"cmd","action":"waypoints"}
+{"_type":"cmd","action":"setWaypoints","waypoints":[...]}
+{"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
 ```
 * `action`      action to be performed by the device
     * `reportSteps` reports steps walked on iPhone 5s devices. <br>
@@ -365,6 +370,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `dump` triggers the publish of a configuration message
     * `setWaypoints` configures new waypoints. (iOS only; [details](../features/remoteconfig.md) )
     * `waypoints` triggers a publish of all waypoints configured on the device. These are published in `.otrw` format to the `../waypoints` topic.
+    * `action` inserts an additional 'Featured Content' tab in the UI. The text in `"content"` is displayed. Links embedded in the text are operational.
+	Send `"action":"action"` without `"content"` to remove the extra tab.
 
 ## `_type=steps`
 
