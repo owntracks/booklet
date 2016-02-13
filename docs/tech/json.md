@@ -360,6 +360,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"waypoints"}
 {"_type":"cmd","action":"setWaypoints","waypoints":[...]}
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
+{"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
+{"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
 ```
 * `action`      action to be performed by the device
     * `reportSteps` reports steps walked on iPhone 5s devices. <br>
@@ -370,8 +372,11 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `dump` triggers the publish of a configuration message
     * `setWaypoints` configures new waypoints. (iOS only; [details](../features/remoteconfig.md) )
     * `waypoints` triggers a publish of all waypoints configured on the device. These are published in `.otrw` format to the `../waypoints` topic.
-    * `action` inserts an additional 'Featured Content' tab in the UI. The text in `"content"` is displayed. Links embedded in the text are operational.
-	Send `"action":"action"` without `"content"` to remove the extra tab.
+    * `action` inserts an additional 'Featured Content' tab in the UI.
+	If `"url"` is specified, the URL is opened in a full screen web view within the app. 
+	If `"url"` is not specified
+	The text in `"content"` is displayed. Links embedded in the text are operational.  If `"content"` is HTML, it is rendered.
+	Send `"action":"action"` without `"content"` and without `"url"` to remove the extra tab.
 
 ## `_type=steps`
 
