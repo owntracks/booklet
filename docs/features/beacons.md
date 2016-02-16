@@ -1,5 +1,7 @@
 ## iBeacons
 
+Note: currently iOS only.
+
 If you want to monitor an iBeacon region rather than a circular region set the
 radius to zero (`0`) or a negative value, and add the beacon UUID, major, and minor numbers.
 
