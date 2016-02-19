@@ -13,6 +13,8 @@ The URL will be specified including parameters for _username_ and _devicename_ (
 http[s]://[user[:password]@]host[:port]/path
 ```
 
+Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (`https://` scheme). Authentication uses the username / password combination configured up in the apps' preferences. 
+
 All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON][json.md] payloads.
 
 If the HTTP endpoint is reachable (i.e. it responds with _any_ status code), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later stage.
@@ -20,3 +22,5 @@ If the HTTP endpoint is reachable (i.e. it responds with _any_ status code), the
 [Encryption](../features/encrypt.md) will be supported and can be used with HTTP endpoints.
 
 If the endpoint returns a status code 200 it will typically return an empty JSON payload object `{}`. The HTTP endpoint may, however, return a command to the OwnTracks device, in which case it must return a valid `_type: cmd` as described in [JSON](../tech/json.md).
+
+The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box.
