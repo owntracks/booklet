@@ -369,10 +369,12 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `setWaypoints` configures new waypoints. (iOS only; [details](../features/remoteconfig.md) )
     * `waypoints` triggers a publish of all waypoints configured on the device. These are published in `.otrw` format to the `../waypoints` topic.
     * `action` inserts an additional 'Featured Content' tab in the UI.
-	If `"url"` is specified, the URL is opened in a full screen web view within the app. 
-	If `"url"` is not specified
-	The text in `"content"` is displayed. Links embedded in the text are operational.  If `"content"` is HTML, it is rendered.
-	Send `"action":"action"` without `"content"` and without `"url"` to remove the extra tab.
+	- If `"url"` is specified, the URL is opened in a full screen web view within the app. 
+	- If `"url"` is not specified
+	- The text in `"content"` is displayed. Links embedded in the text are operational.  If `"content"` is HTML, it is rendered.
+	- Send `"action":"action"` without `"content"` and without `"url"` to remove the extra tab.
+	- If `"notify"` is in the payload, it is a string which will be used as notification in the UI
+	- If the optional `"extern"` boolean is `true` a click on the notification will launch an external Web browser; `false` (the default) opens the `url` in a Webview within the OwnTracks app.
 
 ## `_type=steps`
 
