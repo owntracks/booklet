@@ -10,7 +10,7 @@ In this mode:
 The URL will be specified including parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers. Other than that, the syntax for the URL is
 
 ```
-http[s]://[user[:password]@]host[:port]/path`
+http[s]://[user[:password]@]host[:port]/path
 ```
 
 All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON][json.md] payloads.
