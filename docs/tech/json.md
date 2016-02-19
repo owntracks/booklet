@@ -14,7 +14,6 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `configuration`                           |   Y    |   Y     |
 | `card`                                    |   Y    |   Y     |
 | `waypoints`                               |   Y    |         |
-| `msg`                                     |   Y    |   Y     |
 | `encrypted`                               |   Y    |   Y     |
 
 
@@ -35,9 +34,6 @@ Apps subscribe to:
 - `owntracks/+/+/event` (singular) for transition messages (`enter`/`leave`)
 - `owntracks/+/+/waypoint`  (singular) for Waypoint definitions/modifications
 - `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
-- `owntracks/user/device/msg` if messaging is enabled
-- `msg/+/<ghash>` if messaging is enabled (see below and [Messages](../features/msg.md))
-- `msg/system` if messaging is enabled; for very occasional messages, e.g. maintenance related.
 
 In addition, the iOS app publishes to:
 
@@ -436,33 +432,9 @@ The app can export a list of configured waypoints (separate from the configurati
 
 Note that `_type=waypoints` is *plural*.
 
-## `_type=msg`
-
-The `msg/` prefix for messaging is not configurable in the apps.
-
-```json
-{
-    "_type"        : "msg",           // mandatory
-    "title"        : "Lunch",         // string, title of message; mandatory
-    "desc"         : "special offer"  // string, content of message; mandatory
-    "url"          : "http://xxxx"    // URL on which to click; optional
-    "icon"         : "fa-eye",        // string, FA icon; optional
-    "iconurl"      : "http://xxx"     // URL to icon if `icon' not set (iOS only)
-    "prio"         : 0,               // background color for `icon'; default: `0`
-    "tst"          : nnnnnn,          // Unix epoch time in seconds when message is published; mandatory
-    "ttl"          : 86400,           // Time to Live (in seconds) until message is expired; default `0`
-    "sender"       : <topic>          // MQTT topic name of sender; optional
-}
-```
-
-* `icon` is the name of a [Font-Awesome icon](http://fortawesome.github.io/Font-Awesome/cheatsheet/)
-* `prio` is `0` (OwnTracks blue), `1` (Yellow), `2` (Red)
-* `urlicon` (iOS only) should be the URL to a 40x40px image, but you should prefer `icon` as it avoids a HTTP round trip.
-* `ttl` defaults to 0 which means messages don't expire. Otherwise, messages are deleted or grayed out if `now() - ttl >= tst`.
-
 ## `_type=encrypted`
 
-This payload type contains a single `data` element with the original JSON object `_type` (e.g. `_location`, `msg`, etc.) [encrypted payload](../features/encrypt.md) in it.
+This payload type contains a single `data` element with the original JSON object `_type` (e.g. `location`, `beacon`, etc.) [encrypted payload](../features/encrypt.md) in it.
 
 ```json
 {

@@ -32,7 +32,6 @@ pages:
     - 'Beacons': 'features/beacons.md'
     - 'Pedometer': 'features/pedometer.md'
     - 'Settings': 'features/settings.md'
-    - 'Messages': 'features/msg.md'
     - 'Comparison': 'features/comparison.md'
     - 'Android': 'features/android.md'
     - 'iOS': 'features/ios.md'
