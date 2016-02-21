@@ -1,19 +1,19 @@
 ## HTTP
 
-An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS.
-
-In this mode:
+An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:
 
 * There are no "friends". The device can publish only which means you cannot track other people.
 * There is no support for [card](../features/card.md)s.
 
-For use with the [OwnTracks Recorder](https://github.com/owntracks/recorder) the URL must be specified including parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers. The syntax for the URL is
+For use with the [OwnTracks Recorder](https://github.com/owntracks/recorder) the URL you specify must include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers.
+
+The syntax for the URL is:
 
 ```
 http[s]://[user[:password]@]host[:port]/path
 ```
 
-Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (`https://` scheme). Authentication uses the username / password combination configured up in the apps' preferences. 
+Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (`https://` scheme).
 
 All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON][json.md] payload formats.
 
@@ -24,7 +24,6 @@ If the HTTP endpoint is reachable (i.e. it responds with _any_ status code -- ev
 If the endpoint returns a status code 200 it will typically return an empty JSON payload object `{}`. The HTTP endpoint may, however, return a command to the OwnTracks device, in which case it must return a valid `_type: cmd` as described in [JSON](../tech/json.md).
 
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box.
-
 
 ### PHP example
 
@@ -72,6 +71,6 @@ mysql> select * from locations;
 ?>
 ```
 
-Assuming the Web server hosting this example is called `example.com`, and assuming the above script is in Jane's home directory's `public_html` saved as `loc.php`, the URL you configure in the OwnTracks app would be `http://example.com/~jane/loc.php`.
+Assuming the Web server hosting this example is called `example.com`, and assuming the above script is in Jane's home directory's `public_html` saved as `loc.php`, the URL you configure in the OwnTracks app would be `http://example.com/~jane/loc.php`. We _urge_ you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of `https://user:password@example.com/~jane/loc.php`.
 
 There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we urge you to [study the API documentation](json.md).
