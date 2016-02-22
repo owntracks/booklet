@@ -20,7 +20,6 @@ pages:
     - 'Beacons': 'guide/beacons.md'
     - 'Bridging': 'guide/bridge.md'
 - Features:
-    - 'Hosted': 'features/hosted.md'
     - 'Security': 'features/security.md'
     - 'TLS': 'features/tls.md'
     - 'TLS client': 'features/tlscert.md'
@@ -43,7 +42,6 @@ pages:
     - 'MQTT': 'tech/mqtt.md'
     - 'QR': 'tech/qr.md'
     - 'Code': 'tech/program.md'
-    - 'Code (Hosted)': 'tech/proghosted.md'
 - Sundry:
     - 'Terminology': 'terminology.md'
     - 'Docker' : 'clients/recorder.md'

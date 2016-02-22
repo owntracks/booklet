@@ -1,11 +1,6 @@
 ## QR codes
 
-To setup the OwnTracks app (iOS only currently), you can use QR codes or specially-constructed URLs to configure the app. This is currently implemented for
-
-* Hosted mode and
-* iBeacons.
-
-The QR codes can be scanned from the settings tab within the app
+To setup the OwnTracks app (iOS only currently), you can use QR codes or specially-constructed URLs to configure the app. This is currently implemented in iOS. The QR codes can be scanned from the settings tab within the app
 
 ![iOS settings](images/b-ios-scan-setting.png)
 
@@ -35,19 +30,4 @@ owntracks:///beacon?name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=
 ```
 
 ![beacon QR](images/beacon.png)
-
-### Hosted mode QR URL
-
-* scheme = `owntracks`
-* host = `<empty>`
-* path = `/hosted`
-* query = `user=<user>&device=<device>&token=<token>`
-
-Example:
-
-```
-owntracks:///hosted?user=user&device=device&token=token
-```
-
-![hosted QR](images/hosted.png)
 

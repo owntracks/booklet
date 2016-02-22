@@ -17,7 +17,6 @@ Location tracking isn't easy, and people's requirements differ. You may be happy
 Depending on the [mode](../guide/scenarios.md) you're configuring, iOS will show you all or fewer possible settings:
 
 * In _Public mode_ you can configure the [TrackerID](tid.md) only.
-* In _Hosted mode_ you configure the username, device, and token you set up on the OwnTracks Hosted Web site, and you may specify a [TrackerID](tid.md).
 
 
 ### Android only
