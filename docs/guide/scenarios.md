@@ -18,7 +18,7 @@ We think it's best you forget about this as quickly as possible and chose one of
 
 ## HTTP mode
 
-If you don't want to go to the trouble of [hosting your own MQTT setup](#private), you can use _HTTP_ mode to publish location data to a [HTTP server of your chosing](tech/http.md).
+If you don't want to go to the trouble of [hosting your own MQTT setup](#private), you can use _HTTP_ mode to publish location data to a [HTTP server of your chosing](../tech/http.md).
 
 
 
