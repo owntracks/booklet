@@ -10,6 +10,7 @@ pages:
     - 'What it does': 'guide/whathow.md'
     - 'User interface': 'guide/ui.md'
     - 'Scenarios': 'guide/scenarios.md'
+    - 'HTTP mode' : 'tech/http.md'
     - 'MQTT': 'guide/mqtt.md'
     - 'Topics': 'guide/topics.md'
     - 'Broker': 'guide/broker.md'
