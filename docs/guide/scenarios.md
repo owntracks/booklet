@@ -20,9 +20,6 @@ We think it's best you forget about this as quickly as possible and chose one of
 
 If you don't want to go to the trouble of [hosting your own MQTT setup](#private), you can use _HTTP_ mode to publish location data to a [HTTP server of your chosing](tech/http.md).
 
-You may, of course, register more than just one device.
-
-You will now want to [configure a client](clients.md) with which you consume the data which is published by OwnTracks, or if you're feeling very brave, why not [write your own client](../tech/program.md)?
 
 
 ## Private
@@ -40,5 +37,7 @@ What you basically have to do is to
 We urge you to resist the temptation of using _private mode_ with one of the many public brokers hosted by different organizations. While it _is_ an easy way out those brokers are publically accessible which means anybody can see where you are if they can identify you. Furthermore, public brokers often don't implement access control, so basically anybody can create a "location" update which looks as though it may be yours. Believe us: it'll drive you crazy.
 
 If you need assistance, we may be able to help you on our [Community site](https://community.owntracks.org).
+
+You will now want to [configure a client](clients.md) with which you consume the data which is published by OwnTracks, or if you're feeling very brave, why not [write your own client](../tech/program.md)?
 
 Now it's time to [discuss topics](topics.md).
