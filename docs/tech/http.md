@@ -66,7 +66,8 @@ mysql> select * from locations;
         $stmt->close();
     }
 
-    print json_encode(new stdClass);    # empty object
+    $response = array();
+    print json_encode($response);
 ?>
 ```
 
