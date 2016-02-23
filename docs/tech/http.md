@@ -21,7 +21,7 @@ If the HTTP endpoint is reachable (i.e. it responds with _any_ status code -- ev
 
 [Encryption](../features/encrypt.md) are supported and can be used with HTTP endpoints.
 
-If the endpoint returns a status code 200 it will typically return an empty JSON payload object `{}`. The HTTP endpoint may, however, return a command to the OwnTracks device, in which case it must return a valid `_type: cmd` as described in [JSON](../tech/json.md).
+If the endpoint returns a status code 200 it will typically return an empty JSON payload array `[]`. The HTTP endpoint may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid `_type` as described in [JSON](../tech/json.md).
 
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box.
 
