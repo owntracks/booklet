@@ -2,8 +2,7 @@
 
 An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:
 
-* There are no "friends". The device can publish only which means you cannot track other people.
-* There is no support for [card](../features/card.md)s.
+* The device publishes location data. "friends" and their [card](../features/card.md)s are a hack which is supported by the Recorder.
 
 For use with the [OwnTracks Recorder](https://github.com/owntracks/recorder) the URL you specify must include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers.
 
