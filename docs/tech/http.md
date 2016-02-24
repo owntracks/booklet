@@ -25,10 +25,10 @@ If the endpoint returns a status code 200 it will typically return an empty JSON
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box.
 
 
-| Element                                   |  A  |  i   | Meaning
-| ----------------------------------------- | :-: | :--: | ----------------
-| [Location reporting](location.md)         |  Y  |  Y   | The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.
-| Another feature                           |  Y  |      | Lorem ipsum dolor
+| Element                                   |  Android  |  iOS  | Meaning
+| ----------------------------------------- | :-------: | :---: | ----------------
+| [Location reporting](location.md)         |  Y        |  Y    | The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.
+| Another feature                           |  Y        |       | Lorem ipsum dolor
 
 ### PHP example
 
