@@ -25,11 +25,6 @@ If the endpoint returns a status code 200 it will typically return an empty JSON
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box.
 
 
-| Element                                   |  A   |  I   | Meaning
-| ----------------------------------------- | :--- | :--- | ----------------
-| [Location reporting](location.md)         |  Y   |  Y   | The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.
-| Another feature                           |  Y   |      | Lorem ipsum dolor
-
 ### PHP example
 
 Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:
