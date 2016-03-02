@@ -22,12 +22,12 @@ The [encryption](../features/encrypt.md) feature is supported, and you can use i
 
 If the HTTP endpoint returns a status code 200 it will typically return an empty JSON payload array `[]`. It may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid `_type` as described in [JSON](../tech/json.md). Support for the following `_type` is implemented:
 
-| `_type`      |  A    | I    | Usage
+| `_type`      |  iOS  | Android    | Usage
 | :----------- | :---  | :--- | :--------------
-| `location`   | -     | Y    | Can return friend location objects.
-| `cmd`        | -     | Y    | with `action` set to `dump`, `reportLocation`, `reportSteps`, `action`, and `setWaypoints`
-| `card`       | -     | Y    | Can return [card](../features/card.md) objects for self and friends
-| `transition` | -     | Y    | Obtain friends' transition events.
+| `location`   | Y     | -    | Can return friend location objects.
+| `cmd`        | Y     | -    | with `action` set to `dump`, `reportLocation`, `reportSteps`, `action`, and `setWaypoints`
+| `card`       | Y     | -    | Can return [card](../features/card.md) objects for self and friends
+| `transition` | Y     | -    | Obtain friends' transition events.
 
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box, as long as it is built with HTTP support and a `--http-port` is configured.
 When using the Recorder, the URL you specify in the app's configuration *must* include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers respectively. You can also force _username_ using a proxy as described in the Recorder's documentation.
