@@ -2,11 +2,11 @@
 
 An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:
 
-* The device publishes location data. "friends" and their [card](../features/card.md)s are a hack which is supported by the Recorder.
+* The device publishes location data.
+* Support for Friends and transition events is available only if implemented in the HTTP endpoint you use.
 
-For use with the [OwnTracks Recorder](https://github.com/owntracks/recorder) the URL you specify must include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers.
 
-The syntax for the URL is:
+The URL you enter in the setting for HTTP mode has the following syntax:
 
 ```
 http[s]://[user[:password]@]host[:port]/path
@@ -14,15 +14,23 @@ http[s]://[user[:password]@]host[:port]/path
 
 Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (`https://` scheme).
 
-All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON][json.md] payload formats.
+All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON](json.md) payload formats.
 
 If the HTTP endpoint is reachable (i.e. it responds with _any_ status code -- even 5xx), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.
 
-[Encryption](../features/encrypt.md) are supported and can be used with HTTP endpoints.
+The [encryption](../features/encrypt.md) feature is supported, and you can use it HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.
 
-If the endpoint returns a status code 200 it will typically return an empty JSON payload array `[]`. The HTTP endpoint may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid `_type` as described in [JSON](../tech/json.md).
+If the HTTP endpoint returns a status code 200 it will typically return an empty JSON payload array `[]`. It may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid `_type` as described in [JSON](../tech/json.md). Support for the following `_type` is implemented:
 
-The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box.
+| `_type`               |  A    | I    | Usage
+| --------------------- | :---  | :--- | ---------------
+| `location`            |       | Y    | Can return friend location objects.
+| `cmd`                 |       | Y    | with `action` set to `dump`, `reportLocation`, `reportSteps`, `action`, and `setWaypoints`
+| `card`                |       | Y    | Can return [card](../features/card.md) objects for self and friends
+| `transition`          |       | Y    | Obtain friends' transition events.
+
+The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box, as long as it is built with HTTP support and a `--http-port` is configured.
+When using the Recorder, the URL you specify in the app's configuration *must* include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers respectively. You can also force _username_ using a proxy as described in the Recorder's documentation.
 
 
 ### PHP example
