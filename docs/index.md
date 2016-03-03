@@ -6,7 +6,7 @@
 
 OwnTracks is an Open Source project which provides an iOS and an Android app with which your smartphone records its current location. While there are many smartphone apps available which can do that, we think OwnTracks is special.
 
-![public map](images/ipad-public-map.jpg)
+![public map](images/ipad-public-map.png)
 
 Whether you want your young child to know where you currently are, or you want to keep track of where you spent your last vacation, or you and a group of friends want to see each other on a map, OwnTracks does that. It consists of an app which runs on your smart phone, and which periodically, publishes a small chunk of data which other OwnTracks users you authorize may see. The big deal here is *which you authorize*: we are extremely picky about [the security features of OwnTracks](features/security.md).
 

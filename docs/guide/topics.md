@@ -1,5 +1,7 @@
 ## Topics
 
+If you use HTTP mode skip this chapter.
+
 You now know that [MQTT](mqtt.md) is a messaging protocol, and that it uses
 topic names to label messages.  topic names can be structured into multiple
 topic levels by separating them with a forward slash (`/`). topic levels are

@@ -1,10 +1,6 @@
 ## HTTP
 
-An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:
-
-* The device publishes location data.
-* Support for Friends and transition events is available only if implemented in the HTTP endpoint you use.
-
+An optional HTTP mode is being implemented with which the OwnTracks apps use a privately configured HTTP endpoint (a.k.a. a Web server) to which they POST requests over HTTP instead of publishing to MQTT. In this mode all [JSON](json.md) payloads reported by the apps are transmitted via HTTP to the endpoint. In particular and most importantly, the apps publish their location data.
 
 The URL you enter in the setting for HTTP mode has the following syntax:
 
@@ -14,7 +10,7 @@ http[s]://[user[:password]@]host[:port]/path
 
 Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (`https://` scheme).
 
-All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON](json.md) payload formats.
+All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON](json.md) payload formats. Support for Friends is available if your HTTP endpoint can produce appropriate data which is consumed by the app whenever it POSTs a location. This differs greatly from MQTT mode wherein the app subscribes to topics and is informed of data on those topics whenever it's available; in HTTP mode the apps do not periodically poll your HTTP endpoint; rather it is contacted only when the app is ready to publish its location or when you manually trigger a publish.
 
 If the HTTP endpoint is reachable (i.e. it responds with _any_ status code -- even 5xx), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.
 
@@ -47,6 +43,7 @@ mysql> select * from locations;
 +---------------------+------+-----------+----------+
 ```
 
+For the sake of clarity this example uses a database table with a MySQL timestamp column which is automatically set upon INSERT; keep in mind that the real location event posted by the OwnTracks apps has a `tst` timestamp when the event actually occurred.
 
 ```php
 <?php
@@ -76,10 +73,12 @@ mysql> select * from locations;
     }
 
     $response = array();
+    # optionally add objects to return to the app (e.g.
+    # friends or cards)
     print json_encode($response);
 ?>
 ```
 
 Assuming the Web server hosting this example is called `example.com`, and assuming the above script is in Jane's home directory's `public_html` saved as `loc.php`, the URL you configure in the OwnTracks app would be `http://example.com/~jane/loc.php`. We _urge_ you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of `https://user:password@example.com/~jane/loc.php`.
 
-There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we urge you to [study the API documentation](json.md).
+There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you [study the API documentation](json.md).

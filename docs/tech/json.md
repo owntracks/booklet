@@ -19,7 +19,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 
 ## Topics
 
-Apps publish to:
+In MQTT mode the apps publish to:
 
 - `owntracks/user/device` with `_type=location` for location updates, and with `_type=lwt`
 - `owntracks/user/device/cmd` with `_type=cmd`      for remote commands
@@ -41,6 +41,7 @@ In addition, the iOS app publishes to:
 - `owntracks/user/device/beacon` for beacon ranging
 - `owntracks/user/device/dump` for config dumps
 
+In HTTP mode the apps POST their data to a single endpoint you configure. That endpoint needs to distinguish which type of payload it is receiving.
 
 ## `_type=location`
 
@@ -150,7 +151,7 @@ The timestamp is the Unix epoch time at which the app first connected (and *not*
 
 ## `_type=waypoint`
 
-Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint to your broker (if the waypoint is marked `shared`). OwnTracks also monitors these waypoints and will publish a transition event (`_type: transition`) when entering or leaving the waypoint. Note, that a waypoint may also define a [Beacon](../features/beacons.md).
+Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint (if the waypoint is marked `shared`). OwnTracks also monitors these waypoints and will publish a transition event (`_type: transition`) when entering or leaving the region. Note, that a waypoint may also define a [Beacon](../features/beacons.md).
 
 ```json
 {
@@ -171,7 +172,7 @@ Waypoints are published non-retained because the second waypoint would overwrite
 
 ## `_type=transition`
 
-A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic. In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
+A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic using MQTT. (In HTTP mode the payload is published to the configured endpoint.) In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
 
 ```json
 {
@@ -324,7 +325,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 
 ## `_type=beacon`
 
-These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.
+These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages and has a strong impact on battery life.
 
 ```json
 {

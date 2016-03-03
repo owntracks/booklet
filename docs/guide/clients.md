@@ -24,6 +24,8 @@ We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/reco
 
 ![Recorder](images/demo-geojson-linestring.png)
 
+And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.
+
 Read [more about the Recorder](../clients/recorder.md).
 
 ## o2s
@@ -53,9 +55,6 @@ So, now that you have the OwnTracks locations being neatly stored for you, how d
 
 
 
-## Pista
-
-_Pista_ is a word which signifies _track_ in Spanish and in Italian. It is, unfortunately, a very difficult bit of software to get installed, but we'll try to help you. _Pista_ contains a whole kitchen-sink of features, most of which you won't need to use with our OwnTracks apps. (These features were built for the OwnTracks Greenwich devices.)
 
 ## mqttwarn
 
@@ -67,6 +66,8 @@ _mqttwarn_ lets you do things like tweet everytime OwnTracks reports a location 
 ## openHAB
 
 Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. 
+
+![openHAB](images/openhab.png)
 
 This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal [MQTT broker](broker.md) where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in [_private mode_](scenarios.md), all your data is 'yours' and yours alone - there is no cloud service collecting, storing and potentially mining your data. 
 
