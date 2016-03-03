@@ -33,7 +33,7 @@ as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the
 
 A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.
 
-If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the [[Friends]] list, as soon as a location update for Jane is seen by the app.
+If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the [Friends](friends.md) list, as soon as a location update for Jane is seen by the app.
 
 In order to associate an MQTT topic with our friend (Jane, in this case), edit your addressbook entry on iOS for Jane and do either of the following:
 
@@ -75,7 +75,7 @@ Use cases:
 
 All manually published locations can be edited (by tapping on the `(I)` to add
 a description. If the _Share_ flag is on, this waypoint is published to the
-[[MQTT broker|MQTTbroker]] along with its location information. Setting a
+MQTT broker along with its location information. Setting a
 description helps you remember particular points of interest.
 
 If a description is entered and the share flag set, the location is published
@@ -112,7 +112,7 @@ reports region with description 'myBeacons' when any iBeacon identified with UUI
 
 ### Remote configuration
 
-You can help your friends customize their copy of OwnTracks with [[remote configuration|RemoteConfig]].
+You can help your friends customize their copy of OwnTracks with [remote configuration](remoteconfig.md).
 
 ### Why do location publishes sometimes seem to cease to work?
 

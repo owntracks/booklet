@@ -4,7 +4,7 @@ The most important step to configure the OwnTracks Android app is to configure t
 
 In the unlikely case that your broker does not require a username and password, you can enable the advanced connection preferences `Preferences/Advanced`. Afterwards an additional menu to select anonymous authentication appears in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things. 
 
-Per default a [[TLS]] secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device. If you do not want to use TLS, you can enable the advanced connection preferences after which you can disable it in the connection preferences. 
+Per default a [TLS](tls.md) secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device. If you do not want to use TLS, you can enable the advanced connection preferences after which you can disable it in the connection preferences. 
 In recent Android, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and specify the absolute filesystem path to the broker certificate on your device. This will circumvent the Android TLS certificate management by using the certificate directly. 
 
 
