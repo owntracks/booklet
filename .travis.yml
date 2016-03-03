@@ -18,6 +18,7 @@ script:
 - git clone git@github.com:owntracks/owntracks.git
 - cd owntracks
 - git checkout gh-pages
+- git pull
 - ls -l booklet
 - cd ..
 - git clone https://github.com/owntracks/booklet.git
