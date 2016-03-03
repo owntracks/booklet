@@ -21,13 +21,7 @@ irrespective of your general preference) to the base topic with `/waypoints`
 tacked onto the topic (e.g. `owntracks/<user>/<device>/waypoints`) with the
 payload for `_type=waypoint` as specified in the [JSON page](../tech/json.md). For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a `location` message as described above.
 
-For example, If Jane configures a waypoint on her iPhone
-
-![](https://raw.github.com/wiki/owntracks/owntracks/assets/waypoints/b-waypoint-config-ios.png)
-
-![](https://raw.github.com/wiki/owntracks/owntracks/assets/waypoints/b-waypoint-map-ios.png)
-
-the app will publish the following payload
+For example, If Jane configures a waypoint on her iPhone, the app could publish the following payload
 
 ```json
 {
@@ -46,8 +40,6 @@ the waypoint definition on the device at a later stage, the waypoint is
 re-published, with the _original_ timestamp, but with possibly new
 `desc`ription and/or `rad`ius. To be precise, the `tst` timestamp is used as an
 identifier of the waypoint even if it is later modified on the device. For waypoints that are not shared, the above obviously does not apply. 
-
-![](https://raw.github.com/wiki/owntracks/owntracks/assets/waypoints/b-waypoint-config-android.png)
 
 Subscribers to the broker (our apps and any other program) can avoid getting
 waypoints by subscribing to, say, `owntracks/+/+`; also broker ACLs can

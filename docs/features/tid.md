@@ -6,5 +6,5 @@ A _TID_ is a _tracker ID_, a two-character identifier of your chosing, your init
 
 The _TID_ of your [friends](friends.md) is displayed on the OwnTracks map if you don't have an address book entry associated with that friend, and if said friend has no retained [card](card.md) published.
 
-The _TID_ is also used by our [Pista client](../guide/clients.md) when you're about to select a track for a particular OwnTracks user.
+
 

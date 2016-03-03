@@ -5,6 +5,8 @@ of supported features is concernened. This table summarizes the current status.
 
 | Feature                                   |  iOS   | Android |
 | ----------------------------------------- | :----: | :-----: |
+| MQTT mode                                 |    Y   |    Y      |
+| HTTP mode                                 |   Y    |          |
 | [Location reporting](location.md)         |   Y    |   Y     |
 | [TLS](tls.md) with system certificate        |   Y    |   Y     |
 | TLS with cert in filesystem               |   -    |   Y     |
