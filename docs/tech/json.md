@@ -162,11 +162,15 @@ Waypoints denote specific geographical locations that you want to keep track of.
     "rad"    : xxx,
     "tst"    : nnnnn,
     "shared" : true,
-    "tid"    : "XX"
+    "tid"    : "XX",
+    "uuid"   : "YYYYYYYYYYYYYYYYY",
+    "major"  : 17,
+    "minor"  : 1
 }
 ```
 * `shared` location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only
 * `tst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).) It is copied into the `wtst` of the transition event (`type: transition`) when an event pertaining to this waypoint fires.
+* In iOS version >= 9.1.0 and in Android version >= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
 
 Waypoints are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.
 
