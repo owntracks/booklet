@@ -1,7 +1,5 @@
 ## iBeacons
 
-Note: currently iOS only.
-
 If you want to monitor an iBeacon region rather than a circular region set the
 radius to zero (`0`) or a negative value, and add the beacon UUID, major, and minor numbers.
 
@@ -37,6 +35,14 @@ The app recognizes the beacon typically within 10 seconds, which is a typical be
 If you use a `-` as the first character in your Waypoint description e.g. `-MyBeacon`, the app will ignore short disruptions of the connection to the beacon (hold down).
 
 Setting the radius to a negative value (e.g. `-1`), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the `share` option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.
+
+## Android
+
+As from version 0.6.4 our Android app also supports beacons using the _altbeacon_ library. From their issues:
+
+> the issue is that not 100% of beacon transmissions get received by mobile devices. They get lost due to radio noise and/or low signal. This is one of the many reasons that the best practice is to have beacons advertise as many times per second as possible. If no beacons are detected in the sampling interval, you will get exit notifications followed quickly by entry notifications
+
+> The phone has a WiFi / Bluetooth interference problem. Some phones like the Moto G, the Moto X and the Nexus 4 don't scan for bluetooth devices properly when WiFi is enabled. This can cause intermittent cases where no detections can be made. If you have one of these devices, disable WiFi.
 
 
 ## Example: office
