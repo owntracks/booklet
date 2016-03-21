@@ -1,7 +1,7 @@
 ## Waypoints
 
 
-f you've configured a geo-fence, a `location` message will
+If you've configured a geo-fence, a `location` message will
 contain the elements:
 
 * `rad`ius (if its value is greater than 0)
