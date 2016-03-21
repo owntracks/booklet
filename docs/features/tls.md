@@ -18,7 +18,6 @@ The basic configuration for TLS in [mosquitto.conf][mconf] is:
 
 ```
 listener 8883
-tls_version tlsv1
 cafile .............
 certfile .............
 keyfile .............
@@ -27,7 +26,6 @@ keyfile .............
 (see also: [mosquitto-tls][mtls].)
 
 * `8883` is the standard MQTT port for TLS connections. Change it if you need to, but make sure your OwnTracks app is configured to use the same port.
-* `tls_version` specifies TLSv1 which is currently a requirement for the OwnTracks apps, as their APIs support that TLS version.
 * `cafile` is the path to the certificate authority file
 * `certfile` points to your server's certificate in PEM format
 * `keyfile` points to your server's secret key file (which you *never* divulge!)
@@ -166,7 +164,6 @@ As far as TLS is concerned, you'll therefore set up your `mosquitto.conf` as fol
 
 ```
 listener 8883
-tls_version tlsv1
 cafile ca-bundle.crt
 certfile server.crt
 keyfile server.key
