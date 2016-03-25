@@ -9,8 +9,8 @@ We developed a new feature we call a _card_ which you can use when in _Private m
 ```json
 {
   "_type": "card",
-  "name": "Jane Jolie"
-  "face": "iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==",
+  "name": "Jane Jolie",
+  "face": "iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg=="
 }
 ```
 
