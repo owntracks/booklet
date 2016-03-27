@@ -97,3 +97,8 @@ defaults if not specified.
 ```
 
 You can use this to import individual waypoints or groups of pre-configured waypoints which are merged into the existing waypoint definitions on the device. Recall, however, that the `tst` element is like a _key_ which uniquely identifies each waypoint.
+
+## Deleting waypoints
+
+On both iOS and Android, you delete a waypoint by swiping it away in the user-interface.
+
