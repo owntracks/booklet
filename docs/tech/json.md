@@ -252,6 +252,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     "remoteConfiguration" : false,
     "usepolicy" : false,
     "policymode" : 0,
+    "beaconMode" : 0,
     "allowinvalidcerts" : false,
     "validatedomainname" : false,
     "validatecertificatechain" : false,
@@ -321,6 +322,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `servercer`					iOS only, blank separated list of certificate file names in DER format, or empty
 * `clientpkcs`					iOS only, name of the client pkcs12 file,or empty 
 * `passphrase`					iOS only, passphrase for client pkcs12 file 
+* `beaconMode`					Android only. `0` = normal Bluetooth mode that enables scanning when regions with UUID are defined, `1` = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android < 6.x, `2` = hard disable any Bluetooth functions even if regions with UUID are defined
 
 #### Notes
 
