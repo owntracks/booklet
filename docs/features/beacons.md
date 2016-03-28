@@ -1,7 +1,7 @@
 ## iBeacons
 
 If you want to monitor an iBeacon region rather than a circular region set the
-radius to zero (`0`) or a negative value, and add the beacon UUID, major, and minor numbers.
+radius to zero (`0`) or a negative value (iOS only), and add the beacon UUID, major, and minor numbers.
 
 ![Beacon configuration](images/b-waypoint-config-ibeacon.jpg)
 
@@ -34,7 +34,7 @@ The app recognizes the beacon typically within 10 seconds, which is a typical be
 
 If you use a `-` as the first character in your Waypoint description e.g. `-MyBeacon`, the app will ignore short disruptions of the connection to the beacon (hold down).
 
-Setting the radius to a negative value (e.g. `-1`), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the `share` option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.
+Setting the radius to a negative value (e.g. `-1`) on iOS, the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the `share` option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.
 
 ## Android
 
