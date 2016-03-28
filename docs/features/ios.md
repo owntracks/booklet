@@ -54,7 +54,6 @@ For all manually published locations, a description, a region radius and a share
 Setting the description of a location helps you to remember places.
 
 If a description is entered and the share flag set, the location is published to the MQTT broker as a `waypoint` once.
-Waypoints shared by other users are displayed on the map and are visible in the Friends/Locations... table.
 
 If the description is non-empty and a radius > 0 (meters) is set, the app starts monitoring the circular region around the coordinate. A region may be 'waypoint'.
 The regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns red-ish.
@@ -71,16 +70,7 @@ Use cases:
 * Use iBeacons to accurately report enter/leave events for your home
 * Use iBeacons to publish enter/leave events for individual rooms/floors in your home
 
-### Waypoints
-
-All manually published locations can be edited (by tapping on the `(I)` to add
-a description. If the _Share_ flag is on, this waypoint is published to the
-MQTT broker along with its location information. Setting a
-description helps you remember particular points of interest.
-
-If a description is entered and the share flag set, the location is published
-to the MQTT broker as a waypoint once. Waypoints shared by other users are
-displayed on the map and are visible in the _Friends/Locations_ table.
+See also [Waypoints](waypoints.md).
 
 ### Region monitoring (a.k.a. Geo Fences)
 

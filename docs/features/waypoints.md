@@ -8,7 +8,7 @@ This base topic is used for publishes of type `location` (see [JSON](../tech/jso
 All messages published to this base topic are retained if you have configured
 the app to retain them.
 
-Additionally, if you've configured a geo-fence, a transition event will be published upon
+Additionally, if you've configured a waypoint or geo-fence, a transition event will be published upon
 entering or leaving a waypoint:
 
 * `rad`ius (if its value is greater than 0)
