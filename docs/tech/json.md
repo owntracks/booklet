@@ -13,7 +13,7 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 | `steps`                                   |   Y    |   N     |
 | `configuration`                           |   Y    |   Y     |
 | `card`                                    |   Y    |   Y     |
-| `waypoints`                               |   Y    |         |
+| `waypoints`                               |   Y    |   Y     |
 | `encrypted`                               |   Y    |   Y     |
 
 
@@ -85,7 +85,7 @@ This location object describes the location of the device that published it. **H
     * "u" manual publish requested by the user
     * "t" timer based publish in move move
     * "a" or missing `t` indicates automatic location update
-* `tid` is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
+* `tid` is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
 * `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
 * `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer). iOS adds this element only if it >= 0.
 * `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
@@ -273,19 +273,18 @@ The device configuration can be imported and exported as JSON. The exported conf
 ```
 
 * `mode`					0 == _Private_ mode, 2 == _Public_ mode, 3 == _HTTP_ mode
-* `locked`					if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via `.otrc` import.
+* `locked`					iOS only, if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via `.otrc` import.
 * `subTopic`                                    is what the apps subscribe to
 * `pubTopicBase`                                is the prefix under which the apps will publish
 * `username`
 * `password`
 * `deviceId`
-* `tid`						 is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
+* `tid`						 is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
 * `willTopic`
 * `subQos`
 * `pubQos`
 * `willQos`
 * `pubRetain`
-* `tlsCrtPath`					not in iOS
 * `cleanSession`
 * `willRetain`
 * `locatorDisplacement`				in meters
@@ -296,20 +295,15 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `ranging`					iOS only, set in UI
 * `positions`					iOS only, number of positions to keep and display
 * `autostartOnBoot`				Android only
-* `pubIncludeBattery`				Android only, in iOS alway on
 * `sub`						Android only, subscription enabled for contacts, in iOS always subscribed
 * `pub`						Android only, auto publish, in iOS controlled by `monitoring`
 * `updateAddressBook`
 * `notification`				Android only, show notifications
 * `notificationLocation`			Android only, show last reported location in notification, off in iOS
 * `notificationGeocoder`			Android only, resolve location in notification to address, in iOS only resolved when in show details
-* `notificationTickerOnPublish`			Android only, show a ticker on successful publishes, always off in iOS", 
-* `notificationTickerOnGeofenceTransition`	Android only, show a ticker when the devices enters or leaves a geofence, always on in iOS", 
-* `remoteCommandReportLocation`			Android only, respond to reportLocation remote command
-* `remoteCommandDump`				Android only, respond to dump remote command
-* `cmd`						iOS only, respond to remote commands
+* `cmd`						respond to remote commands
 * `allowRemoteLocation`				iOS only, respond to remote location request even if monitoring mode is set to manual
-* `extendedData`				iOS only, add altitude, vertical accuracy, velocity and course over ground to published data
+* `extendedData`				iOS, add altitude, vertical accuracy, velocity and course over ground to published data. Android, include battery in location publishes
 * `remoteConfiguration`				Android only, respond to remote configuration messages
 * `usepolicy`					iOS only, use user defined security policy
 * `allowinvalidcerts`				iOS only, allow self signed certificates in user defined security policy
@@ -323,6 +317,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `clientpkcs`					iOS only, name of the client pkcs12 file,or empty 
 * `passphrase`					iOS only, passphrase for client pkcs12 file 
 * `beaconMode`					Android only. `0` = normal Bluetooth mode that enables scanning when regions with UUID are defined, `1` = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android < 6.x, `2` = hard disable any Bluetooth functions even if regions with UUID are defined
+* `ws`						Android only, connect using WebSocket protocol  
+
 
 #### Notes
 
@@ -411,7 +407,6 @@ The `name` element contains a name which is displayed by the apps to identify a 
 
 ## `_type=waypoints`
 
-(currently iOS only)
 The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with `.otrw` extension. The list of waypoints looks like this.
 
 ```json
