@@ -44,8 +44,7 @@ OwnTracks also collects potentially personally-identifying information like Inte
 Certain visitors to OwnTracks' websites and servers choose to interact with OwnTracks in
 ways that require OwnTracks to gather personally-identifying information. The
 amount and type of information that OwnTracks gathers depends on the nature of
-the interaction. For example, we ask visitors who sign up for an account at
-_Hosted_ to provide a username and email address. Those who engage in
+the interaction. Those who engage in
 transactions with OwnTracks
 are asked to provide additional information,
 including as necessary the personal and financial information required to
