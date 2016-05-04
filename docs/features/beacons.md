@@ -8,6 +8,7 @@ radius to zero (`0`) or a negative value (iOS only), and add the beacon UUID, ma
 Set the UUID of the beacon, and you can optionally specify the major and/or
 minor identifier numbers of the beacons as a decimal number ranging from 1 to 65535 if you desire finer control over which beacons OwnTracks will monitor.
 Setting major or minor number to zero (`0`) means no major or minor number is specified.
+Note that you should probably not use major or minor number `0`, because the meaning of 0 is "any".
 
 If the UUID is valid, iBeacon monitoring will start.
 
