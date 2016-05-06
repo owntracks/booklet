@@ -38,24 +38,12 @@ Depending on the device you're using, the procedure differs slightly.
 #### Android
 
 The app subscribes to a topic branch `owntracks/+/+` on the broker per default
-(but this can be configured in advanced preferences) to receive locations of
+to receive locations of
 other people connected to the the same MQTT broker that publish
-to the default topic of `mqttittude/$username/$devicename`.
+to the default topic of `owntracks/$username/$devicename`.
 
-When the app receives a message published by a different user, it looks for a
-contact with an instant messenger (`IM`) entry of type "`OwnTracks`" (case insensitive)
-whose entry value is equal to the topic of the received location
-publish. If a contact is found, the contact is shown with its profile picture
-and name instead of the topic in the list and on the map.
+It then reads [CARD](card.md)s to find friends' names and faces.
 
-Note that if you add an IM entry to a contact via, say, Google, you have to
-sync the contact to your phone (phone preferences/accounts/google/sync untick
-and tick contacts, wait a few seconds) and restart the app. In other words, the
-contact's data must be on your device.
-
-Add an instant-messaging (`IM`) entry to the contact you want to associate with
-a particular MQTT topic name. The tag of the `IM` should be "`OwnTracks`" (case
-independent), and the value is the topic name.
 
 #### iOS
 
