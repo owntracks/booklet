@@ -71,7 +71,7 @@ This location object describes the location of the device that published it. **H
 * `acc` is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it >= 0.
 * `alt` is the altitude measured in meters above sea level (_Optional_, integer). iOS adds this element only if it >= 0.
 * `batt` is the device's battery level in percent (integer)
-* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer). iOS adds this element only if it >= 0.. iOS adds this element only if it >= 0.
+* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer). iOS adds this element only if it is >= 0.
 * `desc` is the description of a [waypoint](../features/waypoints.md)
 * `event` is one of `"enter"` or `"leave"` and tells if the app is entering or leaving a geofence 
 * `lat` is latitude as decimal, represented as a floating point number
@@ -130,7 +130,7 @@ The OwnTracks-edition of the [Choral Greenwich](http://www.choral.it/greenwich&m
   - `T` (time) for location published because of time passed (`maxInterval`); device is stationary
   - `k` When transitioning from _move_ to _stationary_ an additional publish is sent marked with trigger `k` (park)
   - `v` When transitioning from _stationary_ to _move_ additional publish is sent marked with trigger `v` (mo-v-e)
-  - `l` When device looses GPS fix, an additional publish is sent to transmit the last known position
+  - `l` When device loses GPS fix, an additional publish is sent to transmit the last known position
   - `L` last position before gracefull shutdown
 
 (The device can be configured to produce or not produce fields marked as _optional_.)
@@ -138,7 +138,7 @@ The OwnTracks-edition of the [Choral Greenwich](http://www.choral.it/greenwich&m
 
 ## `_type=lwt`
 
-A _last will and testament_ is published automatically by the MQTT broker when it looses contact with the app. This typically looks like this:
+A _last will and testament_ is published automatically by the MQTT broker when it loses contact with the app. This typically looks like this:
 
 ```json
 {
