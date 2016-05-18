@@ -231,7 +231,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     "locatorAccuracyForeground" : 0,
     "messaging": true,
     "monitoring": 1,
-    "ranging": "",
+    "ranging": false,
     "positions": 50,
     "connectionAdvancedMode" : false,
     "autostartOnBoot" : false,
@@ -292,7 +292,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `locatorAccuracyBackground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
 * `locatorAccuracyForeground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
 * `monitoring`					iOS only, set in UI. The four modes are: Quiet (-1), Manual (0), Significant (1), and Move (2)
-* `ranging`					iOS only, set in UI
+* `ranging`					iOS only, set to true or false
 * `positions`					iOS only, number of positions to keep and display
 * `autostartOnBoot`				Android only
 * `sub`						Android only, subscription enabled for contacts, in iOS always subscribed
