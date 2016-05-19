@@ -206,7 +206,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     "locked": false,
     "deviceId": "phone",
     "clientId": "jane-phone",
-    "trackerId": "xx",
+    "tid": "xx",
     "subTopic": "owntracks/#",
     "pubTopicBase": "owntracks/jane/phone",
     "host": "broker.my.net",
