@@ -152,7 +152,7 @@ Better, huh? Well, at least parts of it are now readable. Hope you liked this.
 
 The following sections are not an endorsement of a particular Certification Authority, but rather are a few tips on getting you set up with [Mosquitto].
 
-You can also create your own self-signed certificate. We provide the [generate-CA.sh](https://github.com/binarybucks/mqttitude/tree/master/tools/TLS) utility for doing this easily.
+You can also create your own self-signed certificate. We provide the [generate-CA.sh](https://github.com/owntracks/tools/tree/master/TLS) utility for doing this easily.
 
 #### startssl.com
 
