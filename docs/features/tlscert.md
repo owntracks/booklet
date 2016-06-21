@@ -49,8 +49,8 @@ You also send the CA certificate to the device and install it there, as discusse
 
 ### Android
 
-Save the file
-configure settings
+* Save the file to the file system
+* Configure OwnTracks settings for the location of the PKCS#12 file and specify its passphrase.
 
 
 ### iOS
@@ -63,7 +63,7 @@ We recommend you proceed as follows:
 4. Leave _Use Custom Security Policy_ disabled.
 5. Verify the connection to your broker.
 
-If need be, you can adjust a great number of parameters regarding how TLS connections will be verified: there are a number of settings available to fine-tune TLS connections between the app and the broker. The button _Use Custom Security Policy_ can be enabled to do so.
+If need be, you can adjust a great number of parameters regarding how TLS connections will be verified: there are a number of settings available to fine-tune TLS connections between the app and the broker. The button _Use Custom Security Policy_ can be enabled to do so. This switch allows you to control your TLS settings more granularly. If not switched on, it uses the default iOS settings and uses the iOS keychain for certificate validation only.
 
 * Mode
     - None; do not use pinned certificates to validate servers
@@ -74,6 +74,8 @@ If need be, you can adjust a great number of parameters regarding how TLS connec
 * Validate Certificate Chain; if enabled, the entire TLS certificate chain is validated and not just the leaf (host) certificate if disabled.
 * Allow untrusted Certificates should be disabled if possible. If the app doesn't have the CA certificate in its keychain, you'll have to allow untrusted certificates.
 * Validate Domain Name; whether or not to validate the domain name in the certificate's `CN` field.
+
+Client certificates are independent of the custom security policy settings.
 
 If you wish to use certificate pinning, you must provide a DER-encoded file with an `.otre` extension to the device containing the pinned certificate.
 
