@@ -31,6 +31,7 @@ pages:
     - 'Waypoints': 'features/waypoints.md'
     - 'Beacons': 'features/beacons.md'
     - 'Pedometer': 'features/pedometer.md'
+    - 'Featured': 'features/featured.md'
     - 'Settings': 'features/settings.md'
     - 'Comparison': 'features/comparison.md'
     - 'Android': 'features/android.md'
