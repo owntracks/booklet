@@ -1,6 +1,6 @@
 ## Recorder
 
-The [OwnTracks Recorder][1] is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require external an external database.
+The [OwnTracks Recorder][1] is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require an external database.
 
 ### Docker
 
