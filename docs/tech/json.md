@@ -62,7 +62,7 @@ This location object describes the location of the device that published it. **H
     "t"     : "x",
     "tid"   : "YY",
     "tst"   : 1376715317,      
-    "vacc"  : 10,
+    "vac"   : 10,
     "vel"   : 54,
     "p"     : nnn
 }
@@ -87,7 +87,7 @@ This location object describes the location of the device that published it. **H
     * "a" or missing `t` indicates automatic location update
 * `tid` is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
 * `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
-* `vacc` is the vertical accuracy of the reported altitude in meters (_Optional_, integer). iOS adds this element only if it >= 0.
+* `vac` is the vertical accuracy of the reported altitude in meters (_Optional_, integer). iOS adds this element only if it >= 0.
 * `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
 * `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
 
