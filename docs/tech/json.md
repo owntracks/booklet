@@ -272,7 +272,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 }
 ```
 
-* `mode`					0 == _Private_ mode, 2 == _Public_ mode, 3 == _HTTP_ mode
+* `mode`					0 == _Private_ mode, 2 == _Public_ mode, 3 == _HTTP_ mode, 4 == _Watson-Quickstart_ mode, 5 == _Watson-Registered_ mode
 * `locked`					iOS only, if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via `.otrc` import.
 * `subTopic`                                    is what the apps subscribe to
 * `pubTopicBase`                                is the prefix under which the apps will publish
@@ -280,6 +280,12 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `password`
 * `deviceId`
 * `tid`						 is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
+* `url`						url to POST to in _HTTP_ mode
+* `quickstartId`				device id in _Watson-Quickstart_ mode
+* `watsonOrganization`				organization in _Watson-Registered_ mode
+* `watsonDeviceType`				device type  in _Watson-Registered_ mode
+* `watsonDeviceId`				device id in _Watson-Registered_ mode
+* `watsonAuthToken`				auth token in _Watson-Registered_ mode
 * `willTopic`
 * `subQos`
 * `pubQos`
@@ -295,7 +301,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `ranging`					iOS only, set to true or false
 * `positions`					iOS only, number of positions to keep and display
 * `autostartOnBoot`				Android only
-* `sub`						Android only, subscription enabled for contacts, in iOS always subscribed
+* `sub`						subscription enabled for contacts, etc.
 * `pub`						Android only, auto publish, in iOS controlled by `monitoring`
 * `updateAddressBook`
 * `notification`				Android only, show notifications
@@ -318,6 +324,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `passphrase`					iOS only, passphrase for client pkcs12 file 
 * `beaconMode`					Android only. `0` = normal Bluetooth mode that enables scanning when regions with UUID are defined, `1` = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android < 6.x, `2` = hard disable any Bluetooth functions even if regions with UUID are defined
 * `ws`						Android only, connect using WebSocket protocol  
+* `ignoreStaleLocations`			Number of days after which location updates are assumed stale, zero means no stall checking
 
 
 #### Notes
