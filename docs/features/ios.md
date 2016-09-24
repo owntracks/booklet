@@ -131,5 +131,5 @@ new location updates are generated.
 There is a "today Widget" you can enable in OwnTracks for iOS which will show friends and their distances from you.  All friends which have a name are shown on the Today Widget or on the Apple Watch.
 
 * A name is assigned either by linking a friend to an address book entry (remember we have two different ways to do that: One modifies the address book, the other one just keeps a pointer to the address book record in OwnTracks).
-* or by sending a card.
+* or by sending a [card](card.md).
 
