@@ -324,7 +324,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `passphrase`					iOS only, passphrase for client pkcs12 file 
 * `beaconMode`					Android only. `0` = normal Bluetooth mode that enables scanning when regions with UUID are defined, `1` = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android < 6.x, `2` = hard disable any Bluetooth functions even if regions with UUID are defined
 * `ws`						Android only, connect using WebSocket protocol  
-* `ignoreStaleLocations`			Number of days after which location updates are assumed stale, zero means no stall checking
+* `ignoreStaleLocations`			Number of days after which location updates are assumed stale. zero means no stall checking. Defaults to zero.
+* `ignoreInaccurateLocations`			Maximum meters of location inaccuracy. Worse accuracy suppresses publish of location. Zero means no inaccuracy checking. Defaults to zero.
 
 
 #### Notes
