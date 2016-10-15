@@ -365,7 +365,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"reportSteps"}
 {"_type":"cmd","action":"dump"}
 {"_type":"cmd","action":"waypoints"}
-{"_type":"cmd","action":"setWaypoints","waypoints":[...]}
+{"_type":"cmd","action":"setWaypoints","payload":{"_type":"waypoints","waypoints":[...]}
+{"_type":"cmd","action":"setConfiguration","payload":{"_type":"configuration",...}
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
 {"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
 {"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
@@ -378,6 +379,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `reportLocation` triggers the publish of the current location
     * `dump` triggers the publish of a configuration message
     * `setWaypoints` configures new waypoints. (iOS only; [details](../features/remoteconfig.md) )
+    * `setConfiguration` configures the app. [details](../features/remoteconfig.md) 
     * `waypoints` triggers a publish of all waypoints configured on the device. These are published in `.otrw` format to the `../waypoints` topic.
     * `action` inserts an additional 'Featured Content' tab in the UI.
 	- If `"url"` is specified, the URL is opened in a full screen web view within the app. 
