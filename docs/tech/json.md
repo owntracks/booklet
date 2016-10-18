@@ -45,7 +45,7 @@ In HTTP mode the apps POST their data to a single endpoint you configure. That e
 
 ## `_type=location`
 
-This location object describes the location of the device that published it. **Heads up: as from Android version 0.5.11 and from iOS version 8.0 numeric types are real numeric (`float`, `int`, boolean `true`/`false`) and no longer strings.**
+This location object describes the location of the device that published it. 
 
 ```json
 {
