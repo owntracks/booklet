@@ -91,7 +91,7 @@ This location object describes the location of the device that published it.
 * `vac` is the vertical accuracy of the reported altitude in meters (_Optional_, integer). iOS adds this element only if it >= 0.
 * `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
 * `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
-* `conn` inserted when phone is connected to a network when the message is created (only with _Extended data_ enabled). If present, it will have a single character: `w` for WiFi connection, `o` for Offline (no carrier when location was obtained), and `m` for mobile data.
+* `conn` inserted when phone is connected to a network when the message is created (only with _Extended data_ enabled). If present, it will have a single character: `w` for WiFi connection, `o` for Offline (no carrier when location was obtained), and `m` for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. 
 
 (The iOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
