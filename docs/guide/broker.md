@@ -101,6 +101,7 @@ settings:
 
 Check for a couple of broker settings in ``/etc/mosquitto/mosquitto.conf``.
 Your mileage may vary, but you might want to set the following parameters:
+
 ```
 port 1883
 persistence_file mosquitto.db
