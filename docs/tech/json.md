@@ -95,7 +95,8 @@ This location object describes the location of the device that published it.
 
 (The iOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
-Notes:
+#### Notes
+
 * A publish with of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
 
 
