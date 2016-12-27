@@ -4,7 +4,7 @@ Using our OwnTracks app is cool, but what do you do with the location data the a
 
 You know that OwnTracks _publishes_ location information to an MQTT _broker_. The data it publishes is transferred in a particular format called [JSON](http://json.org), and [this is what it looks like](../tech/json.md).
 
-When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilitze for doing that.
+When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.
 
 ## mosquitto_sub
 
@@ -94,7 +94,7 @@ If you feel really brave, you can [write your own program](../tech/program.md) w
 Here are some projects we know of which use and/or integrate OwnTracks and/or
 which are useful when using MQTT in general or OwnTracks in particular.
 
-* [MQTT Inspector for iOS](http://jpmens.net/2013/11/19/mqtt-inspector-for-ios/), written by Christoph Krey, who also did our OwnTracks for iOS app. This is an indispensible utility for all things MQTT.
+* [MQTT Inspector for iOS](http://jpmens.net/2013/11/19/mqtt-inspector-for-ios/), written by Christoph Krey, who also did our OwnTracks for iOS app. This is an indispensable utility for all things MQTT.
 * [the thing system](http://thethingsystem.com) ( [code](https://github.com/TheThingSystem/steward) )
 * A Clojure webapp that aims to manage information gathered from OwnTracks; [clojure-mqttitude-backend](https://github.com/razorinc/clojure-mqttitude-backend)
 * An [OwnTracks flow](http://flows.nodered.org/flow/ab31cd939f2e73503fb0) by [Giovanni @juzam Angoli](https://twitter.com/juzam) for Node-RED which publishes messages to [pushover.net](https://pushover.net) upon entering or leaving a geo-fence.
