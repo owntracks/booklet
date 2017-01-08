@@ -23,7 +23,7 @@ This is a list of question we really get asked a lot and some answers to these q
 8. I have a question
 
 	We love questions. Well, sometimes. :-)
-	If you want to ask us a question or desire feedback from other OwnTracks users, visit us at the [OwnTracks Community](https://community.owntracks.org).
+	If you want to ask us a question or desire feedback from other OwnTracks users, visit us at the [OwnTracks meta tracker](https://github.com/owntracks/talk).
 
 9. How can I report an issue?
 	If you think you've found a bug, please report it on our respective [android] or [ios] issue tracker on Github. 
