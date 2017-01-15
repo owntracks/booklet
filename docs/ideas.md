@@ -10,24 +10,7 @@ Over the course of time, we've had people propose a number of ideas for OwnTrack
 
 ## Short term
 
-* Stability
-* <del>Reliability [#38](https://github.com/binarybucks/mqttitude/issues/38)</del>
-* <del>Battery consumption [#68](https://github.com/binarybucks/mqttitude/issues/68)</del>
-* <del>Ensure UI has `Credits` with URL to Web site [#41](https://github.com/binarybucks/mqttitude/issues/41)</del>
-* Disable all location services (unload app) [#74](https://github.com/binarybucks/mqttitude/issues/74)
-* <del>LWT [#55](https://github.com/binarybucks/mqttitude/issues/55)</del>
-
 ## Mid-term
-
-* <del>Add "traffic light" [#73](https://github.com/binarybucks/mqttitude/issues/73)</del>
-* <del>Add live "info" pane to Apps [#47](https://github.com/binarybucks/mqttitude/issues/47)</del>
-* Remote-control [#71](https://github.com/binarybucks/mqttitude/issues/71)
-* <del>Annotations.</del>
-  * <del>Click on pin</del>
-  * <del>Enter text string `"Restaurante La Comida; wonderful gambas al ajillo"`</del>
-  * <del>PUBlish with full `_location` and additional `"note" : "...."` (see _waypoints_ below)</del>
-* 2013-11-22: @mrose has some interesting things to say about Messages on iOS [#199](https://github.com/binarybucks/mqttitude/issues/199). In particular, screen real-estate should be better organized.
-
 
 ## Long-term
 
@@ -36,15 +19,13 @@ Over the course of time, we've had people propose a number of ideas for OwnTrack
   * <del>Needs 'standardized' topic names (maybe with Twitter id in topic?)</del>
 * Add transportation info (e.g. trains) as friends
 * Queue updates on device (with `tst` etc) to be PUBlished upon available connection
-* Corner-pegging [#94](https://github.com/binarybucks/mqttitude/issues/94)
 * NFC support, [suggested by mrizvic](https://community.owntracks.org/topic/38/nfc-support)
 
 ## Very-long term, a.k.a. "Neat ideas"
 
 * Publish incoming phone call (caller-id), [submitted by @bordingnon](http://twitter.com/bordignon/status/372627079059079168). JPM: Also SMS? Have to force TLS then, at least.
 * Requested in #86: "app should register a subscriprion (configurable topic) a) if someone sends a text message it should be displayed as popup window b) if someone sends an HTML message it should be opened in a embedded browser"
-* Generalized messaging app (see [#205](https://github.com/binarybucks/mqttitude/issues/205) )
-* Find my friends [#290](https://github.com/binarybucks/mqttitude/blob/master/docs/FUTURE.md)
+* Generalized messaging app 
 * Indoors edition with iBeacons as requested in [#296](https://github.com/binarybucks/mqttitude/issues/296)
 
 #### Waypoints
