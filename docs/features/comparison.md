@@ -6,10 +6,9 @@ of supported features is concernened. This table summarizes the current status.
 | Feature                                   |  iOS   | Android |
 | ----------------------------------------- | :----: | :-----: |
 | MQTT mode                                 |    Y   |    Y      |
-| HTTP mode                                 |   Y    |          |
+| HTTP mode                                 |   Y    |    Y      |
 | [Location reporting](location.md)         |   Y    |   Y     |
 | [TLS](tls.md) with system certificate        |   Y    |   Y     |
-| TLS with cert in filesystem               |   -    |   Y     |
 | Plain connections (no TLS)                |   Y    |   Y     |
 | Username/password authentication          |   Y    |   Y     |
 | Reconnection to broker                    |   Y    |   Y     |
@@ -19,15 +18,14 @@ of supported features is concernened. This table summarizes the current status.
 | Reverse geocoding on map                  |   Y    |   Y     |
 | Accuracy of last-known loc                |   Y    |   Y     |
 | Button for manual publish                 |   Y    |   Y     |
-| Button for sharing location               |        |   Y     |
 | Configurable settings                     |   Y    |   Y     |
 | Move mode                                 |   Y    |         |
 | Friends list                              |   Y    |   Y     |
 | Geofencing                                |   Y    |   Y     |
 | [Waypoints](waypoints.md)                 |   Y    |   Y     |
 | Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
-| [Remote configuration](remoteconfig.md)   |   Y    |         |
-| [iBeacons](beacons.md)                    |   Y    |         |
+| [Remote configuration](remoteconfig.md)   |   Y    |   Y      |
+| [iBeacons](beacons.md)                    |   Y    |   Y      |
 | [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
 | [Payload encryption](encrypt.md)          |   Y    |    Y    |
 
@@ -39,9 +37,7 @@ of supported features is concernened. This table summarizes the current status.
   * No TLS (i.e. plain)
   * TLS using the Android built-in certificate authorities (either the shipped
     ones, or user provided ones that require a lock screen password to be set)
-  * TLS with user-provided certificates via an absolute path (e.g. to Downloads).
-    This doesn't require a password to be set on the device, but is a bit fiddly
-    to set up.
+  * TLS with side-loaded user-provided certificates 
   * Username/password authentication to broker.
 
 * Automatic publishes at configurable intervals (disabled or > 1 minute)
