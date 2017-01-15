@@ -35,29 +35,22 @@ of supported features is concernened. This table summarizes the current status.
 * The broker connection works well with:
 
   * No TLS (i.e. plain)
-  * TLS using the Android built-in certificate authorities (either the shipped
-    ones, or user provided ones that require a lock screen password to be set)
-  * TLS with side-loaded user-provided certificates 
+  * TLS with Android system certificate authorities
+  * TLS with side-loaded user-provided self signed certificate authorities 
+  * TLS with client certificates
   * Username/password authentication to broker.
 
-* Automatic publishes at configurable intervals (disabled or > 1 minute)
+* Automatic publishes at configurable maximum intervals under the condition that the devices moved the specified number of meters. Publishes may occur earlier if a new location is avaiable. 
 
 * Display of a marker at which the app believes the user to be at
   (lastKnownLocation)
 
 * Reverse geo coding that displays the address of lastKnownLocation
 
-* Accuracy of lastKnownLocation (if the accuracy is > 250m, the marker
-  changes to a circle centered around lastKnownLocation with radius == accuracy)
+* Accuracy of lastKnownLocation 
 
 * Button to manually publish lastKnownLocation
 
-* Button to share a Google Maps link that places a marker at lastKnownLocation
-
-* For location the Google Fused Location Provider at Balanced Battery
-  Settings is used. This one can re use GPS or other Position fixes that are
-  requested by other apps in order to save battery and select the most
-  appropriate position source.
 
 
 ### iOS
