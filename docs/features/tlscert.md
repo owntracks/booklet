@@ -49,8 +49,10 @@ You also send the CA certificate to the device and install it there, as discusse
 
 ### Android
 
-* Save the file to the file system
-* Configure OwnTracks settings for the location of the PKCS#12 file and specify its passphrase.
+* Save the certificate to your device in an easy accessible location 
+* Import the certificate into the app (Preferences, Connection, Security, Client certificate, Select) by opening it with the file choser. 
+* The file will be copied to the secure storage location of the app. If the import is successfull, the original file can be removed from the device. 
+* Specify the certificate password (certificates without password are not supported). 
 
 
 ### iOS
