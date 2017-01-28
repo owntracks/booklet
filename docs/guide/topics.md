@@ -44,7 +44,7 @@ A typical topic name for a device would therefore be `peter/iPhone`. Other
 device naming schemes are possible and transparent to OwnTracks (e.g. using
 just one level `peters-iPhone` or multiple levels `aFamily/father/iPhone`), but
 under any one OwnTracks name root the number of levels used for device names
-have to the same.
+have to be the same.
 
 ## Base topic name
 
