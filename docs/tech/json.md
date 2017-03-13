@@ -70,7 +70,7 @@ This location object describes the location of the device that published it.
 ```
 
 * `acc` is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it >= 0.
-* `alt` is the altitude measured in meters above sea level (_Optional_, integer). iOS adds this element only if it >= 0.
+* `alt` is the altitude measured in meters above sea level (_Optional_, integer). iOS adds this element only if it >= 0. iOS only.
 * `batt` is the device's battery level in percent (integer)
 * `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer). iOS adds this element only if it is >= 0.
 * `desc` is the description of a [waypoint](../features/waypoints.md)
@@ -92,6 +92,7 @@ This location object describes the location of the device that published it.
 * `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
 * `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
 * `conn` inserted when phone is connected to a network when the message is created (only with _Extended data_ enabled). If present, it will have a single character: `w` for WiFi connection, `o` for Offline (no carrier when location was obtained), and `m` for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. 
+* `doze` indicates if the message was queued (and thus delayed) when the device was on power-saving mode. (Android only) 
 
 (The iOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
 
