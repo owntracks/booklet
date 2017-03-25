@@ -12,7 +12,7 @@ Authentication to the endpoint is performed with HTTP Basic authentication and, 
 
 All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON](json.md) payload formats. Support for Friends is available if your HTTP endpoint can produce appropriate data which is consumed by the app whenever it POSTs a location. This differs greatly from MQTT mode wherein the app subscribes to topics and is informed of data on those topics whenever it's available; in HTTP mode the apps do not periodically poll your HTTP endpoint; rather it is contacted only when the app is ready to publish its location or when you manually trigger a publish. (Support for friends and optionally their cards is implemented in the Recorder.)
 
-If the HTTP endpoint is reachable (i.e. it responds with _any_ status code -- even 5xx), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.
+If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) the payload is considered POSTed, whereby on iOS only codes `2xx` are worthy of success (other codes indicate failure and the payload is queued). In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.
 
 The [encryption](../features/encrypt.md) feature is supported, and you can use it HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.
 
