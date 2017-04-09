@@ -1,20 +1,19 @@
-## JSON
-
+## Types 
 OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. The different payload types are identified by a `_type` element. Depending on the app platform, different payload types are supported. 
 
 | `_type`                                   |  iOS   | Android |
 | ----------------------------------------- | :----: | :-----: |
+| `beacon`                                  |   Y    |   N     |
+| `card`                                    |   Y    |   Y     |
+| `cmd`                                     |   Y    |   Y     |
+| `configuration`                           |   Y    |   Y     |
+| `encrypted`                               |   Y    |   Y     |
 | `location`                                |   Y    |   Y     |
 | `lwt`                                     |   Y    |   Y     |
-| `waypoint`                                |   Y    |   Y     |
-| `transition`                              |   Y    |   Y     |
-| `beacon`                                  |   Y    |   N     |
-| `cmd`                                     |   Y    |   Y     |
 | `steps`                                   |   Y    |   N     |
-| `configuration`                           |   Y    |   Y     |
-| `card`                                    |   Y    |   Y     |
+| `transition`                              |   Y    |   Y     |
+| `waypoint`                                |   Y    |   Y     |
 | `waypoints`                               |   Y    |   Y     |
-| `encrypted`                               |   Y    |   Y     |
 
 
 ## Topics
@@ -24,8 +23,6 @@ In MQTT mode the apps publish to:
 - `owntracks/user/device` with `_type=location` for location updates, and with `_type=lwt`
 - `owntracks/user/device/cmd` with `_type=cmd`      for remote commands
 - `owntracks/user/device/event` with `_type=transition` for enter/leave events
-
-
 
 Apps subscribe to:
 
@@ -41,7 +38,7 @@ In addition, the iOS app publishes to:
 - `owntracks/user/device/beacon` for beacon ranging
 - `owntracks/user/device/dump` for config dumps
 
-In HTTP mode the apps POST their data to a single endpoint you configure. That endpoint needs to distinguish which type of payload it is receiving.
+In HTTP mode the apps POST their data to a single endpoint you configure. 
 
 ## `_type=location`
 
@@ -68,13 +65,21 @@ This location object describes the location of the device that published it.
     "conn" : "w"
 }
 ```
+| Attribute                             |Description                          | Type/Unit | Required |  iOS | Android |
+| --------------------------------------|:----------------------------------- | :-------: | :------: | :--: | :-----: |
+| `acc`                              | Accuracy of the reported location      | Integer/Meters| N |  Y    |   N     |
+| `alt`                              | Altitude above sea level      | Integer/Meters| N |  Y    |   N     |
+| `batt`                              | Device's battery when reporting the location      | Integer/Percent| N |  Y    |   Y|
+| `cog`                              | Course over ground      | Integer/Degrees| N |  Y    |   N|
+| `lat`                              | Latitude      | Float/Degrees| Y |  Y    |   Y|
+| `lon`                              | Latitude      | Float/Degrees| Y |  Y    |   Y|
+| `t`                              | Trigger for the location report      | String/None| N |  Y    |   Y|
+
 
 * `acc` is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it >= 0.
 * `alt` is the altitude measured in meters above sea level (_Optional_, integer). iOS adds this element only if it >= 0. iOS only.
 * `batt` is the device's battery level in percent (integer)
 * `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer). iOS adds this element only if it is >= 0.
-* `desc` is the description of a [waypoint](../features/waypoints.md)
-* `event` is one of `"enter"` or `"leave"` and tells if the app is entering or leaving a geofence 
 * `lat` is latitude as decimal, represented as a floating point number
 * `lon` is longitude as decimal, represented as a floating point number
 * `rad` is the radius in meters around around the geo-fence when entering/leaving a geofence (integer)
