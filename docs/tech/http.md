@@ -12,7 +12,7 @@ Authentication to the endpoint is performed with HTTP Basic authentication and, 
 
 All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON](json.md) payload formats. Support for Friends is available if your HTTP endpoint can produce appropriate data which is consumed by the app whenever it POSTs a location. This differs greatly from MQTT mode wherein the app subscribes to topics and is informed of data on those topics whenever it's available; in HTTP mode the apps do not periodically poll your HTTP endpoint; rather it is contacted only when the app is ready to publish its location or when you manually trigger a publish. (Support for friends and optionally their cards is implemented in the Recorder.)
 
-If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) the payload is considered POSTed, whereby on iOS only codes `2xx` are worthy of success (other codes indicate failure and the payload is queued). In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.
+If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) and a successfull return code (`2xx`) is returned  the payload is considered POSTed. In the event that the endpoint is unreachable, the payload will be queued and posted at a later time.
 
 The [encryption](../features/encrypt.md) feature is supported, and you can use it HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.
 
@@ -20,10 +20,10 @@ If the HTTP endpoint returns a status code 200 it will typically return an empty
 
 | `_type`      |  iOS  | Android    | Usage
 | :----------- | :---  | :--- | :--------------
-| `location`   | Y     | -    | Can return friend location objects.
-| `cmd`        | Y     | -    | with `action` set to `dump`, `reportLocation`, `reportSteps`, `action`, and `setWaypoints`
-| `card`       | Y     | -    | Can return [card](../features/card.md) objects for self and friends
-| `transition` | Y     | -    | Obtain friends' transition events.
+| `location`   | Y     | Y    | Can return friend location objects.
+| `cmd`        | Y     | Y    | with `action` set to `dump`, `reportLocation`, `reportSteps`, `action`, and `setWaypoints`
+| `card`       | Y     | Y    | Can return [card](../features/card.md) objects for self and friends
+| `transition` | Y     | Y    | Obtain friends' transition events.
 
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box, as long as it is built with HTTP support and a `--http-port` is configured.
 When using the Recorder, the URL you specify in the app's configuration *must* include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers respectively. You can also force _username_ using a proxy as described in the Recorder's documentation.
