@@ -21,22 +21,19 @@ OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. 
 In MQTT mode the apps publish to:
 
 - `owntracks/user/device` with `_type=location` for location updates, and with `_type=lwt`
-- `owntracks/user/device/cmd` with `_type=cmd`      for remote commands
+- `owntracks/user/device/cmd` with `_type=cmd` for remote commands
 - `owntracks/user/device/event` with `_type=transition` for enter/leave events
-
-Apps subscribe to:
-
-- `owntracks/user/device/cmd` if remote commands are enabled
-- `owntracks/+/+` for seeing other user's locations, depending on broker ACL
-- `owntracks/+/+/event` (singular) for transition messages (`enter`/`leave`)
-- `owntracks/+/+/waypoint`  (singular) for Waypoint definitions/modifications
-- `owntracks/+/+/info`  for obtaining [cards](../features/card.md).
-
-In addition, the iOS app publishes to:
-
 - `owntracks/user/device/step` to report step counter
 - `owntracks/user/device/beacon` for beacon ranging
 - `owntracks/user/device/dump` for config dumps
+
+In MQTT mode apps subscribe to:
+
+- `owntracks/user/device/cmd` if remote commands are enabled
+- `owntracks/+/+` for seeing other user's locations, depending on broker ACL
+- `owntracks/+/+/event` for transition messages (`enter`/`leave`)
+- `owntracks/+/+/waypoint` for Waypoint definitions/modifications
+- `owntracks/+/+/info` for obtaining [cards](../features/card.md).
 
 In HTTP mode the apps POST their data to a single endpoint you configure. 
 
