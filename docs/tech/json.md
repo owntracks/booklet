@@ -178,150 +178,114 @@ A transition message is sent, when entering or leaving a previously configured g
 * `acc` Accuracy of the geographical coordinates _(iOS,Android/float/meters/required)_  
 * `tid` Tracker ID of the waypoint _(iOS/string/none/optional)_  
 * `event` Event that triggered the transition (iOS,Android/string/required)
-  - `enter` The device entered the defined geographical region or BLE Beacon range (iOS, Android)
-  - `leave` The device left the defined geographical region or BLE Beacon range (iOS, Android)
-* `desc` Name of the waypoint _(iOS,Android,string/optional)_
-* `t` Trigger of the event 
-  - `c` Circular geographical region  (iOS, Android)
-  - `b` BLE Beacon (iOS, Android)
+  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS, Android)_
+  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS, Android)_
+* `desc` Name of the waypoint _(iOS,Android/string/optional)_
+* `t` Trigger of the event _(iOS,Android/string/optional)_
+  - `c` Circular geographical region  _(iOS, Android)_
+  - `b` BLE Beacon _(iOS, Android)_
 
 
 ## `_type=configuration`
-The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. 
+The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. If enabled, apps also accept remote configuration messages.  
 
 ```json
 {
     "_type": "configuration",
-    "mode": 0,
-    "locked": false,
-    "deviceId": "phone",
-    "clientId": "jane-phone",
-    "tid": "xx",
-    "subTopic": "owntracks/#",
-    "pubTopicBase": "owntracks/jane/phone",
-    "host": "broker.my.net",
-    "username": "jane",
-    "password": "secr3t",
-    "willTopic": "",
-    "subQos": 1,
-    "pubQos": 2,
-    "pubInterval" : 30,
-    "port": 8883,
-    "keepalive": 60,
-    "willQos": 1,
-    "pubRetain": true,
-    "tls": true,
-    "tlsCrtPath" : "/foo/bar",
-    "auth": true,
-    "cleanSession": false,
-    "willRetain": false,
-    "locatorDisplacement": 200,
-    "locatorInterval": 180,
-    "locatorAccuracyBackground" : 2,
-    "locatorAccuracyForeground" : 0,
-    "messaging": true,
-    "monitoring": 1,
-    "ranging": false,
-    "positions": 50,
-    "connectionAdvancedMode" : false,
-    "autostartOnBoot" : false,
-    "pubIncludeBattery" : false,
-    "sub" : false,
-    "pub" : false,
-    "updateAddressBook" : false,
-    "notification" : false,
-    "notificationLocation" : false,
-    "notificationGeocoder" : false,
-    "notificationTickerOnPublish" : false,
-    "notificationTickerOnGeofenceTransition" : false,
-    "remoteCommandReportLocation" : false,
-    "remoteCommandDump" : false,
-    "cmd" : false,
-    "allowRemoteLocation" : false,
-    "extendedData" : false,
-    "remoteConfiguration" : false,
-    "usepolicy" : false,
-    "policymode" : 0,
-    "beaconMode" : 0,
-    "allowinvalidcerts" : false,
-    "validatedomainname" : false,
-    "validatecertificatechain" : false,
-    "servercer" : "",
-    "clientpkcs" : "",
-    "passphrase" : "",
-    "waypoints" : [
-                    { "_type" : "waypoint",
-                      "tst": nnnnnnnnnn,
-                      "lat": nn.nnn,
-                      "lon": nn.nnn,
-                      "rad": nnn,
-                      "shared": true,
-                      "desc" : "blabla"
-                    } 
-                  ]
+    elements
+
 }
 ```
+* `allowRemoteLocation` Respond to reportLocation cmd message	_(iOS,Android/boolean)_
+* `allowinvalidcerts` Allow self signed certificates in user defined security policy _(iOS/boolean)_ 
+* `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_ 
+* `autostartOnBoot` Autostart the app on device boot	_(Android/boolean)_
+* `beaconLayout` AltBeacon [parser layout](https://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconParser.html) to understand different beacon advertisements other than the default iBeacons  _(Android/string)_
 
-* `mode`					0 == _Private_ mode, 2 == _Public_ mode, 3 == _HTTP_ mode, 4 == _Watson-Quickstart_ mode, 5 == _Watson-Registered_ mode
-* `locked`					iOS only, if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via `.otrc` import.
-* `subTopic`                                    is what the apps subscribe to
-* `pubTopicBase`                                is the prefix under which the apps will publish
-* `username`
-* `password`
-* `deviceId`
-* `tid`						 is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
-* `url`						url to POST to in _HTTP_ mode
-* `quickstartId`				device id in _Watson-Quickstart_ mode
-* `watsonOrganization`				organization in _Watson-Registered_ mode
-* `watsonDeviceType`				device type  in _Watson-Registered_ mode
-* `watsonDeviceId`				device id in _Watson-Registered_ mode
-* `watsonAuthToken`				auth token in _Watson-Registered_ mode
-* `willTopic`
-* `subQos`
-* `pubQos`
-* `willQos`
+* `beaconMode` Backend mode for BLE beacon scanning (Android/Integer)
+    - `0` Normal bluetooth scanning for regions with UUID 
+    - `1` Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android < 6.x
+    - `2` Hard disable any Bluetooth functions even if regions with UUID are defined
+* `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
+* `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
+* `cmd` Respond to cmd messages	_(iOS,Android/boolean)_
+* `deviceId` MQTT client ID  _(iOS,Android/string)_
+* `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
+* `host` MQTT endpoint host _(iOS,Android/string)_
+* `httpSchedulerConsiderStrategyDirect` Directly send messages in HTTP mode and bypass the default scheduler if a network connection exists _(Android/boolean)_
+* `ignoreInaccurateLocations` Location accuracy below which reports are supressed	_(iOS,Android/integer/days)_
+* `ignoreStaleLocations` Number of days after which location updates are assumed stale _(iOS,Android/integer/days)_	
+* `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
+* `locatorDisplacement` maximum distance between location source updates _(Android/integer/meters)_
+* `locatorAccuracyBackground` Location source power mode when the app is in the background _(Android/integer)_
+    - `0` High power likely based on GPS location
+    - `1` Balanced power based on multiple location sources 
+    - `2` Low power based on cell tower location
+    - `3` No power  based on locations requested by other apps 
+* `locatorAccuracyForeground` Location source power mode when the app is in the foreground _(Android/integer)_
+    - `0` High power likely based on GPS location
+    - `1` Balanced power based on multiple location sources 
+    - `2` Low power based on cell tower location
+    - `3` No power  based on locations requested by other apps 
+* `locatorInterval`	maximum interval between location source updates _(Android/integer/seconds)_
+* `locked` Locks settings screen on device for editing _(iOS/boolean)_
+* `mode`	Endpoint protocol mode _(iOS,Android/integer)_
+    - `0` Private  MQTT _(iOS, Android)_
+    - `2` Public  MQTT _(iOS, Android)_
+    - `0` Private  HTPP _(iOS, Android)_
+    - `4` Watson IOT Quickstart _(iOS)_
+    - `4` Watson IOT Registered _(iOS)_
+* `monitoring` Location reporting mode _(iOS,integer)_		
+    - `-1` Quiet
+    - `0` Manual
+    - `1` Significant 
+    - `2` Move 
+* `mqttProtocolLevel` MQTT broker protocol level _(iOS,Android/integer)_
+    - `3` MQTT 3
+    - `4` MQTT 3.1.1 
+
+* `notification` Show ongoing notification. Required to keep running in the background	_(Android/boolean)_	
+* `notificationGeocoder` Resolve last reported location in ongoing notification to an address  _(Android/boolean)_	
+* `notificationLocation`	Show last reported location in ongoing notification _(Android/boolean)_
+* `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
+* `password` Endpoint password _(iOS,Android/string)_
+* `policymode`	User defined securiy policy mode _(iOS/integer)_
+    - `0` Do not used pinned certificates to validate servers
+    - `1` Validate host certificates against public keys of pinned certificates
+    - `2` Validate host certificates against pinned certificates
+* `port` MQTT endpoint port _(iOS,Android/integer)_
+* `positions`	Number of locatoins to keep and display _(iOS/integer)_	
+* `pub` Automatic reporting	_(Android/boolean)_				
+* `pubTopicBase`  MQTT topic base to which the app publishes   _(iOS,Android/string)_	
 * `pubRetain`
-* `cleanSession`
+* `pubQos`
+* `ranging`	_(iOS/boolean)_
+* `remoteConfiguration` Allow remote configuration by sending a setConfiguration cmd message _(Android/boolean)_
+* `servercer` Blank separated list of certificate file names in DER format _(iOS/string)_
+* `sub` MQTT subscription _(Android/boolean)_
+* `subTopic` MQTT topic to which the app subscribes   _(iOS,Android/string)_
+* `subQos`
+* `tid` Two digit Tracker ID used to display short name and default face of a user _(iOS,Android/string)_
+* `tls` MQTT endpoint TLS connection _(Android/boolean)_
+* `tlsClientCrtPassword` Passphrase of the client pkcs12 file _(Android/string)_
+* `url`	HTTP endpoint URL	 to which messages are POSTed _(iOS,Android/string)_
+* `updateAddressBook` _(iOS/boolean)_
+* `usepolicy` Use user defined security policy _(iOS/boolean)_
+* `username` Endpoint username _(iOS,Android/string)_
+* `validatedomainname` Validate domain name during TLS handshake _(iOS/boolean)_
+* `validatecertificatechain` Validate the whole certificate chain or just the server certificate _(iOS/boolean)_
+* `watsonAuthToken` Auth token Watson IOT Registered mode _(iOS/string)_
+* `watsonDeviceType` Device type in Watson IOT Registered mode _(iOS/string)_
+* `watsonDeviceId`	Device ID in Watson IOT Registered mode _(iOS/string)_
+* `watsonOrganization` Organization in Watson IOT Registered mode _(iOS/string)_
 * `willRetain`
-* `locatorDisplacement`				in meters
-* `locatorInterval`				in seconds
-* `locatorAccuracyBackground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
-* `locatorAccuracyForeground`			0 == high power, 1 == balanced power, 2 == low power, 3 == no power
-* `monitoring`					iOS only, set in UI. The four modes are: Quiet (-1), Manual (0), Significant (1), and Move (2)
-* `ranging`					iOS only, set to true or false
-* `positions`					iOS only, number of positions to keep and display
-* `autostartOnBoot`				Android only
-* `sub`						subscription enabled for contacts, etc.
-* `pub`						Android only, auto publish, in iOS controlled by `monitoring`
-* `updateAddressBook`
-* `notification`				Android only, show notifications
-* `notificationLocation`			Android only, show last reported location in notification, off in iOS
-* `notificationGeocoder`			Android only, resolve location in notification to address, in iOS only resolved when in show details
-* `cmd`						respond to remote commands
-* `allowRemoteLocation`				iOS only, respond to remote location request even if monitoring mode is set to manual
-* `extendedData`				iOS, add altitude, vertical accuracy, velocity and course over ground to published data. Android, include battery in location publishes
-* `remoteConfiguration`				Android only, respond to remote configuration messages
-* `usepolicy`					iOS only, use user defined security policy
-* `allowinvalidcerts`				iOS only, allow self signed certificates in user defined security policy
-* `validatedomainname`				iOS only, validate domain main during TLS handshake
-* `validatecertificatechain`			iOS only, validate the whole certificate chain or just the server certificate
-* `policymode`					iOS only, 
-	* 0 = Do not used pinned certificates to validate servers.
-	* 1 = Validate host certificates against public keys of pinned certificates.
-	* 2 = Validate host certificates against pinned certificates.
-* `servercer`					iOS only, blank separated list of certificate file names in DER format, or empty
-* `clientpkcs`					iOS only, name of the client pkcs12 file,or empty 
-* `passphrase`					iOS only, passphrase for client pkcs12 file 
-* `beaconMode`					Android only. `0` = normal Bluetooth mode that enables scanning when regions with UUID are defined, `1` = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android < 6.x, `2` = hard disable any Bluetooth functions even if regions with UUID are defined
-* `ws`						Android only, connect using WebSocket protocol  
-* `ignoreStaleLocations`			Number of days after which location updates are assumed stale. zero means no stale checking. Defaults to zero.
-* `ignoreInaccurateLocations`			Maximum meters of location inaccuracy. Worse accuracy suppresses publish of location. Zero means no inaccuracy checking. Defaults to zero.
-
+* `willTopic` 
+* `willQos`
+* `waypoints` Array of waypoint messages _(iOS,Android/array)_
+* `quickstartId` Device ID in Watson IOT Quickstart mode _(iOS/string)_
 
 #### Notes
-
-* Imagine you are operating an OwnTracks backend for e.g. your family, and you want to avoid your family members accidentally switching modes or modifying settings locally on the device. You can export their configuration, add a `locked: true` to it and re-import it onto the iOS device. The settings will then be visible, but cannot be changed.
-
+* When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a `mode` element, the mode is changed first and all remaining elements are imported for the new mode. 
 
 ## `_type=beacon`
 
