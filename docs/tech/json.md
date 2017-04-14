@@ -42,68 +42,49 @@ In HTTP mode the apps POST their data to a single endpoint you configure.
 
 ## `_type=location`
 
-This location object describes the location of the device that published it. 
+This location object describes the location of the device that reported it. 
 
 ```json
 {
     "_type" : "location",        
-    "acc"   : 75,              
-    "alt"   : 13,
-    "batt"  : nnn,              
-    "cog"   : 270,
-    "desc"  : "sssss",
-    "event" : "sssss",
-    "lat"   : x.xxxxxx,       
-    "lon"   : y.yyyyyy,        
-    "rad"   : nnn, 
-    "t"     : "x",
-    "tid"   : "YY",
-    "tst"   : 1376715317,      
-    "vac"   : 10,
-    "vel"   : 54,
-    "p"     : nnn,
-    "conn" : "w"
+    attributes....
 }
 ```
-| Attribute                             |Description                          | Type/Unit | Required |  iOS | Android |
-| --------------------------------------|:----------------------------------- | :-------: | :------: | :--: | :-----: |
-| `acc`                              | Accuracy of the reported location      | Integer/Meters| N |  Y    |   N     |
-| `alt`                              | Altitude above sea level      | Integer/Meters| N |  Y    |   N     |
-| `batt`                              | Device's battery when reporting the location      | Integer/Percent| N |  Y    |   Y|
-| `cog`                              | Course over ground      | Integer/Degrees| N |  Y    |   N|
-| `lat`                              | Latitude      | Float/Degrees| Y |  Y    |   Y|
-| `lon`                              | Latitude      | Float/Degrees| Y |  Y    |   Y|
-| `t`                              | Trigger for the location report      | String/None| N |  Y    |   Y|
 
-
-* `acc` is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it >= 0.
-* `alt` is the altitude measured in meters above sea level (_Optional_, integer). iOS adds this element only if it >= 0. iOS only.
-* `batt` is the device's battery level in percent (integer)
-* `cog` is the heading (course over ground) in degrees, 0 = North (_Optional_, integer). iOS adds this element only if it is >= 0.
-* `lat` is latitude as decimal, represented as a floating point number
-* `lon` is longitude as decimal, represented as a floating point number
-* `rad` is the radius in meters around around the geo-fence when entering/leaving a geofence (integer)
-* `t` is the trigger for the publish x = 
-    * "p" ping, issued randomly by background task. Note, that the `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
-    * "c" circular region enter/leave event 
-    * "b" beacon region enter/leave event
-    * "r" response to a "reportLocation" request
-    * "u" manual publish requested by the user
-    * "t" timer based publish in move move
-    * "a" or missing `t` indicates automatic location update
-* `tid` is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. 
-* `tst` is a UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the event as it occurs which may be different from the time it is published (integer, seconds).
-* `vac` is the vertical accuracy of the reported altitude in meters (_Optional_, integer). iOS adds this element only if it >= 0.
-* `vel` is the velocity (speed) in km/h (_Optional_, integer). iOS adds this element only if it >= 0.
-* `p` is barometric pressure in kPa (kilo Pascal) (iOS > 8.1.1 only with _Extended data_ enabled)
-* `conn` inserted when phone is connected to a network when the message is created (only with _Extended data_ enabled). If present, it will have a single character: `w` for WiFi connection, `o` for Offline (no carrier when location was obtained), and `m` for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. 
-* `doze` indicates if the message was queued (and thus delayed) when the device was on power-saving mode. (Android only) 
-
-(The iOS device can be configured to produce or not produce fields marked as _optional_ with the Extended Data setting.)
+* `acc` Accuracy of the reported location in meters without unit _(iOS/integer/meters/optional)_
+* `alt` Altitude measured above sea level _(iOS/integer/meters/optional)_
+* `batt` Device battery level _(iOS,Android/integer/percent/optional)_
+* `cog` Course over ground _(iOS/integer/degree/optional)_
+* `lat` latitude _(iOS/float/meters/required)_
+* `lon` longitude _(iOS/float/meters/required)_
+* `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
+* `t` trigger for the location report _(iOS/string/optional)_ 
+    * `p` ping issued randombly by background task(iOS)
+    * `c` circular region enter/leave event (iOS/Android)
+    * `b` beacon region enter/leave event (iOS/Android)
+    * `r` response to a reportLocation cmd message (iOS/Android)
+    * `u` manual publish requested by the user (iOS/Android)
+    * `t` timer based publish in move move (iOS)
+    * `a` automatic location update (iOS/Android)
+    
+* `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_
+* `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the location fix _(iOS,Android/integer/epoch/required)_
+* `vac` vertical accuracy of the `alt` attribute _(iOS/integer/meters/optional)_
+* `vel` velocity _(iOS/integer/kmh/optional)_ 
+* `p` barometric pressure _(iOS/integer/kPa/optional/extended data)_
+* `conn` Internet connectivity status (route to host) when the message is created _(iOS,Android/string/optional/extended data)_ 
+    * `w` phone is connected to a WiFi connection (iOS, Android)
+    * `o` phone is offline (iOS, Android)
+    * `m` mobile data (iOS, Android)
 
 #### Notes
-
+* The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
+* The `tid` dfaults to the last two characters of the topic 
+* A missing `t` attribute also indicates an automatic location update
 * A publish with of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
+* The `acc`, `alt`, `cog`, `vac`, `vel` attributes are only added if they are not zero
+* Attributes marked with _extended data_ are only added if `extendedData=true` is configured
+
 
 
 
