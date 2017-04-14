@@ -53,13 +53,13 @@ On iOS you can navigate to the place where you want to put a waypoint, Tap long 
 ### Adding on Android
 On Android, waypoints can be configured on a separate activity. Coordinates for the geographical region can be entered by hand or by using the place picker.  
 
-## Remote loading of waypoints
+### Remote loading of waypoints
 Instead of configuring multiple waypoints on the device, they can be loaded [remotely](remoteconfig.md) with the `setWaypoints` cmd message if remote configuration is enabled on the device. 
 
 You can use this to import individual waypoints or groups of pre-configured waypoints which are merged into the existing waypoint definitions on the device. Recall, however, that the `tst` element is like a _key_ which uniquely identifies each waypoint.
 
-## Deleting waypoints
+### Deleting waypoints
 On both iOS waypoints can be deleted by swiping it away. On Android, a long press is required. 
 
-# Beacons Ranging
+### Beacons Ranging
 In addition to circular regions, the apps can monitor their proximity for [BLE Beacons](beacons.md). 
