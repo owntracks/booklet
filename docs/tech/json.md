@@ -59,13 +59,13 @@ This location object describes the location of the device that reported it.
 * `lon` longitude _(iOS/float/meters/required)_
 * `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
 * `t` trigger for the location report _(iOS/string/optional)_ 
-    * `p` ping issued randombly by background task(iOS)
-    * `c` circular region enter/leave event (iOS/Android)
-    * `b` beacon region enter/leave event (iOS/Android)
-    * `r` response to a reportLocation cmd message (iOS/Android)
-    * `u` manual publish requested by the user (iOS/Android)
-    * `t` timer based publish in move move (iOS)
-    * `a` automatic location update (iOS/Android)
+    * `p` ping issued randombly by background task _(iOS)_
+    * `c` circular region enter/leave event _(iOS/Android)_
+    * `b` beacon region enter/leave event _(iOS/Android)_
+    * `r` response to a reportLocation cmd message _(iOS/Android)_
+    * `u` manual publish requested by the user _(iOS/Android)_
+    * `t` timer based publish in move move _(iOS)_
+    * `a` automatic location update _(iOS/Android)_
     
 * `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_
 * `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the location fix _(iOS,Android/integer/epoch/required)_
@@ -73,9 +73,9 @@ This location object describes the location of the device that reported it.
 * `vel` velocity _(iOS/integer/kmh/optional)_ 
 * `p` barometric pressure _(iOS/integer/kPa/optional/extended data)_
 * `conn` Internet connectivity status (route to host) when the message is created _(iOS,Android/string/optional/extended data)_ 
-    * `w` phone is connected to a WiFi connection (iOS, Android)
-    * `o` phone is offline (iOS, Android)
-    * `m` mobile data (iOS, Android)
+    * `w` phone is connected to a WiFi connection _(iOS, Android)_
+    * `o` phone is offline _(iOS, Android)_
+    * `m` mobile data _(iOS, Android)_
 
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
