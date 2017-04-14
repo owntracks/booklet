@@ -1,6 +1,6 @@
 ## Bridging
 
-In order to profit from the [Friends feature](friends) in
+In order to profit from the [Friends feature](../features/friends.md). in
 OwnTracks, all contacts you want to be able to track on your your device must
 share a broker, but that can be difficult if both you and your friend
 (henceforce "Jane" in the examples that follow) also use your brokers for other
