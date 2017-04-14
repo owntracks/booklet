@@ -256,15 +256,15 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `port` MQTT endpoint port _(iOS,Android/integer)_
 * `positions`	Number of locatoins to keep and display _(iOS/integer)_	
 * `pub` Automatic reporting	_(Android/boolean)_				
-* `pubTopicBase`  MQTT topic base to which the app publishes   _(iOS,Android/string)_	
-* `pubRetain`
-* `pubQos`
-* `ranging`	_(iOS/boolean)_
+* `pubTopicBase` MQTT topic base to which the app publishes   _(iOS,Android/string)_	
+* `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
+* `pubQos` MQTT QoS level for reported messages _(iOS,Android/boolean)_
+* `ranging` Beacon ranging _(iOS/boolean)_
 * `remoteConfiguration` Allow remote configuration by sending a setConfiguration cmd message _(Android/boolean)_
 * `servercer` Blank separated list of certificate file names in DER format _(iOS/string)_
 * `sub` MQTT subscription _(Android/boolean)_
 * `subTopic` MQTT topic to which the app subscribes   _(iOS,Android/string)_
-* `subQos`
+* `subQos` _(iOS,Android/boolean)_
 * `tid` Two digit Tracker ID used to display short name and default face of a user _(iOS,Android/string)_
 * `tls` MQTT endpoint TLS connection _(Android/boolean)_
 * `tlsClientCrtPassword` Passphrase of the client pkcs12 file _(Android/string)_
@@ -294,23 +294,23 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 ```json
 {
         "_type":"beacon",
-        "uuid":"CA271EAE-5FA8-4E80-8F08-2A302A95A959",
-        "major":1,
-        "minor":1,
-        "tst": 1399028969,
-        "acc":n,
-        "rssi":n,
-        "prox":n,
+        elements
 }
 ```
+* `uuid` UUID of the seen beacon _(iOS/String)_
+* `major` Major number of the seen beacon _(iOS/integer/epoch)_
+* `minor` Minor number of the seen beacon _(iOS/integer/epoch)_
+* `tst` Timestamp at which the beacon was seen _(iOS/integer/epoch)_
+* `acc`	Accuracy of the proximity value _(iOS/integer/meters)_
+* `rssi`	Received signal strength of the beacon _(iOS/integer/decibel)_
+* `prox`Relative distance to the beacon _(iOS/integer)_
+    - `0` Proximity of the beacon could not be determined
+    - `1` Beacon is in the immediate vicinity
+    - `2` Beacon is relatively close to the user
+    - `3` Beacon is far away
 
-* `acc`	The accuracy of the proximity value, measured in meters from the beacon.
-* `rssi`	The received signal strength of the beacon, measured in decibels. The theoretical relationship between RSSI and distance is something like this: `RSSI[dbm] = −(10n log10(d) − A)` where d is the distance and A is the offset which is the measured RSSI 1 meter point away from the Bluetooth Low Energy device.
-* `prox`	The relative distance to the beacon where n indicates
-    * 0 = the proximity of the beacon could not be determined.
-    * 1 = the beacon is in the user’s immediate vicinity.
-    * 2 = the beacon is relatively close to the user.
-    * 3 = the beacon is far away."
+#### Notes
+* The theoretical relationship between RSSI and distance is `RSSI[dbm] = −(10n log10(d) − A)` where d is the distance and A is the offset which is the measured RSSI one meter point away from the beacon.
 
 ## `_type=cmd`
 
@@ -320,29 +320,30 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"dump"}
 {"_type":"cmd","action":"waypoints"}
 {"_type":"cmd","action":"setConfiguration","configuration":{"_type":"configuration",...}
-{"_type":"cmd","action":"setConfiguration","payload":{"_type":"configuration",...}
 {"_type":"cmd","action":"setWaypoints","waypoints":{"_type":"waypoints","waypoints":[...]}
-{"_type":"cmd","action":"setWaypoints","payload":{"_type":"waypoints","waypoints":[...]}
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
 {"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
 {"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
 ```
-* `action`      action to be performed by the device
-    * `reportSteps` reports steps walked on iPhone 5s devices. <br>
-      You may add "from":_timestamp_ and/or "to":_timestamp_" 
-      which defaults to current time, from defaults to current date 00:00 am
-      (see [Pedometer](../features/pedometer.md)).
-    * `reportLocation` triggers the publish of the current location
-    * `dump` triggers the publish of a configuration message
-    * `setWaypoints` configures new waypoints. ([details](../features/remoteconfig.md) ). The variant with `"payload"` only exists for backward compatibility 
-    * `setConfiguration` configures the app. [details](../features/remoteconfig.md). The variant with `"payload"` only exists for backward compatibility 
-    * `waypoints` triggers a publish of all waypoints configured on the device. These are published in `.otrw` format to the `../waypoints` topic.
-    * `action` inserts an additional 'Featured Content' tab in the UI.
-	- If `"url"` is specified, the URL is opened in a full screen web view within the app. 
-	- If `"url"` is not specified the text in `"content"` is displayed. Links embedded in the text are operational.  If `"content"` is HTML, it is rendered.
-	- Send `"action":"action"` without `"content"` and without `"url"` to remove the extra tab.
-	- If `"notify"` is in the payload, it is a string which will be used as notification in the UI
-	- If the optional `"extern"` boolean is `true` a click on the notification will launch an external Web browser; `false` (the default) opens the `url` in a Webview within the OwnTracks app.
+* `action` action to be performed by the device _(iOS,Android/string)_
+  * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
+  * `dump` Triggers the publish of a `configuration` message _(iOS)_
+  * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
+    * `from` Timestamp _(iOS/epoch/optional)_
+    * `to` Timestamp _(iOS/epoch/optional)_
+  * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
+  * `setWaypoints` Imports and actives new waypoints_(iOS,Android)_
+    * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
+  * `setConfiguration` Imports and actives new configuration values (iOS,Android)_
+    * `configuration` Configuration message to import _(iOS,Android/required)_
+  * `waypoints` Triggers publish of all currently configured waypoints to the waypoints topic _(iOS,Android)_
+
+#### Notes
+* If `url` for the `action` cmd message is specified, the URL is opened in a full screen web view within the app
+* If the optional `extern` boolean is `true` a click on the notification will launch an external browser instead
+* If `url` is not specified the text of the `content` element is displayed. Links embedded in the text are operational.  
+* If the `content` consists of HTML, it is rendered
+* The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
 
 ## `_type=steps`
 
