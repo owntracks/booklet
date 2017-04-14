@@ -15,3 +15,22 @@ For example, `mosquitto_sub` uses a default of 60 sec.
 
 In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.
 
+### AWS IOT 
+The OwnTracks apps are partially compatible to the AWS IOT in private MQTT mode. However, as AWS IOT does not support some MQTT features, some restrictions apply. 
+
+The following settings are required to connect 
+```
+{
+    "_type":"configuration", 
+    "mode":0, 
+    "subQos":0,
+    "pubQos":0, 
+    "pubRetain":false, 
+    "cleanSession":true, 
+    "tls":true
+    "clientId":"CLIENTID",
+    "host": "ENDPOINT.amazonaws.com"
+}
+```
+
+Additionaly, you need to configure the app to use a client TLS certificate and the AWS TLS ca. 
