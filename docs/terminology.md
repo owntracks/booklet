@@ -6,6 +6,11 @@ Some of the terms we use can be a little confusing at times, so here's a list of
 
 MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium. For example, it has been used in sensors communicating to a broker via satellite link, over occasional dial-up connections with healthcare providers, and in a range of home automation and small device scenarios. It is also ideal for mobile applications because of its small size, low power usage, minimised data packets, and efficient distribution of information to one or many receivers
 
+And what does OwnTracks have to do with all of this? Well, the OwnTracks apps are MQTT clients which publish messages (your location) and subscribe to and consume messages (e.g. the locations of [your friends](friends.md)). OwnTracks' location updates land in the cauldron when the app publishes a location message from which it can be consumed by any number of subscribers to the same [MQTT broker](broker.md).
+
+There are [a number of clients](clients.md) which do that already, and we're even going to show you how you can [create your own client](../tech/program.md) for specific purposes.
+
+
 #### Pub/Sub
 
 In MQTT-speak, clients publish messages, which means they send or transmit them, and other clients subscribe to messages, meaning they receive them. Messages are published on topics, and the MQTT server, which is called a broker is configured to permit or deny clients doing so.
