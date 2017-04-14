@@ -2,9 +2,9 @@
 
 Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. _publish_) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in [_public mode_](scenarios.md).)
 
-You know that OwnTracks _publishes_ location information to an MQTT _broker_. The data it publishes is transferred in a particular format called [JSON](http://json.org), and [this is what it looks like](../tech/json.md).
+You know that OwnTracks _publishes_ location information to an MQTT or HTTP endpoint. The data it publishes is transferred in a particular format called [JSON](http://json.org), and [this is what it looks like](../tech/json.md).
 
-When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.
+When you've got your endpoint set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.
 
 ## mosquitto_sub
 
