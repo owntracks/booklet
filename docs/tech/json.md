@@ -47,7 +47,7 @@ This location object describes the location of the device that reported it.
 ```json
 {
     "_type" : "location",        
-    attributes....
+    elements....
 }
 ```
 
@@ -69,7 +69,7 @@ This location object describes the location of the device that reported it.
     
 * `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_
 * `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the location fix _(iOS,Android/integer/epoch/required)_
-* `vac` vertical accuracy of the `alt` attribute _(iOS/integer/meters/optional)_
+* `vac` vertical accuracy of the `alt` element _(iOS/integer/meters/optional)_
 * `vel` velocity _(iOS/integer/kmh/optional)_ 
 * `p` barometric pressure _(iOS/integer/kPa/optional/extended data)_
 * `conn` Internet connectivity status (route to host) when the message is created _(iOS,Android/string/optional/extended data)_ 
@@ -80,50 +80,43 @@ This location object describes the location of the device that reported it.
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
 * The `tid` dfaults to the last two characters of the topic 
-* A missing `t` attribute also indicates an automatic location update
+* A missing `t` element also indicates an automatic location update
 * A publish with of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
-* The `acc`, `alt`, `cog`, `vac`, `vel` attributes are only added if they are not zero
-* Attributes marked with _extended data_ are only added if `extendedData=true` is configured
+* The `acc`, `alt`, `cog`, `vac`, `vel` elements are only added if they are not zero
+* Elements marked with _extended data_ are only added if `extendedData=true` is configured
 
 
 
 
 ### Greenwich
 
-The OwnTracks-edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `_type=location` message:
+The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `_type=location` message:
 
 ```json
 {
     "_type": "location",
-    "alt": 160,
-    "cog": 0,
-    "dist": 189,
-    "trip": 279122,
-    "lat": xx.xxxxxx,
-    "lon": y.yyyyyy,
-    "vel": 12,
-    "t": "t",
-    "tst": 1406803894
+    elements
 }
 ```
 
-* `alt` is altitude in meters. (_Optional_)
-* `batt` is the external battery voltage. (_Optional_)
-* `cog` is the course over ground (heading) in degrees. (_Optional_)
-* `dist` is the distance travelled in meters since the last location publish. (_Optional_)
-* `trip` is the distance travelled in meters since the last reboot. (_Optional_)
-* `vel` is the speed (velocity) in km/h. (_Optional_)
-* `t` is the trigger of the published message:
-  - `f` first publish after reboot
-  - `m` for manually requested locations (e.g. by publishing to `/cmd`)
-  - `t` (time) for location published because device is moving.
-  - `T` (time) for location published because of time passed (`maxInterval`); device is stationary
-  - `k` When transitioning from _move_ to _stationary_ an additional publish is sent marked with trigger `k` (park)
-  - `v` When transitioning from _stationary_ to _move_ additional publish is sent marked with trigger `v` (mo-v-e)
-  - `l` When device loses GPS fix, an additional publish is sent to transmit the last known position
-  - `L` last position before gracefull shutdown
+* `alt` Altitude measured above sea level _(integer/meters/optional)_
+* `batt` Device battery level _(integer/percent/optional)_
+* `cog` Course over ground _(integer/degree/optional)_
+* `dist` Distance travelled since the last location report _(integer/meters/optional)_
+* `trip` Distance travelled since the last reboot _(integer/meters/optional)_
+* `vel` velocity _(integer/kmh/optional)_ 
+* `t` trigger for the location report _(string/optional)_ 
+  - `f` First publish after reboot
+  - `m` Manually requested locations (e.g. by publishing to `/cmd`)
+  - `t` Time for location published because device is moving.
+  - `T` Time for location published because of time passed while device is stationary (`maxInterval`)
+  - `k` Transitioning from _move_ to _stationary_ (park)
+  - `v` Transitioning from _stationary_ to _move_ (mo-v-e)
+  - `l` Last known position when device lost GPS fix
+  - `L` Last known position before gracefull shutdown
 
-(The device can be configured to produce or not produce fields marked as _optional_.)
+#### Notes
+* The device can be configured to produce or not produce fields marked as _optional_
 
 
 ## `_type=lwt`
@@ -133,57 +126,64 @@ A _last will and testament_ is published automatically by the MQTT broker when i
 ```json
 {
     "_type":"lwt",
-    "tst": 1380738247
+    elements
 }
 ```
+* `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) at which the app first connected _(iOS,Android/integer/epoch/required)_
 
-The timestamp is the Unix epoch time at which the app first connected (and *not* the time at which the LWT was published).
 
 ## `_type=waypoint`
 
-Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint (if the waypoint is marked `shared`). OwnTracks also monitors these waypoints and will publish a transition event (`_type: transition`) when entering or leaving the region. Note, that a waypoint may also define a [Beacon](../features/beacons.md).
+Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint if the waypoint is marked as `shared`. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region. 
 
 ```json
 {
     "_type"  : "waypoint",
-    "desc"   : "Free text entered on device",
-    "lat"    : x.xxxxxx,       
-    "lon"    : y.yyyyyy,        
-    "rad"    : xxx,
-    "tst"    : nnnnn,
-    "shared" : true,
-    "tid"    : "XX",
-    "uuid"   : "YYYYYYYYYYYYYYYYY",
-    "major"  : 17,
-    "minor"  : 1
+    elements
 }
 ```
-* `shared` location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only
-* `tst` is the timestamp of waypoint _creation_ even if it was subsequently modified by the user. (See [Waypoints](../features/waypoints.md).) It is copied into the `wtst` of the transition event (`type: transition`) when an event pertaining to this waypoint fires.
-* In iOS version >= 9.1.0 and in Android version >= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
+* `desc` Name of the waypoint that is included in the sent transition message _(iOS,Android,string/required)_
+* `lat` Latitude  _(iOS,Android/float/meters/optional)_
+* `lon` Longitude _(iOS,Android/float/meters/optional)_
+* `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_  
+* `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` elemnt of the transition message _(iOS,Android/integer/epoch/required)_  
+* `shared` Share status of the waypoint  _(iOS,Android/boolen/required)_  
+* `tid` Tracker ID that is included in the sent transition message _(iOS/string/optional)_
+* `uuid` UUID of the BLE Beacon _(iOS,Android/string/optional)_
+* `major` Major number of the BLE Beacon _(iOS,Android/integer/optional)_
+* `minor`  Minor number of the BLE Beacon_(iOS,Android/integer/optional)_
 
-Waypoints are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.
+#### Notes
+* In iOS version >= 9.1.0 and in Android version >= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
+* If `lat`, `lon` and `rad` elements are present, transition messages are sent when entering and leaving the geographical region 
+* If `uuid`, `major`, `minor` elements are present, BLE becons with that specifications are monitored
+* Beacons and Geographical regions can be defined together 
+* Waypoint messages are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.
+* Shared Waypoint are sent to the broker and transition messages contain a `desc` and `event` element. Not shared ones are not sent to the broker and transition messages contain an `event` attribute only
 
 ## `_type=transition`
 
-A transition into or out of a previously configured waypoint is effected by publishing a _transition_ to the `../event` subtopic using MQTT. (In HTTP mode the payload is published to the configured endpoint.) In addition to the coordinates where the event fired (`lat`, `lon`, and `acc` of these), the message contains the timestamp of the waypoint creation (`wtst`) as well as the `event` (which can be either `enter` or `leave`) and, in the case of a shared waypoint, it's description in `desc`. Transition messages are published with `retain=0`.
+A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message. If the corresponding waypoint is shared, it's description in `desc` is included too. MQTT transition messages are published non retained. 
 
 ```json
 {
   "_type": "transition",
-  "wtst": 1425042603,           // time of waypoint creation
-  "lat": 12.34,                 // transition coordinates i.e. "here"
-  "lon": 44.5,
-  "tst": 1427634603,            // timestamp of transition (e.g. "now")
-  "acc": 130,                   // accuracy of lat, lon
-  "tid": "JP",
-  "event": "enter",
-  "desc": "my Indian restaurant",
-  "t": "b"			// trigger ("c" -default- for circular regions, "b" for beacons, "w" for WiFi (Android only))
+  elements
 }
 ```
-
-A transition event published as a result of a Beacon movement will have a `"t" : "b"` associated with it.
+* `wtst` Timestamp of waypoint creation _(iOS,Android/integer/epoch/required)_  
+* `lat` Latitude at which the event occured _(iOS,Android/float/meters/optional)_
+* `lon` Longitue at which the event occured _(iOS,Android/float/meters/optional)_
+* `tst` Timestamp at which the event occured _(iOS,Android/integer/epoch/required)_  
+* `acc` Accuracy of the geographical coordinates _(iOS,Android/float/meters/required)_  
+* `tid` Tracker ID of the waypoint _(iOS/string/none/optional)_  
+* `event` Event that triggered the transition (iOS,Android/string/required)
+  - `enter` The device entered the defined geographical region or BLE Beacon range (iOS, Android)
+  - `leave` The device left the defined geographical region or BLE Beacon range (iOS, Android)
+* `desc` Name of the waypoint _(iOS,Android,string/optional)_
+* `t` Trigger of the event 
+  - `c` Circular geographical region  (iOS, Android)
+  - `b` BLE Beacon (iOS, Android)
 
 
 ## `_type=configuration`
