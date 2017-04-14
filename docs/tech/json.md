@@ -46,8 +46,8 @@ This location object describes the location of the device that reported it.
 
 ```json
 {
-    "_type" : "location",        
-    elements....
+    "_type" : "location",           
+    elements
 }
 ```
 
@@ -167,8 +167,8 @@ A transition message is sent, when entering or leaving a previously configured g
 
 ```json
 {
-  "_type": "transition",
-  elements
+    "_type": "transition",
+    elements
 }
 ```
 * `wtst` Timestamp of waypoint creation _(iOS,Android/integer/epoch/required)_  
@@ -193,7 +193,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 {
     "_type": "configuration",
     elements
-
 }
 ```
 * `allowRemoteLocation` Respond to reportLocation cmd message	_(iOS,Android/boolean)_
@@ -293,8 +292,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 
 ```json
 {
-        "_type":"beacon",
-        elements
+    "_type":"beacon",
+    elements
 }
 ```
 * `uuid` UUID of the seen beacon _(iOS/String)_
@@ -336,7 +335,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
   * `setConfiguration` Imports and actives new configuration values (iOS,Android)_
     * `configuration` Configuration message to import _(iOS,Android/required)_
-  * `waypoints` Triggers publish of all currently configured waypoints to the waypoints topic _(iOS,Android)_
+  * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
 
 #### Notes
 * If `url` for the `action` cmd message is specified, the URL is opened in a full screen web view within the app
@@ -347,68 +346,59 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 
 ## `_type=steps`
 
-```json
-{"_type":"steps","tst":1400455130,"steps":1234,"from":1400455130,"to":1400458000}
-```
-* `tst`         timestamp of the request
-* `steps`	the number of steps walked with the device in the specfied time period or
-                -1 if device does not support step counting or specified time period
-                is invalid
-* `from`        effective start of time period
-* `to`          effective end of time period
-
-## `_type=card`
-
-As described in [Card](../features/card.md), apps read retained messages of `_type=card` on `owntracks/+/+/info` to find the _name_ and avatar (_face_) of a user.
 
 ```json
 {
-  "_type": "card",
-  "name": "Jane Jolie"
-  "face": "iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==",
+    "_type":"steps",
+    elements
+}
+```
+* `tst` Timestamp of the request _(iOS/integer/epoch)_
+* `steps` Steps walked with the device in the specfied time period  _(iOS/integer/steps)_
+* `from` Effective start of time period _(iOS/integer/epoch)_
+* `to`  Effective end of time period _(iOS/integer/epoch)_
+
+#### Notes
+* `steps` is -1 if device does not support step counting or specified time period is invalid
+
+
+## `_type=card`
+Apps read [Card](../features/card.md) to display a name and icon for a user. 
+
+```json
+{
+    "_type": "card",
+    elements
 }
 ```
 
-The `name` element contains a name which is displayed by the apps to identify a user, and `face` contains the base64-encoded PNG image (40x40 px) which is displayed instead of a [TID](../features/tid.md).
+* `name` Name to identify a user _(iOS,Android/string/optional)_ 
+* `face` Base64 encoded PNG image that is displayed instead of the Tracker ID _(iOS,Android/string/optional)_
+
 
 ## `_type=waypoints`
-
-The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with `.otrw` extension. The list of waypoints looks like this.
+The app can export a list of configured waypoints to the endpoint.
 
 ```json
 {
     "_type": "waypoints",
-    "_creator": "OTwpDraw",
-    "waypoints": [
-        {
-            "_type": "waypoint",
-            "tst": 1433598071,
-            "lat": 47.580231298,
-            "lon": 9.525146484,
-            "rad": 25186,
-            "desc": "I went swimming here"
-        },
-        {
-            "_type": "waypoint",
-            "tst": 1430398091,
-            "lat": 46.517295754,
-            "lon": 9.871215820,
-            "rad": 500,
-            "desc": "Cheese fondue"
-        }
-    ]
+    elements
 }
 ```
+* `_creator` Identification of what created the array. Ignored by the apps _(iOS,Android/string/optional)_
+* `waypoints` Array of `waypoint` messages _(iOS,Android/array/required)_
 
-Note that `_type=waypoints` is *plural*.
 
 ## `_type=encrypted`
-
-This payload type contains a single `data` element with the original JSON object `_type` (e.g. `location`, `beacon`, etc.) [encrypted payload](../features/encrypt.md) in it.
+Apps can optionally [encrypt](../features/encrypt.md) outgoing messages with a shared symmetric key. 
+The encrypted message is contained in the `data`element.  
+For security reasons, the encryption key is not exported with configuration messages and cannot be imported. 
 
 ```json
 {
-  "_type": "encrypted",
-  "data": "1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg="
+    "_type": "encrypted", 
+    elements 
 }
 ```
+* `data` Encrypted and Base64 encoded original JSON message _(iOS,Android/string/required)_
+
