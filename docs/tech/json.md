@@ -282,6 +282,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 
 #### Notes
 * When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a `mode` element, the mode is changed first and all remaining elements are imported for the new mode. 
+* In MQTT mode the server will consider the client as dead if it the keepalive interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if `keepalive` was 60). Afterwards, an `lwt` message will be send. 
+
 
 ## `_type=beacon`
 
