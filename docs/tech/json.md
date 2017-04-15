@@ -142,7 +142,7 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
 * `lat` Latitude  _(iOS,Android/float/meters/optional)_
 * `lon` Longitude _(iOS,Android/float/meters/optional)_
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_  
-* `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` elemnt of the transition message _(iOS,Android/integer/epoch/required)_  
+* `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_  
 * `tid` Tracker ID that is included in the sent transition message _(iOS/string/optional)_
 * `uuid` UUID of the BLE Beacon _(iOS,Android/string/optional)_
 * `major` Major number of the BLE Beacon _(iOS,Android/integer/optional)_
@@ -316,7 +316,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"dump"}  // iOS
 {"_type":"cmd","action":"waypoints"}
 {"_type":"cmd","action":"setConfiguration","configuration":{"_type":"configuration",...}
-{"_type":"cmd","action":"setWaypoints","waypoints":{"_type":"waypoints","waypoints":[...]}
+{"_type":"cmd","action":"
+","waypoints":{"_type":"waypoints","waypoints":[...]}
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
 {"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
 {"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
@@ -328,9 +329,9 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     * `from` Timestamp _(iOS/epoch/optional)_
     * `to` Timestamp _(iOS/epoch/optional)_
   * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
-  * `setWaypoints` Imports and actives new waypoints_(iOS,Android)_
+  * `setWaypoints` Imports and actives new waypoints _(iOS,Android)_
     * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
-  * `setConfiguration` Imports and actives new configuration values (iOS,Android)_
+  * `setConfiguration` Imports and actives new configuration values _(iOS,Android)_
     * `configuration` Configuration message to import _(iOS,Android/required)_
   * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
 
