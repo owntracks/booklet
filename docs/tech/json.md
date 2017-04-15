@@ -52,17 +52,16 @@ This location object describes the location of the device that reported it.
 * `alt` Altitude measured above sea level _(iOS/integer/meters/optional)_
 * `batt` Device battery level _(iOS,Android/integer/percent/optional)_
 * `cog` Course over ground _(iOS/integer/degree/optional)_
-* `lat` latitude _(iOS/float/meters/required)_
-* `lon` longitude _(iOS/float/meters/required)_
+* `lat` latitude _(iOS,Android/float/meters/required)_
+* `lon` longitude _(iOS,Android/float/meters/required)_
 * `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
-* `t` trigger for the location report _(iOS/string/optional)_ 
+* `t` trigger for the location report _(iOS,Android/string/optional)_ 
     * `p` ping issued randombly by background task _(iOS)_
     * `c` circular region enter/leave event _(iOS/Android)_
     * `b` beacon region enter/leave event _(iOS/Android)_
     * `r` response to a reportLocation cmd message _(iOS/Android)_
     * `u` manual publish requested by the user _(iOS/Android)_
     * `t` timer based publish in move move _(iOS)_
-    * `a` automatic location update _(iOS/Android)_
     
 * `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_
 * `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the location fix _(iOS,Android/integer/epoch/required)_
@@ -78,7 +77,7 @@ This location object describes the location of the device that reported it.
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
 * The `tid` dfaults to the last two characters of the topic 
 * A missing `t` element also indicates an automatic location update
-* A publish with of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
+* A publish of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
 * The `acc`, `alt`, `cog`, `vac`, `vel` elements are only added if they are not zero
 * Elements marked with _extended data_ are only added if `extendedData=true` is configured
 
@@ -103,14 +102,14 @@ The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&m
 * `trip` Distance travelled since the last reboot _(integer/meters/optional)_
 * `vel` velocity _(integer/kmh/optional)_ 
 * `t` trigger for the location report _(string/optional)_ 
-  - `f` First publish after reboot
-  - `m` Manually requested locations (e.g. by publishing to `/cmd`)
-  - `t` Time for location published because device is moving.
-  - `T` Time for location published because of time passed while device is stationary (`maxInterval`)
-  - `k` Transitioning from _move_ to _stationary_ (park)
-  - `v` Transitioning from _stationary_ to _move_ (mo-v-e)
-  - `l` Last known position when device lost GPS fix
-  - `L` Last known position before gracefull shutdown
+    - `f` First publish after reboot
+    - `m` Manually requested locations (e.g. by publishing to `/cmd`)
+    - `t` Time for location published because device is moving.
+    - `T` Time for location published because of time passed while device is stationary (`maxInterval`)
+    - `k` Transitioning from _move_ to _stationary_ (park)
+    - `v` Transitioning from _stationary_ to _move_ (mo-v-e)
+    - `l` Last known position when device lost GPS fix
+    - `L` Last known position before gracefull shutdown
 
 #### Notes
 * The device can be configured to produce or not produce fields marked as _optional_
@@ -144,7 +143,6 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
 * `lon` Longitude _(iOS,Android/float/meters/optional)_
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_  
 * `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` elemnt of the transition message _(iOS,Android/integer/epoch/required)_  
-* `shared` Share status of the waypoint  _(iOS,Android/boolen/required)_  
 * `tid` Tracker ID that is included in the sent transition message _(iOS/string/optional)_
 * `uuid` UUID of the BLE Beacon _(iOS,Android/string/optional)_
 * `major` Major number of the BLE Beacon _(iOS,Android/integer/optional)_
@@ -179,8 +177,8 @@ A transition message is sent, when entering or leaving a previously configured g
   - `leave` The device left the defined geographical region or BLE Beacon range _(iOS, Android)_
 * `desc` Name of the waypoint _(iOS,Android/string/optional)_
 * `t` Trigger of the event _(iOS,Android/string/optional)_
-  - `c` Circular geographical region  _(iOS, Android)_
-  - `b` BLE Beacon _(iOS, Android)_
+    - `c` Circular geographical region  _(iOS, Android)_
+    - `b` BLE Beacon _(iOS, Android)_
 
 
 ## `_type=configuration`
@@ -237,7 +235,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `1` Significant 
     - `2` Move 
 * `mqttProtocolLevel` MQTT broker protocol level _(iOS,Android/integer)_
-    - `3` MQTT 3
+    - `3` MQTT 3 (default)
     - `4` MQTT 3.1.1 
 
 * `notification` Show ongoing notification. Required to keep running in the background	_(Android/boolean)_	
