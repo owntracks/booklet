@@ -253,7 +253,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
 * `pubQos` MQTT QoS level for reported messages _(iOS,Android/boolean)_
 * `ranging` Beacon ranging _(iOS/boolean)_
-* `remoteConfiguration` Allow remote configuration by sending a setConfiguration cmd message _(Android/boolean)_
+* `remoteConfiguration` Allow remote configuration by sending a `setConfiguration` cmd message _(Android/boolean)_
 * `servercer` Blank separated list of certificate file names in DER format _(iOS/string)_
 * `sub` MQTT subscription _(Android/boolean)_
 * `subTopic` MQTT topic to which the app subscribes   _(iOS,Android/string)_
@@ -330,7 +330,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
   * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
   * `setWaypoints` Imports and actives new waypoints _(iOS,Android)_
     * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
-  * `setConfiguration` Imports and actives new configuration values _(iOS,Android)_
+  * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
     * `configuration` Configuration message to import _(iOS,Android/required)_
   * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
 
