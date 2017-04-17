@@ -15,22 +15,54 @@ For example, `mosquitto_sub` uses a default of 60 sec.
 
 In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.
 
+## Broker 
+Below is a list of known configuration values that are required to connect to certain MQTT endpoints 
+
 ### AWS IOT 
-The OwnTracks apps are partially compatible to the AWS IOT in private MQTT mode. However, as AWS IOT does not support some MQTT features, some restrictions apply. 
+The OwnTracks apps are partially compatible to the [AWS IOT](https://aws.amazon.com/de/iot/) broker in MQTT private mode. 
+As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
 
 The following settings are required to connect 
 ```
 {
     "_type":"configuration", 
     "mode":0, 
+    "host": "ENDPOINT.amazonaws.com",
+    "port": 8883,
     "subQos":0,
     "pubQos":0, 
+    "auth":false,
     "pubRetain":false, 
     "cleanSession":true, 
     "tls":true
     "clientId":"CLIENTID",
-    "host": "ENDPOINT.amazonaws.com"
 }
 ```
 
-Additionaly, you need to configure the app to use a client TLS certificate and the AWS TLS ca. 
+Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca. 
+
+### AWS IOT 
+The OwnTracks apps are partially compatible to the [Losant IoT Developer Platform](https://www.losant.com/) in MQTT private mode. 
+As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
+
+The following settings are required to connect 
+```
+}
+    "_type": "configuration",
+    "mode":0,
+    "mqttProtocolLevel": 4,
+    "host":"broker.losant.com",
+    "port":8883,
+    "tls":true,
+    "pubRetain": false,
+    "pubQos": 0,
+    "subQos":0,
+    "cleanSession": true,
+    "clientId":"CLIENT_ID",
+    "auth":true,
+    "username":"ACCESS_KEY",
+    "password":"ACCESS_SECRET"
+}
+```
+
+See the [official documentation](https://docs.losant.com/applications/access-keys/) how to obtain the `ACCESS_KEY` and `ACCESS_SECRET`. 
