@@ -47,7 +47,7 @@ As Losant does not support some MQTT features (notable retained messages), some 
 
 The following settings are required to connect 
 ```
-}
+{
     "_type": "configuration",
     "mode":0,
     "mqttProtocolLevel": 4,
