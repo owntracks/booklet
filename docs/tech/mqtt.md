@@ -41,7 +41,7 @@ The following settings are required to connect
 
 Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca. 
 
-### AWS IOT 
+### Losant IoT Developer Platform 
 The OwnTracks apps are partially compatible to the [Losant IoT Developer Platform](https://www.losant.com/) in MQTT private mode. 
 As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
 
