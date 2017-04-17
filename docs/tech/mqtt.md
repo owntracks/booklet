@@ -22,6 +22,22 @@ Below is a list of known configuration values that are required to connect to ce
 The OwnTracks apps are partially compatible to the [AWS IOT](https://aws.amazon.com/de/iot/) broker in MQTT private mode. 
 As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
 
+Before connecting, a so called _thing_ has to be configured which represents the connecting client. 
+The thing needs to have a client certificate generated for authentication and a policy attached that allows some actions. 
+The most basic policy allows all actions for the _thing_. 
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iot:*",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
 The following settings are required to connect 
 ```
 {
@@ -38,8 +54,9 @@ The following settings are required to connect
     "clientId":"CLIENTID",
 }
 ```
-
-Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca. 
+The `ENDPOINT` can be obtained in the _thing_ details under _Interact_.  
+Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca.
+Before importing it into the app, you need to set a password to the client TLS certificate. 
 
 ### Losant IoT Developer Platform 
 The OwnTracks apps are partially compatible to the [Losant IoT Developer Platform](https://www.losant.com/) in MQTT private mode. 
