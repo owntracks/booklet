@@ -9,6 +9,7 @@ The configuration can be send to the device as a file that can by imported into 
 Here is a sample configuration file which contains some of the possible settings.
 ```json
 {
+  "_type": "configuration",
   "auth": true,
   "username": "jjolie",
   "password": "s1kr3t",
