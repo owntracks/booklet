@@ -249,7 +249,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `port` MQTT endpoint port _(iOS,Android/integer)_
 * `positions` Number of locatoins to keep and display _(iOS/integer)_
 * `pub` Automatic reporting _(Android/boolean)_
-* `pubTopicBase` MQTT topic base to which the app publishes   _(iOS,Android/string)_
+* `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
 * `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
 * `pubQos` MQTT QoS level for reported messages _(iOS,Android/boolean)_
 * `ranging` Beacon ranging _(iOS/boolean)_
