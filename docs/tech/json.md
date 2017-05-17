@@ -225,7 +225,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
     - `0` Private  MQTT _(iOS, Android)_
     - `2` Public  MQTT _(iOS, Android)_
-    - `0` Private  HTPP _(iOS, Android)_
+    - `3` Private  HTTP _(iOS, Android)_
     - `4` Watson IOT Quickstart _(iOS)_
     - `4` Watson IOT Registered _(iOS)_
 * `monitoring` Location reporting mode _(iOS,integer)_
