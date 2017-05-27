@@ -30,7 +30,7 @@ Waypoints can be configured remotely if _Remote Commands_ is enabled on the devi
 {
   "_type": "cmd",
   "action": "setWaypoints",
-  "payload": {
+  "waypoints": {
     "waypoints": [
       {
         "desc": "Some place",
