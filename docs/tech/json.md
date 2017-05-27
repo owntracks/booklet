@@ -311,12 +311,11 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 
 ```json
 {"_type":"cmd","action":"reportLocation"}
-{"_type":"cmd","action":"reportSteps"}  // iOS
-{"_type":"cmd","action":"dump"}  // iOS
+{"_type":"cmd","action":"reportSteps"} 
+{"_type":"cmd","action":"dump"} 
 {"_type":"cmd","action":"waypoints"}
 {"_type":"cmd","action":"setConfiguration","configuration":{"_type":"configuration",...}
-{"_type":"cmd","action":"
-","waypoints":{"_type":"waypoints","waypoints":[...]}
+{"_type":"cmd","action":"setWaypoints","waypoints":{"_type":"waypoints","waypoints":[...]}
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
 {"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
 {"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
