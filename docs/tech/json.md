@@ -311,8 +311,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 
 ```json
 {"_type":"cmd","action":"reportLocation"}
-{"_type":"cmd","action":"reportSteps"} 
-{"_type":"cmd","action":"dump"} 
+{"_type":"cmd","action":"reportSteps"}
+{"_type":"cmd","action":"dump"}
 {"_type":"cmd","action":"waypoints"}
 {"_type":"cmd","action":"setConfiguration","configuration":{"_type":"configuration",...}
 {"_type":"cmd","action":"setWaypoints","waypoints":{"_type":"waypoints","waypoints":[...]}
