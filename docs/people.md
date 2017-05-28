@@ -19,6 +19,7 @@ Many good people have assisted us, be it by testing, by contributing bits of cod
 * [Mark Clark](https://github.com/mrguessed) for bug reports.
 * Adrian Brown originally suggested the [idea for location-based services](https://community.owntracks.org/topic/26/owntrack-s-enhancement-idea)
 * [friesenkiwi](https://github.com/friesenkiwi) contributed sundry large patches to Android and drove the LOST integration.
+* [Mikael Berthe](https://github.com/McKael) initiated the idea for the `_cp` attribute.
 
 
   [binarybucks]: https://twitter.com/binarybucks
