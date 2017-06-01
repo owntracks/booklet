@@ -200,9 +200,10 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `1` Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android < 6.x
     - `2` Hard disable any Bluetooth functions even if regions with UUID are defined
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
+* `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
-* `deviceId` MQTT client ID  _(iOS,Android/string)_
+* `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
 * `httpSchedulerConsiderStrategyDirect` Directly send messages in HTTP mode and bypass the default scheduler if a network connection exists _(Android/boolean)_
