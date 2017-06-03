@@ -203,6 +203,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
 * `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
+* `cp` Copy mode _(iOS,Android/boolean)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
