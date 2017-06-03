@@ -30,6 +30,7 @@ pages:
     - 'Waypoints': 'features/waypoints.md'
     - 'Beacons': 'features/beacons.md'
     - 'Pedometer': 'features/pedometer.md'
+    - 'Copy': 'features/copy.md'
     - 'Featured': 'features/featured.md'
     - 'Encryption': 'features/encrypt.md'
     - 'Remoteconfig': 'features/remoteconfig.md'
