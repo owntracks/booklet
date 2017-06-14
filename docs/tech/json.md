@@ -72,6 +72,7 @@ This location object describes the location of the device that reported it.
     * `o` phone is offline _(iOS, Android)_
     * `m` mobile data _(iOS, Android)_
 * `cp` [copy mode](../features/copy.md) enabled; only if `true`, missing otherwise _(iOS)_
+* `topic` (only in HTTP payloads) contains the original publish topic.
 
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
