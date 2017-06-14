@@ -82,3 +82,5 @@ For the sake of clarity this example uses a database table with a MySQL timestam
 Assuming the Web server hosting this example is called `example.com`, and assuming the above script is in Jane's home directory's `public_html` saved as `loc.php`, the URL you configure in the OwnTracks app would be `http://example.com/~jane/loc.php`. We _urge_ you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of `https://user:password@example.com/~jane/loc.php`.
 
 There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you [study the API documentation](json.md).
+
+* see also: [Traccar](../features/traccar.md)

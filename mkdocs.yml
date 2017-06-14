@@ -35,6 +35,7 @@ pages:
     - 'Encryption': 'features/encrypt.md'
     - 'Remoteconfig': 'features/remoteconfig.md'
     - 'Debugging': 'features/debug.md'
+    - 'Traccar' : 'features/traccar.md'
 - API:
     - 'JSON': 'tech/json.md'
     - 'HTTP' : 'tech/http.md'
