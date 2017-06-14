@@ -14,7 +14,7 @@ All publishes which are currently done with MQTT will then be POSTed to the endp
 
 If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) and a successfull return code (`2xx`) is returned  the payload is considered POSTed. In the event that the endpoint is unreachable, the payload will be queued and posted at a later time.
 
-The [encryption](../features/encrypt.md) feature is supported, and you can use it HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.
+The [encryption](../features/encrypt.md) feature is supported, and you can use it with HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.
 
 If the HTTP endpoint returns a status code 200 it will typically return an empty JSON payload array `[]`. It may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid `_type` as described in [JSON](../tech/json.md). Support for the following `_type` is implemented:
 
