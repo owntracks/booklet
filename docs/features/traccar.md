@@ -75,4 +75,7 @@ a query on the Traccar API could produce something like this:
 ]
 ```
 
-Neither encryption nor friends are supported.
+#### Notes
+
+* Neither encryption nor friends are supported.
+* `topic` is populated by iOS, but not by Android
