@@ -62,8 +62,9 @@ This location object describes the location of the device that reported it.
     * `r` response to a reportLocation cmd message _(iOS/Android)_
     * `u` manual publish requested by the user _(iOS/Android)_
     * `t` timer based publish in move move _(iOS)_
+    * `v` updated by `Settings/Privacy/Locations Services/System Services/Frequent Locations` monitoring _(iOS)_
 * `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_
-* `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) of the location fix _(iOS,Android/integer/epoch/required)_
+* `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) in seconds of the location fix _(iOS,Android/integer/epoch/required)_
 * `vac` vertical accuracy of the `alt` element _(iOS/integer/meters/optional)_
 * `vel` velocity _(iOS/integer/kmh/optional)_
 * `p` barometric pressure _(iOS/integer/kPa/optional/extended data)_
