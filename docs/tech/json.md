@@ -344,6 +344,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * If `url` is not specified the text of the `content` element is displayed. Links embedded in the text are operational.
 * If the `content` consists of HTML, it is rendered
 * The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
+* On iOS, the array of waypoints to the `setWaypoints` command allows updates / removal; the key of the waypoint is its name (`desc`). If you specify an invalid `lat` or `lon` the waypoint is deleted.
 
 ## `_type=steps`
 
