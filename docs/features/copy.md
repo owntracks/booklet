@@ -2,7 +2,7 @@
 
 To allow some friends to see your location temporarily, even if they don't have OwnTracks installed on their devices (but do ask them why they don't :) you can toggle a `_cp` switch in the UI of both Android and iOS apps.
 
-When this switch is active, the apps add a `{ "_cp" : true }` JSON element to outgoing publishes (via MQTT) or POSTs (via HTTP). Other than setting this value the apps don't do anything with the switch.
+When this switch is active, the apps add a `{ "_cp" : true }` JSON element to outgoing `"_type" : "location"` publishes (via MQTT) or POSTs (via HTTP). Other than setting this value the apps don't do anything with the switch.
 
 ```json
 {
