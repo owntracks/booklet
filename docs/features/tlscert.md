@@ -77,6 +77,8 @@ If need be, you can adjust a great number of parameters regarding how TLS connec
 * Allow untrusted Certificates should be disabled if possible. If the app doesn't have the CA certificate in its keychain, you'll have to allow untrusted certificates.
 * Validate Domain Name; whether or not to validate the domain name in the certificate's `CN` field.
 
+Note: on iOS self-signed certificates **require** _Custom Security Policy_ to be set. (There seems to be a problem we have not tracked down yet. Using Custom Security Policy once does mark a self signed certificate as valid until the app is restarted. This isn't reset even when Custom Security Policy is switched off afterwards.)
+
 Client certificates are independent of the custom security policy settings.
 
 If you wish to use certificate pinning, you must provide a DER-encoded file with an `.otre` extension to the device containing the pinned certificate.
