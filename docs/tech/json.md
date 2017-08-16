@@ -56,7 +56,7 @@ This location object describes the location of the device that reported it.
 * `lon` longitude _(iOS,Android/float/meters/required)_
 * `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
 * `t` trigger for the location report _(iOS,Android/string/optional)_
-    * `p` ping issued randombly by background task _(iOS)_
+    * `p` ping issued randomly by background task _(iOS)_
     * `c` circular region enter/leave event _(iOS/Android)_
     * `b` beacon region enter/leave event _(iOS/Android)_
     * `r` response to a reportLocation cmd message _(iOS/Android)_
@@ -77,7 +77,7 @@ This location object describes the location of the device that reported it.
 
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
-* The `tid` dfaults to the last two characters of the topic
+* The `tid` defaults to the last two characters of the topic
 * A missing `t` element also indicates an automatic location update
 * A publish of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
 * The `acc`, `alt`, `cog`, `vac`, `vel` elements are only added if they are not zero
