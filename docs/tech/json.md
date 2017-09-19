@@ -175,8 +175,8 @@ A transition message is sent, when entering or leaving a previously configured g
 * `acc` Accuracy of the geographical coordinates _(iOS,Android/float/meters/required)_
 * `tid` Tracker ID of the waypoint _(iOS/string/none/optional)_
 * `event` Event that triggered the transition (iOS,Android/string/required)
-  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS, Android)_
-  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS, Android)_
+	  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS, Android)_
+	  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS, Android)_
 * `desc` Name of the waypoint _(iOS,Android/string/optional)_
 * `t` Trigger of the event _(iOS,Android/string/optional)_
     - `c` Circular geographical region  _(iOS, Android)_
