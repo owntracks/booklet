@@ -32,7 +32,6 @@ In MQTT mode apps subscribe to:
 - `owntracks/user/device/cmd` if remote commands are enabled
 - `owntracks/+/+` for seeing other user's locations, depending on broker ACL
 - `owntracks/+/+/event` for transition messages (`enter`/`leave`)
-- `owntracks/+/+/waypoint` for Waypoint definitions/modifications
 - `owntracks/+/+/info` for obtaining [cards](../features/card.md).
 
 In HTTP mode the apps POST their data to a single endpoint you configure.
@@ -260,8 +259,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `ranging` Beacon ranging _(iOS/boolean)_
 * `remoteConfiguration` Allow remote configuration by sending a `setConfiguration` cmd message _(Android/boolean)_
 * `servercer` Blank separated list of certificate file names in DER format _(iOS/string)_
-* `sub` MQTT subscription _(Android/boolean)_
-* `subTopic` MQTT topic to which the app subscribes   _(iOS,Android/string)_
+* `sub` subscribe to `subTopic` via MQTT _(iOS,Android/boolean)_
+* `subTopic` A whitespace separated list of MQTT topics to which the app subscribes if `sub` is true (defaults see [topics](#topics))   _(iOS,Android/string)_
 * `subQos` _(iOS,Android/boolean)_
 * `tid` Two digit Tracker ID used to display short name and default face of a user _(iOS,Android/string)_
 * `tls` MQTT endpoint TLS connection _(iOS,Android/boolean)_
