@@ -55,8 +55,7 @@ of supported features is concernened. This table summarizes the current status.
 
 ### iOS
 
-* Runs on iPhones running iOS >=6.1 (3GS, 4, 4S, 5, ...) and iPads running iOS >=6.1 as an iPhone app. Not tested on iPods yet.
-* UI is iOS7 compliant
+* Runs on iPhones and iPads as an iPhone app. Not tested on iPods.
 
 * Monitors "significant location changes" as defined by Apple Inc. (about 5 minutes AND 
   	"significant location changes" (>500m)) or as described in Move Mode below.
