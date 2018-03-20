@@ -296,6 +296,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
     elements
 }
 ```
+* `desc` name of the seen beacon _(iOS/String)_
 * `uuid` UUID of the seen beacon _(iOS/String)_
 * `major` Major number of the seen beacon _(iOS/integer/epoch)_
 * `minor` Minor number of the seen beacon _(iOS/integer/epoch)_
