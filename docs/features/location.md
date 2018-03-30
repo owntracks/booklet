@@ -18,7 +18,7 @@ If you switch on the app after one minute in the background (11 minutes after th
 
 ### iOS 
 
-The iOS app offers 3 modes of location publication:
+The iOS app offers 4 modes of location publication:
 
 * _Quiet_ mode
 * _Manual_ mode
