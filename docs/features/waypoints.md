@@ -62,4 +62,4 @@ You can use this to import individual waypoints or groups of pre-configured wayp
 On both iOS waypoints can be deleted by swiping it away. On Android, a long press is required. 
 
 ### Beacons Ranging
-In addition to circular regions, the apps can monitor their proximity for [BLE Beacons](beacons.md). 
+In addition to circular regions, the iOS app can monitor its proximity to [BLE Beacons](beacons.md). 

@@ -57,7 +57,7 @@ This location object describes the location of the device that reported it.
 * `t` trigger for the location report _(iOS,Android/string/optional)_
     * `p` ping issued randomly by background task _(iOS)_
     * `c` circular region enter/leave event _(iOS/Android)_
-    * `b` beacon region enter/leave event _(iOS/Android)_
+    * `b` beacon region enter/leave event _(iOS)_
     * `r` response to a reportLocation cmd message _(iOS/Android)_
     * `u` manual publish requested by the user _(iOS/Android)_
     * `t` timer based publish in move move _(iOS)_
@@ -145,12 +145,12 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_
 * `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
 * `tid` Tracker ID that is included in the sent transition message _(iOS/string/optional)_
-* `uuid` UUID of the BLE Beacon _(iOS,Android/string/optional)_
-* `major` Major number of the BLE Beacon _(iOS,Android/integer/optional)_
-* `minor`  Minor number of the BLE Beacon_(iOS,Android/integer/optional)_
+* `uuid` UUID of the BLE Beacon _(iOS/string/optional)_
+* `major` Major number of the BLE Beacon _(iOS/integer/optional)_
+* `minor`  Minor number of the BLE Beacon_(iOS/integer/optional)_
 
 #### Notes
-* In iOS version >= 9.1.0 and in Android version >= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
+* In iOS version >= 9.1.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
 * If `lat`, `lon` and `rad` elements are present, transition messages are sent when entering and leaving the geographical region
 * If `uuid`, `major`, `minor` elements are present, BLE becons with that specifications are monitored
 * Beacons and Geographical regions can be defined together
@@ -174,12 +174,12 @@ A transition message is sent, when entering or leaving a previously configured g
 * `acc` Accuracy of the geographical coordinates _(iOS,Android/float/meters/required)_
 * `tid` Tracker ID of the waypoint _(iOS/string/none/optional)_
 * `event` Event that triggered the transition (iOS,Android/string/required)
-	  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS, Android)_
-	  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS, Android)_
+	  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS)_
+	  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS)_
 * `desc` Name of the waypoint _(iOS,Android/string/optional)_
 * `t` Trigger of the event _(iOS,Android/string/optional)_
     - `c` Circular geographical region  _(iOS, Android)_
-    - `b` BLE Beacon _(iOS, Android)_
+    - `b` BLE Beacon _(iOS)_
 
 
 ## `_type=configuration`
@@ -195,9 +195,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `allowinvalidcerts` Allow self signed certificates in user defined security policy _(iOS/boolean)_
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
 * `autostartOnBoot` Autostart the app on device boot _(Android/boolean)_
-* `beaconLayout` AltBeacon [parser layout](https://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconParser.html) to understand different beacon advertisements other than the default iBeacons  _(Android/string)_
 
-* `beaconMode` Backend mode for BLE beacon scanning (Android/Integer)
+* `beaconMode` Backend mode for BLE beacon scanning (Android/Integer/obsolete)
     - `0` Normal bluetooth scanning for regions with UUID
     - `1` Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android < 6.x
     - `2` Hard disable any Bluetooth functions even if regions with UUID are defined

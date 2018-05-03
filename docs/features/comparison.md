@@ -25,7 +25,7 @@ of supported features is concernened. This table summarizes the current status.
 | [Waypoints](waypoints.md)                 |   Y    |   Y     |
 | Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
 | [Remote configuration](remoteconfig.md)   |   Y    |   Y      |
-| [iBeacons](beacons.md)                    |   Y    |   Y      |
+| [iBeacons](beacons.md)                    |   Y    |          |
 | [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
 | [Payload encryption](encrypt.md)          |   Y    |    Y    |
 

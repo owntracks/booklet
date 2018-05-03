@@ -8,15 +8,10 @@ Since Android 6 and higher, the operating systems enforces stricter restrictions
 * Incoming messages such as events might be delayed.
 * When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 10 minutes or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.
 * The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.
-* Beacon detection might not work reliably because background scanning intervals are severely restricted.
+* Beacons are no long supported in OwnTracks for Android and will be removed in future releases.
 
 ## Restrictions on Huawei Phones 
 Huawei Phones will stop apps in the background. OwnTracks needs to be whitelisted as a protected app in order to run in the background. 
-
-## Beacon Scanning
-Beacon detection might cause all sorts of problems due to bad implementation by the device vendor.
-This includes WiFi issues, intermittently working beacon detection or beacon detection not working at all.
-In the default settings, iBeacons and AltBeacons can be detected. A custom `beaconLayout` can be provided to detect other types.
 
 ## Google Play Services
 Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.
