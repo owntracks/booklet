@@ -62,7 +62,7 @@ This location object describes the location of the device that reported it.
     * `u` manual publish requested by the user _(iOS/Android)_
     * `t` timer based publish in move move _(iOS)_
     * `v` updated by `Settings/Privacy/Locations Services/System Services/Frequent Locations` monitoring _(iOS)_
-* `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_
+* `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_ required for `http` mode
 * `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) in seconds of the location fix _(iOS,Android/integer/epoch/required)_
 * `vac` vertical accuracy of the `alt` element _(iOS/integer/meters/optional)_
 * `vel` velocity _(iOS/integer/kmh/optional)_
@@ -177,6 +177,7 @@ A transition message is sent, when entering or leaving a previously configured g
 	  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS)_
 	  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS)_
 * `desc` Name of the waypoint _(iOS,Android/string/optional)_
+* `tid` TrackerID required in http mode.
 * `t` Trigger of the event _(iOS,Android/string/optional)_
     - `c` Circular geographical region  _(iOS, Android)_
     - `b` BLE Beacon _(iOS)_
@@ -375,6 +376,7 @@ Apps read [Card](../features/card.md) to display a name and icon for a user.
 
 * `name` Name to identify a user _(iOS,Android/string/optional)_
 * `face` Base64 encoded PNG image that is displayed instead of the Tracker ID _(iOS,Android/string/optional)_
+* `tid` The tracker ID with which a friend is associated in the apps
 
 
 ## `_type=waypoints`

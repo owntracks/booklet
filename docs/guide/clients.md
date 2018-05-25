@@ -1,6 +1,6 @@
 ## Clients
 
-Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. _publish_) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in [_public mode_](scenarios.md).)
+Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. _publish_) to the MQTT broker? We have some suggestions.
 
 You know that OwnTracks _publishes_ location information to an MQTT or HTTP endpoint. The data it publishes is transferred in a particular format called [JSON](http://json.org), and [this is what it looks like](../tech/json.md).
 
@@ -27,34 +27,6 @@ We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/reco
 And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.
 
 Read [more about the Recorder](../clients/recorder.md).
-
-## o2s
-
-One of the clients we provide as part of the Open Source OwnTracks project is called _o2s_; the strange name stands for _OwnTracks to Storage_, and you can use this connected to your [MQTT broker](broker.md) in [Private mode](scenarios.md), if you need a MySQL or PostgreSQL database. (We do recommend, however, that you use our _Recorder_ (see above).)
-
-Correctly configured (and it's not trivial), _o2s_ connects to your broker and subscribes to location messages and other [OwnTracks payloads](../tech/json.md). Upon receiving a location update, _o2s_ will do a number of things:
-
-* Perform a reverse-geo lookup (using your choice of either Google or XXX to do so) for the geographical coordinates received from the OwnTracks app
-* Store the message and its details into a database (MySQL and PostgreSQL are supported)
-* Alert via (future) plugins that a geographical region ([waypoint](waypoints.md)) has been entered or left
-
-The result of using _o2s_ is that you get a database table (several actually) in which your OwnTracks locations are stored.
-
-```
-+---------------------+-----+------------+------------+------+--------------------------------------+
-| tst                 | tid | lat        | lon        | cc   | addr                                 |
-+---------------------+-----+------------+------------+------+--------------------------------------+
-| 2015-05-27 06:23:36 | jJ  | 46.7835540 | 17.2073088 | HU   | Keszthely, Hévízi út, 8360 Ungarn    |
-| 2015-05-26 20:10:52 | jJ  | 46.7710135 | 17.1829915 | HU   | Alsópáhok, 760, 8394 Ungarn          |
-| 2015-05-26 14:32:50 | jJ  | 46.9557636 | 19.4132377 | HU   | Kerekegyháza, 5211, 6041 Ungarn      |
-| 2015-05-23 22:42:27 | jJ  | 47.4986630 | 19.0438124 | HU   | Budapest, Eötvös tér, 1051 Ungarn    |
-+---------------------+-----+------------+------------+------+--------------------------------------+
-```
-
-So, now that you have the OwnTracks locations being neatly stored for you, how do you visualize them on, say, a map, at a later point in time? Enter _Pista_.
-
-
-
 
 ## mqttwarn
 

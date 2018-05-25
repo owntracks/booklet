@@ -1,26 +1,14 @@
 ## Scenarios
 
-There are three basic scenarios we have for you depending on your needs. It'll help if you keep a copy of the [technical terminology](../terminology.md) handy.
+There are two basic scenarios we have for you depending on your needs. It'll help if you keep a copy of the [technical terminology](../terminology.md) handy.
 
+![Android Friends](images/b-android-friends.png)
 
-## Public
-
-The very first time you install OwnTracks it will be configured in _public mode_. In this mode, the app "just works". It connects to our public MQTT broker, and your location is published there anonymously. In the app you'll also see any other public users, although you won't be able to identify them (nor they you): there are, other than the location data, no personal details of any user. The one exception is a couple of pseudo-users we publish magically so that you have something nice to look at.
-
-![iPad Public Users](images/b-android-friends.png)
-
-
-We mentioned earlier that this is not a mode in which you want to run OwnTracks; it's basically just a demonstration mode for you to get a feeling for how OwnTracks looks and works. The data published by OwnTracks in this mode is not retained, and we don't store it.
-
-Using _Public_ mode means you don't *have* to learn about [MQTT brokers](broker.md), [topics](topics.md), and all the rest of the stuff, but the downside is that you don't get to use any of the neat features _MQTT_ mode or _HTTP_ mode come with. For example, you can't set up [friends](friends.md) or configure [clients to use your data](clients.md) for the sole reason that we don't tell you the address or the authentication credentials for _Public_ mode. Yep, it's as they say: *you get what you pay for*. :-)
-
-We think it's best you forget about this as quickly as possible and chose one of the other modes.
+There is a bit of stuff you have to learn about in order to use OwnTracks: [MQTT brokers](broker.md), [topics](topics.md), but the upside is that you get to use many of the neat features _MQTT_ mode or _HTTP_ mode come with. For example, you can set up [friends](friends.md).
 
 ## HTTP mode
 
-If you don't want to go to the trouble of hosting your own MQTT setup, you can use _HTTP_ mode to publish location data to a [HTTP server of your chosing](../tech/http.md).
-
-
+If you don't want to go to the trouble of hosting your own MQTT setup, you can use _HTTP_ mode to publish location data to a [HTTP server of your chosing](../tech/http.md), and you can also use our Recorder for doing so.
 
 ## MQTT mode
 

@@ -45,6 +45,6 @@ The important message here, and we can't repeat this often enough: OwnTracks is 
 
 OwnTracks used to be difficult to set up particularly because you had to provide the server (called a _broker_, remember?) yourself, but we've gone to great lengths to make it easy for you to try before you'll want to take it upon yourself to do all the setup work.
 
-We'll now cover the [three basic scenarios](scenarios.md).
+We'll now cover the [two scenarios](scenarios.md).
 
 [^1]: This is a relative amount, but you can tune it a bit.
