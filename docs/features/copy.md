@@ -10,7 +10,7 @@ When this switch is active, the apps add a `{ "_cp" : true }` JSON element to ou
   "lat": 48.85833,
   "t": "u",
   "lon": 3.29513,
-  "cp": true,
+  "_cp": true,
   "tid": "JJ",
   "tst": 1496473278
 }
