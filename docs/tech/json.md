@@ -73,6 +73,7 @@ This location object describes the location of the device that reported it.
     * `m` mobile data _(iOS, Android)_
 * `cp` [copy mode](../features/copy.md) enabled; only if `true`, missing otherwise _(iOS)_
 * `topic` (only in HTTP payloads) contains the original publish topic (e.g. `owntracks/jane/phone`). _(iOS)_
+* `inregions` contains a list of regions the device is currently in (e.g. `["Home","Garage"]`). _(iOS,Android/list of strings/optional)_
 
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
