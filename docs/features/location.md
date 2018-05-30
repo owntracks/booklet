@@ -108,7 +108,7 @@ There are 2 kinds of locations:
 
 A _manual location_ with a non-zero length remark (description) is a _waypoint_.
 
-If a _waypoint_ is _shared_, its attributes are published when the waypoint is created or changed.
+A _waypoint_'s attributes are published when the waypoint is created or changed.
 
 If a _waypoint_ specifies a radius, a _circular region_ is monitored for _enter/leave events_.
 
@@ -116,17 +116,16 @@ If a _waypoint_ is not a _circular region_ and the waypoint's description contai
 
 If an enter/leave event occurs an event message is published with the `type` attribute set to `c`or `b`for (_circular region_or _beacon region_). The message contains an `event` attribute specifying either `enter`or `leave`.
 
-If the _waypoint_is _shared_, the description of the _waypoint_ is added to the published `event` message.
+The description of the _waypoint_ is added to the published `event` message.
 
-| Automatic | Description | iBeacon | Radius | Shared | Event Message | /w Description | Waypoint Message |
-|-----------|-------------|---------|--------|--------|---------------|----------------|------------------|
-| Y         | n/a         | n/a     | n/a    | n/a    | N             | N              | N                |
-| N         | N           | n/a     | n/a    | n/a    | N             | N              | N                |
-| N         | Y           | N       | N      | N      | N             | N              | N                |
-| N         | Y           | N       | N      | Y      | N             | N              | Y                |
-| N         | Y           | N       | Y      | N      | `c`           | N              | N                |
-| N         | Y           | N       | Y      | Y      | `c`           | Y              | Y                |
-| N         | Y           | Y       | N      | N      | `b`           | N              | N                |
-| N         | Y           | Y       | N      | Y      | `b`           | Y              | Y                |
-| N         | Y           | Y       | Y      | N      | `c`           | N              | N                |
-| N         | Y           | Y       | Y      | Y      | `c`           | Y              | Y                |
+| Automatic | Description | iBeacon | Radius | Event Message | /w Description | Waypoint Message |
+|-----------|-------------|---------|--------|---------------|----------------|------------------|
+| Y         | n/a         | n/a     | n/a    | N             | N              | N                |
+| N         | N           | n/a     | n/a    | N             | N              | N                |
+| N         | Y           | N       | N      | N             | N              | Y                |
+| N         | Y           | N       | Y      | `c`           | N              | N                |
+| N         | Y           | N       | Y      | `c`           | Y              | Y                |
+| N         | Y           | Y       | N      | `b`           | N              | N                |
+| N         | Y           | Y       | N      | `b`           | Y              | Y                |
+| N         | Y           | Y       | Y      | `c`           | N              | N                |
+| N         | Y           | Y       | Y      | `c`           | Y              | Y                |

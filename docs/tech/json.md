@@ -132,7 +132,7 @@ A _last will and testament_ is published automatically by the MQTT broker when i
 
 ## `_type=waypoint`
 
-Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint if the waypoint is marked as `shared`. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
+Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
 
 ```json
 {
@@ -156,11 +156,11 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
 * If `uuid`, `major`, `minor` elements are present, BLE becons with that specifications are monitored
 * Beacons and Geographical regions can be defined together
 * Waypoint messages are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.
-* Shared Waypoint are sent to the broker and transition messages contain a `desc` and `event` element. Not shared ones are not sent to the broker and transition messages contain an `event` attribute only
+* Waypoints are sent to the broker and transition messages contain a `desc` and `event` element.
 
 ## `_type=transition`
 
-A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message. If the corresponding waypoint is shared, it's description in `desc` is included too. MQTT transition messages are published non retained.
+A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.
 
 ```json
 {

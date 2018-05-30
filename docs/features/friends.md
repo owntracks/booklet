@@ -51,8 +51,7 @@ The app "sees" a friend as soon as it receives a publish to the topic branch sub
 
 Select the _Friends_ button to see a list of friends:
 
-Tapping on one of the friends, performs a reverse geo-coding to show address. Furthermore, a click on the little right-arrow shows the last location and
-all shared waypoints of that friend.
+Tapping on one of the friends, performs a reverse geo-coding to show address. Furthermore, a click on the little right-arrow shows their last location.
 
 ## Who is that?
 
