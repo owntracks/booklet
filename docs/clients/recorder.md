@@ -17,7 +17,7 @@ As an example, let's assume the host on which the Docker container will run has 
 #!/bin/sh
 
 docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083 \
-	--name owntracks-recorder
+	--name owntracks-recorder \
 	--hostname ds415.ww.mens.de \
 	-e MQTTHOSTNAME="ds415.ww.mens.de" \
 	-e IPLIST="192.168.1.1 192.168.1.82" \
