@@ -60,14 +60,18 @@ For the sake of clarity this example uses a database table with a MySQL timestam
         # CREATE TABLE locations (dt TIMESTAMP, tid CHAR(2), lat DECIMAL(9,6), lon DECIMAL(9,6));
         $mysqli = new mysqli("127.0.0.1", "user", "password", "database");
 
+        $tst = $data['tst'];
         $lat = $data['lat'];
         $lon = $data['lon'];
         $tid = $data['tid'];
 
-        $sql = "INSERT INTO locations (tid, lat, lon) VALUES (?, ?, ?)";
+        # Convert timestamp to a format suitable for mysql
+        $dt = date('Y-m-d H:i:s', $tst);
+
+        $sql = "INSERT INTO locations (dt, tid, lat, lon) VALUES (?, ?, ?, ?)";
         $stmt = $mysqli->prepare($sql);
         # bind parameters (s = string, i = integer, d = double,  b = blob)
-        $stmt->bind_param('sdd', $tid, $lat, $lon);
+        $stmt->bind_param('ssdd', $dt, $tid, $lat, $lon);
         $stmt->execute();
         $stmt->close();
     }
