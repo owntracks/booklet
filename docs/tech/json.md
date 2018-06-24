@@ -66,7 +66,7 @@ This location object describes the location of the device that reported it.
 * `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) in seconds of the location fix _(iOS,Android/integer/epoch/required)_
 * `vac` vertical accuracy of the `alt` element _(iOS/integer/meters/optional)_
 * `vel` velocity _(iOS/integer/kmh/optional)_
-* `p` barometric pressure _(iOS/integer/kPa/optional/extended data)_
+* `p` barometric pressure _(iOS/float/kPa/optional/extended data)_
 * `conn` Internet connectivity status (route to host) when the message is created _(iOS,Android/string/optional/extended data)_
     * `w` phone is connected to a WiFi connection _(iOS, Android)_
     * `o` phone is offline _(iOS, Android)_
