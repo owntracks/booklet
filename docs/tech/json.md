@@ -47,30 +47,30 @@ This location object describes the location of the device that reported it.
 }
 ```
 
-* `acc` Accuracy of the reported location in meters without unit _(iOS/integer/meters/optional)_
-* `alt` Altitude measured above sea level _(iOS/integer/meters/optional)_
+* `acc` Accuracy of the reported location in meters without unit _(iOS,Android/integer/meters/optional)_
+* `alt` Altitude measured above sea level _(iOS,Android/integer/meters/optional)_
 * `batt` Device battery level _(iOS,Android/integer/percent/optional)_
 * `cog` Course over ground _(iOS/integer/degree/optional)_
 * `lat` latitude _(iOS,Android/float/meters/required)_
 * `lon` longitude _(iOS,Android/float/meters/required)_
 * `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
 * `t` trigger for the location report _(iOS,Android/string/optional)_
-    * `p` ping issued randomly by background task _(iOS)_
-    * `c` circular region enter/leave event _(iOS/Android)_
+    * `p` ping issued randomly by background task _(iOS,Android)_
+    * `c` circular region enter/leave event _(iOS,Android)_
     * `b` beacon region enter/leave event _(iOS)_
-    * `r` response to a reportLocation cmd message _(iOS/Android)_
-    * `u` manual publish requested by the user _(iOS/Android)_
+    * `r` response to a reportLocation cmd message _(iOS,Android)_
+    * `u` manual publish requested by the user _(iOS,Android)_
     * `t` timer based publish in move move _(iOS)_
     * `v` updated by `Settings/Privacy/Locations Services/System Services/Frequent Locations` monitoring _(iOS)_
 * `tid` Tracker ID used to display the initials of a user _(iOS,Android/string/optional)_ required for `http` mode
 * `tst` UNIX [epoch timestamp](http://en.wikipedia.org/wiki/Unix_time) in seconds of the location fix _(iOS,Android/integer/epoch/required)_
 * `vac` vertical accuracy of the `alt` element _(iOS/integer/meters/optional)_
-* `vel` velocity _(iOS/integer/kmh/optional)_
+* `vel` velocity _(iOS,Android/integer/kmh/optional)_
 * `p` barometric pressure _(iOS/float/kPa/optional/extended data)_
 * `conn` Internet connectivity status (route to host) when the message is created _(iOS,Android/string/optional/extended data)_
-    * `w` phone is connected to a WiFi connection _(iOS, Android)_
-    * `o` phone is offline _(iOS, Android)_
-    * `m` mobile data _(iOS, Android)_
+    * `w` phone is connected to a WiFi connection _(iOS,Android)_
+    * `o` phone is offline _(iOS,Android)_
+    * `m` mobile data _(iOS,Android)_
 * `cp` [copy mode](../features/copy.md) enabled; only if `true`, missing otherwise _(iOS)_
 * `topic` (only in HTTP payloads) contains the original publish topic (e.g. `owntracks/jane/phone`). _(iOS)_
 * `inregions` contains a list of regions the device is currently in (e.g. `["Home","Garage"]`). Might be empty. _(iOS,Android/list of strings/optional)_
@@ -81,6 +81,7 @@ This location object describes the location of the device that reported it.
 * A missing `t` element also indicates an automatic location update
 * A publish of `"_type": "location"` with a `"b"` trigger is sent when an iOS device enters or leaves a beacon in addition to a `"_type": "transition"`: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.
 * The `acc`, `alt`, `cog`, `vac`, `vel` elements are only added if they are not zero
+* Some Android devices always return 0 for `alt` or `vel`
 * Elements marked with _extended data_ are only added if `extendedData=true` is configured
 
 
@@ -205,12 +206,11 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
 * `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
-* `cp` Copy mode _(iOS,Android/boolean)_
+* `cp` Copy mode _(iOS/boolean)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
-* `httpSchedulerConsiderStrategyDirect` Directly send messages in HTTP mode and bypass the default scheduler if a network connection exists _(Android/boolean)_
 * `ignoreInaccurateLocations` Location accuracy below which reports are supressed _(iOS,Android/integer/days)_
 * `ignoreStaleLocations` Number of days after which location updates are assumed stale _(iOS,Android/integer/days)_
 * `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
@@ -229,7 +229,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `locked` Locks settings screen on device for editing _(iOS/boolean)_
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
     - `0` Private  MQTT _(iOS, Android)_
-    - `2` Public  MQTT _(iOS, Android)_
     - `3` Private  HTTP _(iOS, Android)_
     - `4` Watson IOT Quickstart _(iOS)_
     - `4` Watson IOT Registered _(iOS)_
@@ -241,12 +240,12 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `mqttProtocolLevel` MQTT broker protocol level _(iOS,Android/integer)_
     - `3` MQTT 3 (default)
     - `4` MQTT 3.1.1
-
-* `notification` Show ongoing notification. Required to keep running in the background _(Android/boolean)_
 * `notificationGeocoder` Resolve last reported location in ongoing notification to an address  _(Android/boolean)_
 * `notificationLocation` Show last reported location in ongoing notification _(Android/boolean)_
+* `opencageApiKey` API key for alternate Geocoding provider. See https://opencagedata.com/ for details. _(Android/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
 * `password` Endpoint password _(iOS,Android/string)_
+* `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
 * `policymode` User defined securiy policy mode _(iOS/integer)_
     - `0` Do not used pinned certificates to validate servers
     - `1` Validate host certificates against public keys of pinned certificates
