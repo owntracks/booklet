@@ -146,7 +146,6 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
 * `lon` Longitude _(iOS,Android/float/meters/optional)_
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_
 * `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
-* `tid` Tracker ID that is included in the sent transition message _(iOS/string/optional)_
 * `uuid` UUID of the BLE Beacon _(iOS/string/optional)_
 * `major` Major number of the BLE Beacon _(iOS/integer/optional)_
 * `minor`  Minor number of the BLE Beacon_(iOS/integer/optional)_
