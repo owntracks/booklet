@@ -35,6 +35,8 @@ The above script will surface the port numbers as follows:
 
 You can assign these as you wish. Recall, that if you use our example, your OwnTracks apps will also have to access 18883 over TLS (instead of the default 8883 over TLS).
 
+You may want to modify the default ACLs under `owntracks/mosquitto/mosquitto.acl`. For more please check [Broker Configurations](https://owntracks.org/booklet/guide/broker/#acls).
+
 #### Exploring
 
 If you want to see what's going on within the container, try launching an MQTT subscriber: first obtain the container's ID:
