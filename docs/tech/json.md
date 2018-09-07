@@ -229,8 +229,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
     - `0` Private  MQTT _(iOS, Android)_
     - `3` Private  HTTP _(iOS, Android)_
-    - `4` Watson IOT Quickstart _(iOS)_
-    - `4` Watson IOT Registered _(iOS)_
 * `monitoring` Location reporting mode _(iOS,integer)_
     - `-1` Quiet
     - `0` Manual
@@ -270,15 +268,10 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `username` Endpoint username _(iOS,Android/string)_
 * `validatedomainname` Validate domain name during TLS handshake _(iOS/boolean)_
 * `validatecertificatechain` Validate the whole certificate chain or just the server certificate _(iOS/boolean)_
-* `watsonAuthToken` Auth token Watson IOT Registered mode _(iOS/string)_
-* `watsonDeviceType` Device type in Watson IOT Registered mode _(iOS/string)_
-* `watsonDeviceId` Device ID in Watson IOT Registered mode _(iOS/string)_
-* `watsonOrganization` Organization in Watson IOT Registered mode _(iOS/string)_
 * `willRetain`
 * `willTopic`
 * `willQos`
 * `waypoints` Array of waypoint messages _(iOS,Android/array)_
-* `quickstartId` Device ID in Watson IOT Quickstart mode _(iOS/string)_
 
 #### Notes
 * When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a `mode` element, the mode is changed first and all remaining elements are imported for the new mode.
