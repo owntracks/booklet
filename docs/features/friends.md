@@ -67,10 +67,3 @@ When you zoom the map out (or near to the friend's location), you see a small re
 
 Voila!
 
-Note: this works only with contacts stored locally -- not with corporate address books associated with your iPhone.
-
-To support corporate address books (which usually cannot be updated) the ios
-app Version >=5.1 can be set to store the associations locally rather than in
-the address book. You find the respective switch in the expert mode settings.
-Switch it `off` (i.e. disabled) to keep associations between MQTT topics and 
-your contact within OwnTracks.

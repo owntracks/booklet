@@ -263,7 +263,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `tls` MQTT endpoint TLS connection _(iOS,Android/boolean)_
 * `tlsClientCrtPassword` Passphrase of the client pkcs12 file _(Android/string)_
 * `url` HTTP endpoint URL to which messages are POSTed _(iOS,Android/string)_
-* `updateAddressBook` _(iOS/boolean)_
 * `usepolicy` Use user defined security policy _(iOS/boolean)_
 * `username` Endpoint username _(iOS,Android/string)_
 * `validatedomainname` Validate domain name during TLS handshake _(iOS/boolean)_
