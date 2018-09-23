@@ -35,18 +35,6 @@ A small blue, yellow rimmed semicircle at the perimeter indicates the course ove
 
 If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the [Friends](friends.md) list, as soon as a location update for Jane is seen by the app.
 
-In order to associate an MQTT topic with our friend (Jane, in this case), edit your addressbook entry on iOS for Jane and do either of the following:
-
-* Create a new relationship (like 'Spouse') called `OwnTracks` (case insensitive), and add your friend's topic name to that (e.g. `owntracks/jane/loc`)
-
-The addressbook API might need a while to be refreshed, but you may be able to speed that up by swiping the Friends list downward until the activity indicator appears, then let go).
-
-or...
-
-Tap the Bookmark Button in the Navigation Bar on the Location screen. Select an entry from your Address Book.
-The entry will be marked with a relationship to the current friend's topic name.
-
-
 ### Region Monitoring and Waypoints
 
 For all manually published locations, a description, a region radius and a share flag can be edited.

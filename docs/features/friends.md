@@ -59,11 +59,9 @@ It's difficult to remember which MQTT topic belongs to which friend, so we can a
 
 Select an entrythen click on the _bookmark_ icon on top right. The Address book opens.
 
-Select the entry you want to associate with the OwnTracks topic. If you want to release the association, select the wastepaper basket icon in the address book screen. The display
-changes back from the picture and name of the friend to the mqtt topic (e.g. "owntracks/kate/nexus4").
+Select the entry you want to associate with the OwnTracks topic. If you want to release the association, select the wastepaper basket icon in the address book screen. The display changes back from the picture and name of the friend to the mqtt topic (e.g. "owntracks/kate/nexus4").
 
 When you zoom the map out (or near to the friend's location), you see a small rendition of the icon directly on the map.
-
 
 Voila!
 
