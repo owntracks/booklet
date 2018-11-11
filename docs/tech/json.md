@@ -71,7 +71,6 @@ This location object describes the location of the device that reported it.
     * `w` phone is connected to a WiFi connection _(iOS,Android)_
     * `o` phone is offline _(iOS,Android)_
     * `m` mobile data _(iOS,Android)_
-* `cp` [copy mode](../features/copy.md) enabled; only if `true`, missing otherwise _(iOS)_
 * `topic` (only in HTTP payloads) contains the original publish topic (e.g. `owntracks/jane/phone`). _(iOS)_
 * `inregions` contains a list of regions the device is currently in (e.g. `["Home","Garage"]`). Might be empty. _(iOS,Android/list of strings/optional)_
 
