@@ -118,7 +118,7 @@ The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&m
 
 ### Queclink
 
-OwnTracks works with a selection of traccers by [Queclink](http://www.queclink.com). The protocol conversion is done via [qtripp](https://github.com/jpmens/qtripp).
+OwnTracks works with a selection of trackers by [Queclink](http://www.queclink.com), for which the protocol conversion is done via [qtripp](https://github.com/jpmens/qtripp).
 Queclink devices report the following additional elements in a `_type=location` message:
 
 ```json
