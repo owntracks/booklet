@@ -116,6 +116,80 @@ The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&m
 #### Notes
 * The device can be configured to produce or not produce fields marked as _optional_
 
+### Queclink
+
+OwnTracks works with a selection of traccers by [Queclink](http://www.queclink.com). The protocol conversion is done via [qtripp](https://github.com/jpmens/qtripp).
+Queclink devices report the following additional elements in a `_type=location` message:
+
+```json
+{
+    "_type": "location",
+    elements
+}
+```
+
+* `t` trigger for the location report _(string/optional)_
+    - `o` Corner
+    - `M` Mileage
+    - `!` Tow or fake tow or sensor without ignition
+    - `a` motionless (aka park)
+    - `i` ignition on
+    - `I` ignition off
+    - `e` external power off
+    - `E` external power ON
+    - `1` Devices powered up
+    - `2` Battery stop charging
+    - `3` Battery start charging
+    - `9` Battery power low
+    - `h` harsh behavior
+    - `s` speed alarm
+
+* `odometer` total distance of the device _(float/kilometers/optional)_
+* `hmc` total hours of operation _(float/seconds/optional)_
+* `ubatt` voltage of the battery _(float/volts/optional)_
+* `uext` voltage of the external power source _(float/volts/optional)_
+* `vin` vehicle identification number _(string/optional)_
+* `imei` identification number _(string/optional)_
+* `name` vehicle name _(string/optional)_
+* `don` is duration since ignition on _(float/seconds/optional)_
+* `doff` is duration since ignition off _(float/seconds/optional)_
+* `aiv` is analog input voltage _(float/volts/optional)_
+* `rpm` is engine rounds per minute _(float/rounds per minute/optional)_
+* `fcon` is fuel consumption _(float/L per 100km/optional)_
+* `flvl` is fuel level _(float/percent/optional)_
+* `anum` is number of analog inputs _(integer/optional)_
+* `adid-xx` is id of analog input number xx _(string/optional)_
+* `adty-xx` is type of analog input number xx _(string/optional)_
+* `adda-xx` is data of analog input number xx _(string/optional)_
+* `temp_c-xx` is temperature of analog input number xx _(float/celsius/optional)_
+* `can` is can data _(string/optional)_
+* `din1` is status of digital input 1 _(boolean/optional)_
+* `din2` is status of digital input 2 _(boolean/optional)_
+* `dout1` is status of digital output 1 _(boolean/optional)_
+* `dout2` is status of digital output 2 _(boolean/optional)_
+* `ign` is status of ignition _(boolean/optional)_
+* `motion` is motion status _(boolean/optional)_
+* `tow` is status of tow sensor _(boolean/optional)_
+* `fake` is status of fake tow sensor _(boolean/optional)_
+* `sens` is status of motion sensor _(boolean/optional)_
+* `sent` is epoch when message was sent _(integer/epoch/optional)_
+* `mcc` is mobile country code _(integer/optional)_
+* `mnc` is mobile network code _(integer/optional)_
+* `lac` is location area code _(string/optional)_
+* `cid` is cell id _(string/optional)_
+* `nmds` is non movement detection status _(boolean/optional)_
+* `rit` queclink record id and type _(integer/optional)_
+* `rty` queclink record type _(integer/optional)_
+* `rid` queclink record id _(integer/optional)_
+* `mst` queclink motion state _(integer/optional)_
+* `count` is counter of message _(string/optional)_
+* `raw_line` raw data _(string/optional)_
+* `counter` number of ignored positions _(integer/optional)_
+* `ignored` indicates counter positions have been ignored _(boolean/optional)_
+
+
+#### Notes
+* The device can be configured to produce or not produce fields marked as _optional_
 
 ## `_type=lwt`
 
