@@ -255,6 +255,7 @@ A transition message is sent, when entering or leaving a previously configured g
 * `t` Trigger of the event _(iOS,Android/string/optional)_
     - `c` Circular geographical region  _(iOS, Android)_
     - `b` BLE Beacon _(iOS)_
+    - `l` Loction update _(Android)_
 
 
 ## `_type=configuration`
