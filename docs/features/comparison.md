@@ -19,7 +19,7 @@ of supported features is concernened. This table summarizes the current status.
 | Accuracy of last-known loc                |   Y    |   Y     |
 | Button for manual publish                 |   Y    |   Y     |
 | Configurable settings                     |   Y    |   Y     |
-| Move mode                                 |   Y    |         |
+| Move mode                                 |   Y    |   Y      |
 | Friends list                              |   Y    |   Y     |
 | Geofencing                                |   Y    |   Y     |
 | [Waypoints](waypoints.md)                 |   Y    |   Y     |
