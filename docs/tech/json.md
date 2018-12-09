@@ -271,10 +271,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
 * `autostartOnBoot` Autostart the app on device boot _(Android/boolean)_
 
-* `beaconMode` Backend mode for BLE beacon scanning (Android/Integer/obsolete)
-    - `0` Normal bluetooth scanning for regions with UUID
-    - `1` Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android < 6.x
-    - `2` Hard disable any Bluetooth functions even if regions with UUID are defined
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
 * `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
@@ -287,22 +283,12 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `ignoreStaleLocations` Number of days after which location updates are assumed stale _(iOS,Android/integer/days)_
 * `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
 * `locatorDisplacement` maximum distance between location source updates _(iOS,Android/integer/meters)_
-* `locatorAccuracyBackground` Location source power mode when the app is in the background _(Android/integer)_
-    - `0` High power likely based on GPS location
-    - `1` Balanced power based on multiple location sources
-    - `2` Low power based on cell tower location
-    - `3` No power  based on locations requested by other apps
-* `locatorAccuracyForeground` Location source power mode when the app is in the foreground _(Android/integer)_
-    - `0` High power likely based on GPS location
-    - `1` Balanced power based on multiple location sources
-    - `2` Low power based on cell tower location
-    - `3` No power  based on locations requested by other apps
 * `locatorInterval` maximum interval between location source updates _(iOS,Android/integer/seconds)_
 * `locked` Locks settings screen on device for editing _(iOS/boolean)_
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
     - `0` Private  MQTT _(iOS, Android)_
     - `3` Private  HTTP _(iOS, Android)_
-* `monitoring` Location reporting mode _(iOS,integer)_
+* `monitoring` Location reporting mode _(iOS,Android/integer)_
     - `-1` Quiet
     - `0` Manual
     - `1` Significant
@@ -322,7 +308,6 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `2` Validate host certificates against pinned certificates
 * `port` MQTT endpoint port _(iOS,Android/integer)_
 * `positions` Number of locatoins to keep and display _(iOS/integer)_
-* `pub` Automatic reporting _(Android/boolean)_
 * `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
 * `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
 * `pubQos` MQTT QoS level for reported messages _(iOS,Android/boolean)_
