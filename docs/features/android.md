@@ -34,5 +34,16 @@ In recent Android versions, a passcode is required once custom TLS certificates 
 In HTTP mode the `url` is required to connect.
 In MQTT mode the `host` and `username` is required to connect. If `authentication` is enabled, a `password` is required too.
 
+## Debug Log
 
+Since Owntracks 2.1.2 application logs can be exported easily to assist in debugging problems with the app. 
+
+To generate the logs, follow the next steps 
+* Open the configuration editor at Preferences > Configuration Management > Menu on the right top > Editor
+* Under key enter `debugLog`
+* As value enter `true`
+* Restart the app at Menu on the right top > Restart
+
+Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
+The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor. 
 
