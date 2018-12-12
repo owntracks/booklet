@@ -28,6 +28,13 @@ If the HTTP endpoint returns a status code 200 it will typically return an empty
 The OwnTracks Recorder supports [HTTP mode](https://github.com/owntracks/recorder#http-mode) out of the box, as long as it is built with HTTP support and a `--http-port` is configured.
 When using the Recorder, the URL you specify in the app's configuration *must* include parameters for _username_ and _devicename_ (`?u=user&d=device`), alternatively using the `X-Limit-U` and `X-Limit-D` headers respectively. You can also force _username_ using a proxy as described in the Recorder's documentation.
 
+### Distinguishing payloads
+
+When a message is received over MQTT, the payload is send over a topic. The topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic. Instead, the iOS and Android app have each their own approach to help you figure out where the message came from.
+
+On iOS, a new `topic` key is added to the payload if the payload is unencrypted. If the payload is encrypted, the `topic` key is only available in the decrypted payload.
+
+The Android app will include headers to identify the user (`x-limit-u`) and the device (`x-limit-d`) if the user has entered this information in the "Identification" section of the connection settings.
 
 ### PHP example
 
