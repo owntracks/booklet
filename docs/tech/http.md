@@ -33,7 +33,7 @@ When using the Recorder, the URL you specify in the app's configuration *must* i
 When a message is received over MQTT, the payload is sent to a topic, and this topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic. Instead, the iOS and Android app each have their own approach to help you figure out where the message came from:
 
 - On iOS, a new `topic` key is added to the payload if the payload is unencrypted. If the payload is encrypted, the `topic` key is only available in the decrypted payload.
-- The Android app will include headers to identify the user (`x-limit-u`) and the device (`x-limit-d`) if the user has entered this information in the "Identification" section of the connection settings.
+- Both the Android and iOS apps (iOS after [#560](https://github.com/owntracks/ios/issues/560) is implemented) include headers to identify the user (`X-Limit-U`) and the device (`X-Limit-D`) if the user has entered this information in the "Identification" section of the connection settings.
 
 ### PHP example
 
