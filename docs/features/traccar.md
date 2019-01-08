@@ -5,7 +5,7 @@
 http://traccar.example.net:5144
 ```
 
-To make Traccar accept a connection from an owntracks client, you need to set a matching _Identifier_. This identifier is per default the `tid` or your device. If you have configured a `topic` for your device, owntracks will identify  using the `topic` instead of the `tid`. 
+To make Traccar accept a connection from an owntracks client, you need to set a matching _identifier_. This identifier is per default the `tid` of your device. If you have configured a `topic` for your device, owntracks will identify  using the `topic` instead of the `tid`. 
 
 ![Traccar device configuration](images/traccar-device.jpg)
 
@@ -15,11 +15,11 @@ An example of a configuration using a `topic` of `owntracks/jane/phone` to ident
 ### Notes
 
 * Neither encryption nor friends are supported in Traccar.
-* If you see a 400 Error in the Traccar log, this means your _Identifier_ doesn't match with the one sent by the owntracks app. Try the other one, `tid` or `topic`.
+* If you see a 400 error in the Traccar log, this means the _identifier_ you configured for the Traccar device doesn't match the one sent by the OwnTracks app; try the other one, `tid` or `topic`.
 
 ### HTTP Payloads
 
-HTTP POST payloads shall contain at least the elements `lat`, `lon`, `_type:location`, `tst`, and either or both of `tid` and `topic`. If `topic` is/except/accept/s given in the payload, that will be used as Traccar's _identifier_ (in which case `tid` will be added to attributes), else `tid`.
+HTTP POST payloads shall contain at least the elements `lat`, `lon`, `_type:location`, `tst`, and either or both of `tid` and `topic`. If `topic` is contained in the payload, that will be used as Traccar's _identifier_ (in which case `tid` will be added to attributes), else `tid`.
 
 ```json
 {"lon":2.29513,"lat":48.85833,"_type":"location","tst":1497476456, "tid":"JJ"}
