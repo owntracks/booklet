@@ -39,6 +39,7 @@ In MQTT mode the `host` and `username` is required to connect. If `authenticatio
 Since Owntracks 2.1.2 application logs can be exported easily to assist in debugging problems with the app. 
 
 To generate the logs, follow the next steps 
+* Temporarily grant write access to local storage. Go to Android App Info > Permissions and enable the storage permission. 
 * Open the configuration editor at Preferences > Configuration Management > Menu on the right top > Editor
 * Under key enter `debugLog`
 * As value enter `true`
