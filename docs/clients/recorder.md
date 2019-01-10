@@ -34,7 +34,13 @@ You should then be able to access the Recorder's Web interface at the address of
 
 ![](jmbp-4956.png)
 
+Upgrades to the container running on your Synology DiskStation are easily done from the command line:
 
+```bash
+$ docker stop owntracks-recorder1
+$ docker pull owntracks/recorder:latest
+$ docker start owntracks-recorder1
+```
 
 
 
