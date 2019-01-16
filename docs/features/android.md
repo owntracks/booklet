@@ -6,12 +6,14 @@ Since Android 6 and higher, the operating systems enforces stricter restrictions
 * App standby or battery optimization may interfere with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimization feature for OwnTracks in Settings > Battery > Battery Optimization.  
 * Outgoing messages will only be sent in batched intervals. Location updates or event messages may be delayed.
 * Incoming messages such as events might be delayed.
-* When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 15 minutes or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.
+* When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted regularly or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.
 * The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.
 * Beacons are no long supported in OwnTracks for Android
 
-## Restrictions on Huawei Phones 
-Huawei Phones will stop apps in the background. OwnTracks needs to be whitelisted as a protected app in order to run in the background. 
+## Vendor background restrictions 
+Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits. 
+
+A list of vendors known to interfer with background apps and a number of workarounds can be found at (Don’t kill my app!)[https://dontkillmyapp.com/]. 
 
 ## Google Play Services
 Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.
@@ -32,7 +34,7 @@ By default a [TLS](tls.md) secured communication channel with the broker is assu
 In recent Android versions, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system.
 
 In HTTP mode the `url` is required to connect.
-In MQTT mode the `host` and `username` is required to connect. If `authentication` is enabled, a `password` is required too.
+In MQTT mode the `host` and `username`  and `password` is required to connect. 
 
 ## Debug Log
 
