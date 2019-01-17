@@ -88,6 +88,12 @@ reports region with description 'myBeacon' when the iBeacon identified with UUID
 * 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
 reports region with description 'myBeacons' when any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant is in proximity
 
+### Region Monitoring with `+follow`
+
+Create a region with a name begining with a `+` character, e.g. `+follow` and set an initial radius to be greater than zero. From this moment onwards, _lat_ and _lon_ will be set dynamically at each location publish and _radius_ will be the distance you've covered in 30 seconds, at least 50 meters.
+
+This _follow_-type region will not trigger `enter/leave` events or notifications, and location publishes will have a type setting of `"t" : "C"`.
+
 ### Remote configuration
 
 You can help your friends customize their copy of OwnTracks with [remote configuration](remoteconfig.md).
