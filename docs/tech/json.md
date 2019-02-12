@@ -311,7 +311,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `positions` Number of locatoins to keep and display _(iOS/integer)_
 * `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
 * `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
-* `pubQos` MQTT QoS level for reported messages _(iOS,Android/boolean)_
+* `pubQos` MQTT QoS level for reported messages _(iOS,Android/integer)_
 * `ranging` Beacon ranging _(iOS/boolean)_
 * `remoteConfiguration` Allow remote configuration by sending a `setConfiguration` cmd message _(Android/boolean)_
 * `servercer` Blank separated list of certificate file names in DER format _(iOS/string)_
