@@ -308,7 +308,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `1` Validate host certificates against public keys of pinned certificates
     - `2` Validate host certificates against pinned certificates
 * `port` MQTT endpoint port _(iOS,Android/integer)_
-* `positions` Number of locatoins to keep and display _(iOS/integer)_
+* `positions` Number of locations to keep and display _(iOS/integer)_
 * `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
 * `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
 * `pubQos` MQTT QoS level for reported messages _(iOS,Android/boolean)_
