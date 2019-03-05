@@ -285,6 +285,11 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
 * `locatorDisplacement` maximum distance between location source updates _(iOS,Android/integer/meters)_
 * `locatorInterval` maximum interval between location source updates _(iOS,Android/integer/seconds)_
+* `locatorPriority` source/power setting for location updates _(Android/integer/)_
+    - `0` NO_POWER / best accuracy possible with zero additional power consumption _(Android)_
+    - `1` LOW_POWER / city level accuracy _(Android)_
+    - `2` BALANCED_POWER / block level accuracy based on Wifi/Cell _(Android)_
+    - `3` HIGH_POWER / most accurate accuracy based on GPS _(Android)_
 * `locked` Locks settings screen on device for editing _(iOS/boolean)_
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
     - `0` Private  MQTT _(iOS, Android)_
