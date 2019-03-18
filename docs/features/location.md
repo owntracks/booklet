@@ -4,13 +4,14 @@ Location data is obtained by your smartphone and published to the [MQTT broker](
 
 The Android and iOS apps offer 4 modes of location publication as well as region monitoring:
 
-* _Quiet_ mode
-* _Manual_ mode
-* _Significant location change_ mode
-* _Move_ mode
+* _Quiet_ mode: Only manual location reports. Icon []
+* _Manual_ mode: Manual location reports and automated reports with region monitoring. Icon ||
+* _Significant location change_ mode: Standard tracking mode with automated location reports. Icon |>
+* _Move_ mode: Frequent location  ||>
 
-In addition to this, there's also _Region Monitoring_ (a.k.a. Geo Fence) and _iBeacon Monitoring_ and _iBeacon Ranging_.
+All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on iBeacons. 
 
+### iOS 
 #### _Move_ mode 
 
 In _move_ mode, the app monitors location permanently and publishes a new
@@ -69,12 +70,6 @@ unmarked (by setting their radius to 0).
 Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.
 
-
-### Android
-Todo
-
-### iOS 
-
 #### iBeacon monitoring
 
 The app user may mark a previously manually published or manually created location
@@ -119,3 +114,40 @@ The description of the _waypoint_ is added to the published `event` message.
 | N         | Y           | Y       | N      | `b`           | Y              | Y                |
 | N         | Y           | Y       | Y      | `c`           | N              | N                |
 | N         | Y           | Y       | Y      | `c`           | Y              | Y                |
+
+### Android
+
+#### _Move_ mode 
+
+In _move_ mode, the app monitors device location permanently. It requests a location fix every 30s in high power mode and publishes a new location as soon as it arrives but at most every 10 seconds. 
+
+This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
+It is recommend to use _move_ mode while charging or during periods that require highly accurate tracking while moving quickly. 
+
+#### _Significant location change_ mode
+
+This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. 
+
+This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. 
+
+In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw [location request](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest) that is send to the Android location API.  
+* `locatorInterval`: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
+* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved. 
+* `locatorPriority`: The priority of the request is a strong hint to the LocationClient for which location sources to use. 
+
+
+
+#### _Manual_ mode
+
+In _manual_ mode, the app monitors device location with a low power location request. It uses the same interval configured for _significant mode_ to receive low accuracy updates to use minimal battery power. 
+
+The user has to publish the current location explicitly via the UI. You use this if you want to (temporarily) avoid friends seeing where you are. Note that Region events triggered by entering or leaving Geo Fence are still published automatically whilst in _Manual_ mode.
+
+Remote `reportLocation` commands are ignored. 
+
+#### _Quiet_ mode
+
+Same as _Manual_ mode except that no region events are published.
+
+
+
