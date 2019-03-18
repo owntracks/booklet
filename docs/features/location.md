@@ -4,10 +4,10 @@ Location data is obtained by your smartphone and published to the [MQTT broker](
 
 The Android and iOS apps offer 4 modes of location publication as well as region monitoring:
 
-* _Quiet_ mode: Only manual location reports. Icon []
-* _Manual_ mode: Manual location reports and automated reports with region monitoring. Icon ||
-* _Significant location change_ mode: Standard tracking mode with automated location reports. Icon |>
-* _Move_ mode: Frequent location  ||>
+* _Quiet_ mode: Only manual location reports. Icon `[]`
+* _Manual_ mode: Manual location reports and automated reports with region monitoring. Icon `||`
+* _Significant location change_ mode: Standard tracking mode with automated location reports. Icon `|>`
+* _Move_ mode: Frequent location  `||>`
 
 All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on iBeacons. 
 
@@ -26,7 +26,7 @@ Please note, _move_ mode is active when the app is active (a.k.a in foreground).
 
 #### _Significant location change_ mode
 
-iOS defines a _Significant location change_ as travelling a distance of at least
+iOS defines a _Significant location change_ as traveling a distance of at least
 500 meters in 5 minutes.  This mode allows the app to run in background and
 minimize the power consumption.
 
@@ -58,7 +58,7 @@ Same as _Manual_ mode except that no region events are published.
 The app user may mark a previously manually published or manually created 
 location as a monitored circular region by specifying a monitoring radius in meters. (See [Waypoints](waypoints.md).)
 The app will publish the location
-additionally everytime the device leaves or enters one of the regions, and the
+additionally every time the device leaves or enters one of the regions, and the
 published data contains an indication of whether the device is entering or
 leaving the region.
 
