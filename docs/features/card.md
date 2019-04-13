@@ -30,3 +30,15 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 ```
 
 Note the topic branch ending in `info` and note the use of the retain flag (`-r`).
+
+### Cards in Recorder in HTTP mode
+
+Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in
+
+```
+<STORAGEDIR>/cards/<user>/<user>.json
+```
+
+So, if `"jane"` is a friend, the Recorder will load Jane's JSON card machine from the path `<STORAGEDIR>/cards/jane/jane.json.` (The same card is loaded for all devices a user has.)
+
+In `contrib/faces/` of the Recorder distribution there are some small utilities which can help create CARDs. Please make sure to verify that the `.json` file which you place into the directory is readable by the Recorder and is valid JSON. (You can test that with `jq . < file.json` or `python -mjson.tool file.json`.)
