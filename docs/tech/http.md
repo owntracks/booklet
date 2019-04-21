@@ -99,4 +99,26 @@ Assuming the Web server hosting this example is called `example.com`, and assumi
 
 There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you [study the API documentation](json.md).
 
+### Testing your HTTP endpoint
+
+An simple example for testing a HTTP endpoint you set up:
+
+```bash
+#!/bin/sh
+
+user=jane
+device=phone
+
+payload=$(jo _type=location \
+   t=u \
+   batt=11 \
+   lat=48.856826 \
+   lon=2.292713 \
+   tid=JJ \
+   tst=$(date +%s) \
+   topic="owntracks/$user/$device")
+
+curl --data "${payload}" http://127.0.0.1:8085/pub?u=${user}&d=${device}
+```
+
 * see also: [Traccar](../features/traccar.md)
