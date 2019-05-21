@@ -71,7 +71,6 @@ which are useful when using MQTT in general or OwnTracks in particular.
 * A Clojure webapp that aims to manage information gathered from OwnTracks; [clojure-mqttitude-backend](https://github.com/razorinc/clojure-mqttitude-backend)
 * An [OwnTracks flow](http://flows.nodered.org/flow/ab31cd939f2e73503fb0) by [Giovanni @juzam Angoli](https://twitter.com/juzam) for Node-RED which publishes messages to [pushover.net](https://pushover.net) upon entering or leaving a geo-fence.
 * [MyMQTT](https://play.google.com/store/apps/details?id=at.tripwire.mqtt.client) is an app for Android which enables you to subscribe and publish to an MQTT broker.
-* Stefano Costa cooks Italian pasta [using OwnTracks](https://github.com/bluewindthings/butta-la-pasta).
 * Matthew Bordignon made a small [Web page which uses Websockets to display the barometer reading](https://github.com/matbor/Owntracks-Barometer) published by OwnTracks for iOS. ([Screenshot](https://twitter.com/OwnTracks/status/623823420053172224).)
 * [PHP front & backend for OwnTracks payloads](https://github.com/tomyvi/php-owntracks-recorder)
 * Orion, an alternative to OwnTracks Recorder with powerful visualization features ([server](https://github.com/LINKIWI/orion-server), [web client](https://github.com/LINKIWI/orion-web), [demo](https://linkiwi.github.io/orion-web))
