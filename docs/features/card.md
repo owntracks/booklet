@@ -16,6 +16,9 @@ We developed a new feature we call a _card_ which you can use when in _Private m
 
 ### Creating a card
 
+Cards can be created with shell scripts or with a webapp.
+
+#### Shell Script
 We provide several utilities for creating a _card_ in the [Recorder's repository](https://github.com/owntracks/recorder/tree/master/contrib/faces):
 
 * If you have an image file you want to use, use `image2card.sh`, passing _image-filename_ and _fullname_.
@@ -30,6 +33,10 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 ```
 
 Note the topic branch ending in `info` and note the use of the retain flag (`-r`).
+
+#### Webapp
+A [webapp](https://avanc.github.io/owntracks-cards) is available to create cards in your browser and optionally publish them directly to your MQTT broker.
+
 
 ### Cards in Recorder in HTTP mode
 
