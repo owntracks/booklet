@@ -58,10 +58,10 @@ See the [demo][ha-demo] for an example of the map with OwnTracks devices or read
 [ha-zone]: https://home-assistant.io/components/automation/#zone-trigger
 
 
-## Owntracks-Cards
-This is a webapp to create and edit [Owntracks cards](.../features/card.md).
+## OwnTracks-Cards
+This is a webapp to create and edit [OwnTracks cards](.../features/card.md).
 It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
-Just head over to the [demo][oc-demo], and create a card. For testing, you can connect to a public MQTT broker or configure your own broker by clicking the connection state.
+Just head over to the [demo][oc-demo] and create a card. Configure your MQTT broker by clicking the connection state.
 The source code can be found on [Github][oc-code].
 
 [oc-demo]: https://avanc.github.io/owntracks-cards/

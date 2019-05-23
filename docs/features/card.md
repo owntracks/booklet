@@ -35,7 +35,7 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 Note the topic branch ending in `info` and note the use of the retain flag (`-r`).
 
 #### Webapp
-A [webapp](https://avanc.github.io/owntracks-cards) is available to create cards in your browser and optionally publish it directly to your MQTT broker.
+A [webapp](https://avanc.github.io/owntracks-cards) is available to create cards in your browser and optionally publish them directly to your MQTT broker.
 
 
 ### Cards in Recorder in HTTP mode
