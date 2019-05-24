@@ -1,6 +1,6 @@
 ## HTTP
 
-An optional HTTP mode is implemented with which the OwnTracks apps use a privately configured HTTP endpoint (a.k.a. a Web server) to which they POST requests over HTTP instead of publishing to MQTT. In this mode all [JSON](json.md) payloads reported by the apps are transmitted via HTTP to the endpoint. In particular and most importantly, the apps publish their location data.
+An optional HTTP mode is implemented with which the OwnTracks apps use a privately configured HTTP endpoint (a.k.a. a Web server) to which they POST requests over HTTP instead of publishing to MQTT. In this mode all [JSON](json.md) payloads reported by the apps are transmitted via HTTP to the endpoint. In particular and most importantly, the apps publish their location data. Note that the length of the payload may be zero if a friend is deleted from the app: the zero-length message which is normally published via MQTT will be POSTed via HTTP to your endpoint; as such it is best to ignore zero-length payloads.
 
 The URL you enter in the setting for HTTP mode has the following syntax:
 
