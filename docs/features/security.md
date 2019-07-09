@@ -8,4 +8,4 @@ OwnTracks and its associated utilities have been designed foremost with data pri
 * Credentials you configure (i.e. _username_ and _password_) are thus protected from snooping, at least until they get to your broker. The same applies to location data our app transmits.
 * The apps support using [TLS client certificates](tlscert.md) for authentication to the MQTT broker.
 * The apps support [payload encryption](encrypt.md) for privacy.
-
+* The apps do not send location data to any server until that server has been configured by the user (i.e., there is no preconfigured demo server).
