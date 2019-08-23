@@ -280,7 +280,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
-* `ignoreInaccurateLocations` Location accuracy below which reports are supressed _(iOS,Android/integer/days)_
+* `ignoreInaccurateLocations` Location accuracy below which reports are supressed _(iOS,Android/integer/meters)_
 * `ignoreStaleLocations` Number of days after which location updates are assumed stale _(iOS,Android/integer/days)_
 * `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
 * `locatorDisplacement` maximum distance between location source updates _(iOS,Android/integer/meters)_
