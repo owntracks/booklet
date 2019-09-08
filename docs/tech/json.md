@@ -380,6 +380,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
 {"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
 {"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
+{"_type":"cmd","action":"action","notification":"Warning! Battery low"}
 ```
 * `action` action to be performed by the device _(iOS,Android/string)_
   * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
@@ -400,6 +401,8 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * If `url` is not specified the text of the `content` element is displayed. Links embedded in the text are operational.
 * If the `content` consists of HTML, it is rendered
 * The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
+* If the `action` cmd contains a `notification` element, the value of the element is shown in the app
+
 * On iOS, the array of waypoints to the `setWaypoints` command allows updates / removal; the key of the waypoint is its name (`desc`). If you specify an invalid `lat` or `lon` (invalid means out of range number value e.g. `-1000000`, a string like `"foo"` will result in a `0` in app) the waypoint is deleted.
 
 ## `_type=steps`
