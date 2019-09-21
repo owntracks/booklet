@@ -13,7 +13,7 @@ Since Android 6 and higher, the operating systems enforces stricter restrictions
 ## Vendor background restrictions
 Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits.
 
-A list of vendors known to interfer with background apps and a number of workarounds can be found at (Don’t kill my app!)[https://dontkillmyapp.com/].
+A list of vendors known to interfer with background apps and a number of workarounds can be found at [Don’t kill my app!](https://dontkillmyapp.com/).
 
 ## Google Play Services
 Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.
@@ -51,3 +51,28 @@ To generate the logs, follow the next steps:
 Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
 The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
 
+## Automation via Tasker, etc.
+
+Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined [modes](https://owntracks.org/booklet/features/location/): `Move`, `Significant location change`,`Manual`,`Quiet`.
+
+### Example: 
+To trigger `Move` mode in tasker, create a `Send Intent` action and enter the following information:
+* Action: `org.owntracks.android.CHANGE_MONITORING`
+* Cat: `None`
+* Mime Type: [LEAVE FIELD BLANK]
+* Data: [LEAVE FIELD BLANK]
+* Extra(1): `monitoring:2`
+* Extra(2): [LEAVE FIELD BLANK]
+* Extra(3): [LEAVE FIELD BLANK]
+* Package: [LEAVE FIELD BLANK]
+* Class: [LEAVE FIELD BLANK]
+* Target: `Service`
+  
+| Mode  | Send This Extra Value|
+|---|---|
+|Quiet|`monitoring:-1`|
+|Manual|`monitoring:0`|
+|Significant Changes|`monitoring:1`|
+|Move|`monitoring:2`|
+
+To set other monitoring modes, use the same example and simply substitute the Extra in the table above that coresponding to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.
