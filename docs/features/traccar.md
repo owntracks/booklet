@@ -11,7 +11,7 @@ Thus you need to configure OwnTracks clients [in HTTP mode](../tech/http.md) to 
 http://traccar.example.net:5144
 ```
 
-To make Traccar accept a connection from an owntracks client, you need to set a matching _identifier_. This identifier is per default the `tid` of your device. If you have configured a `topic` for your device, owntracks will identify  using the `topic` instead of the `tid`. 
+To make Traccar accept a connection from an owntracks client, you need to set a matching _identifier_. This identifier is per default the `tid` of your device. If you have configured a `topic` for your device, owntracks will identify  using the `topic` instead of the `tid` (currently iOS only). 
 
 ![Traccar device configuration](images/traccar-device.jpg)
 
