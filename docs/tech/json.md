@@ -52,8 +52,8 @@ This location object describes the location of the device that reported it.
 * `batt` Device battery level _(iOS,Android/integer/percent/optional)_
 * `bs` Battery Status 0=unknown, 1=unplugged, 2=charging, 3=full  _(iOS)_
 * `cog` Course over ground _(iOS/integer/degree/optional)_
-* `lat` latitude _(iOS,Android/float/meters/required)_
-* `lon` longitude _(iOS,Android/float/meters/required)_
+* `lat` latitude _(iOS,Android/float/degree/required)_
+* `lon` longitude _(iOS,Android/float/degree/required)_
 * `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
 * `t` trigger for the location report _(iOS,Android/string/optional)_
     * `p` ping issued randomly by background task _(iOS,Android)_
