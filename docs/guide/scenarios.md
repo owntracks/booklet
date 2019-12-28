@@ -4,7 +4,7 @@ There are two basic scenarios we have for you depending on your needs. It'll hel
 
 ![Android Friends](images/b-android-friends.png)
 
-There is a bit of stuff you have to learn about in order to use OwnTracks: [MQTT brokers](broker.md), [topics](topics.md), but the upside is that you get to use many of the neat features _MQTT_ mode or _HTTP_ mode come with. For example, you can set up [friends](friends.md).
+There is a bit of stuff you have to learn about in order to use OwnTracks: [MQTT brokers](broker.md), [topics](topics.md), but the upside is that you get to use many of the neat features _MQTT_ mode or _HTTP_ mode come with. For example, you can set up [friends](../features/friends.md).
 
 ## HTTP mode
 
