@@ -95,10 +95,10 @@ To trigger `Move` mode in Automagic, create a `Start Service` action and enter t
   
 | Mode  | Send This Extra Value|
 |---|---|
-|Quiet|`putInt("MONITORING": -1)`|
-|Manual|`putInt("MONITORING": 0)`|
-|Significant Changes|`putInt("MONITORING": 1)`|
-|Move|`putInt("MONITORING": 2)`|
+|Quiet|`putInt("monitoring": -1)`|
+|Manual|`putInt("monitoring": 0)`|
+|Significant Changes|`putInt("monitoring": 1)`|
+|Move|`putInt("monitoring": 2)`|
 
 
 
