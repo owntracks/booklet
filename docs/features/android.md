@@ -51,12 +51,15 @@ To generate the logs, follow the next steps:
 Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
 The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
 
-## Automation via Tasker, etc.
+## Automation via Tasker, Automagic, etc.
 
 Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined [modes](https://owntracks.org/booklet/features/location/): `Move`, `Significant location change`,`Manual`,`Quiet`.
 
-### Example: 
+To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.
+
+### Tasker example: 
 To trigger `Move` mode in tasker, create a `Send Intent` action and enter the following information:
+
 * Action: `org.owntracks.android.CHANGE_MONITORING`
 * Cat: `None`
 * Mime Type: [LEAVE FIELD BLANK]
@@ -75,4 +78,27 @@ To trigger `Move` mode in tasker, create a `Send Intent` action and enter the fo
 |Significant Changes|`monitoring:1`|
 |Move|`monitoring:2`|
 
-To set other monitoring modes, use the same example and simply substitute the Extra in the table above that coresponding to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.
+
+
+### Automagic example: 
+To trigger `Move` mode in Automagic, create a `Start Service` action and enter the following information:
+
+* Action: `org.owntracks.android.CHANGE_MONITORING`
+* Category List: [LEAVE FIELD BLANK]
+* Data URI: [LEAVE FIELD BLANK]
+* Data MIME Type: [LEAVE FIELD BLANK]
+* Explicit Component: ticked
+* Package Name: `org.owntracks.android`
+* Class Name: [LEAVE FIELD BLANK]
+* Flag List: [LEAVE FIELD BLANK]
+* Extra: `putInt("MONITORING": 2)`
+  
+| Mode  | Send This Extra Value|
+|---|---|
+|Quiet|`putInt("MONITORING": -1)`|
+|Manual|`putInt("MONITORING": 0)`|
+|Significant Changes|`putInt("MONITORING": 1)`|
+|Move|`putInt("MONITORING": 2)`|
+
+
+
