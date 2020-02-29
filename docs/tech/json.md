@@ -302,7 +302,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `mqttProtocolLevel` MQTT broker protocol level _(iOS,Android/integer)_
     - `3` MQTT 3 (default)
     - `4` MQTT 3.1.1
-* `notificationGeocoder` Resolve last reported location in ongoing notification to an address  _(Android/boolean)_
 * `notificationLocation` Show last reported location in ongoing notification _(Android/boolean)_
 * `opencageApiKey` API key for alternate Geocoding provider. See https://opencagedata.com/ for details. _(Android/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
