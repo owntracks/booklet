@@ -6,7 +6,7 @@ to be in the app's preferences/settings. For argument's sake we'll use the defau
 This base topic is used for publishes of type `location` (see [JSON](../tech/json.md)).
 All messages published to this base topic are retained if you have configured the app to retain them.
 
-Additionally, if you've configured a waypoint or geo-fence, a transition event will be published upon
+Additionally, if you've configured a waypoint, regions, or geo-fence (we intermix these terms a lot to mean basically the same thing), a transition event will be published upon
 entering or leaving a waypoint:
 
 * `rad`ius (if its value is greater than 0)
@@ -14,10 +14,7 @@ entering or leaving a waypoint:
 * `event` with a value of `"enter"` or `"leave"`, depending on
    whether the device is entering or leaving a configured region, respectively.
 
-If you set up a waypoint, the app publishes that waypoint (with `retain=0` 
-irrespective of your general preference) to the base topic with `/waypoints`
-tacked onto the topic (e.g. `owntracks/<user>/<device>/waypoints`) with the
-payload for `_type=waypoint` as specified in the [JSON page](../tech/json.md). Entering or leaving a waypoint will be published as a `location` message as described above.
+If you set up a waypoint (or region or geo-fence, you get the drift), the app publishes that waypoint (with `retain=0` irrespective of your general preference) to the base topic with `/waypoints` tacked onto the topic (e.g. `owntracks/<user>/<device>/waypoints`) with the payload for `_type=waypoint` as specified in the [JSON page](../tech/json.md). Entering or leaving a waypoint will be published as a `location` message as described above.
 
 For example, If Jane configures a waypoint on her iPhone, the app could publish the following payload
 
@@ -48,18 +45,23 @@ available with a subscription to `owntracks/#`.
 The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. 
 
 ### Adding on iOS
+
 On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name `Center`, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.
 
 ### Adding on Android
+
 On Android, waypoints can be configured on a separate activity. Coordinates for the geographical region can be entered by hand or by using the place picker.  
 
 ### Remote loading of waypoints
+
 Instead of configuring multiple waypoints on the device, they can be loaded [remotely](remoteconfig.md) with the `setWaypoints` cmd message if remote configuration is enabled on the device. 
 
 You can use this to import individual waypoints or groups of pre-configured waypoints which are merged into the existing waypoint definitions on the device. Recall, however, that the `tst` element is like a _key_ which uniquely identifies each waypoint.
 
 ### Deleting waypoints
+
 On both iOS waypoints can be deleted by swiping it away. On Android, a long press is required. 
 
 ### Beacons Ranging
+
 In addition to circular regions, the iOS app can monitor its proximity to [BLE Beacons](beacons.md). 
