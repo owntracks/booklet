@@ -137,7 +137,8 @@ In addition to the default settings, all location request parameters in this mod
 * `locatorInterval`: The [desired interval](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-locationrequest-setinterval-long-millis) for active location updates.
 >    "The location client will actively try to obtain location updates for your application at this interval, so it has a direct influence on the amount of power used by your application. Choose your interval wisely."
 
-* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved. 
+* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved.
+    * This means if the user has not moved by more than the displacement value, the location will not be reported at `locatorInterval`.
 
 * `locatorPriority`: The priority of the request is a strong hint to the LocationClient for which location sources to use. The accepted values are:
     * `0`: [No power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power) "No locations will be returned unless a different client has requested location updates"
