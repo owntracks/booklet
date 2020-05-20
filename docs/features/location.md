@@ -124,6 +124,8 @@ In _move_ mode, the app monitors device location permanently. It requests a loca
 This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
 It is recommend to use _move_ mode while charging or during periods that require highly accurate tracking while moving quickly. 
 
+The `locatorDisplacement` option is ignored in this mode.
+
 #### _Significant location change_ mode
 
 This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. 
