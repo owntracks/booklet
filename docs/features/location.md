@@ -131,13 +131,16 @@ This standard tracking mode is aimed at everyday usage for location tracking in 
 This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. 
 
 In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw [location request](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest) that is send to the Android location API.  
+
 * `locatorInterval`: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
+
 * `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved. 
+
 * `locatorPriority`: The priority of the request is a strong hint to the LocationClient for which location sources to use. The accepted values are:
-  * `0`: [No power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power) "No locations will be returned unless a different client has requested location updates"
-  * `1`: [Low power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_low_power) "City level accuracy is considered to be about 10km accuracy."
-  * `2`: [Balanced power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_balanced_power_accuracy) "Block level accuracy is considered to be about 100 meter accuracy." (default)
-  * `3`: [High power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_high_accuracy) "This will return the finest location available."
+    * `0`: [No power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power) "No locations will be returned unless a different client has requested location updates"
+    * `1`: [Low power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_low_power) "City level accuracy is considered to be about 10km accuracy."
+    * `2`: [Balanced power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_balanced_power_accuracy) "Block level accuracy is considered to be about 100 meter accuracy." (default)
+    * `3`: [High power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_high_accuracy) "This will return the finest location available."
 
 #### _Manual_ mode
 
