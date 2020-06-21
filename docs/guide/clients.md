@@ -88,3 +88,4 @@ which are useful when using MQTT in general or OwnTracks in particular.
 * [OwntracksOSM](https://github.com/wansti/OwntracksOSM) is an Owntracks and OpenStreetMap based mapping and location sharing app for Samsung smartwatches ([screenshots](https://github.com/owntracks/talk/issues/80)).
 * [From OwnTracks to QGIS](https://www.cron.dk/from-owntrack-to-qgis-part-1/), a solution to import OwnTracks data into QGIS.
 * [Magic Mirror module for displaying results from OpenTracks](https://github.com/BrianHepler/MMM-WeasleyClock)
+* [Prometheus OwnTracks Exporter](https://github.com/linusg/prometheus-owntracks-exporter)
