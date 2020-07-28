@@ -381,17 +381,17 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"action","notification":"Warning! Battery low"}
 ```
 * `action` action to be performed by the device _(iOS,Android/string)_
-  * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
-  * `dump` Triggers the publish of a `configuration` message _(iOS)_
-  * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
-    * `from` Timestamp _(iOS/epoch/optional)_
-    * `to` Timestamp _(iOS/epoch/optional)_
-  * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
-  * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
-    * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
-  * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
-    * `configuration` Configuration message to import _(iOS,Android/required)_
-  * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
+   * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
+   * `dump` Triggers the publish of a `configuration` message _(iOS)_
+   * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
+     * `from` Timestamp _(iOS/epoch/optional)_
+     * `to` Timestamp _(iOS/epoch/optional)_
+   * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
+   * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
+     * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
+   * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
+     * `configuration` Configuration message to import _(iOS,Android/required)_
+   * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
 
 #### Notes
 * If `url` for the `action` cmd message is specified, the URL is opened in a full screen web view within the app
@@ -399,7 +399,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * If `url` is not specified the text of the `content` element is displayed. Links embedded in the text are operational.
 * If the `content` consists of HTML, it is rendered
 * The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
-* If the `action` cmd contains a `notification` element, the value of the element is shown in the app
+* If the `action` cmd contains a `notification` element, the value of the element is shown in the app _(iOS)_
 
 * On iOS, the array of waypoints to the `setWaypoints` command allows updates / removal; the key of the waypoint is its name (`desc`). If you specify an invalid `lat` or `lon` (invalid means out of range number value e.g. `-1000000`, a string like `"foo"` will result in a `0` in app) the waypoint is deleted.
 
