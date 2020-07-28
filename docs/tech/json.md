@@ -87,7 +87,7 @@ This location object describes the location of the device that reported it.
 
 ### Greenwich
 
-The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `\_type=location` message:
+The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `_type=location` message:
 
 ```json
 {
@@ -142,7 +142,6 @@ Queclink devices report the following additional elements in a `_type=location` 
     - `9` Battery power low
     - `h` harsh behavior
     - `s` speed alarm
-
 * `odometer` total distance of the device _(float/kilometers/optional)_
 * `hmc` total hours of operation _(float/seconds/optional)_
 * `ubatt` voltage of the battery _(float/volts/optional)_
@@ -270,7 +269,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `allowinvalidcerts` Allow self signed certificates in user defined security policy _(iOS/boolean)_
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
 * `autostartOnBoot` Autostart the app on device boot _(Android/boolean)_
-
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
 * `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
@@ -398,7 +396,6 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * If the `content` consists of HTML, it is rendered
 * The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
 * If the `action` cmd contains a `notification` element, the value of the element is shown in the app _(iOS)_
-
 * On iOS, the array of waypoints to the `setWaypoints` command allows updates / removal; the key of the waypoint is its name (`desc`). If you specify an invalid `lat` or `lon` (invalid means out of range number value e.g. `-1000000`, a string like `"foo"` will result in a `0` in app) the waypoint is deleted.
 
 ## `_type=steps`
@@ -448,8 +445,7 @@ The app can export a list of configured waypoints to the endpoint.
 
 
 ## `_type=encrypted`
-Apps can optionally [encrypt](../features/encrypt.md) outgoing messages with a shared symmetric key.
-The encrypted message is contained in the `data`element.
+Apps can optionally [encrypt](../features/encrypt.md) outgoing messages with a shared symmetric key.  The encrypted message is contained in the `data`element.
 For security reasons, the encryption key is not exported with configuration messages and cannot be imported.
 
 ```json
