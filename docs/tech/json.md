@@ -85,11 +85,9 @@ This location object describes the location of the device that reported it.
 * Elements marked with _extended data_ are only added if `extendedData=true` is configured
 
 
-
-
 ### Greenwich
 
-The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `_type=location` message:
+The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `\_type=location` message:
 
 ```json
 {
