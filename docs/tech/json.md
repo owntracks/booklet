@@ -381,17 +381,17 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"action","notification":"Warning! Battery low"}
 ```
 * `action` action to be performed by the device _(iOS,Android/string)_
-   * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
-   * `dump` Triggers the publish of a `configuration` message _(iOS)_
-   * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
-     * `from` Timestamp _(iOS/epoch/optional)_
-     * `to` Timestamp _(iOS/epoch/optional)_
-   * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
-   * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
-     * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
-   * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
-     * `configuration` Configuration message to import _(iOS,Android/required)_
-   * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
+    * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
+    * `dump` Triggers the publish of a `configuration` message _(iOS)_
+    * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
+        - `from` Timestamp _(iOS/epoch/optional)_
+        - `to` Timestamp _(iOS/epoch/optional)_
+    * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
+    * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
+        - `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
+    * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
+        - `configuration` Configuration message to import _(iOS,Android/required)_
+    * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
 
 #### Notes
 * If `url` for the `action` cmd message is specified, the URL is opened in a full screen web view within the app
