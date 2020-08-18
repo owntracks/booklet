@@ -13,7 +13,7 @@ user might have more than one device.
 
 ## Private broker
 
-Ideally, you set up a private broker under your control. This sounds more difficult
+You set up a private broker under your control. This sounds more difficult
 than it actually is, and there are some very nice brokers you can use free of charge
 on your own infrastructure. As an example, we've written up how to install
 Mosquitto on a Raspberry Pi.
