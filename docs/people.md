@@ -1,6 +1,6 @@
 # People
 
-[Alexander Rust][binarybucks] created the first proof-of-concept for the Android app which started out under the very geeky name _MQTTitude_, a term coined from our use of MQTT and the then obsolete Latitude app, which Google took out of service in 2013. [Andrew Growse][growse] then took over and now maintains the Android app.
+[Alexander Rust][binarybucks] created the first proof-of-concept for the Android app which started out under the very geeky name _MQTTitude_, a term coined from our use of MQTT and the then obsolete Latitude app, which Google took out of service in 2013. [Andrew Rowson][growse] then took over and now maintains the Android app.
 
 Only a few days later, [Christoph Krey][ckrey] implemented a rough prototype on iOS, and didn't stop implementing new and exciting features on the iOS version of OwnTracks until his coffee machine burned out.
 
