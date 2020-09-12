@@ -8,6 +8,8 @@ Only a few days later, [Christoph Krey][ckrey] implemented a rough prototype on 
 
 Incidentally, [Ben Jones][sumnerboy], who works closely with us, has given us loads of invaluable feedback and he's the chap who created the [mqttitude binding](https://github.com/openhab/openhab/wiki/Mqttitude-Binding) for the wonderful [openHAB](http://www.openhab.org) Home Automation project.
 
+[Linus Groh][linusgroh] created the [OwnTracks Frontend](https://github.com/owntracks/frontend) which you'll definitely want to use!
+
 ## Contributors
 
 Many good people have assisted us, be it by testing, by contributing bits of code or documentation, or just by complaining loudly, and we want to acknowledge the following contributions. (If you think your name should be on this list, tell us, or forever hold your peace. :-)
@@ -27,3 +29,4 @@ Many good people have assisted us, be it by testing, by contributing bits of cod
   [jpmens]: http://jpmens.net
   [sumnerboy]: https://twitter.com/sumnerboy
   [growse]: https://twitter.com/growse
+  [linusgroh]: https://twitter.com/linusgroh
