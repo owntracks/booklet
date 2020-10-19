@@ -50,7 +50,7 @@ This location object describes the location of the device that reported it.
 * `acc` Accuracy of the reported location in meters without unit _(iOS,Android/integer/meters/optional)_
 * `alt` Altitude measured above sea level _(iOS,Android/integer/meters/optional)_
 * `batt` Device battery level _(iOS,Android/integer/percent/optional)_
-* `bs` Battery Status 0=unknown, 1=unplugged, 2=charging, 3=full  _(iOS)_
+* `bs` Battery Status 0=unknown, 1=unplugged, 2=charging, 3=full  _(iOS, Android)_
 * `cog` Course over ground _(iOS/integer/degree/optional)_
 * `lat` latitude _(iOS,Android/float/degree/required)_
 * `lon` longitude _(iOS,Android/float/degree/required)_
