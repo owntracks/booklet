@@ -43,13 +43,14 @@ Since Owntracks 2.1.2 application logs can be exported easily to assist in debug
 To generate the logs, follow the next steps:
 
 * Temporarily grant write access to local storage. Go to Android App Info > Permissions and enable the storage permission.
-* Open the configuration editor at Preferences > Configuration Management > Menu on the right top > Editor
+* Open the configuration editor at _Preferences_ > _Configuration Management_ > _Menu_ on the right top > Editor
 * Under key enter `debugLog`
 * As value enter `true`
-* Restart the app at Menu on the right top > Restart
+* Restart the app at Menu on the right top > _Restart_.
 
-Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
-The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
+Application logs are written to the local storage and can be viewed in _Status_ -> _View Logs_, from which they can be exported or shared via typical Android functions, e.g. by Mail.
+
+Enabled logging degrades application performance, so it should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
 
 ## Automation via Tasker, Automagic, etc.
 
