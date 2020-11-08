@@ -39,7 +39,7 @@ Depending on the device you're using, the procedure differs slightly.
 
 The app subscribes to a topic branch `owntracks/+/+` on the broker per default
 to receive locations of
-other people connected to the the same MQTT broker that publish
+other people connected to the same MQTT broker that publish
 to the default topic of `owntracks/$username/$devicename`.
 
 It then reads [CARD](card.md)s to find friends' names and faces.
@@ -55,9 +55,11 @@ Tapping on one of the friends, performs a reverse geo-coding to show address. Fu
 
 ## Who is that?
 
+(iOS only)
+
 It's difficult to remember which MQTT topic belongs to which friend, so we can associate a topic with an image of the friend as contained in the iOS address book:
 
-Select an entrythen click on the _bookmark_ icon on top right. The Address book opens.
+Select an entry then click on the _bookmark_ icon on top right. The Address book opens.
 
 Select the entry you want to associate with the OwnTracks topic. If you want to release the association, select the wastepaper basket icon in the address book screen. The display changes back from the picture and name of the friend to the mqtt topic (e.g. "owntracks/kate/nexus4").
 
