@@ -268,7 +268,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 }
 ```
 * `allowRemoteLocation` Respond to reportLocation cmd message _(iOS,Android/boolean)_
-* `allowinvalidcerts` Allow self signed certificates in user defined security policy _(iOS/boolean)_
+* `allowinvalidcerts` disable TLS certificate checks **insecure**  _(iOS/boolean)_
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
 * `autostartOnBoot` Autostart the app on device boot _(Android/boolean)_
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
@@ -300,15 +300,12 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `mqttProtocolLevel` MQTT broker protocol level _(iOS,Android/integer)_
     - `3` MQTT 3 (default)
     - `4` MQTT 3.1.1
+    - `5` MQTT 5 (iOS only)
 * `notificationLocation` Show last reported location in ongoing notification _(Android/boolean)_
 * `opencageApiKey` API key for alternate Geocoding provider. See https://opencagedata.com/ for details. _(Android/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
 * `password` Endpoint password _(iOS,Android/string)_
 * `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
-* `policymode` User defined securiy policy mode _(iOS/integer)_
-    - `0` Do not used pinned certificates to validate servers
-    - `1` Validate host certificates against public keys of pinned certificates
-    - `2` Validate host certificates against pinned certificates
 * `port` MQTT endpoint port _(iOS,Android/integer)_
 * `positions` Number of locations to keep and display _(iOS/integer)_
 * `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
@@ -324,10 +321,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `tls` MQTT endpoint TLS connection _(iOS,Android/boolean)_
 * `tlsClientCrtPassword` Passphrase of the client pkcs12 file _(Android/string)_
 * `url` HTTP endpoint URL to which messages are POSTed _(iOS,Android/string)_
-* `usepolicy` Use user defined security policy _(iOS/boolean)_
 * `username` Endpoint username _(iOS,Android/string)_
-* `validatedomainname` Validate domain name during TLS handshake _(iOS/boolean)_
-* `validatecertificatechain` Validate the whole certificate chain or just the server certificate _(iOS/boolean)_
 * `willRetain`
 * `willTopic`
 * `willQos`
