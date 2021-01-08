@@ -56,7 +56,7 @@ Same as _Manual_ mode except that no region events are published.
 #### _Region_ monitoring
 
 The app user may mark a previously manually published or manually created 
-location as a monitored circular region by specifying a monitoring radius in meters. (See [Waypoints](waypoints.md).)
+location as a monitored circular region by specifying a monitoring radius in meters. (See [Regions](waypoints.md).)
 The app will publish the location
 additionally every time the device leaves or enters one of the regions, and the
 published data contains an indication of whether the device is entering or

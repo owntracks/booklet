@@ -206,7 +206,7 @@ A _last will and testament_ is published automatically by the MQTT broker when i
 
 ## `_type=waypoint`
 
-Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
+Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
 
 ```json
 {
@@ -214,14 +214,15 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
     elements
 }
 ```
-* `desc` Name of the waypoint that is included in the sent transition message _(iOS,Android,string/required)_
+* `desc` Name of the waypoint that is included in the sent transition message, copied into the `location` message `inregions` array when a current position is within a region. _(iOS,Android,string/required)_
 * `lat` Latitude  _(iOS,Android/float/meters/optional)_
 * `lon` Longitude _(iOS,Android/float/meters/optional)_
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_
-* `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
+* `tst` Timestamp of creation of region, copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
 * `uuid` UUID of the BLE Beacon _(iOS/string/optional)_
 * `major` Major number of the BLE Beacon _(iOS/integer/optional)_
 * `minor`  Minor number of the BLE Beacon_(iOS/integer/optional)_
+* `rid`  region ID, created automatically, copied into the `location` payload `inrids` array (iOS/string)_
 
 #### Notes
 * In iOS version >= 9.1.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
@@ -256,6 +257,7 @@ A transition message is sent, when entering or leaving a previously configured g
     - `c` Circular geographical region  _(iOS, Android)_
     - `b` BLE Beacon _(iOS)_
     - `l` Loction update _(Android)_
+* `rid` Region ID _(iOS/Android, after January 2021)_
 
 
 ## `_type=configuration`
