@@ -26,15 +26,6 @@ owntracks:///beacon?rid=ac3def&name=MyBeacon&uuid=12345678-1234-1234-1234-123456
 
 ### config QR URI
 
-* scheme = `owntracks`
-* host = `<empty>`
-* path = `/config`
-* query = <TODO>
 
-
-Example:
-
-```
-owntracks:///config?<TODO>
-```
+See [Features/Remoteconfig/URL config](../features/remoteconfig/#URL-config)
 
