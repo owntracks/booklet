@@ -50,18 +50,18 @@ Publishing the above payload to an OwnTracks iOS device will create/modify said 
 
 ## URL config
 
-Since January 2021, both iOS and Android apps can be configured by having the user click on an `owntracks:///config?inline=` URL containing a base64 and URL-encoded version of the content of an `.otrc` file.
+Since January 2021, both iOS and Android apps can be configured by having the user click on an `owntracks:///config?inline=` URL containing a base64-encoded version of the content of an `.otrc` file.
 
-Say we have a file called `j.otrc` with the JSON `_type: configuration` shown above. We can use, say, the _openssl_ and _jq_ utilities to first base64-encode and then URL-encode the configuration.
+Say we have a file called `j.otrc` with the JSON `_type: configuration` shown above. We can use, say, the _openssl_ and _jq_ utilities to base64-encode encode the configuration.
 
 ```console
-echo "owntracks:///config?inline=$(openssl enc -a -A -in j.otrc | jq -sRr @uri)"
+echo "owntracks:///config?inline=$(openssl enc -a -A -in j.otrc)"
 ```
 
 which results in this text:
 
 ```
-owntracks:///config?inline=ewogICJfdHlwZSI6ICJjb25maWd1cmF0aW9uIiwKICAiYXV0aCI6IHRydWUsCiAgInVzZXJuYW1lIjogImpqb2xpZSIsCiAgInBhc3N3b3JkIjogInMxa3IzdCIsCiAgImhvc3QiOiAibXlicm9rZXIuZXhhbXBsZS5vcmciLAogICJwb3J0IjogODg4Mwp9Cg%3D%3D
+owntracks:///config?inline=ewogICJfdHlwZSI6ICJjb25maWd1cmF0aW9uIiwKICAiYXV0aCI6IHRydWUsCiAgInVzZXJuYW1lIjogImpqb2xpZSIsCiAgInBhc3N3b3JkIjogInMxa3IzdCIsCiAgImhvc3QiOiAibXlicm9rZXIuZXhhbXBsZS5vcmciLAogICJwb3J0IjogODg4Mwp9Cg==
 ```
 
 We can then paste that text into the `@@` placeholder on an HTML like this:
