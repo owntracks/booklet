@@ -27,5 +27,5 @@ owntracks:///beacon?rid=ac3def&name=MyBeacon&uuid=12345678-1234-1234-1234-123456
 ### config QR URI
 
 
-See [Features/Remoteconfig/URL config](../features/remoteconfig/#URL-config)
+See [Features/Remoteconfig/URL config](../features/remoteconfig/#url-config)
 
