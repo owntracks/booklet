@@ -1,33 +1,40 @@
-## QR codes
-
-To configure iBeacons in the OwnTracks for iOS app, you can use QR codes with specially-constructed URLs to configure the app. The QR codes can be scanned from the settings tab within the app, or the specially crafted URL can be opened from mobile Safari.
-
-![iOS settings](images/b-ios-scan-setting.png)
-
-Alternatively, you can use an external QR reader app (such as _Qrafter_) or, even easier, you provide the URL and view it through the device's mobile Web browser.
-
-![QRafter](images/b-qrafter.png)
+To configure OwnTracks (and especially iBeacons for the iOS app), you can use URIs or QR codes.
+The QR codes can opened via the camera app, the URIs via the Web browser, the email app, etc.
 
 QR codes can be prepared with a number of tools: there are online offerings, and there is a standalone C program by the name of [qrencode](https://fukuchi.org/works/qrencode/) which works very well:
 
 ```
-qrencode -l H -v 10 -d 300 -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=2&minor=1'
+qrencode -l H -v 10 -d 300 -o mybeacon.png 'owntracks:///beacon?rid=ac3def&name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=2&minor=1'
 ```
 
-### iBeacon QR URL
+### iBeacon QR URI
 
 * scheme = `owntracks`
 * host = `<empty>`
 * path = `/beacon`
-* query = `name=<name>&uuid=<uuid>&major=<major>&minor=<minor>`
+* query = `rid=<rid>&name=<name>&uuid=<uuid>&major=<major>&minor=<minor>`
 
-major and minor are optional
+rid, major, and minor are optional
 
 Example:
 
 ```
-owntracks:///beacon?name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=2&minor=1
+owntracks:///beacon?rid=ac3def&name=MyBeacon&uuid=12345678-1234-1234-1234-123456789A&major=2&minor=1
 ```
 
 ![beacon QR](images/beacon.png)
+
+### config QR URI
+
+* scheme = `owntracks`
+* host = `<empty>`
+* path = `/config`
+* query = <TODO>
+
+
+Example:
+
+```
+owntracks:///config?<TODO>
+```
 

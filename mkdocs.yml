@@ -39,7 +39,7 @@ pages:
     - 'JSON': 'tech/json.md'
     - 'HTTP' : 'tech/http.md'
     - 'MQTT': 'tech/mqtt.md'
-    - 'QR': 'tech/qr.md'
+    - 'URIs and QR codes': 'tech/qr.md'
     - 'Code': 'tech/program.md'
 - Sundry:
     - 'Terminology': 'terminology.md'
