@@ -52,7 +52,7 @@ Publishing the above payload to an OwnTracks iOS device will create/modify said 
 
 Since January 2021, both iOS and Android apps can be configured by having the user click on an `owntracks:///config?inline=` URL containing a base64-encoded version of the content of an `.otrc` file.
 
-Say we have a file called `j.otrc` with the JSON `_type: configuration` shown above. We can use, say, the _openssl_ and _jq_ utilities to base64-encode encode the configuration.
+Say we have a file called `j.otrc` with the JSON `_type: configuration` shown above. We can use, say, the _openssl_ utility to base64-encode encode the configuration into a single line:
 
 ```console
 echo "owntracks:///config?inline=$(openssl enc -a -A -in j.otrc)"
