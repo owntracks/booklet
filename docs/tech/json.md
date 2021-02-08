@@ -381,6 +381,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
         - `from` Timestamp _(iOS/epoch/optional)_
         - `to` Timestamp _(iOS/epoch/optional)_
     * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
+      Don‘t expect device to be online. Send with QoS>0. Device will receive and repond when activated next time.
     * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
         - `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
     * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
