@@ -292,6 +292,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `2` BALANCED_POWER / block level accuracy based on Wifi/Cell _(Android)_
     - `3` HIGH_POWER / most accurate accuracy based on GPS _(Android)_
 * `locked` Locks settings screen on device for editing _(iOS/boolean)_
+* `maxHistory` Number of notifications to store historically. Zero (0) means no notifications are stored and history tab is hidden. Defaults to zero. _(iOS/integer)_
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
     - `0` Private  MQTT _(iOS, Android)_
     - `3` Private  HTTP _(iOS, Android)_
