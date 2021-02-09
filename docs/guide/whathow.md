@@ -14,7 +14,7 @@ That's basically all OwnTracks does.
 
 That last sentence isn't true. Strike it.
 
-OwnTracks does quite a bit more. It shows your location on a map. Wow: big deal, huh? Well, it shows your location and [that of your friends](friends.md) on a map. Ah: better. It can also detect when you enter or leave a particular region for which [you set a so-called waypoint](waypoints.md). People use this, say, to control some aspect of their home-automation system. (Everybody left home? We can turn the lights off.)
+OwnTracks does quite a bit more. It shows your location on a map. Wow: big deal, huh? Well, it shows your location and [that of your friends](../features/friends.md) on a map. Ah: better. It can also detect when you enter or leave a particular region for which [you set a so-called waypoint](waypoints.md). People use this, say, to control some aspect of their home-automation system. (Everybody left home? We can turn the lights off.)
 
 OwnTracks also has a pedometer, a.k.a. step counter (on iPhone 5S, 6) which you can query remotely. OwnTracks has support for [iBeacons](beacons.md), and it gives you neat notifications when one of your friends gets home so you can phone them over a land-line to plan a get-together.
 
