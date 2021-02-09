@@ -22,7 +22,7 @@ of supported features is concernened. This table summarizes the current status.
 | Move mode                                 |   Y    |   Y      |
 | Friends list                              |   Y    |   Y     |
 | Geofencing                                |   Y    |   Y     |
-| [Waypoints](waypoints.md)                 |   Y    |   Y     |
+| [Regions](waypoints.md)                   |   Y    |   Y     |
 | Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
 | [Remote configuration](remoteconfig.md)   |   Y    |   Y      |
 | [iBeacons](beacons.md)                    |   Y    |          |

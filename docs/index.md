@@ -8,7 +8,7 @@ OwnTracks is an Open Source project which provides an iOS and an Android app wit
 
 ![public map](images/ipad-public-map.png)
 
-Whether you want your young child to know where you currently are, or you want to keep track of where you spent your last vacation, or you and a group of friends want to see each other on a map, OwnTracks does that. It consists of an app which runs on your smart phone, and which periodically, publishes a small chunk of data which other OwnTracks users you authorize may see. The big deal here is *which you authorize*: we are extremely picky about [the security features of OwnTracks](features/security.md).
+Whether you want your young child to know where you currently are, or you want to keep track of where you spent your last vacation, or you and a group of friends want to see each other on a map, OwnTracks does that. It consists of an app which runs on your smart phone, and which periodically, publishes a small chunk of data which other OwnTracks users you authorize may see. The big deal here is *which you authorize*: we are extremely picky about [the security features of OwnTracks](features/security.md). To be quite clear, you also run the backend in order to ensure that only you and the people you authorize have access to the data published by the apps.
 
 From this point onwards, it gets a bit complicated, but we'll try and ease your way into the world of OwnTracks so you may enjoy it. 
 

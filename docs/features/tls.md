@@ -1,6 +1,6 @@
 ## TLS
 
-You want data between your mobile device (a.k.a. smartphone) and the MQTT broker you use to be secured from eavesdropping. This is accomplished using _TLS_ (the artist formerly known as _SSL_). When you configure your broker you will generate what is called a CA certificate which is basically a large amount of bits. (See below for the nitty gritty.)
+You want data between your mobile device (a.k.a. smartphone) and the MQTT broker you use to be secured from eavesdropping. This is accomplished using _TLS_. When you configure your broker you will generate what is called a CA certificate which is basically a large amount of bits. (See below for the nitty gritty.)
 
 Configuring TLS ([Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)) for OwnTracks involves doing three things:
 

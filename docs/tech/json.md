@@ -50,10 +50,10 @@ This location object describes the location of the device that reported it.
 * `acc` Accuracy of the reported location in meters without unit _(iOS,Android/integer/meters/optional)_
 * `alt` Altitude measured above sea level _(iOS,Android/integer/meters/optional)_
 * `batt` Device battery level _(iOS,Android/integer/percent/optional)_
-* `bs` Battery Status 0=unknown, 1=unplugged, 2=charging, 3=full  _(iOS)_
+* `bs` Battery Status 0=unknown, 1=unplugged, 2=charging, 3=full  _(iOS, Android)_
 * `cog` Course over ground _(iOS/integer/degree/optional)_
-* `lat` latitude _(iOS,Android/float/meters/required)_
-* `lon` longitude _(iOS,Android/float/meters/required)_
+* `lat` latitude _(iOS,Android/float/degree/required)_
+* `lon` longitude _(iOS,Android/float/degree/required)_
 * `rad` radius around the region when entering/leaving _(iOS/integer/meters/optional)_
 * `t` trigger for the location report _(iOS,Android/string/optional)_
     * `p` ping issued randomly by background task _(iOS,Android)_
@@ -74,6 +74,8 @@ This location object describes the location of the device that reported it.
     * `m` mobile data _(iOS,Android)_
 * `topic` (only in HTTP payloads) contains the original publish topic (e.g. `owntracks/jane/phone`). _(iOS)_
 * `inregions` contains a list of regions the device is currently in (e.g. `["Home","Garage"]`). Might be empty. _(iOS,Android/list of strings/optional)_
+* `SSID`, if available, is the unique name of the WLAN. _(iOS,string/optional)_
+* `BSSID`, if available, identifies the access point. _(iOS,string/optional)_
 
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
@@ -83,8 +85,6 @@ This location object describes the location of the device that reported it.
 * The `acc`, `alt`, `cog`, `vac`, `vel` elements are only added if they are not zero
 * Some Android devices always return 0 for `alt` or `vel`
 * Elements marked with _extended data_ are only added if `extendedData=true` is configured
-
-
 
 
 ### Greenwich
@@ -144,7 +144,6 @@ Queclink devices report the following additional elements in a `_type=location` 
     - `9` Battery power low
     - `h` harsh behavior
     - `s` speed alarm
-
 * `odometer` total distance of the device _(float/kilometers/optional)_
 * `hmc` total hours of operation _(float/seconds/optional)_
 * `ubatt` voltage of the battery _(float/volts/optional)_
@@ -207,7 +206,7 @@ A _last will and testament_ is published automatically by the MQTT broker when i
 
 ## `_type=waypoint`
 
-Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
+Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
 
 ```json
 {
@@ -215,14 +214,15 @@ Waypoints denote specific geographical regions that you want to keep track of. Y
     elements
 }
 ```
-* `desc` Name of the waypoint that is included in the sent transition message _(iOS,Android,string/required)_
+* `desc` Name of the waypoint that is included in the sent transition message, copied into the `location` message `inregions` array when a current position is within a region. _(iOS,Android,string/required)_
 * `lat` Latitude  _(iOS,Android/float/meters/optional)_
 * `lon` Longitude _(iOS,Android/float/meters/optional)_
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_
-* `tst` Timestamp of waypoint _creation to identify the waypoint. Copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
+* `tst` Timestamp of creation of region, copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
 * `uuid` UUID of the BLE Beacon _(iOS/string/optional)_
 * `major` Major number of the BLE Beacon _(iOS/integer/optional)_
 * `minor`  Minor number of the BLE Beacon_(iOS/integer/optional)_
+* `rid`  region ID, created automatically, copied into the `location` payload `inrids` array (iOS/string)_
 
 #### Notes
 * In iOS version >= 9.1.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the `desc` element.
@@ -257,6 +257,7 @@ A transition message is sent, when entering or leaving a previously configured g
     - `c` Circular geographical region  _(iOS, Android)_
     - `b` BLE Beacon _(iOS)_
     - `l` Loction update _(Android)_
+* `rid` Region ID _(iOS/Android, after January 2021)_
 
 
 ## `_type=configuration`
@@ -269,14 +270,12 @@ The device configuration can be imported and exported as JSON. The exported conf
 }
 ```
 * `allowRemoteLocation` Respond to reportLocation cmd message _(iOS,Android/boolean)_
-* `allowinvalidcerts` Allow self signed certificates in user defined security policy _(iOS/boolean)_
+* `allowinvalidcerts` disable TLS certificate checks **insecure**  _(iOS/boolean)_
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
 * `autostartOnBoot` Autostart the app on device boot _(Android/boolean)_
-
 * `cleanSession` MQTT endpoint clean session _(iOS,Android/boolean)_
 * `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
-* `cp` Copy mode _(iOS/boolean)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
@@ -304,16 +303,12 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `mqttProtocolLevel` MQTT broker protocol level _(iOS,Android/integer)_
     - `3` MQTT 3 (default)
     - `4` MQTT 3.1.1
-* `notificationGeocoder` Resolve last reported location in ongoing notification to an address  _(Android/boolean)_
+    - `5` MQTT 5 (iOS only)
 * `notificationLocation` Show last reported location in ongoing notification _(Android/boolean)_
 * `opencageApiKey` API key for alternate Geocoding provider. See https://opencagedata.com/ for details. _(Android/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
 * `password` Endpoint password _(iOS,Android/string)_
 * `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
-* `policymode` User defined securiy policy mode _(iOS/integer)_
-    - `0` Do not used pinned certificates to validate servers
-    - `1` Validate host certificates against public keys of pinned certificates
-    - `2` Validate host certificates against pinned certificates
 * `port` MQTT endpoint port _(iOS,Android/integer)_
 * `positions` Number of locations to keep and display _(iOS/integer)_
 * `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
@@ -329,10 +324,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `tls` MQTT endpoint TLS connection _(iOS,Android/boolean)_
 * `tlsClientCrtPassword` Passphrase of the client pkcs12 file _(Android/string)_
 * `url` HTTP endpoint URL to which messages are POSTed _(iOS,Android/string)_
-* `usepolicy` Use user defined security policy _(iOS/boolean)_
 * `username` Endpoint username _(iOS,Android/string)_
-* `validatedomainname` Validate domain name during TLS handshake _(iOS/boolean)_
-* `validatecertificatechain` Validate the whole certificate chain or just the server certificate _(iOS/boolean)_
 * `willRetain`
 * `willTopic`
 * `willQos`
@@ -384,17 +376,18 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"action","notification":"Warning! Battery low"}
 ```
 * `action` action to be performed by the device _(iOS,Android/string)_
-  * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
-  * `dump` Triggers the publish of a `configuration` message _(iOS)_
-  * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
-    * `from` Timestamp _(iOS/epoch/optional)_
-    * `to` Timestamp _(iOS/epoch/optional)_
-  * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
-  * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
-    * `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
-  * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
-    * `configuration` Configuration message to import _(iOS,Android/required)_
-  * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
+    * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
+    * `dump` Triggers the publish of a `configuration` message _(iOS)_
+    * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
+        - `from` Timestamp _(iOS/epoch/optional)_
+        - `to` Timestamp _(iOS/epoch/optional)_
+    * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
+      Don‘t expect device to be online. Send with QoS>0. Device will receive and repond when activated next time.
+    * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
+        - `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
+    * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
+        - `configuration` Configuration message to import _(iOS,Android/required)_
+    * `waypoints` Triggers publish of a `waypoints` message _(iOS,Android)_
 
 #### Notes
 * If `url` for the `action` cmd message is specified, the URL is opened in a full screen web view within the app
@@ -402,8 +395,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * If `url` is not specified the text of the `content` element is displayed. Links embedded in the text are operational.
 * If the `content` consists of HTML, it is rendered
 * The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
-* If the `action` cmd contains a `notification` element, the value of the element is shown in the app
-
+* If the `action` cmd contains a `notification` element, the value of the element is shown in the app _(iOS)_
 * On iOS, the array of waypoints to the `setWaypoints` command allows updates / removal; the key of the waypoint is its name (`desc`). If you specify an invalid `lat` or `lon` (invalid means out of range number value e.g. `-1000000`, a string like `"foo"` will result in a `0` in app) the waypoint is deleted.
 
 ## `_type=steps`
@@ -453,8 +445,7 @@ The app can export a list of configured waypoints to the endpoint.
 
 
 ## `_type=encrypted`
-Apps can optionally [encrypt](../features/encrypt.md) outgoing messages with a shared symmetric key.
-The encrypted message is contained in the `data`element.
+Apps can optionally [encrypt](../features/encrypt.md) outgoing messages with a shared symmetric key.  The encrypted message is contained in the `data`element.
 For security reasons, the encryption key is not exported with configuration messages and cannot be imported.
 
 ```json

@@ -85,3 +85,7 @@ which are useful when using MQTT in general or OwnTracks in particular.
 * Matthew Bordignon made a small [Web page which uses Websockets to display the barometer reading](https://github.com/matbor/Owntracks-Barometer) published by OwnTracks for iOS. ([Screenshot](https://twitter.com/OwnTracks/status/623823420053172224).)
 * [PHP front & backend for OwnTracks payloads](https://github.com/tomyvi/php-owntracks-recorder)
 * Orion, an alternative to OwnTracks Recorder with powerful visualization features ([server](https://github.com/LINKIWI/orion-server), [web client](https://github.com/LINKIWI/orion-web), [demo](https://linkiwi.github.io/orion-web))
+* [OwntracksOSM](https://github.com/wansti/OwntracksOSM) is an Owntracks and OpenStreetMap based mapping and location sharing app for Samsung smartwatches ([screenshots](https://github.com/owntracks/talk/issues/80)).
+* [From OwnTracks to QGIS](https://www.cron.dk/from-owntrack-to-qgis-part-1/), a solution to import OwnTracks data into QGIS.
+* [Magic Mirror module for displaying results from OpenTracks](https://github.com/BrianHepler/MMM-WeasleyClock)
+* [Prometheus OwnTracks Exporter](https://github.com/linusg/prometheus-owntracks-exporter)

@@ -13,7 +13,7 @@ Since Android 6 and higher, the operating systems enforces stricter restrictions
 ## Vendor background restrictions
 Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits.
 
-A list of vendors known to interfer with background apps and a number of workarounds can be found at (Don’t kill my app!)[https://dontkillmyapp.com/].
+A list of vendors known to interfer with background apps and a number of workarounds can be found at [Don’t kill my app!](https://dontkillmyapp.com/).
 
 ## Google Play Services
 Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.
@@ -43,11 +43,63 @@ Since Owntracks 2.1.2 application logs can be exported easily to assist in debug
 To generate the logs, follow the next steps:
 
 * Temporarily grant write access to local storage. Go to Android App Info > Permissions and enable the storage permission.
-* Open the configuration editor at Preferences > Configuration Management > Menu on the right top > Editor
+* Open the configuration editor at _Preferences_ > _Configuration Management_ > _Menu_ on the right top > Editor
 * Under key enter `debugLog`
 * As value enter `true`
-* Restart the app at Menu on the right top > Restart
+* Restart the app at Menu on the right top > _Restart_.
 
-Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
-The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
+Application logs are written to the local storage and can be viewed in _Status_ -> _View Logs_, from which they can be exported or shared via typical Android functions, e.g. by Mail.
+
+Enabled logging degrades application performance, so it should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
+
+## Automation via Tasker, Automagic, etc.
+
+Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined [modes](https://owntracks.org/booklet/features/location/): `Move`, `Significant location change`,`Manual`,`Quiet`.
+
+To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.
+
+### Tasker example: 
+To trigger `Move` mode in tasker, create a `Send Intent` action and enter the following information:
+
+* Action: `org.owntracks.android.CHANGE_MONITORING`
+* Cat: `None`
+* Mime Type: [LEAVE FIELD BLANK]
+* Data: [LEAVE FIELD BLANK]
+* Extra(1): `monitoring:2`
+* Extra(2): [LEAVE FIELD BLANK]
+* Extra(3): [LEAVE FIELD BLANK]
+* Package: [LEAVE FIELD BLANK]
+* Class: [LEAVE FIELD BLANK]
+* Target: `Service`
+  
+| Mode  | Send This Extra Value|
+|---|---|
+|Quiet|`monitoring:-1`|
+|Manual|`monitoring:0`|
+|Significant Changes|`monitoring:1`|
+|Move|`monitoring:2`|
+
+
+
+### Automagic example: 
+To trigger `Move` mode in Automagic, create a `Start Service` action and enter the following information:
+
+* Action: `org.owntracks.android.CHANGE_MONITORING`
+* Category List: [LEAVE FIELD BLANK]
+* Data URI: [LEAVE FIELD BLANK]
+* Data MIME Type: [LEAVE FIELD BLANK]
+* Explicit Component: ticked
+* Package Name: `org.owntracks.android`
+* Class Name: [LEAVE FIELD BLANK]
+* Flag List: [LEAVE FIELD BLANK]
+* Extra: `putInt("MONITORING": 2)`
+  
+| Mode  | Send This Extra Value|
+|---|---|
+|Quiet|`putInt("monitoring": -1)`|
+|Manual|`putInt("monitoring": 0)`|
+|Significant Changes|`putInt("monitoring": 1)`|
+|Move|`putInt("monitoring": 2)`|
+
+
 

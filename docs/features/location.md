@@ -56,7 +56,7 @@ Same as _Manual_ mode except that no region events are published.
 #### _Region_ monitoring
 
 The app user may mark a previously manually published or manually created 
-location as a monitored circular region by specifying a monitoring radius in meters. (See [Waypoints](waypoints.md).)
+location as a monitored circular region by specifying a monitoring radius in meters. (See [Regions](waypoints.md).)
 The app will publish the location
 additionally every time the device leaves or enters one of the regions, and the
 published data contains an indication of whether the device is entering or
@@ -124,6 +124,8 @@ In _move_ mode, the app monitors device location permanently. It requests a loca
 This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
 It is recommend to use _move_ mode while charging or during periods that require highly accurate tracking while moving quickly. 
 
+The `locatorDisplacement` option is ignored in this mode.
+
 #### _Significant location change_ mode
 
 This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. 
@@ -131,11 +133,18 @@ This standard tracking mode is aimed at everyday usage for location tracking in 
 This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. 
 
 In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw [location request](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest) that is send to the Android location API.  
-* `locatorInterval`: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
-* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved. 
-* `locatorPriority`: The priority of the request is a strong hint to the LocationClient for which location sources to use. 
 
+* `locatorInterval`: The [desired interval](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-locationrequest-setinterval-long-millis) for active location updates.
+>    "The location client will actively try to obtain location updates for your application at this interval, so it has a direct influence on the amount of power used by your application. Choose your interval wisely."
 
+* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved.
+    * This means if the user has not moved by more than the displacement value, the location will not be reported at `locatorInterval`.
+
+* `locatorPriority`: The priority of the request is a strong hint to the LocationClient for which location sources to use (e.g. wifi, cellular or gps). The accepted values are:
+    * `0`: [No power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power) "No locations will be returned unless a different client has requested location updates"
+    * `1`: [Low power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_low_power) "City level accuracy is considered to be about 10km accuracy."
+    * `2`: [Balanced power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_balanced_power_accuracy) "Block level accuracy is considered to be about 100 meter accuracy." (default)
+    * `3`: [High power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_high_accuracy) "This will return the finest location available."
 
 #### _Manual_ mode
 

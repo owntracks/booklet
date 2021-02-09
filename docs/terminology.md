@@ -51,6 +51,6 @@ connects to the broker.
 
 _Reverse geocoding_ is the act of looking up the address for a pair of coordinates.
 
-#### Geofence
+#### Geofence or Region
 
-A _geofence_ is an area around a particular coordinate. Geofences will trigger certain actions once the device enters or leaves the setup area. 
+A _geofence_ or a _region_ is an area around a particular coordinate. Geofences will trigger certain actions once the device enters or leaves the setup area. 

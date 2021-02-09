@@ -1,12 +1,14 @@
 # People
 
-[Alexander Rust][binarybucks] created the first proof-of-concept for the Android app which started out under the very geeky name _MQTTitude_, a term coined from our use of MQTT and the then obsolete Latitude app, which Google took out of service in 2013.
+[Alexander Rust][binarybucks] created the first proof-of-concept for the Android app which started out under the very geeky name _MQTTitude_, a term coined from our use of MQTT and the then obsolete Latitude app, which Google took out of service in 2013. [Andrew Rowson][growse] then took over and now maintains the Android app.
 
 Only a few days later, [Christoph Krey][ckrey] implemented a rough prototype on iOS, and didn't stop implementing new and exciting features on the iOS version of OwnTracks until his coffee machine burned out.
 
 [Jan-Piet Mens][jpmens] had the [original crazy idea of combining location updates and MQTT](http://jpmens.net/2013/08/14/latitude-longitude-mqttitude/) and tries to keep abreast on what Christoph and Alexander do. As [Ben][sumnerboy] once said: "JP just sits back and cracks the whips". So these three could be called the "core team", if we were in the market for cool-sounding titles.
 
 Incidentally, [Ben Jones][sumnerboy], who works closely with us, has given us loads of invaluable feedback and he's the chap who created the [mqttitude binding](https://github.com/openhab/openhab/wiki/Mqttitude-Binding) for the wonderful [openHAB](http://www.openhab.org) Home Automation project.
+
+[Linus Groh][linusgroh] created the [OwnTracks Frontend](https://github.com/owntracks/frontend) which you'll definitely want to use!
 
 ## Contributors
 
@@ -26,3 +28,5 @@ Many good people have assisted us, be it by testing, by contributing bits of cod
   [ckrey]: https://twitter.com/christophkrey
   [jpmens]: http://jpmens.net
   [sumnerboy]: https://twitter.com/sumnerboy
+  [growse]: https://twitter.com/growse
+  [linusgroh]: https://twitter.com/linusgroh
