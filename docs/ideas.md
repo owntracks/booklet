@@ -6,7 +6,7 @@ Over the course of time, we've had people propose a number of ideas for OwnTrack
 * Publish _charging_ alongside battery level. No.
 * Add temperature to the JSON payload. No.
 * Have the device track a route; we do this in the back-end.
-
+* Feature to start a "sequence" which sets two custom attributes for transport mode (e.g. bicycle, walk, etc.) and/or a route name (e.g. drivehome2work_01032021) until manually turned off. If no sequence is started the attribute is just left empty. Makes querying the data much easier.
 
 ## Short term
 
