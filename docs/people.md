@@ -12,7 +12,7 @@ Incidentally, [Ben Jones][sumnerboy], who works closely with us, has given us lo
 
 ## Contributors
 
-Many good people have assisted us, be it by testing, by contributing bits of code or documentation, or just by complaining loudly, and we want to acknowledge the following contributions. (If you think your name should be on this list, tell us, or forever hold your peace. :-)
+Many good people have assisted us, be it by testing, by contributing bits of code, documentation, or translations, or just by complaining loudly, and we want to acknowledge the following contributions. (If you think your name should be on this list, tell us, or forever hold your peace. :-)
 
 * [Brad Pillatsch](https://github.com/bpillatsch) wrote the initial implementation of PKCS#12 import for Android.
 * [brunkj](https://github.com/brunkj) for help in tracking down an address book crash.
@@ -22,6 +22,7 @@ Many good people have assisted us, be it by testing, by contributing bits of cod
 * Adrian Brown originally suggested the [idea for location-based services](https://community.owntracks.org/topic/26/owntrack-s-enhancement-idea)
 * [friesenkiwi](https://github.com/friesenkiwi) contributed sundry large patches to Android and drove the LOST integration.
 * [Mikael Berthe](https://github.com/McKael) initiated the idea for the `_cp` attribute (which we removed in May 2018).
+* [Federico Hernandez](https://github.com/recollir) contributed the Swedish translation of the iOS app.
 
 
   [binarybucks]: https://twitter.com/binarybucks
