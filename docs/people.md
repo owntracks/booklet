@@ -22,6 +22,7 @@ Many good people have assisted us, be it by testing, by contributing bits of cod
 * Adrian Brown originally suggested the [idea for location-based services](https://community.owntracks.org/topic/26/owntrack-s-enhancement-idea)
 * [friesenkiwi](https://github.com/friesenkiwi) contributed sundry large patches to Android and drove the LOST integration.
 * [Mikael Berthe](https://github.com/McKael) initiated the idea for the `_cp` attribute (which we removed in May 2018).
+* [Peter Lindemann](mailto:peter@lindeman.nl) raised his hand for translating the iOS app into Dutch.
 * [Federico Hernandez](https://github.com/recollir) contributed the Swedish translation of the iOS app.
 
 
