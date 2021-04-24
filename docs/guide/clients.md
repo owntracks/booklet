@@ -89,3 +89,4 @@ which are useful when using MQTT in general or OwnTracks in particular.
 * [From OwnTracks to QGIS](https://www.cron.dk/from-owntrack-to-qgis-part-1/), a solution to import OwnTracks data into QGIS.
 * [Magic Mirror module for displaying results from OpenTracks](https://github.com/BrianHepler/MMM-WeasleyClock)
 * [Prometheus OwnTracks Exporter](https://github.com/linusg/prometheus-owntracks-exporter)
+* [hauk-snitch](https://github.com/tuffnerdstuff/hauk-snitch) bridges OwnTracks and [Hauk](https://github.com/bilde2910/Hauk) and makes it easy to share your current live location with other people for a given period of time. Just send them a link, all they need is a browser.
