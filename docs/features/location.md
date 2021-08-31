@@ -119,7 +119,7 @@ The description of the _waypoint_ is added to the published `event` message.
 
 #### _Move_ mode 
 
-In _move_ mode, the app monitors device location permanently. It requests a location fix every 30s in high power mode and publishes a new location as soon as it arrives but at most every 10 seconds. 
+In _move_ mode, the app monitors device location permanently. It requests a location fix every 10s (by default, configurable in the settings through `moveModeLocatorInterval`) in high power mode and publishes a new location as soon as it arrives. 
 
 This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
 It is recommend to use _move_ mode while charging or during periods that require highly accurate tracking while moving quickly. 
@@ -128,7 +128,7 @@ The `locatorDisplacement` option is ignored in this mode.
 
 #### _Significant location change_ mode
 
-This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. 
+This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives. 
 
 This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. 
 
@@ -136,6 +136,8 @@ In addition to the default settings, all location request parameters in this mod
 
 * `locatorInterval`: The [desired interval](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-locationrequest-setinterval-long-millis) for active location updates.
 >    "The location client will actively try to obtain location updates for your application at this interval, so it has a direct influence on the amount of power used by your application. Choose your interval wisely."
+
+* `moveModeLocatorInterval`: The requested location interval in _move_ mode.
 
 * `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved.
     * This means if the user has not moved by more than the displacement value, the location will not be reported at `locatorInterval`.
