@@ -1,13 +1,12 @@
 ## General Restrictions on Android 6 and higher.
 Since Android 6 and higher, the operating systems enforces stricter restrictions for apps running in the background. Most importantly, network access and background jobs are restricted to certain time slots. As a result, certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from battery optimizations.
 
-* It is highly recommended to use HTTP mode on Android 6 and higher.
+* You may find HTTP mode more reliable on Android 6 and higher.
 * The ongoing notification is required to run in the background.
 * App standby or battery optimization may interfere with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimization feature for OwnTracks in Settings > Battery > Battery Optimization.
-* Outgoing messages will only be sent in batched intervals. Location updates or event messages may be delayed.
+* Outgoing messages may only be sent in batched intervals. Location updates or event messages may be delayed.
 * Incoming messages such as events might be delayed.
-* When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted regularly or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.
-* The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.
+* When using MQTT, the broker connection is not guaranteed to be maintained permanently. A reconnect will be attempted regularly or when a message is sent. If the connection is established without the clean session flag, missed messages will be received once connected.
 * Beacons are no long supported in OwnTracks for Android
 
 ## Vendor background restrictions
@@ -16,14 +15,16 @@ Certain vendors have their own restrictions for apps running in the background. 
 A list of vendors known to interfer with background apps and a number of workarounds can be found at [Don’t kill my app!](https://dontkillmyapp.com/).
 
 ## Google Play Services
-Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.
+Google Play Services are required to use OwnTracks that's distributed on the Google Play Store.
 
-They are used for
+They are used for:
+
 * Battery efficient location access
-* Geofencing
 * Scheduling of background jobs
 * Resolving coordinates to addresses (an alterative Geocoding service can be configured)
 * Displaying the map
+
+A separate "flavour" of OwnTracks called "OSS" aims to remove this dependency for people that can't or prefer not to use Google Play Services. This version will use other providers for maps, geocoding and location and is currently in development. The plan is to release this via the [F-Droid](https://www.f-droid.org/) app catalogue.
 
 ## Setup
 
@@ -43,14 +44,9 @@ Since Owntracks 2.1.2 application logs can be exported easily to assist in debug
 To generate the logs, follow the next steps:
 
 * Temporarily grant write access to local storage. Go to Android App Info > Permissions and enable the storage permission.
-* Open the configuration editor at _Preferences_ > _Configuration Management_ > _Menu_ on the right top > Editor
-* Under key enter `debugLog`
-* As value enter `true`
-* Restart the app at Menu on the right top > _Restart_.
-
-Application logs are written to the local storage and can be viewed in _Status_ -> _View Logs_, from which they can be exported or shared via typical Android functions, e.g. by Mail.
-
-Enabled logging degrades application performance, so it should be disabled after gathering enough information. To do so, follow the steps above but enter `false` as value in the configuration editor.
+* Open the log viewer at _Status_ > _View Logs_
+* The most recent logs are displayed. To view debug log entries as well, select the _Debug Logs_ option in the top right menu.
+* The _Share_ button (bottom right) allows the logs to be exported and shared, either to disk (via a suitable file manager app such as _Total Commander_) or sent over email.
 
 ## Automation via Tasker, Automagic, etc.
 
@@ -79,7 +75,27 @@ To trigger `Move` mode in tasker, create a `Send Intent` action and enter the fo
 |Significant Changes|`monitoring:1`|
 |Move|`monitoring:2`|
 
+### Macrodroid example:
+To trigger `Move` mode in tasker, create a `Send Intent` action and enter the following information:
 
+* Target: `Service`
+* Action: `org.owntracks.android.CHANGE_MONITORING`
+* Package: `org.owntracks.android`
+* Class: [LEAVE FIELD BLANK]
+* Mime Type: [LEAVE FIELD BLANK]
+* Data: [LEAVE FIELD BLANK]
+* Extra 1 parameter name: `monitoring`
+* Extra 1 value: `2`
+* Extra(2): [LEAVE FIELD BLANK]
+* Extra(3): [LEAVE FIELD BLANK]
+* Extra(4): [LEAVE FIELD BLANK]
+
+| Mode  | Send This Extra Value|
+|---|---|
+|Quiet|`-1`|
+|Manual|`0`|
+|Significant Changes|`1`|
+|Move|`2`|
 
 ### Automagic example: 
 To trigger `Move` mode in Automagic, create a `Start Service` action and enter the following information:
@@ -100,6 +116,3 @@ To trigger `Move` mode in Automagic, create a `Start Service` action and enter t
 |Manual|`putInt("monitoring": 0)`|
 |Significant Changes|`putInt("monitoring": 1)`|
 |Move|`putInt("monitoring": 2)`|
-
-
-
