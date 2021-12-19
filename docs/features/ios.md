@@ -92,6 +92,8 @@ reports region with description 'myBeacons' when any iBeacon identified with UUI
 
 Create a region with a name begining with a `+` character, e.g. `+follow` and set an initial radius to be greater than zero. From this moment onwards, _lat_ and _lon_ will be set dynamically at each location publish and _radius_ will be the distance you've covered in 30 seconds, at least 50 meters.
 
+Available in version > 15.x.x: If the name of such a region starts with a _number_ (e.g. `+60follow`), the dynamically set new _radius_ will be the distance you've covered in _number_ seconds (minimum 50 meters). 
+
 This _follow_-type region will not trigger `enter/leave` events or notifications, and location publishes will have a type setting of `"t" : "C"`.
 
 ### Remote configuration
