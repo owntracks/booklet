@@ -74,6 +74,7 @@ This location object describes the location of the device that reported it.
     * `m` mobile data _(iOS,Android)_
 * `topic` (only in HTTP payloads) contains the original publish topic (e.g. `owntracks/jane/phone`). _(iOS,Android >= 2.4,string)_
 * `inregions` contains a list of regions the device is currently in (e.g. `["Home","Garage"]`). Might be empty. _(iOS,Android/list of strings/optional)_
+* `inrids` contains a list of region IDs the device is currently in (e.g. `["6da9cf","3defa7"]`). Might be empty. _(iOS,Android/list of strings/optional)_
 * `SSID`, if available, is the unique name of the WLAN. _(iOS,string/optional)_
 * `BSSID`, if available, identifies the access point. _(iOS,string/optional)_
 * `created_at` identifies the time at which the message is constructed (vs. `tst` which is the timestamp of the GPS fix) _(iOS,Android)_
