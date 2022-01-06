@@ -63,7 +63,7 @@ See also [Waypoints](waypoints.md).
 ### Region monitoring (a.k.a. Geo Fences)
 
 If the waypoint description is non-empty and a radius > 0 (meters) is set, the
-app starts monitoring the circular region around the specified coordinates. 
+app starts monitoring the circular region around the specified coordinates.
 Regions are shown on the map as blue-ish circles. If the
 device is within a region, the corresponding circle turns red-ish. Every time
 the devices enters or leaves a monitored region, an additional location message
@@ -92,14 +92,14 @@ reports region with description 'myBeacons' when any iBeacon identified with UUI
 
 Create a region with a name begining with a `+` character, e.g. `+follow` and set an initial radius to be greater than zero. From this moment onwards, _lat_ and _lon_ will be set dynamically at each location publish and _radius_ will be the distance you've covered in 30 seconds, at least 50 meters.
 
-Available in version > 15.x.x: If the name of such a region starts with a _number_ (e.g. `+60follow`), the dynamically set new _radius_ will be the distance you've covered in _number_ seconds (minimum 50 meters). 
+Available in version > 15.x.x: If the name of such a region starts with a _number_ (e.g. `+60follow`), the dynamically set new _radius_ will be the distance you've covered in _number_ seconds (minimum 50 meters).
 
 This _follow_-type region will not trigger `enter/leave` events or notifications, and location publishes will have a type setting of `"t" : "C"`.
 
-### Region Monitoring with automatic monitoring mode change 
+### Region Monitoring with automatic monitoring mode change
 *Available in version > 16.x.x*
 
-Create a region with a name ending with '|<monitoring mode on enter>|<monitoring mode on exit>`. E.g. 'Home|1|2' will
+Create a region with a name ending with `'|<monitoring mode on enter>|<monitoring mode on exit>`. E.g. `Home|1|2` will
 switch to monitoring mode 2 (Move Mode) when exiting the region `Home` and will switch back to monitoring mode 1 (Significant
 Mode) when entering the region `Home`.
 
