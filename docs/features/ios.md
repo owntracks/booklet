@@ -96,6 +96,18 @@ Available in version > 15.x.x: If the name of such a region starts with a _numbe
 
 This _follow_-type region will not trigger `enter/leave` events or notifications, and location publishes will have a type setting of `"t" : "C"`.
 
+### Region Monitoring with automatic monitoring mode change 
+*Available in version > 16.x.x*
+
+Create a region with a name ending with '|<monitoring mode on enter>|<monitoring mode on exit>`. E.g. 'Home|1|2' will
+switch to monitoring mode 2 (Move Mode) when exiting the region `Home` and will switch back to monitoring mode 1 (Significant
+Mode) when entering the region `Home`.
+
+Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all further region detection.
+
+As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
+add a `+follow` region, which will trigger a wake up of the app when moving.
+
 ### Remote configuration
 
 You can help your friends customize their copy of OwnTracks with [remote configuration](remoteconfig.md).
