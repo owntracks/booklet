@@ -108,6 +108,18 @@ Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all fu
 As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
 add a `+follow` region, which will trigger a wake up of the app when moving.
 
+### Region Monitoring with automatic battery level controlled monitoring mode change
+*Available in version > 16.x.x*
+
+A new Settings parameter "downgrade" indicates the percentage of battery level which is the threshold.
+
+If the phone is in Move Mode and the battery level drops below "downgrade" percent, the app will automatically switch from Move Mode to Significant Mode.
+
+If the phone did that automatic switch and detects the charges is connected, it will automatically switch back to Move Mode.
+This will happen when then next location update in Significant mode is processed. 
+
+The fact the app is in "downgraded" mode is indicated in the UI by a trailing `!` to the `Significant` mode (e.g. `Significant!`).
+ 
 ### Remote configuration
 
 You can help your friends customize their copy of OwnTracks with [remote configuration](remoteconfig.md).

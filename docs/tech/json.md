@@ -281,6 +281,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
+* `downgrade` battery level below which to downgrade monitoring from move mode _(iOS/integer/percent/optional)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
 * `ignoreInaccurateLocations` Location accuracy below which reports are supressed _(iOS,Android/integer/meters)_
