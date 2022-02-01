@@ -30,7 +30,7 @@ Read [more about the Recorder](../clients/recorder.md).
 
 ## mqttwarn
 
-You'll recall (we hope) the discussion on [MQTT](mqtt.md) and the analogy with the cauldron. _mqttwarn_, while not specific to OwnTracks, is another client you connect to your [MQTT broker](broker.md). We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).
+You'll recall (we hope) the discussion on [MQTT](../tech/mqtt.md) and the analogy with the cauldron. _mqttwarn_, while not specific to OwnTracks, is another client you connect to your [MQTT broker](broker.md). We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).
 
 _mqttwarn_ lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you *really* want that), send an e-mail when a loved one enters a particular region, etc.
 
@@ -59,7 +59,7 @@ See the [demo][ha-demo] for an example of the map with OwnTracks devices or read
 
 
 ## OwnTracks-Cards
-This is a webapp to create and edit [OwnTracks cards](.../features/card.md).
+This is a webapp to create and edit [OwnTracks cards](../features/card.md).
 It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
 Just head over to the [demo][oc-demo] and create a card. Configure your MQTT broker by clicking the connection state.
 The source code can be found on [Github][oc-code].

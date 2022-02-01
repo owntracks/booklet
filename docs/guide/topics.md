@@ -2,7 +2,7 @@
 
 If you use HTTP mode skip this chapter.
 
-You now know that [MQTT](mqtt.md) is a messaging protocol, and that it uses
+You now know that [MQTT](../tech/mqtt.md) is a messaging protocol, and that it uses
 topic names to label messages.  topic names can be structured into multiple
 topic levels by separating them with a forward slash (`/`). topic levels are
 UTF-8 text strings, and almost any character is valid except `/`, `*`, and `+`.
@@ -20,7 +20,7 @@ Typically an MQTT broker hosts multiple applications. To create a separate name 
 for OwnTracks we use a topic name root as the beginning of a topic name. Per default
 this is `owntracks/`, but you may choose any other root (e.g. `peters/locations/`) or,
 if you prefer, the empty string. In order to change the default behaviour of `owntracks/`
-create a [personalized configuration](features/remoteconfig.md) from scratch or, export
+create a [personalized configuration](../features/remoteconfig.md) from scratch or, export
 your current configuration, edit that and re-import to your device. On Android you trigger
 the import function by opening the `.otrc` file in a file manager; on iOS by, say, opening
 the file in Mail, Dropbox or similar app. The settings which have to be changed are
