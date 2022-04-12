@@ -1,7 +1,7 @@
 site_name: OwnTracks Booklet
 site_url: http://owntracks.org
 site_author: OwnTracks.org
-repo_url: https://github.com/owntracks
+repo_url: https://github.com/owntracks/booklet
 site_dir: _site
 nav:
 - Intro: 'index.md'
