@@ -37,6 +37,13 @@ Note the topic branch ending in `info` and note the use of the retain flag (`-r`
 #### Webapp
 A [webapp](https://avanc.github.io/owntracks-cards) is available to create cards in your browser and optionally publish them directly to your MQTT broker.
 
+### Generating the face image
+
+We recommend formatting the face image as a 192x192 pixel image, encoded either as a JPEG or as a PNG. It is possible to use larger or smaller images, but 192x192 provides a good balance between image fidelity and data usage. Remember that this image will be transmitted many times over cellular data to all phones that use the app, so using very large images can be very costly.
+
+You should use JPEG encoding when the image depicts something complex, such as a photography of a real face. You should use PNG encoding when the image only contains simple flat colors, such as icons or drawings.
+
+We also recommend compressing the image to further save on data usage. A good app for this is [Squoosh](https://squoosh.app/), but be warned that [it uses Google trackers](https://github.com/GoogleChromeLabs/squoosh#privacy). For JPEG, the MozJPEG encoder with default settings is usually very good, and for PNG, the OxiPNG encoder with default settings is usually very good.
 
 ### Cards in Recorder in HTTP mode
 
