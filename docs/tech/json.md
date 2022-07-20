@@ -432,7 +432,6 @@ Apps read [Card](../features/card.md) to display a name and icon for a user.
 
 * `name` Name to identify a user _(iOS,Android/string/optional)_
 * `face` Base64 encoded PNG image that is displayed instead of the Tracker ID _(iOS,Android/string/optional)_
-* `tid` The tracker ID with which a friend is associated in the apps
 
 
 ## `_type=waypoints`
