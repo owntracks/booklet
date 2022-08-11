@@ -1,6 +1,7 @@
 ## Tours: Location Sharing
 
 Currently: iOS and Recorder only.
+Requires: enabled remote CMD on device.
 
 You might occasionally wish to share your location with somebody who doesn't have OwnTracks. For these situations you can set up what we call a _Tour_ -- a time-limited view of your location which can be viewed from a Web browser.
 
