@@ -15,8 +15,8 @@ All four modes work the same but behave slightly different on iOS or Android. In
 #### _Move_ mode 
 
 In _move_ mode, the app monitors location permanently and publishes a new
-location as soon as the device moves `x` meters or after `t` seconds, whatever
-happens first. `x` and `t` can be adjusted by the user in the systems settings for
+location as soon as the device moves `locatorDisplacement` meters or after `locatorInterval` seconds, whatever
+happens first. `locatorDisplacement` and `locatorInterval` can be adjusted by the user in the systems settings for
 OwnTracks. The defaults are 100m and 300 seconds (5 minutes). 
 
 The payoff is higher battery usage as high as in navigation or tracker app.
