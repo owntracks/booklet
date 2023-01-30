@@ -142,12 +142,6 @@ In addition to the default settings, all location request parameters in this mod
 * `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved.
     * This means if the user has not moved by more than the displacement value, the location will not be reported at `locatorInterval`.
 
-* `locatorPriority`: The priority of the request is a strong hint to the LocationClient for which location sources to use (e.g. wifi, cellular or gps). The accepted values are:
-    * `0`: [No power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power) "No locations will be returned unless a different client has requested location updates"
-    * `1`: [Low power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_low_power) "City level accuracy is considered to be about 10km accuracy."
-    * `2`: [Balanced power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_balanced_power_accuracy) "Block level accuracy is considered to be about 100 meter accuracy." (default)
-    * `3`: [High power usage](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_high_accuracy) "This will return the finest location available."
-
 #### _Manual_ mode
 
 In _manual_ mode, the app monitors device location with a low power location request. It uses the same interval configured for _significant mode_ to receive low accuracy updates to use minimal battery power. 
