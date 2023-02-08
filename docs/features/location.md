@@ -12,6 +12,7 @@ The Android and iOS apps offer 4 modes of location publication as well as region
 All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on iBeacons. 
 
 ### iOS 
+
 #### _Move_ mode 
 
 In _move_ mode, the app monitors location permanently and publishes a new
@@ -69,6 +70,16 @@ unmarked (by setting their radius to 0).
 
 Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.
+
+#### _Tags_ and _POI_
+
+on iOS, a user can set a point of interest (POI) during manual publish of a location or set a tag while for future location publishes. When tapping on "publish location" an action picker appears on which the user can choose to:
+
+![iOS action picker when publishing a location](images/ios-action-picker.png)
+
+- Send location now. The current location is published, possibly enhanced with a previously set `tag`.
+- Set POI. A user is asked to describe the POI (e.g. `delicious seafood`) and the location is then transmitted with the `poi` added to the JSON payload.
+- Set tag. Users can enter a tag (e.g. `Spain 2023`) which is added to the JSON of all subsequent location publishes, irrespective of the mode (i.e. this also works in significant changes mode, say), until the tag is removed.
 
 #### iBeacon monitoring
 
