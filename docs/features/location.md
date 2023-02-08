@@ -73,7 +73,7 @@ indicates the device is is within the region.
 
 #### _Tags_ and _POI_
 
-on iOS, a user can set a point of interest (POI) during manual publish of a location or set a tag while for future location publishes. When tapping on "publish location" an action picker appears on which the user can choose to:
+On iOS, a user can set a point of interest (POI) during manual publish of a location or set a tag while for future location publishes. When tapping on "publish location" an action picker appears on which the user can choose to:
 
 ![iOS action picker when publishing a location](images/ios-action-picker.png)
 
