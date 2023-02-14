@@ -211,7 +211,7 @@ A _last will and testament_ is published automatically by the MQTT broker when i
 
 ## `_type=waypoint`
 
-Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
+Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint to the topic branch `../waypoint` (singular). OwnTracks also monitors these waypoints and will publish `{_type: "transition", ...}` message when entering or leaving the region. A waypoint may also define a BLE [Beacon](../features/beacons.md) instead of a geographical region.
 
 ```json
 {
@@ -437,7 +437,7 @@ Apps read [Card](../features/card.md) to display a name and icon for a user.
 
 
 ## `_type=waypoints`
-The app can export a list of configured waypoints to the endpoint.
+The app can export a list of configured waypoints to the endpoint `../waypoints` (plural).
 
 ```json
 {
