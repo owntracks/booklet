@@ -103,7 +103,7 @@ Check for a couple of broker settings in ``/etc/mosquitto/mosquitto.conf``.
 Your mileage may vary, but you might want to set the following parameters:
 
 ```
-port 1883
+listener 1883
 persistence_file mosquitto.db
 log_dest syslog
 log_dest stdout
