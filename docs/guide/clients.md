@@ -30,9 +30,27 @@ Read [more about the Recorder](../clients/recorder.md).
 
 ## mqttwarn
 
-You'll recall (we hope) the discussion on [MQTT](../tech/mqtt.md) and the analogy with the cauldron. _mqttwarn_, while not specific to OwnTracks, is another client you connect to your [MQTT broker](broker.md). We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).
+You will recall the discussion on [MQTT](../tech/mqtt.md), and the analogy with the cauldron.
+On this matter, _mqttwarn_, while not specific to OwnTracks, is another client you can connect
+to your [MQTT broker](broker.md). We think it is worth mentioning, and both Ben and JP -- the
+creators -- are quite pleased with what it does.
 
-_mqttwarn_ lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you *really* want that), send an e-mail when a loved one enters a particular region, etc.
+_mqttwarn_ lets you do things like submitting a tweet each time OwnTracks reports a location
+(but do consider whether you *really* want that ;]), send an e-mail when a loved one enters
+a particular region, or use [ntfy.sh] to deliver a notification to your mobile phone, just
+to name a few examples of what is possible. Think of a self-hosted IFTTT or Zapier, but all
+that running on your premises, and a bit less enterprise.
+
+Technically speaking, *mqttwarn* is a highly configurable MQTT message router, where the routing
+targets are notification plugins, written in Python. _mqttwarn_ currently supports well over 90
+different notification services or providers. A picture says a thousand words.
+
+![mqttwarn](https://mqttwarn.readthedocs.io/en/latest/_images/mqttwarn.png)
+
+Enjoy exploring the [mqttwarn documentation].
+
+[mqttwarn documentation]: https://mqttwarn.readthedocs.io/
+[ntfy.sh]: https://ntfy.sh/
 
 
 ## openHAB
