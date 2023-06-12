@@ -4,7 +4,7 @@
 If you've configured a geo-fence, a `location` message will
 contain the elements:
 
-* `rad`ius (if its value is greater than 0)
+* `rad`ius (if its value is greater than 0): unit: meters
 * `desc`ription with the name you set for the waypoint
 * `event` with a value of `"enter"` or `"leave"`, depending on
    whether the device is entering or leaving a configured region, respectively.
