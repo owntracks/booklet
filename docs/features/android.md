@@ -117,6 +117,10 @@ To trigger `Move` mode in Automagic, create a `Start Service` action and enter t
 |Significant Changes|`putInt("monitoring": 1)`|
 |Move|`putInt("monitoring": 2)`|
 
+Other intents are, for instance:
+
+- `org.owntracks.android.SEND_LOCATION_USER` sends a manual report (i.e. pushes a location) 
+
 ### ADB example
 
 It's possible to send an intent to OwnTracks using the `am` command on the device shell. You just need to call `start-service` with the correct action, and optionally the extra that you need to set the specific mode.
