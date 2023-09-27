@@ -374,6 +374,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd","action":"reportSteps"}
 {"_type":"cmd","action":"dump"}
 {"_type":"cmd","action":"waypoints"}
+{"_type":"cmd","action":"clearWaypoints"}
 {"_type":"cmd","action":"setConfiguration","configuration":{"_type":"configuration",...}
 {"_type":"cmd","action":"setWaypoints","waypoints":{"_type":"waypoints","waypoints":[...]}
 {"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
@@ -389,6 +390,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
         - `to` Timestamp _(iOS/epoch/optional)_
     * `reportLocation` Triggers the publish of a `location` messages _(iOS,Android)_
       Don‘t expect device to be online. Send with QoS>0. Device will receive and repond when activated next time.
+    * `clearWaypoints` deletes all waypoints/regions _(iOS)_
     * `setWaypoints` Imports (merge) and activates new waypoints _(iOS,Android)_
         - `waypoints` Array of `waypoint` messages to import _(iOS,Android/array/required)_
     * `setConfiguration` Imports and activates new configuration values _(iOS,Android)_
