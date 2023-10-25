@@ -334,6 +334,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `willRetain`
 * `willTopic`
 * `willQos`
+* `ws` use MQTT over Websocket, default `false` _(iOS,Android/boolean)_
 * `waypoints` Array of waypoint messages _(iOS,Android/array)_
 
 #### Notes
