@@ -4,11 +4,11 @@ The [OwnTracks Recorder][1] is a lightweight program for storing and accessing l
 
 ### Docker
 
-We have a [Docker image](https://hub.docker.com/r/owntracks/recorder) which you can use to launch the Recorder. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. 
+We have a multi-architecture [Docker image](https://hub.docker.com/r/owntracks/recorder) which you can use to launch the Recorder. The image expects a volume which you mount into it into which it will write persistent data. You pass environment variables into the container to configure it.
 
 This is documented [on the docker-recorder](https://github.com/owntracks/docker-recorder) repository.
 
-### Synology
+## Recorder on Synology
 
 After installing Docker on your compatible Synology DiskStation, click on _Image_ and _Add_ the Recorder image from the URL `https://hub.docker.com/r/owntracks/recorder`; you do not have to specify a username/password. Select `latest` when prompted to choose a tag.
 
