@@ -53,7 +53,7 @@ Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for 
 <STORAGEDIR>/cards/<user>/<user>-<device>.json
 ```
 
-So, if `"jane"` is a friend with a device `"s8"`, the Recorder will load Jane's JSON card machine from the path `<STORAGEDIR>/cards/jane/jane-s8.json.` (The same card is loaded for all devices a user has.) Note that as usual in Recorder, usernames and device names are lowercased.
+So, if `"jane"` is a friend with a device `"s8"`, the Recorder will load Jane's JSON card machine from the path `<STORAGEDIR>/cards/jane/jane-s8.json.` Note that as usual in Recorder, usernames and device names are lowercased.
 
 In `contrib/faces/` of the Recorder distribution there are some small utilities which can help create CARDs. Please make sure to verify that the `.json` file which you place into the directory is readable by the Recorder and is valid JSON. (You can test that with `jq . < file.json` or `python -mjson.tool file.json`.)
 
