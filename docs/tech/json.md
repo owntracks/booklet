@@ -274,7 +274,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     elements
 }
 ```
-* `allowRemoteLocation` Respond to reportLocation cmd message _(iOS,Android/boolean)_
+* `allowRemoteLocation` Respond to reportLocation cmd message _(iOS/boolean)_
 * `allowinvalidcerts` disable TLS certificate checks **insecure**  _(iOS/boolean)_
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
 * `autostartOnBoot` Autostart the app on device boot _(Android/boolean)_
