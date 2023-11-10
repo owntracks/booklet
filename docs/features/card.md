@@ -47,13 +47,14 @@ We also recommend compressing the image to further save on data usage. A good ap
 
 ### Cards in Recorder in HTTP mode
 
-Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in
+Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in the following two paths, with the first found winning:
 
 ```
 <STORAGEDIR>/cards/<user>/<user>-<device>.json
+<STORAGEDIR>/cards/<user>/<user>.json
 ```
 
-So, if `"jane"` is a friend with a device `"s8"`, the Recorder will load Jane's JSON card from the path `<STORAGEDIR>/cards/jane/jane-s8.json.` Note that as usual in Recorder, usernames and device names are lowercased.
+So, if `"jane"` is a friend with a device `"s8"`, the Recorder will load Jane's JSON card from the path `<STORAGEDIR>/cards/jane/jane-s8.json.` If Jane's device-specific card doesn't exist, her card is loaded from `<STORAGEDIR>/cards/jane.json` and silently ignored if that doesn't exist. (Note that as usual in Recorder, usernames and device names are lowercased.)
 
 In `contrib/faces/` of the Recorder distribution there are some small utilities which can help create CARDs. Please make sure to verify that the `.json` file which you place into the directory is readable by the Recorder and is valid JSON. (You can test that with `jq . < file.json` or `python -mjson.tool file.json`.)
 
