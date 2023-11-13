@@ -371,17 +371,17 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 ## `_type=cmd`
 
 ```json
-{"_type":"cmd","action":"reportLocation"}
-{"_type":"cmd","action":"reportSteps"}
-{"_type":"cmd","action":"dump"}
-{"_type":"cmd","action":"waypoints"}
-{"_type":"cmd","action":"clearWaypoints"}
-{"_type":"cmd","action":"setConfiguration","configuration":{"_type":"configuration",...}
-{"_type":"cmd","action":"setWaypoints","waypoints":{"_type":"waypoints","waypoints":[...]}
-{"_type":"cmd","action":"action","content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
-{"_type":"cmd","action":"action","content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
-{"_type":"cmd","action":"action","url":"http://support.owntracks.org"}
-{"_type":"cmd","action":"action","notification":"Warning! Battery low"}
+{"_type":"cmd", "action":"reportLocation"}
+{"_type":"cmd", "action":"reportSteps"}
+{"_type":"cmd", "action":"dump"}
+{"_type":"cmd", "action":"waypoints"}
+{"_type":"cmd", "action":"clearWaypoints"}
+{"_type":"cmd", "action":"setConfiguration", "configuration":{"_type":"configuration",...}
+{"_type":"cmd", "action":"setWaypoints", "waypoints":{"_type":"waypoints","waypoints":[...]}
+{"_type":"cmd", "action":"action", "content":"Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org"}
+{"_type":"cmd", "action":"action", "content":"<a href='http://support.owntracks.org'>Backend Maintenance tonight</a>"}
+{"_type":"cmd", "action":"action", "url":"http://support.owntracks.org"}
+{"_type":"cmd", "action":"action", "notification":"Warning! Battery low"}
 ```
 * `action` action to be performed by the device _(iOS,Android/string)_
     * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
