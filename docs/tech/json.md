@@ -406,6 +406,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * The _Featured Content_ tab can be removed with an `action` cmd message without `content` and without `url` element
 * If the `action` cmd contains a `notification` element, the value of the element is shown in the app _(iOS)_
 * On iOS, the array of waypoints to the `setWaypoints` command allows updates / removal; the key of the waypoint is its name (`desc`). If you specify an invalid `lat` or `lon` (invalid means out of range number value e.g. `-1000000`, a string like `"foo"` will result in a `0` in app) the waypoint is deleted.
+* On Android there's a primary key which isn't surfaced to the API, and `tst` is a uniquely-constrained value which effectively acts like a key.
 
 ## `_type=steps`
 
