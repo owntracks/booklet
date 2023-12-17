@@ -19,7 +19,7 @@ In addition, note that the mosquitto broker sends an LWT message if the TCP conn
 Below is a list of known configuration values that are required to connect to certain MQTT endpoints 
 
 ### AWS IOT 
-The OwnTracks apps are partially compatible to the [AWS IOT](https://aws.amazon.com/de/iot/) broker in MQTT private mode. 
+The OwnTracks apps are partially compatible to the [AWS IOT](https://aws.amazon.com/iot/) broker in MQTT private mode. 
 As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
 
 Before connecting, a so called _thing_ has to be configured which represents the connecting client. 
