@@ -37,12 +37,15 @@ with a passphrase you specify. This passphrase we will later require in the app.
 
 ```bash
 openssl pkcs12 \
+  -legacy \
   -export \
   -in jjolie.crt \
   -inkey jjolie.key \
   -name "Jane's certificate/key" \
   -out jjolie.p12
 ```
+
+(Should you be using an older version of the `openssl` binary, omit the `-legacy` option.)
 
 You now send the PKCS#12 file as attachment to the device, e.g. by e-mail. Note that for iOS, the file must have a `.otrp` extension so that it can be opened in OwnTracks.
 You also send the CA certificate to the device and install it there, as discussed in [TLS](tls.md)
