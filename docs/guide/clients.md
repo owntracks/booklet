@@ -61,7 +61,7 @@ Presence detection in home automation is one of the most important pieces of the
 
 This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal [MQTT broker](broker.md) where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in [_private mode_](scenarios.md), all your data is 'yours' and yours alone - there is no cloud service collecting, storing and potentially mining your data. 
 
-Read more about [openHAB and OwnTracks](https://github.com/openhab/openhab/wiki/Mqttitude-Binding).
+Read more about [openHAB and OwnTracks](https://v2.openhab.org/addons/bindings/mqttitude1/).
 
 
 ## Home Assistant
