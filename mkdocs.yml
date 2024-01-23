@@ -26,6 +26,7 @@ nav:
     - 'Tracker ID': 'features/tid.md'
     - 'Friends': 'features/friends.md'
     - 'Card': 'features/card.md'
+    - 'POI': 'features/poi.md'
     - 'Tours': 'features/tours.md'
     - 'Waypoints': 'features/waypoints.md'
     - 'Beacons': 'features/beacons.md'
