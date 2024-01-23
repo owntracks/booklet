@@ -2,7 +2,11 @@
 
 Currently iOS only.
 
-When manually publishing a location from the app, users have the possibility to set (or later clear) a tag. This tag is automatically used to subsequently tag messages with an appropriate JSON element until it is manually cleared in the UI. The value of a tag is added to the JSON as
+When manually publishing a location from the app, users have the possibility to set (or later clear) a tag.
+
+![Publish on iOS](images/ios-poi-tag-select.png)
+
+Setting a tag causes all future publishes (manual or automatic) to have their JSON payloads enhanced with a "tag" element until it is manually cleared in the UI. The value of a tag is added to the JSON as
 
 ```json
 {
