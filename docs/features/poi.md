@@ -34,4 +34,4 @@ Also when publishing a location a user can set a Point of Interest (POI) which i
 }
 ```
 
-iOS displays the Points of Interest in a red bubble as shown above.
+iOS displays the Points of Interest as red bubbles on the map as shown above. The last POI and tags seen for a particular user are visible on the user's status page.
