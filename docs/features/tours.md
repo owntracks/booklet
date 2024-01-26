@@ -91,6 +91,12 @@ For Tours to work, the Recorder needs to be compiled with support for HTTP and T
    export OTR_HTTPPREFIX="http://localhost:8085"
    ```
 
+Furthermore, the Recorder needs to be able to PUBLISH tour data back to the broker, so an ACL such as the following will be required:
+
+```
+topic write owntracks/+/+/cmd
+```
+
 Initially we thought the term "share" would be good but then decided it's a too ambiguous word, and we didn't want to run into the mess we created with mixing terms (remember region and waypoint? :-) ). After a bit of pondering we think the word tour as in ("I did a tour last year I want to show you") or as in ("I am now on tour") is adequate.
 
 
