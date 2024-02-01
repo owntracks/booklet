@@ -7,6 +7,7 @@ nav:
 - Intro: 'index.md'
 - Guide:
     - 'What it does': 'guide/whathow.md'
+    - 'wip' : 'guide/quicksetup.md'
     - 'Clients': 'guide/clients.md'
     - 'Scenarios': 'guide/scenarios.md'
     - 'Apps': 'guide/apps.md'
