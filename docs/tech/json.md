@@ -252,12 +252,11 @@ A transition message is sent, when entering or leaving a previously configured g
 * `lon` Longitue at which the event occured _(iOS,Android/float/meters/optional)_
 * `tst` Timestamp at which the event occured _(iOS,Android/integer/epoch/required)_
 * `acc` Accuracy of the geographical coordinates _(iOS,Android/float/meters/required)_
-* `tid` Tracker ID of the waypoint _(iOS/string/none/optional)_
+* `tid` Tracker ID of the _(iOS/string/none/optional)_ required in http mode.
 * `event` Event that triggered the transition (iOS,Android/string/required)
 	  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS)_
 	  - `leave` The device left the defined geographical region or BLE Beacon range _(iOS)_
 * `desc` Name of the waypoint _(iOS,Android/string/optional)_
-* `tid` TrackerID required in http mode.
 * `t` Trigger of the event _(iOS,Android/string/optional)_
     - `c` Circular geographical region  _(iOS, Android)_
     - `b` BLE Beacon _(iOS)_
