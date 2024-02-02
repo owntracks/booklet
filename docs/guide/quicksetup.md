@@ -16,19 +16,15 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
 Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user.
 - after logging in, the following program invocation should produce output similar to that shown:
 
-```console
-$ sudo id
-uid=0(root) gid=0(root) groups=0(root)
-```
+        $ sudo id
+        uid=0(root) gid=0(root) groups=0(root)
 
   if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.
 
 - also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the `ping` utility from your laptop:
 
-   ```console
-   $ ping yourname.example.net
-   ...
-   ```
+        $ ping yourname.example.net
+        ...
 
 You should now be ready to proceed.
 
