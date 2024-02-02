@@ -58,7 +58,14 @@ You are logged into your VPS either as `root` or as an unpriviledged user. Three
         $ cp configuration.yaml.example configuration.yaml
         $ nano configuration.yaml
 
-3. once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
+3. the configuration file requires the following settings:
+
+   - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `yourname.example.net`.
+   - `email` is your email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
+   - we strongly recommend you sign up for the free reverse geo service at OpenCage. It costs you nothing, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below).
+   - `friends` is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.
+
+- once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
 
         $ sudo ./bootstrap.sh
 
@@ -111,15 +118,15 @@ Assuming the installer was successful, you can verify if the services are workin
 
 - map with live positions
 
-   ![map with live positions](qs//rabbit-10664.png)
+      ![map with live positions](qs//rabbit-10664.png)
 
 - our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
 
-   ![main Frontend](qs//rabbit-10665.png)
+      ![main Frontend](qs//rabbit-10665.png)
 
 - in Frontend users can select users and devices to see, tracks to view, etc.
 
-   ![viewing a track in Frontend](qs//rabbit-10667.png)
+      ![viewing a track in Frontend](qs//rabbit-10667.png)
 
 - back on the command line of your VPS, you can explore the data submitted by your devices using the `ocat` utility, say:
 
