@@ -45,7 +45,7 @@ Let us begin.
 
 ## Launching quicksetup
 
-You are logged into your VPS either as `root` or as an unpriviledged user. Three steps will get the installer going:
+You are logged into your VPS either as `root` or as an unprivileged user. Three steps will get the installer going:
 
 1. obtain our _quicksetup_ installer; we can't do this for you, but it's easy: you clone our repository.
 
