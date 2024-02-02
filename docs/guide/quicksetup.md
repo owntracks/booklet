@@ -20,7 +20,7 @@ Before continuing, make sure you can login to your VPS, either as `root` or as a
         $ sudo id
         uid=0(root) gid=0(root) groups=0(root)
 
-   if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.
+- if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.
 
 - also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the `ping` utility from your laptop:
 
@@ -70,18 +70,20 @@ If all goes well you ought to see green and/or yellow lines only; no red diagnos
 
 Assuming the installer was successful, you can verify if the services are working as we intended them to:
 
-1. install OwnTracks on your Android or iOS device and configure it, either by sending yourself one of the files from `/usr/local/owntracks/userdata/*.otrc` or by visiting `https://yourname.example.com/owntracks/` and logging in with your username (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/*.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
-2. in the app on the smartphone, click on publish 
+- install OwnTracks on your Android or iOS device and configure it, either by
+   - send yourself one of the files from `/usr/local/owntracks/userdata/*.otrc`
+   - visit `https://yourname.example.com/owntracks/` and login with your username (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/*.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
+- in the app on the smartphone, click on publish 
    FIXME: screenshots
-3. back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:
+- back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:
 
         $ mosquitto_sub -t 'owntracks/#'
 
-4. on the console you should see some output from `mosquitto_sub` which looks a bit like this:
+- on the console you should see some output from `mosquitto_sub` which looks a bit like this:
 
         owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
 
-   The output on your system will differ. The first part before the first space, is called the `topic` name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly here:
+- the output on your system will differ. The first part before the first space, is called the `topic` name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
 
         {
           "_type": "location",
@@ -97,26 +99,29 @@ Assuming the installer was successful, you can verify if the services are workin
           "vel": 0
         }
 
-   this includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
     
-5. still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a `YYYY-MM` date stamp:
+- still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the _user_ and _device_ names used for publishing; the rest of the filename is a `YYYY-MM` date stamp:
 
         $ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
         2024-02-02T07:15:49Z	*                 	{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}
 
-6. let's use a Web browser to access our site:
+- let's use a Web browser to access our site:
+
    ![Index](qs//rabbit-10663.png)
 
-7. map with live positions
+- map with live positions
+
    ![map with live positions](qs//rabbit-10664.png)
 
-8. our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
+- our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
+
    ![main Frontend](qs//rabbit-10665.png)
 
-   users can select users and devices to see, tracks to view, etc.
+- in Frontend users can select users and devices to see, tracks to view, etc.
+
    ![viewing a track in Frontend](qs//rabbit-10667.png)
 
-9. back on the command line of your VPS, you can explore the data submitted by your devices using the `ocat` utility, say:
+- back on the command line of your VPS, you can explore the data submitted by your devices using the `ocat` utility, say:
 
         $ ocat --user jane --device nokia | jq
         {
@@ -146,9 +151,9 @@ Assuming the installer was successful, you can verify if the services are workin
           ]
         }
 
-    Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
+- Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
 
-10. the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
+- the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
 
         curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
         Enter host password for user 'jane':
