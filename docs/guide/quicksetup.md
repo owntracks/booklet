@@ -16,7 +16,7 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
 Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user.
 - after logging in, the following program invocation should produce output similar to that shown:
 
-  ```console
+  ```
   $ sudo id
   uid=0(root) gid=0(root) groups=0(root)
   ```
