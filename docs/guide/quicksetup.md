@@ -25,10 +25,10 @@ uid=0(root) gid=0(root) groups=0(root)
 
 - also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the `ping` utility from your laptop:
 
-```console
-$ ping yourname.example.net
-...
-```
+   ```console
+   $ ping yourname.example.net
+   ...
+   ```
 
 You should now be ready to proceed.
 
