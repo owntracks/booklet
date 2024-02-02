@@ -10,6 +10,7 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
   - some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)
   - we've had very good experience with the likes of Digital Ocean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.
   - Linode, Server4you, Hetzner, Netcup, ... look around and compare
+  - we've tested this setup on Ubuntu 22.04 and on Debian 12
 - a DNS domain, something like `yourname.example.net`, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with `yourname.example.net`.
 
 Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user.
@@ -49,7 +50,7 @@ You are logged into your VPS either as `root` or as an unpriviledged user. Three
 
 1. obtain our _quicksetup_ installer; we can't do this for you, but it's easy: you clone our repository.
    ```console
-   $ sudo apt install -y git
+   $ sudo apt install -y git    # not required on Ubuntu
    $ git clone --depth=1 https://github.com/owntracks/quicksetup
    $ cd quicksetup
    ```
@@ -80,7 +81,41 @@ Assuming the installer was successful, you can verify if the services are workin
    ```console
    $ mosquitto_sub -t 'owntracks/#'
    ```
+4. on the console you should see some output from `mosquitto_sub` which looks a bit like this:
+   ```
+   owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
+   ```
+   The output on your system will differ. The first part before the first space, is called the `topic` name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly here:
+   ```json
+    {
+      "_type": "location",
+      "SSID": "mywifi",
+      "alt": 154,
+      "batt": 53,
+      "conn": "w",
+      "created_at": 1706858149,
+      "lat": 48.856826,
+      "lon": 2.292713,
+      "tid": "j1",
+      "tst": 1706858149,
+      "vel": 0
+    }
+   ```
+
+   this includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
     
+5. still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a `YYYY-MM` date stamp:
+   ```console
+   % tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
+   2024-02-02T07:15:49Z	*                 	{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}
+   ```
 
+6. let's use a Web browser to access our site:
+   ![Index](qs//rabbit-10663.png)
 
+7. map with live positions
+   ![map with live positions](qs//rabbit-10664.png)
+
+8. frontend
+   ![main Frontend](qs//rabbit-10665.png)
 
