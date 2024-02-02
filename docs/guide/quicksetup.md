@@ -60,12 +60,12 @@ You are logged into your VPS either as `root` or as an unpriviledged user. Three
 
 3. the configuration file requires the following settings:
 
-   - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `yourname.example.net`.
-   - `email` is your email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
-   - we strongly recommend you sign up for the free reverse geo service at OpenCage. It costs you nothing, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below).
-   - `friends` is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.
+      - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `yourname.example.net`.
+      - `email` is your email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
+      - we strongly recommend you sign up for the free reverse geo service at OpenCage. It costs you nothing, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below).
+      - `friends` is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.
 
-- once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
+4 once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
 
         $ sudo ./bootstrap.sh
 
