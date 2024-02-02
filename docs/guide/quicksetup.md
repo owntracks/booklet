@@ -15,6 +15,7 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
 
 Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user.
 - after logging in, the following program invocation should produce output similar to that shown:
+
   ```console
   $ sudo id
   uid=0(root) gid=0(root) groups=0(root)
@@ -23,6 +24,7 @@ Before continuing, make sure you can login to your VPS, either as `root` or as a
   if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.
 
 - also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the `ping` utility from your laptop:
+
   ```console
   $ ping yourname.example.net
   ...
@@ -49,6 +51,7 @@ Let us begin.
 You are logged into your VPS either as `root` or as an unpriviledged user. Three steps will get the installer going:
 
 1. obtain our _quicksetup_ installer; we can't do this for you, but it's easy: you clone our repository.
+
    ```console
    $ sudo apt install -y git    # not required on Ubuntu
    $ git clone --depth=1 https://github.com/owntracks/quicksetup
@@ -56,12 +59,14 @@ You are logged into your VPS either as `root` or as an unpriviledged user. Three
    ```
 
 2. you now have all the files on your system, so feel free to look around. If you just want to continue, make a copy of the configuration and edit it with an editor. The file's content ought to be self-explanatory, but [do ask us](https://github.com/owntracks/quicksetup/issues) if it isn't.
+
    ```console
    $ cp configuration.yaml.example configuration.yaml
    $ nano configuration.yaml
    ```
 
 3. once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
+
    ```console
    $ sudo ./bootstrap.sh
    ```
@@ -78,6 +83,7 @@ Assuming the installer was successful, you can verify if the services are workin
 2. in the app on the smartphone, click on publish 
    FIXME: screenshots
 3. back on your VPS, use the following preconfigured utility to subscribe to your MQTT broker:
+
    ```console
    $ mosquitto_sub -t 'owntracks/#'
    ```
@@ -86,27 +92,29 @@ Assuming the installer was successful, you can verify if the services are workin
    owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
    ```
    The output on your system will differ. The first part before the first space, is called the `topic` name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly here:
+
    ```json
-    {
-      "_type": "location",
-      "SSID": "mywifi",
-      "alt": 154,
-      "batt": 53,
-      "conn": "w",
-      "created_at": 1706858149,
-      "lat": 48.856826,
-      "lon": 2.292713,
-      "tid": "j1",
-      "tst": 1706858149,
-      "vel": 0
-    }
+   {
+     "_type": "location",
+     "SSID": "mywifi",
+     "alt": 154,
+     "batt": 53,
+     "conn": "w",
+     "created_at": 1706858149,
+     "lat": 48.856826,
+     "lon": 2.292713,
+     "tid": "j1",
+     "tst": 1706858149,
+     "vel": 0
+   }
    ```
 
    this includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
     
 5. still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a `YYYY-MM` date stamp:
+
    ```console
-   % tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
+   $ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
    2024-02-02T07:15:49Z	*                 	{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}
    ```
 
@@ -116,47 +124,50 @@ Assuming the installer was successful, you can verify if the services are workin
 7. map with live positions
    ![map with live positions](qs//rabbit-10664.png)
 
-8. our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position), users can select users and devices to see, tracks to view, etc.
+8. our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
    ![main Frontend](qs//rabbit-10665.png)
+
+   users can select users and devices to see, tracks to view, etc.
+   ![viewing a track in Frontend](qs//rabbit-10667.png)
 
 9. back on the command line of your VPS, you can explore the data submitted by your devices using the `ocat` utility, say:
 
-    ```console
-    $ ocat --user jane --device nokia | jq
-    {
-      "count": 1,
-      "locations": [
-        {
-          "_type": "location",
-          "SSID": "mywifi",
-          "alt": 154,
-          "batt": 53,
-          "conn": "w",
-          "lat": 48.856826,
-          "lon": 2.292713,
-          "tid": "j1",
-          "tst": 1706858149,
-          "vel": 0,
-          "ghash": "u09tunj",
-          "cc": "FR",
-          "addr": "11 Av de Suffren, 75007 Paris, France",
-          "locality": "Paris",
-          "tzname": "Europe/Paris",
-          "isorcv": "2024-02-02T07:15:49Z",
-          "isotst": "2024-02-02T07:15:49Z",
-          "isolocal": "2024-02-02T08:15:49+0100"
-          "disptst": "2024-02-02 07:15:49"
-        }
-      ]
-    }
-    ```
+   ```console
+   $ ocat --user jane --device nokia | jq
+   {
+     "count": 1,
+     "locations": [
+       {
+         "_type": "location",
+         "SSID": "mywifi",
+         "alt": 154,
+         "batt": 53,
+         "conn": "w",
+         "lat": 48.856826,
+         "lon": 2.292713,
+         "tid": "j1",
+         "tst": 1706858149,
+         "vel": 0,
+         "ghash": "u09tunj",
+         "cc": "FR",
+         "addr": "11 Av de Suffren, 75007 Paris, France",
+         "locality": "Paris",
+         "tzname": "Europe/Paris",
+         "isorcv": "2024-02-02T07:15:49Z",
+         "isotst": "2024-02-02T07:15:49Z",
+         "isolocal": "2024-02-02T08:15:49+0100"
+         "disptst": "2024-02-02 07:15:49"
+       }
+     ]
+   }
+   ```
 
     Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
 
 10. the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
 
-    ```console
-    curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
-    Enter host password for user 'jane':
-    {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
-    ```
+   ```console
+   curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
+   Enter host password for user 'jane':
+   {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
+   ```
