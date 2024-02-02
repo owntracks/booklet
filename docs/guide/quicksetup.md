@@ -116,6 +116,47 @@ Assuming the installer was successful, you can verify if the services are workin
 7. map with live positions
    ![map with live positions](qs//rabbit-10664.png)
 
-8. frontend
+8. our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position), users can select users and devices to see, tracks to view, etc.
    ![main Frontend](qs//rabbit-10665.png)
 
+9. back on the command line of your VPS, you can explore the data submitted by your devices using the `ocat` utility, say:
+
+    ```console
+    $ ocat --user jane --device nokia | jq
+    {
+      "count": 1,
+      "locations": [
+        {
+          "_type": "location",
+          "SSID": "mywifi",
+          "alt": 154,
+          "batt": 53,
+          "conn": "w",
+          "lat": 48.856826,
+          "lon": 2.292713,
+          "tid": "j1",
+          "tst": 1706858149,
+          "vel": 0,
+          "ghash": "u09tunj",
+          "cc": "FR",
+          "addr": "11 Av de Suffren, 75007 Paris, France",
+          "locality": "Paris",
+          "tzname": "Europe/Paris",
+          "isorcv": "2024-02-02T07:15:49Z",
+          "isotst": "2024-02-02T07:15:49Z",
+          "isolocal": "2024-02-02T08:15:49+0100"
+          "disptst": "2024-02-02 07:15:49"
+        }
+      ]
+    }
+    ```
+
+    Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
+
+10. the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
+
+    ```console
+    curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
+    Enter host password for user 'jane':
+    {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
+    ```
