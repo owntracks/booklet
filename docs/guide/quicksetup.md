@@ -107,7 +107,7 @@ Assuming the installer was successful, you can verify if the services are workin
 
 - let's use a Web browser to access our site:
 
-   ![Index](qs//rabbit-10663.png)
+      ![Index](qs//rabbit-10663.png)
 
 - map with live positions
 
