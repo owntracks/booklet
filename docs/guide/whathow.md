@@ -41,6 +41,6 @@ The broker receives the data, and then? Well, it can re-distribute it, at your w
 
 The important message here, and we can't repeat this often enough: OwnTracks is designed in such a way as that you can chose what you do with your data. It's *yours*.
 
-We'll now cover the [two scenarios](scenarios.md).
+We'll now show you how to [get started quickly](quicksetup.md).
 
 [^2]: This is a relative amount, but you can tune it a bit.

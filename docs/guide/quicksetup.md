@@ -1,7 +1,5 @@
 ## Get started quickly
 
-WARning; Work in Progress
-
 Using OwnTracks means having to set up and configure your own server, which can be non-trivial. For this reason we have created what we call _quicksetup_, a set of tools which will hopefully get your OwnTracks environment set up as effortlessly as possible.
 
 To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:
@@ -35,7 +33,7 @@ Let's briefly describe what _quicksetup_ will actually attempt to accomplish so 
 
 - we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a _cron_ job with which the Let's Encrypt certificate will automatically be renewed when required.
 - we install an Apache Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called `/usr/local/owntracks/userdata/*.pass`.
-- we install a Mosquitto MQTT broker in order for our Android or iOS apps to be able to publish location data to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our `*.otrc` files or a magic link on a Web page. The broker is configured to permit only users you specify with the same passwords we create randomly for the Web server.
+- we install a Mosquitto [MQTT broker](broker.md) in order for our Android or iOS apps to be able to publish [location data](../features/location.md) to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our `*.otrc` files or a magic link on a Web page. The broker is configured to permit only users you specify with the same passwords we create randomly for the Web server.
 - we install and configure our Recorder. This is a program which subscribes to MQTT (on your VPS) and receives location publishes when your OwnTracks apps change location. The data is stored and can later be viewed with Frontend.
 - you will be able to specify any number of [Friends] during the configuration below. Each of these friends can use the MQTT broker, use the Web server, login with their username and different random password.
 
@@ -81,7 +79,7 @@ Should you wish to, say, add a friend at a later stage, reconfigure `configurati
 
 Assuming the installer was successful, you can verify if the services are working as we intended them to:
 
-- install OwnTracks on your Android or iOS device and configure it, either by
+- install OwnTracks on your [Android or iOS device](apps.md) and configure it, either by
    - send yourself one of the files from `/usr/local/owntracks/userdata/*.otrc`
    - visit `https://owntracks.example/owntracks/` and login with your username (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/*.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
 - in the app on the smartphone, click on publish 
@@ -94,7 +92,7 @@ Assuming the installer was successful, you can verify if the services are workin
 
         owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
 
-- the output on your system will differ. The first part before the first space, is called the `topic` name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
+- the output on your system will differ. The first part before the first space, is called the [topic](topics.md) name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
 
         {
           "_type": "location",
@@ -169,3 +167,13 @@ Assuming the installer was successful, you can verify if the services are workin
         curl -u jane -sSf 'https://owntracks.example/owntracks/api/0/locations' -d user=jane -d device=nokia
         Enter host password for user 'jane':
         {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
+
+## Where to go from here
+
+There's a lot you can do with OwnTracks and its backend, so you might want to read up on some of the features:
+
+- Learn about [geofences or waypoints](../features/waypoints.md) and [Points of Interest](../features/poi.md)
+- Explore [Friends](../features/friends.md) and learn how to configure [Cards](../features/card.md)
+- On iOS you can configure [Tours](../features/tours.md) you share with other people, and even utilize its [pedometer data](../features/pedometer.md)
+- [Compare our apps on Android and iOS](../features/comparison.md)
+- [MQTT broker bridging](bridge.md) is useful for connecting two backends together, yours and a friend's, say.

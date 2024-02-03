@@ -10,7 +10,7 @@ When you've got your endpoint set up, and OwnTracks configured to use it, you'll
 
 _mosquitto_sub_ is a very basic command-line client provided by the [Mosquitto project](http://mosquitto.org). However, it is brilliantly useful, and you can also use it for long-time collection of data by having it run in the background with _stdout_ pointing to a file.
 
-In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in.
+In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in. (If you've used our [quicksetup](quicksetup.md you just need the `-t 'owntracks/#` option as we've configured the rest for you.)
 
 ```bash
 mosquitto_sub -h localhost -p 1883 -v -t 'owntracks/#'
