@@ -118,7 +118,7 @@ Assuming the installer was successful, you can verify if the services are workin
 
       ![Index](qs//rabbit-10663.png)
 
-- map with live positions
+- map with live positions. The icon on the right of the info panel is what we call a [CARD](../features/card.md)
 
       ![map with live positions](qs//rabbit-10664.png)
 

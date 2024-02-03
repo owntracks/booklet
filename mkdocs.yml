@@ -35,8 +35,8 @@ nav:
 #    - 'Featured': 'features/featured.md'
     - 'Encryption': 'features/encrypt.md'
     - 'Remoteconfig': 'features/remoteconfig.md'
-    - 'Debugging': 'features/debug.md'
-    - 'Traccar' : 'features/traccar.md'
+#    - 'Debugging': 'features/debug.md'
+#    - 'Traccar' : 'features/traccar.md'
 - API:
     - 'JSON': 'tech/json.md'
     - 'HTTP' : 'tech/http.md'
@@ -48,7 +48,7 @@ nav:
     - 'Docker' : 'clients/recorder.md'
     - 'Privacy': 'privacy.md'
     - 'People': 'people.md'
-    - 'Ideas': 'ideas.md'
+#    - 'Ideas': 'ideas.md'
     - 'Answers': 'faq.md'
     - 'Press': 'press.md'
 

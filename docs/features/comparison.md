@@ -14,18 +14,21 @@ of supported features is concernened. This table summarizes the current status.
 | Reconnection to broker                    |   Y    |   Y     |
 | Automatic PUB after move                  |   Y    |   Y     |
 | Automatic PUB after time                  |   Y    |   Y     |
-| Map with marker                           |   Y    |   Y     |
+| Move mode                                 |   Y    |   Y      |
+| Map with [TID](tid.md) markers            |   Y    |   Y     |
+| Support for [CARD](card.md) on map        |   Y    |   Y     |
 | Reverse geocoding on map                  |   Y    |   Y     |
+| Use of external geocoders (OpenCageData)  |        |   Y     |
 | Accuracy of last-known loc                |   Y    |   Y     |
 | Button for manual publish                 |   Y    |   Y     |
 | Configurable settings                     |   Y    |   Y     |
-| Move mode                                 |   Y    |   Y      |
+| [Remote and URL configuration](remoteconfig.md)   |   Y    |   Y      |
+| Configuration via [QR code](qr.md)        |   Y    |          |
 | Friends list                              |   Y    |   Y     |
 | Geofencing                                |   Y    |   Y     |
 | [Regions](waypoints.md)                   |   Y    |   Y     |
+| Transition events (enter / leave)         |   Y    |   Y     |
 | Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
-| [Remote and URL configuration](remoteconfig.md)   |   Y    |   Y      |
-| Configuration via [QR code](qr.md)        |   Y    |          |
 | [iBeacons](beacons.md)                    |   Y    |          |
 | [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
 | [Payload encryption](encrypt.md)          |   Y    |    Y    |
@@ -33,6 +36,8 @@ of supported features is concernened. This table summarizes the current status.
 | Submit [Points of Interest](poi.md) (POI) |   Y    |         |
 | On-device [Tour](tours.md) configuration  |   Y    |         |
 | Popup an [info tab](featured) on command  |   Y    |         |
+| [Debugging](debug.md) with on-device logs |   Y    |    Y    |
+| Supports POSTing [to Traccar](traccar.md) |   Y    |    Y    |
 
 
 ### Android
