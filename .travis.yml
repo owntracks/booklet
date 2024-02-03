@@ -15,6 +15,7 @@ python:
 - '3.9'
 install: pip install -r requirements.txt
 script:
+- echo "About to use $(mkdocs -V)"
 - git clone git@github.com:owntracks/owntracks.git
 - cd owntracks
 - git checkout gh-pages
