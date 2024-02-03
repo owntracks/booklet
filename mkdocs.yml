@@ -47,7 +47,7 @@ nav:
     - 'Code': 'tech/program.md'
 - Sundry:
 #    - 'Terminology': 'terminology.md'
-    - 'Docker' : 'clients/recorder.md'
+#    - 'Docker' : 'clients/recorder.md'
     - 'Privacy': 'privacy.md'
     - 'People': 'people.md'
 #    - 'Ideas': 'ideas.md'

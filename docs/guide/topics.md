@@ -1,6 +1,6 @@
 ## Topics
 
-If you use HTTP mode skip this chapter.
+If you use HTTP mode skip this section.
 
 You now know that [MQTT](../tech/mqtt.md) is a messaging protocol, and that it uses
 topic names to label messages.  topic names can be structured into multiple
