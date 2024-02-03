@@ -164,7 +164,8 @@ Assuming the installer was successful, you can verify if the services are workin
 
 - the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
 
-        curl -u jane -sSf 'https://owntracks.example/owntracks/api/0/locations' -d user=jane -d device=nokia
+        $ curl -u jane -sSf 'https://owntracks.example/owntracks/api/0/locations' \
+             -d user=jane -d device=nokia
         Enter host password for user 'jane':
         {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
 
