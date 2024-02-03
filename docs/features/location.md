@@ -9,7 +9,7 @@ We support 4 distinct modes of location publication and region monitoring as per
 
 All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on [iBeacons](beacons.md). 
 
-### iOS 
+## iOS 
 
 #### _Move_ mode 
 
@@ -124,7 +124,7 @@ The description of the _waypoint_ is added to the published `event` message.
 | N         | Y           | Y       | Y      | `c`           | N              | N                |
 | N         | Y           | Y       | Y      | `c`           | Y              | Y                |
 
-### Android
+## Android
 
 #### _Move_ mode 
 

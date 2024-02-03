@@ -1,4 +1,4 @@
-# Programming
+## Programming
 
 We've [shown you some clients which consume OwnTracks data](../guide/clients.md), but you may well wish to dip your fingers into programming something of your own. Creating a program to consume OwnTracks data isn't particularly difficult, and we're going to show you what you can do with a bit of [Python](https://www.python.org) together with the [Paho Python client](https://www.eclipse.org/paho/clients/python/).
 
@@ -26,7 +26,7 @@ TID = jane is currently at 48.856826, 2.292713
 
 We need a small utility program which will subscribe to location publishes received by your broker by connecting to it on _localhost_ and subscribing to `owntracks/+/+` (a wild-card expression in which each `+` means _anything at this level_).
 
-### The Code
+## The Code
 
 For each received message, the utility attempts to decode the JSON payload and then prints the tracker-ID (_TID_) as well as latitude, longitude coordinates. Keep a copy of our [OwnTracks-JSON](json.md) documentation handy and study the topic names of each possible publish by the apps.
 
@@ -77,6 +77,3 @@ Testing location-based apps is a bit of a, well, pain, but remember there are a 
 * Use the _publish now_ button in OwnTracks to fire a location update. The smart phone won't really _move_ much of course, but it'll allow you to test your program a bit.
 * Publish your own [OwnTracks-JSON](json.md) payload to the broker with _mosquitto_pub_ or similar.
 
-## Last words
-
-Consuming OwnTracks messages from your MQTT broker isn't particularly difficult, and people have built nice programs doing so. 

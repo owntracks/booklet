@@ -31,7 +31,7 @@ If the HTTP endpoint returns a status code 200 it will typically return an empty
 | `card`       | Y     | Y    | Can return [card](../features/card.md) objects for self and friends
 | `transition` | Y     | Y    | Obtain friends' transition events.
 
-### Distinguishing payloads
+## Distinguishing payloads
 
 When a message is received over MQTT, the payload is sent to a topic, and this topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic; instead, the iOS and Android apps use a different approach to help you figure out where the message came from:
 
@@ -44,7 +44,7 @@ X-Limit-U: jjolie
 X-Limit-D: myphone
 ```
 
-### PHP example
+## PHP example
 
 Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:
 
@@ -102,7 +102,7 @@ Assuming the Web server hosting this example is called `example.com`, and assumi
 
 There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you [study the API documentation](json.md).
 
-### Testing your HTTP endpoint
+## Testing your HTTP endpoint
 
 An simple example for testing a HTTP endpoint you set up:
 
