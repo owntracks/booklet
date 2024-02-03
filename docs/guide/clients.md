@@ -10,7 +10,7 @@ When you've got your endpoint set up, and OwnTracks configured to use it, you'll
 
 _mosquitto_sub_ is a very basic command-line client provided by the [Mosquitto project](http://mosquitto.org). However, it is brilliantly useful, and you can also use it for long-time collection of data by having it run in the background with _stdout_ pointing to a file.
 
-In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in. (If you've used our [quicksetup](quicksetup.md you just need the `-t 'owntracks/#` option as we've configured the rest for you.)
+In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in. (If you've used our [quicksetup](quicksetup.md) you just need the `-t 'owntracks/#` option as we've configured the rest for you.)
 
 ```bash
 mosquitto_sub -h localhost -p 1883 -v -t 'owntracks/#'
@@ -24,7 +24,7 @@ We recommend our very own [OwnTracks Recorder](https://github.com/owntracks/reco
 
 ![Recorder](images/demo-geojson-linestring.png)
 
-And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.
+And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well. Here again, if you used [quicksetup](quicksetup.md), you already have a correctly configured Recorder.
 
 Read [more about the Recorder](../clients/recorder.md).
 
@@ -59,7 +59,7 @@ Presence detection in home automation is one of the most important pieces of the
 
 ![openHAB](images/openhab.png)
 
-This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal [MQTT broker](broker.md) where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in [_private mode_](scenarios.md), all your data is 'yours' and yours alone - there is no cloud service collecting, storing and potentially mining your data. 
+This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal [MQTT broker](broker.md) where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in all your data is [yours and yours alone](../privacy.md) - there is no cloud service collecting, storing and potentially mining your data. 
 
 Read more about [openHAB and OwnTracks](https://v2.openhab.org/addons/bindings/mqttitude1/).
 
@@ -75,15 +75,6 @@ See the [demo][ha-demo] for an example of the map with OwnTracks devices or read
 [ha-owntracks]: https://home-assistant.io/components/device_tracker.owntracks/
 [ha-zone]: https://home-assistant.io/components/automation/#zone-trigger
 
-
-## OwnTracks-Cards
-This is a webapp to create and edit [OwnTracks cards](../features/card.md).
-It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
-Just head over to the [demo][oc-demo] and create a card. Configure your MQTT broker by clicking the connection state.
-The source code can be found on [Github][oc-code].
-
-[oc-demo]: https://avanc.github.io/owntracks-cards/
-[oc-code]: https://github.com/avanc/owntracks-cards
 
 
 ## Roll your own

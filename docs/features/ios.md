@@ -1,7 +1,19 @@
+## iOS
+
+* Runs on iPhones and iPads as an iPhone app, and on Macs. Not tested on iPods.
+
+* Monitors "significant location changes" as defined by Apple Inc. (about 5 minutes AND 
+  	"significant location changes" (>500m)) or as described in Move Mode below.
+	In addition version >= 5.3 supports circular region monitoring (aka geo fences).
+	In addition version >= 7.7 supports iBeacon region monitoring and ranging.
+
+* publishes this locations via MQTT to the configured server while in foreground and background.
+
+* The current location can be sent (a.k.a. published) on request.
+
 ## Startup
 
-After [downloading and installing the iPhone/iPad app](https://itunes.apple.com/en/app/mqttitude/id692424691?mt=8), start it
-up.
+After [downloading and installing the iPhone/iPad app](https://itunes.apple.com/en/app/mqttitude/id692424691?mt=8), start it up.
 
 The first time you start the app, the system asks you to give OwnTracks access to your location which it requires in order to, well, find your location.
 

@@ -19,7 +19,7 @@ In addition, note that the mosquitto broker sends an LWT message if the TCP conn
 Below is a list of known configuration values that are required to connect to certain MQTT endpoints 
 
 ### AWS IOT 
-The OwnTracks apps are partially compatible to the [AWS IOT](https://aws.amazon.com/iot/) broker in MQTT private mode. 
+The OwnTracks apps are partially compatible to the [AWS IOT](https://aws.amazon.com/iot/) broker in MQTT mode. 
 As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
 
 Before connecting, a so called _thing_ has to be configured which represents the connecting client. 
@@ -59,7 +59,7 @@ Additionaly, you need to configure the app to use a client TLS certificate for a
 Before importing it into the app, you need to set a password to the client TLS certificate. 
 
 ### Losant IoT Developer Platform 
-The OwnTracks apps are partially compatible to the [Losant IoT Developer Platform](https://www.losant.com/) in MQTT private mode. 
+The OwnTracks apps are partially compatible to the [Losant IoT Developer Platform](https://www.losant.com/) in MQTT mode. 
 As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. 
 
 The following settings are required to connect 

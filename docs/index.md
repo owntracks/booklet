@@ -1,14 +1,12 @@
 <div id="teaser-home">
-  <image src="images/logo-small.png" alt="OwnTracks">
-  <span>OwnTracks</span>
+  <image src="images/owntracks-new-48.png"  alt="OwnTracks" />
 </div>
 
-
-OwnTracks is an Open Source project which provides an iOS and an Android app with which your smartphone records its current location. While there are many smartphone apps available which can do that, we think OwnTracks is special.
+OwnTracks is an Open Source project which provides iOS and Android apps with which devices publish their current location to a server of your choice. While there are many smartphone apps available which can do that, we think OwnTracks is special.
 
 ![public map](images/ipad-public-map.png)
 
-Whether you want your young child to know where you currently are, or you want to keep track of where you spent your last vacation, or you and a group of friends want to see each other on a map, OwnTracks does that. It consists of an app which runs on your smart phone, and which periodically, publishes a small chunk of data which other OwnTracks users you authorize may see. The big deal here is *which you authorize*: we are extremely picky about [the security features of OwnTracks](features/security.md). To be quite clear, you also run the backend in order to ensure that only you and the people you authorize have access to the data published by the apps.
+Whether you want your young child to know where you currently are, you want to keep track of where you spent your last vacation, or you and a group of friends want to see each other on a map, OwnTracks can do that. It consists of an app which runs on your smart phone, and which periodically, publishes a small chunk of data which other OwnTracks users you authorize may see. The big deal here is *which you authorize*: we are extremely picky about [the security](features/security.md) and more importantly [the privacy](privacy.md) of OwnTracks. To be quite clear, you also run the backend in order to ensure that only you and the people you authorize have access to the data published by the apps.
 
 From this point onwards, it gets a bit complicated, but we'll try and ease your way into the world of OwnTracks so you may enjoy it. 
 

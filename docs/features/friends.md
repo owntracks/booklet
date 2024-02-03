@@ -31,7 +31,7 @@ What OwnTracks then does is to list these topic names (e.g. `owntracks/jjolie/4s
 
 It gets better.
 
-You probably don't want to remember the (sometimes cryptic) topic names of your friends or family members, but you would like to see their names and a matching face. That's no problem: OwnTracks can do that.
+You probably don't want to remember the (sometimes cryptic) topic names of your friends or family members, but you would like to see their names and a matching face. That's no problem: OwnTracks can do that, using [CARDS](card.md).
 
 Depending on the device you're using, the procedure differs slightly.
 

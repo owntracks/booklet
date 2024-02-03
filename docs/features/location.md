@@ -1,15 +1,13 @@
 ## Location data
 
-Location data is obtained by your smartphone and published to the [MQTT broker](../guide/broker.md) as follows:
-
-The Android and iOS apps offer 4 modes of location publication as well as region monitoring:
+We support 4 distinct modes of location publication and region monitoring as pertains to data submitted to the [MQTT broker](../guide/broker.md) by our apps:
 
 * _Quiet_ mode: Only manual location reports. Icon `[]`
 * _Manual_ mode: Manual location reports and automated reports with region monitoring. Icon `||`
 * _Significant location change_ mode: Standard tracking mode with automated location reports. Icon `|>`
 * _Move_ mode: Frequent location  `||>`
 
-All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on iBeacons. 
+All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on [iBeacons](beacons.md). 
 
 ### iOS 
 

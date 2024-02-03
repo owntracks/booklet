@@ -1,5 +1,6 @@
 ## Types
-OwnTracks publishes its message payloads in [JSON](http://www.json.org) format. The different payload types are identified by a mandatory `_type` element. Depending on the app platform, different payload types are supported.
+
+OwnTracks uses [JSON](http://www.json.org) format for its message payloads. The different payload types are identified by a mandatory `_type` element. Depending on the app platform, different payload types are supported.
 
 | `_type`                                   |  iOS   | Android |
 | ----------------------------------------- | :----: | :-----: |
@@ -299,8 +300,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `locked` Locks settings screen on device for editing _(iOS/boolean)_
 * `maxHistory` Number of notifications to store historically. Zero (0) means no notifications are stored and history tab is hidden. Defaults to zero. _(iOS/integer)_
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
-    - `0` Private  MQTT _(iOS, Android)_
-    - `3` Private  HTTP _(iOS, Android)_
+    - `0` MQTT _(iOS, Android)_
+    - `3` HTTP _(iOS, Android)_
 * `monitoring` Location reporting mode _(iOS,Android/integer)_
     - `-1` Quiet
     - `0` Manual

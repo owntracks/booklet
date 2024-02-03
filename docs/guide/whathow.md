@@ -1,12 +1,12 @@
 ## What OwnTracks does
 
-The OwnTracks app runs in the background on your Android or iOS device and waits for the smart phone to tell it that the device has moved, whereupon OwnTracks sends out a message with its current coordinates (and a few other things we'll discuss in a moment).
+The OwnTracks app runs in the background on your Android or iOS device and waits for the smart phone to tell it that the device has moved, whereupon OwnTracks sends out a message with its current coordinates (and a few other details we'll discuss in a moment).
 
 We'd like you to read this bit again:
 
 > _waits for the smart phone to tell it that the device has moved_
 
-It is very important to understand that OwnTracks literally waits for the device's operating system to inform it of a movement; only then can OwnTracks react and do something. To make matters even more complicated[^1], OwnTracks on Android runs in the background, all the time, whereas on iOS it is "killed off" by the operating system and woken up every several hundred seconds, in which it gets a teeny tiny time slot to do its thing.
+It is very important to understand that OwnTracks has to wait for the device's operating system to inform it of movement; only then can OwnTracks react and do something. To make matters even more complicated[^1], OwnTracks on Android runs in the background, all the time, whereas on iOS it is "killed off" by the operating system and woken up every several hundred seconds, in which it gets a teeny tiny time slot to do its thing.
 
 That's basically all OwnTracks does.
 
@@ -14,9 +14,7 @@ That's basically all OwnTracks does.
 
 That last sentence isn't true. Strike it.
 
-OwnTracks does quite a bit more. It shows your location on a map. Wow: big deal, huh? Well, it shows your location and [that of your friends](../features/friends.md) on a map. Ah: better. It can also detect when you enter or leave a particular region for which [you set a so-called waypoint](waypoints.md). People use this, say, to control some aspect of their home-automation system. (Everybody left home? We can turn the lights off.)
-
-OwnTracks also has a pedometer, a.k.a. step counter (on iPhone 5S, 6) which you can query remotely. OwnTracks has support for [iBeacons](beacons.md), and it gives you neat notifications when one of your friends gets home so you can phone them over a land-line to plan a get-together.
+OwnTracks does quite a bit more. It shows your location on a map. Wow: big deal, huh? Well, it shows your location and [that of your friends](../features/friends.md) on a map. Ah: better. It can also detect when you enter or leave a particular region for which [you set a so-called geofence](waypoints.md). People use this, say, to control some aspect of their home-automation system. (Everybody left home? We can turn the lights off.)
 
 OwnTracks reports the device's battery level remotely so you can add that to your monitoring setup, if you have one. (No worries if you don't -- you probably don't need it then.)
 
@@ -27,7 +25,7 @@ And finally, though for us this is *very* important, OwnTracks does all this sec
 
 ## How OwnTracks works
 
-The OwnTracks apps run on your smart phone (but we've already mentioned that at least once, haven't we?). When the device determines that it's _moved_ a significant distance[^2], it contacts a server via 3G or WiFi (hopefully one of those is available, but we queue messages many thousands on the app until connectivity can be established) and says "_hey, I'm here_", whereby "_here_" is specified with a bit more precision. This server is either a HTTP Web server or an MQTT server. This last server is called a _broker_ and the contact is made with an open, lightweight, [standardized protocol called MQTT](../tech/mqtt.md). (If you think that's bad it isn't: the protocol you use to surf the Web is called HTTP; does that sound much better?) So the smart phone sends your location (this operation is called _publish_ in MQTT-speak) to the broker and goes back to sleep until it realizes you've again moved a significant distance whereupon the whole procedure starts anew. This broker is something you provide.
+The OwnTracks apps run on your smart phone (but we've already mentioned that at least once, haven't we?). When the device determines that it's _moved_ a significant distance[^2], it contacts a server via 3G or WiFi (hopefully one of those is available, but we queue messages many thousands on the app until connectivity can be established) and says "_hey, I'm here_", whereby "_here_" is specified with a bit more precision. This server is either a HTTP Web server or an MQTT server (see: [scenarios](scenarios.md). This last server is called a _broker_ and the contact is made with an open, lightweight, [standardized protocol called MQTT](../tech/mqtt.md). (If you think that's bad it isn't: the protocol you use to surf the Web is called HTTP; does that sound much better?) So the smart phone sends your location (this operation is called _publish_ in MQTT-speak) to the broker and goes back to sleep until it realizes you've again moved a significant distance whereupon the whole procedure starts anew. This broker is something you provide.
 
 ![OwnTracks architecture](images/owntracks-iotconf-arch.png)
 

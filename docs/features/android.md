@@ -1,4 +1,27 @@
+## Android specifics
+
+* The broker connection works well with:
+
+      * No TLS (i.e. plain)
+      * TLS with Android system certificate authorities
+      * TLS with side-loaded user-provided self signed certificate authorities
+      * TLS with client certificates
+      * Username/password authentication to broker.
+
+* Automatic publishes at configurable maximum intervals under the condition that the devices moved the specified number of meters. Publishes may occur earlier if a new location is available.
+
+* Display of a marker at which the app believes the user to be at
+  (last known location)
+
+* Reverse geo coding that displays the address of last known location
+
+* Accuracy of last known location
+
+* Button to manually publish last known (i.e. probably current) location
+
+
 ## General Restrictions on Android 6 and higher.
+
 Since Android 6 and higher, the operating systems enforces stricter restrictions for apps running in the background. Most importantly, network access and background jobs are restricted to certain time slots. As a result, certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from battery optimizations.
 
 * You may find HTTP mode more reliable on Android 6 and higher.
@@ -10,11 +33,13 @@ Since Android 6 and higher, the operating systems enforces stricter restrictions
 * Beacons are no long supported in OwnTracks for Android
 
 ## Vendor background restrictions
+
 Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits.
 
 A list of vendors known to interfer with background apps and a number of workarounds can be found at [Don’t kill my app!](https://dontkillmyapp.com/).
 
 ## Google Play Services
+
 Google Play Services are required to use OwnTracks that's distributed on the Google Play Store.
 
 They are used for:
@@ -55,6 +80,7 @@ Since Owntracks 2.1 it is possible to automate changes to the location monitorin
 To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.
 
 ### Tasker example: 
+
 To trigger `Move` mode in tasker, create a `Send Intent` action and enter the following information:
 
 * Action: `org.owntracks.android.CHANGE_MONITORING`
@@ -76,6 +102,7 @@ To trigger `Move` mode in tasker, create a `Send Intent` action and enter the fo
 |Move|`monitoring:2`|
 
 ### Macrodroid example:
+
 To trigger `Move` mode in tasker, create a `Send Intent` action and enter the following information:
 
 * Target: `Service`
@@ -98,6 +125,7 @@ To trigger `Move` mode in tasker, create a `Send Intent` action and enter the fo
 |Move|`2`|
 
 ### Automagic example: 
+
 To trigger `Move` mode in Automagic, create a `Start Service` action and enter the following information:
 
 * Action: `org.owntracks.android.CHANGE_MONITORING`

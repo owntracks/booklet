@@ -3,13 +3,15 @@ site_url: http://owntracks.org
 site_author: OwnTracks.org
 repo_url: https://github.com/owntracks/booklet
 site_dir: _site
+validation:
+  omitted_files: info
 nav:
 - Intro: 'index.md'
 - Guide:
     - 'What it does': 'guide/whathow.md'
     - 'Quicksetup' : 'guide/quicksetup.md'
     - 'Clients': 'guide/clients.md'
-    - 'Scenarios': 'guide/scenarios.md'
+#    - 'Scenarios': 'guide/scenarios.md'
     - 'Apps': 'guide/apps.md'
 #    - 'Topics': 'guide/topics.md'
 #    - 'Broker': 'guide/broker.md'
@@ -24,23 +26,23 @@ nav:
 #    - 'TLS': 'features/tls.md'
 #    - 'TLS client': 'features/tlscert.md'
     - 'Location': 'features/location.md'
-    - 'Tracker ID': 'features/tid.md'
-    - 'Friends': 'features/friends.md'
-    - 'Card': 'features/card.md'
-    - 'POI': 'features/poi.md'
-    - 'Tours': 'features/tours.md'
-    - 'Waypoints': 'features/waypoints.md'
+#    - 'Tracker ID': 'features/tid.md'
+#    - 'Friends': 'features/friends.md'
+#    - 'Card': 'features/card.md'
+#    - 'POI': 'features/poi.md'
+#    - 'Tours': 'features/tours.md'
+#    - 'Waypoints': 'features/waypoints.md'
 #    - 'Beacons': 'features/beacons.md'
-    - 'Pedometer': 'features/pedometer.md'
+#    - 'Pedometer': 'features/pedometer.md'
 #    - 'Featured': 'features/featured.md'
-    - 'Encryption': 'features/encrypt.md'
-    - 'Remoteconfig': 'features/remoteconfig.md'
+#    - 'Encryption': 'features/encrypt.md'
+#    - 'Remoteconfig': 'features/remoteconfig.md'
 #    - 'Debugging': 'features/debug.md'
 #    - 'Traccar' : 'features/traccar.md'
 - API:
     - 'JSON': 'tech/json.md'
     - 'HTTP' : 'tech/http.md'
-    - 'MQTT': 'tech/mqtt.md'
+#    - 'MQTT': 'tech/mqtt.md'
 #    - 'URIs and QR codes': 'tech/qr.md'
     - 'Code': 'tech/program.md'
 - Sundry:

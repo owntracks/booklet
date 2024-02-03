@@ -36,7 +36,14 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 Note the topic branch ending in `info` and note the use of the retain flag (`-r`).
 
 #### Webapp
-A [webapp](https://avanc.github.io/owntracks-cards) is available to create cards in your browser and optionally publish them directly to your MQTT broker.
+
+[This is a webapp][oc-demo] to create and edit [OwnTracks cards](../features/card.md).
+It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
+Just head over to the [demo][oc-demo] and create a card. Configure your MQTT broker by clicking the connection state.
+The source code can be found on [Github][oc-code].
+
+[oc-demo]: https://avanc.github.io/owntracks-cards/
+[oc-code]: https://github.com/avanc/owntracks-cards
 
 ### Generating the face image
 
