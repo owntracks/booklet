@@ -171,6 +171,10 @@ keyfile server.key
 
 Then download the _startssl.com_ CA certificate ([ca.crt](http://www.startssl.com/certs/ca.crt)) and install that on your device as described above.
 
+## TLS client certificates
+
+- We also support using [TLS client certificates](tlscert.md)
+
   [TLS]: http://en.wikipedia.org/wiki/Transport_Layer_Security
   [PEM]: http://en.wikipedia.org/wiki/Privacy_Enhanced_Mail
   [mosquitto]: http://mosquitto.org

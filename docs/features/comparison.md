@@ -24,10 +24,15 @@ of supported features is concernened. This table summarizes the current status.
 | Geofencing                                |   Y    |   Y     |
 | [Regions](waypoints.md)                   |   Y    |   Y     |
 | Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
-| [Remote configuration](remoteconfig.md)   |   Y    |   Y      |
+| [Remote and URL configuration](remoteconfig.md)   |   Y    |   Y      |
+| Configuration via [QR code](qr.md)        |   Y    |          |
 | [iBeacons](beacons.md)                    |   Y    |          |
 | [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
 | [Payload encryption](encrypt.md)          |   Y    |    Y    |
+| Display of [TID](tid.md) on map           |   Y    |    Y    |
+| Submit [Points of Interest](poi.md) (POI) |   Y    |         |
+| On-device [Tour](tours.md) configuration  |   Y    |         |
+| Popup an [info tab](featured) on command  |   Y    |         |
 
 
 ### Android
