@@ -49,19 +49,11 @@ If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image
 
 ### Region Monitoring and Waypoints
 
-For all manually published locations, a description, a region radius and a share flag can be edited.
+Regions can be created with a description and a radius. If the description is non-empty and a radius > 0 (meters) is set, the app starts monitoring the circular region around the coordinate. These regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns reddish.
 
-Setting the description of a location helps you to remember places.
+If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959' monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.
 
-If a description is entered and the share flag set, the location is published to the MQTT broker as a `waypoint` once.
-
-If the description is non-empty and a radius > 0 (meters) is set, the app starts monitoring the circular region around the coordinate. A region may be 'waypoint'.
-The regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns red-ish.
-
-If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
-monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.
-
-Everytime the devices enters or leaves a monitored region, an additional location message is published to the MQTT broker.
+Every time the devices enters or leaves a monitored region, an additional so-called _transition_ message with an enter or leave event is published to the MQTT broker.
 
 Use cases:
 * Define a `home` region to insure that the device publishes a new location when coming home or leaving home even if you do not move more than 500m.
