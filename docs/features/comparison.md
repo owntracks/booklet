@@ -13,13 +13,13 @@ Our OwnTracks apps try to be on par in terms of features, but there are differen
 | Reconnection to broker                    |   Y    |   Y     |
 | Automatic PUB after move                  |   Y    |   Y     |
 | Automatic PUB after time                  |   Y    |   Y     |
+| Button for [manual publish](ui.md)        |   Y    |   Y     |
 | Move mode                                 |   Y    |   Y      |
 | Map with [TID](tid.md) markers            |   Y    |   Y     |
 | Support for [CARD](card.md) on map        |   Y    |   Y     |
 | Reverse geocoding on map                  |   Y    |   Y     |
 | Use of external geocoders (OpenCageData)  |        |   Y     |
 | Accuracy of last-known loc                |   Y    |   Y     |
-| Button for manual publish                 |   Y    |   Y     |
 | Friends list                              |   Y    |   Y     |
 | Geofencing (a.k.a. [Regions](waypoints.md))|  Y    |   Y     |
 | [Transition events](location.md) (enter / leave)         |   Y    |   Y     |

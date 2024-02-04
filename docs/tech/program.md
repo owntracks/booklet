@@ -74,6 +74,16 @@ client.loop_forever()
 
 Testing location-based apps is a bit of a, well, pain, but remember there are a few simple tricks you can apply:
 
-* Use the _publish now_ button in OwnTracks to fire a location update. The smart phone won't really _move_ much of course, but it'll allow you to test your program a bit.
-* Publish your own [OwnTracks-JSON](json.md) payload to the broker with _mosquitto_pub_ or similar.
+* Use the [publish now](../features/ui.md) button in OwnTracks to fire a location update. The smart phone won't really _move_ much of course, but it'll allow you to test your program a bit.
+* Publish your own [OwnTracks-JSON](json.md) payload to the broker with _mosquitto_pub_ or similar, even using a small script:
+
+        #!/bin/sh
+
+        jo _type=location \
+            lat=48.856826 \
+            lon=2.292713 \
+            tid=j1 \
+            tst=$(date +%s) |
+            mosquitto_pub -r -t owntracks/jane/nokia -l
+
 
