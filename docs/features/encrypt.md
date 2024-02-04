@@ -1,6 +1,6 @@
 ## Payload encryption
 
-In addition to the [transport encryption via TLS](tls.md), the OwnTracks apps support payload encryption using [libsodium](https://github.com/jedisct1/libsodium/), in particular [secret-key authenticated encryption](https://download.libsodium.org/doc/secret-key_cryptography/authenticated_encryption.html). We have also implemented support for payload encryption (i.e. decryption) in the [OwnTracks Recorder](https://github.com/owntracks/recorder).
+In addition to the [transport encryption via TLS](tls.md), the OwnTracks apps support payload encryption using [libsodium](https://github.com/jedisct1/libsodium/), in particular [secret-key authenticated encryption][1]. We have also implemented support for payload encryption (i.e. decryption) in the [OwnTracks Recorder](https://github.com/owntracks/recorder).
 
 You configure a _secret_ (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt the [JSON](../tech/json.md) with this secret and transport the payload in a new JSON object which looks like this:
 
@@ -13,6 +13,15 @@ You configure a _secret_ (which you keep secret) in the app's settings. From thi
 
 If you want to share location with a friend, both you and your friend need to share the same _secret_. A _secret_ should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads. It is not possible to share locations with a friend's device using different _secret_ keys.
 
+### Encryption key
+
+For the OwnTracks apps, the encryption key can be configured as follows:
+
+- Android and iOS via the settings UI / configuration editor
+- Android additionally via [configuration file](remoteconfig.md) from the `encryptionKey` setting
+
+The key is a string of up to 32 characters in length which the apps pad with binary zeroes.
+
 ### Recorder
 
 You can set up multiple decryption keys on the Recorder (but not in the apps). This is to enable, say, different people to use different secrets on the same Recorder.
@@ -22,7 +31,7 @@ Add a key by determining the _username_ and the _device name_ of the client app.
 Load the key into the (running) Recorder:
 
 ```bash
-echo "jjolie-phone mysecreTpass01" | ocat --load=keys
+printf "jjolie-phone mysecreTpass01" | ocat --load=keys
 ```
 
 From this moment onwards, the Recorder will use this secret key for this username/device combination when it receives JSON payloads of `_type: encrypted`. The Recorder will decrypt the payload and will store the result in plain text in its storage.
@@ -36,7 +45,9 @@ ocat --dump=keys
 You can also delete entries for specific devices by replacing the encryption key with `DELETE`:
 
 ```bash
-echo "jjolie-phone DELETE" | ocat --load=keys
+printf "jjolie-phone DELETE" | ocat --load=keys
 ```
 
 Be aware that this is a very powerful command that can corrupt your database if you write it incorrectly!
+
+  [1]: https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox

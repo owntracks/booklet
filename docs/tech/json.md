@@ -284,6 +284,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `downgrade` battery level below which to downgrade monitoring from move mode _(iOS/integer/percent/optional)_
+* `encryptionKey` the secret key used for [payload encryption](../features/encrypt.md) _(_Android/string)_ (on iOS the value is configured in the settings UI)
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
 * `httpHeaders` extra HTTP headers:field names and field content are separated by a colon (:), multiple fields by a backslash-n (\n) \<field-name\>:\<field-content\>\n\<field-name\>:\<field-content\>... _(iOS only/string)_
