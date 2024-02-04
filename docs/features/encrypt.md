@@ -50,4 +50,29 @@ printf "jjolie-phone DELETE" | ocat --load=keys
 
 Be aware that this is a very powerful command that can corrupt your database if you write it incorrectly!
 
+### Configuring encryption in Quicksetup
+
+Using [quicksetup](../guide/quicksetup.md) you can optionally configure payload encryption for a user:
+
+* configure the `friends` array with an element `secret` for that user:
+
+        friends:
+           - { tid: j2, username: jjolie, devicename: Phone, secret: "mysecreTpass01" }
+
+* if you prefer to not have the secret in that configuration, write it into a file on the file system and specify the path in lieu of the actual secret, i.e. `secret: "/path/to/.jjolie.key"`
+
+        $ printf "mysecreTpass01" > .jjolie.key
+
+* after rerunning the `bootstrap` program, the user's `.otrc` file will have the secret configured:
+
+        $ grep encryption /usr/local/owntracks/userdata/jjolie.otrc
+        "encryptionKey": "mysecreTpass01",
+
+* the Recorder's key store will also have the key:
+
+        $ ocat --dump=keys
+        jjolie-phone mysecreTpass01
+
+Note that the secret is in clear text in the configuration file, the key file, the Recorder's key store, and in the `.otrc` file!
+
   [1]: https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox
