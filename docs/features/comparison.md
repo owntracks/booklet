@@ -20,22 +20,21 @@ Our OwnTracks apps try to be on par in terms of features, but there are differen
 | Use of external geocoders (OpenCageData)  |        |   Y     |
 | Accuracy of last-known loc                |   Y    |   Y     |
 | Button for manual publish                 |   Y    |   Y     |
-| Configurable settings                     |   Y    |   Y     |
-| [Remote and URL configuration](remoteconfig.md)   |   Y    |   Y      |
-| Configuration via [QR code](../tech/qr.md)        |   Y    |          |
 | Friends list                              |   Y    |   Y     |
-| Geofencing                                |   Y    |   Y     |
-| [Regions](waypoints.md)                   |   Y    |   Y     |
-| Transition events (enter / leave)         |   Y    |   Y     |
+| Geofencing (a.k.a. [Regions](waypoints.md))|  Y    |   Y     |
+| [Transition events](location.md) (enter / leave)         |   Y    |   Y     |
 | Location data (payload) [published as JSON](../tech/json.md) |   Y    |   Y     |
 | [iBeacons](beacons.md)                    |   Y    |          |
 | [Step-counting, a.k.a pedometer](pedometer.md)   |   Y    |         |
 | Barometric pressure in location payloads  |   Y    |         |
 | [Payload encryption](encrypt.md)          |   Y    |    Y    |
-| Display of [TID](tid.md) on map           |   Y    |    Y    |
 | Submit [Points of Interest](poi.md) (POI) |   Y    |         |
 | On-device [Tour](tours.md) configuration  |   Y    |         |
 | Popup an [info tab](featured.md) on command  |   Y    |         |
 | [Debugging](debug.md) with on-device logs |   Y    |    Y    |
 | Supports POSTing [to Traccar](traccar.md) |   Y    |    Y    |
+| Configurable settings                     |   Y    |   Y     |
+| Configuration editor                      |        |   Y     |
+| [Remote and URL configuration](remoteconfig.md)   |   Y    |   Y      |
+| Configuration via [QR code](../tech/qr.md)        |   Y    |          |
 
