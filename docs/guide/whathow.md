@@ -2,6 +2,9 @@
 
 The OwnTracks app runs in the background on your Android or iOS device and waits for the smart phone to tell it that the device has moved, whereupon OwnTracks sends out a message with its current coordinates (and a few other details we'll discuss in a moment).
 
+| ![Android map with user's avatar showing](images/android-paris.jpg) | | ![Android map with user's details open](images/android-detail-jane.jpg) |
+
+
 We'd like you to read this bit again:
 
 > _waits for the smart phone to tell it that the device has moved_
