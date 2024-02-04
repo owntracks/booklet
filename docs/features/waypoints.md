@@ -1,18 +1,34 @@
 ## Regions (Waypoints)
 
-The _base topic_ for publishes from the devices (OwnTracks apps) is what you configure it
-to be in the app's preferences/settings. For argument's sake we'll use the default `owntracks/<user>/<device>` as our example.
+A _region_, _geofence_, or _waypoint_ (sadly we've used these terms interchangeably) is a circular area you configure in the UI on your OwnTracks device. The device then begins monitoring whether the area is being entered or left and it will publish what we call a _transition event_ accordingly.
 
-This base topic is used for publishes of type `location` (see [JSON](../tech/json.md)).
-All messages published to this base topic are retained if you have configured the app to retain them.
+The _base topic_ for publishes from the OwnTracks apps is what you've configured it to be in the apps' preferences / settings. This base topic is used for publishes of type `location` (see [JSON](../tech/json.md)). All messages published to this base topic are retained if you have configured the app to retain them.
 
-Additionally, if you've configured a waypoint, regions, or geo-fence (we intermix these terms a lot to mean basically the same thing), a transition event will be published upon entering or leaving a waypoint, containing:
+So upon entering or leaving a region, the device publishes a transition event which contains:
 
-* `rad`ius (if its value is greater than 0)
-* `desc`ription with the name you set for the waypoint
-* `event` with a value of `"enter"` or `"leave"`, depending on
-   whether the device is entering or leaving a configured region, respectively.
-* `rid` (> January 2021) with the _region ID_ of the region.
+| element       | meaning |
+| ------------- | ------  |
+| `desc`        | description with the name you set for the waypoint
+| `event`       | `"enter"` or `"leave"`, depending on whether the <br />device is entering or leaving a configured region, respectively.
+| `rid`         | the _region ID_ of the region
+| `lat`, `lon`  | where the region was detected (entering respectively leaving)
+| `tid`         | trackerID 
+| `tst`         | timestamp when the event was published
+| `wtst`        | the time stamp of when the region was created 
+
+For example, this JSON might be published when entering a region:
+
+    {
+      "_type": "transition",
+      "desc": "My favorite coffee shop (Delaville)",
+      "event": "enter",
+      "lat": 48.87069,
+      "lon": 2.34916,
+      "rid": "f7676c",
+      "tid": "j1",
+      "tst": 1707057574,
+      "wtst": 1610104395
+    }
 
 If you set up a region (or waypoint or geo-fence, you get the drift), the app publishes that region (with `retain=0` irrespective of your general preference) to the base topic with `/waypoint` tacked onto the topic (e.g. `owntracks/<user>/<device>/waypoint`) with the payload for `_type=waypoint` as specified in the [JSON page](../tech/json.md). Entering or leaving a waypoint will be published as a `transition` message and will contain a `wtst` (for historical purposes) with the timestamp of when the region was originally defined. (Note that that branch is `/waypoint` -- singular.)
 
@@ -21,16 +37,17 @@ For example, If Jane configures a region on her iPhone, the app could publish th
 ```json
 {
     "_type": "waypoint",
-    "desc": "Paris is lovely",
-    "lat": "48.858330",
-    "lon": "2.295130",
+    "desc": "My favorite coffee shop (Delaville)",
+    "lat": 48.87069,
+    "lon": 2.34916,
     "rad": "50",
     "tst": "1385997757",
-    "rid": "f7676c"
+    "rid": "f7676c",
+    "wtst": 1610104395
 }
 ```
 
-When you set up a region (with a `desc`ription and a `rad`ius), this
+When you set up a region (with a `desc`ription and a `rad`ius), this new
 region is published to the broker with the current time stamp. If you update
 the region definition on the device at a later stage, the region is
 re-published, with the _original_ timestamp, but with possibly new
@@ -41,8 +58,7 @@ identifier of the region even if it is later modified on the device.
 Subscribers to the broker (our apps and any other program) can avoid getting
 regions by subscribing to, say, `owntracks/+/+`; also broker ACLs can
 prohibit access to `owntracks/+/+/waypoint` for particular users if so desired.
-Conversely, all messages published by the apps (`location`, `transition`, and `waypoint`) are
-available with a subscription to `owntracks/#`.
+Conversely, all messages published by the apps (`location`, `transition`, and `waypoint`) are available with a subscription to `owntracks/#`.
 
 The OwnTracks apps may keep track of regions, e.g. for displaying to users. 
 
@@ -50,14 +66,14 @@ The OwnTracks apps may keep track of regions, e.g. for displaying to users.
 
 When the apps publish a `_type = location` message, they add to that an array
 called `inregions` (and as from January 2021 an array called `inrids`) with
-the names of the regions and their `rid`s respectively. The `inregions` array
+the names of the regions and their respective `rid`s. The `inregions` array
 might be consumed by humans whereas the `inrids` array would be consumed by
 developers who will wish to associate the region IDs (`rid`) with the values in
 `inrids`.
 
 ### Adding on iOS
 
-On iOS you can navigate to the place where you want to place a region, Tap long and edit the Region. The region is always placed at the center of the map (hence it's predefined name `Center`, which you should change to something meaningful). With a bit of practice, you can then drag the region to it's final destination on the map or, and this may be easier, edit the region and specify its exact coordinates.
+On iOS you can navigate to the place where you want to place a region, Tap long and edit the Region. The region gets a default name (`Here ..`) which you will want to change to something meaningful. With a bit of practice, you can then drag the region to it's final destination on the map or, and this may be easier, edit the region and specify its exact coordinates.
 
 ### Adding on Android
 
@@ -71,7 +87,7 @@ You can use this to import individual regions or groups of pre-configured region
 
 ### Deleting regions
 
-On iOS a region can be deleted by swiping it away. On Android, a long press is required. 
+On iOS a region can be deleted by swiping it away. On Android, a long press is required. Note that deleting a region on the device does not publish anything to the MQTT broker or HTTP server.
 
 ### Beacons Ranging
 
