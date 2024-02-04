@@ -18,7 +18,7 @@ If you want to share location with a friend, both you and your friend need to sh
 For the OwnTracks apps, the encryption key can be configured as follows:
 
 - Android and iOS via the settings UI / configuration editor
-- Android additionally via [configuration file](remoteconfig.md) from the `encryptionKey` setting
+- Android and iOS also via [configuration file](remoteconfig.md) from the `encryptionKey` setting
 
 The key is a string of up to 32 characters in length which the apps pad with binary zeroes.
 
