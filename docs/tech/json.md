@@ -11,6 +11,7 @@ OwnTracks uses [JSON](http://www.json.org) format for its message payloads. The 
 | `encrypted`                               |   Y    |   Y     |
 | `location`                                |   Y    |   Y     |
 | `lwt`                                     |   Y    |   Y     |
+| `request`                                 |   Y    |   N     |
 | `steps`                                   |   Y    |   N     |
 | `transition`                              |   Y    |   Y     |
 | `waypoint`                                |   Y    |   Y     |
@@ -466,4 +467,18 @@ For security reasons, the encryption key is not exported with configuration mess
 }
 ```
 * `data` Encrypted and Base64 encoded original JSON message _(iOS,Android/string/required)_
+
+## `_type=request`
+
+Apps can request the creation of [tours](../features/tours.md) which elicit a `cmd` response from the Recorder. See [tours](../features/tours.md) for the details.
+
+```json
+{
+  "_type": "request",
+  "request": "tour",
+  "tour": {
+    ...
+  }
+}
+```
 
