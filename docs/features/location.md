@@ -148,7 +148,7 @@ In addition to the default settings, all location request parameters in this mod
 
 * `moveModeLocatorInterval`: The requested location interval in _move_ mode.
 
-* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved.
+* `locatorDisplacement`: The smallest displacement in meters the user must move between location updates. Defaults to 500 and is an `and` relationship with interval. Can be used to only receive updates when the device has moved.
     * This means if the user has not moved by more than the displacement value, the location will not be reported at `locatorInterval`.
 
 #### _Manual_ mode
