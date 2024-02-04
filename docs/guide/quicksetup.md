@@ -116,19 +116,19 @@ Assuming the installer was successful, you can verify if the services are workin
 
 - let's use a Web browser to access our site:
 
-      ![Index](qs//rabbit-10663.png)
+      ![Index](qs//rabbit-10663.png){:.framed}
 
 - map with live positions. The icon on the right of the info panel is what we call a [CARD](../features/card.md)
 
-      ![map with live positions](qs//rabbit-10664.png)
+      ![map with live positions](qs//rabbit-10664.png){:.framed}
 
 - our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
 
-      ![main Frontend](qs//rabbit-10665.png)
+      ![main Frontend](qs//rabbit-10665.png){:.framed}
 
 - in Frontend users can select users and devices to see, tracks to view, etc.
 
-      ![viewing a track in Frontend](qs//rabbit-10667.png)
+      ![viewing a track in Frontend](qs//rabbit-10667.png){:.framed}
 
 - back on the command line of your VPS, you can explore the data submitted by your devices using the `ocat` utility, say:
 
