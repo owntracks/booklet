@@ -46,6 +46,8 @@ just one level `peters-iPhone` or multiple levels `aFamily/father/iPhone`), but
 under any one OwnTracks name root the number of levels used for device names
 have to be the same.
 
+We reccomend you keep the device name generic: something like `myphone` might be preferable to `siemens-x67` so that you don't feel the need to change the device name (and hence the topic) if you move to a different device and vendor.
+
 ## Base topic name
 
 Combining the topic name root and the device name result in what we call _base
