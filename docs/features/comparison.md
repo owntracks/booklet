@@ -18,7 +18,7 @@ Our OwnTracks apps try to be on par in terms of features, but there are differen
 | Map with [TID](tid.md) markers            |   Y    |   Y     |
 | Support for [CARD](card.md) on map        |   Y    |   Y     |
 | Reverse geocoding on map                  |   Y    |   Y     |
-| Use of external geocoders (OpenCageData)  |        |   Y     |
+| Use of external geocoders ([OpenCageData](../other/opencage.md))  |        |   Y     |
 | Accuracy of last-known loc                |   Y    |   Y     |
 | Friends list                              |   Y    |   Y     |
 | Geofencing (a.k.a. [Regions](waypoints.md))|  Y    |   Y     |

@@ -18,4 +18,4 @@ OwnTracks and its associated utilities have been designed foremost with [data pr
 
 * The apps do, however, perform reverse geo location lookups.
     * For iOS these lookups are submitted to the Apple Maps infrastructure, and as reverse geo-coding is rate-limited on the iPhone we do not use it for all sent locations, but only when a location is displayed on user request, e.g. on the Friends page.
-    * On Android the requests are performed via Google Play services for the non OSS release. This configuration can be optionally changed by configuring Android to use OpenCageData as reverse geo location provider. This functionality cannot be disabled.
+    * On Android the requests are performed via Google Play services for the non OSS release. This configuration can be optionally changed by configuring Android to use [OpenCageData](../other/opencage.md) as reverse geo location provider. This functionality cannot be disabled.
