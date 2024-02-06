@@ -314,7 +314,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `4` MQTT 3.1.1
     - `5` MQTT 5 (iOS only)
 * `notificationLocation` Show last reported location in ongoing notification _(Android/boolean)_
-* `opencageApiKey` API key for alternate Geocoding provider. See [OpenCage](../other/openage.md) for details. _(Android/string)_
+* `opencageApiKey` API key for alternate Geocoding provider. See [OpenCage](../other/opencage.md) for details. _(Android/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
 * `password` Endpoint password _(iOS,Android/string)_
 * `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
