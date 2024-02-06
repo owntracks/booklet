@@ -8,7 +8,7 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
   - some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)
   - we've had very good experience with the likes of Digital Ocean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.
   - Linode, Server4you, Hetzner, Netcup, ... look around and compare
-  - we've tested this setup on Ubuntu 22.04 and on Debian 12
+  - we've tested this setup on Ubuntu 22.04 and on Debian 12. Minimum requirements: Debian 11
 - a DNS domain, something like `owntracks.example`, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with `owntracks.example`.
 
 Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user.
