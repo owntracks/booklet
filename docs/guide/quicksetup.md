@@ -82,7 +82,7 @@ Assuming the installer was successful, you can verify if the services are workin
 - install OwnTracks on your [Android or iOS device](apps.md) and configure it, either by
    - send yourself one of the files from `/usr/local/owntracks/userdata/*.otrc`
    - visit `https://owntracks.example/owntracks/` and login with your username (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/*.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
-- in the app on the smartphone, click on publish 
+- in the app on the smartphone, click on publish
    FIXME: screenshots
 - back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:
 
@@ -92,7 +92,7 @@ Assuming the installer was successful, you can verify if the services are workin
 
         owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
 
-- the output on your system will differ. The first part before the first space, is called the [topic](topics.md) name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish. 
+- the output on your system will differ. The first part before the first space, is called the [topic](topics.md) name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish.
 
         {
           "_type": "location",
@@ -108,7 +108,7 @@ Assuming the installer was successful, you can verify if the services are workin
           "vel": 0
         }
 
-    
+
 - still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the _user_ and _device_ names used for publishing; the rest of the filename is a `YYYY-MM` date stamp:
 
         $ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
@@ -168,6 +168,24 @@ Assuming the installer was successful, you can verify if the services are workin
              -d user=jane -d device=nokia
         Enter host password for user 'jane':
         {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
+
+## Debugging
+
+There's quite a bit going on in the background, so we want to give you some tips on how to go about debugging or finding out what's actually going on.
+
+- The MQTT broker logs information on incoming requests.
+
+        $ tail -f /var/log/mosquitto/mosquitto.log
+
+- You'll likely also want to see the payloads the MQTT broker is getting; do so by subscribing to all topics:
+
+        $ mosquitto_sub -v -t '#'
+
+- The OwnTracks Recorder prints diagnostics to its console, but that console is typically not visible as it's a background service. Use _journalctl_
+
+        $ journalctl -u ot-recorder -f
+
+
 
 ## Where to go from here
 
