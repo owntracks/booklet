@@ -86,4 +86,6 @@ Testing location-based apps is a bit of a, well, pain, but remember there are a 
             tst=$(date +%s) |
             mosquitto_pub -r -t owntracks/jane/nokia -l
 
+## Adding Lua hooks to Recorder
 
+If you wish to dig deeper into what our Recorder backend can do, we've documented getting started with [Lua hooks](lua.md) for you.
