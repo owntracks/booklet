@@ -181,9 +181,10 @@ There's quite a bit going on in the background, so we want to give you some tips
 
         $ mosquitto_sub -v -t '#'
 
-- The OwnTracks Recorder prints diagnostics to its console, but that console is typically not visible as it's a background service. Use _journalctl_
+- The OwnTracks Recorder prints diagnostics to its console, but that console is typically not visible as it's a background service. Use _journalctl_ or _syslog_ on Ubuntu
 
         $ journalctl -u ot-recorder -f
+        $ tail -f /var/log/syslog | grep ot-recorder
 
 
 
