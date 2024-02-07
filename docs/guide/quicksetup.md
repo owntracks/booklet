@@ -60,7 +60,7 @@ You are logged into your VPS either as `root` or as an unprivileged user. Three 
 
       - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `owntracks.example`.
       - `email` is the email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
-      - we strongly recommend you sign up for the free reverse geo service at [OpenCage](https://opencagedata.com/). It's free of charge, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it.
+      - we strongly recommend you sign up for the free reverse geo service at [OpenCageData](../other/opencage.md). It's free of charge, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it.
       - `friends` is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.
 
 4 once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
@@ -160,7 +160,7 @@ Assuming the installer was successful, you can verify if the services are workin
           ]
         }
 
-- Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
+- Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCageData. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
 
 - the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
 
