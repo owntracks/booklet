@@ -189,6 +189,14 @@ There's quite a bit going on in the background, so we want to give you some tips
         $ journalctl -u ot-recorder -f
         $ tail -f /var/log/syslog | grep ot-recorder
 
+If you need more help, we'll gladly help you if we can. Even if all you've found is a glitch in our documentation, we consider that a bug [so please report it](https://github.com/owntracks/quicksetup/issues). You might want to keep a copy of the file `sys.info` handy which should have been created by bootstrapping process in the directory from which you launched it:
+
+        $ cat sys.info
+        Last bootstrap: 2024-02-08T13:18:43Z
+
+        Ansible version: 2.14.3
+        OS distro: Debian / 12 4
+        OS distribution: bookworm
 
 
 ## Where to go from here
