@@ -1,8 +1,8 @@
 ## Payload encryption
 
-In addition to the [transport encryption via TLS](tls.md), the OwnTracks apps support payload encryption using [libsodium](https://github.com/jedisct1/libsodium/), in particular [secret-key authenticated encryption][1]. We have also implemented support for payload encryption (i.e. decryption) in the [OwnTracks Recorder](https://github.com/owntracks/recorder).
+In addition to the [transport encryption via TLS](tls.md) (over MQTT and HTTPS), the OwnTracks apps support payload encryption using [libsodium](https://github.com/jedisct1/libsodium/), in particular [secret-key authenticated encryption][1]. We have also implemented support for payload encryption (i.e. decryption) in the [OwnTracks Recorder](https://github.com/owntracks/recorder).
 
-You configure a _secret_ (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt the [JSON](../tech/json.md) with this secret and transport the payload in a new JSON object which looks like this:
+You configure a _secret_ (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt outgoing [JSON](../tech/json.md) with this secret and transport the payload in a new JSON object which looks like this:
 
 ```json
 {
@@ -74,5 +74,10 @@ Using [quicksetup](../guide/quicksetup.md) you can optionally configure payload 
         jjolie-phone mysecreTpass01
 
 Note that the secret is in clear text in the configuration file, the key file, the Recorder's key store, and in the `.otrc` file!
+
+## Notes
+
+- Payload encryption makes little sense for just one user on a shared installation. Assume Alice and Bob share a broker. Alice has configured payload encryption and her device publishes a location message. The Recorder receives that payload, decrypts it (assuming it too has Alice's key), and stores the result. Note that the Recorder will not automatically republish Alice's location, so Bob won't receive that data. In order to accomplish this, one would have to configure the Recorder to [republish using Lua](../tech/lua.md) those messages with the `_decrypted` element in them.
+- In an environment consisting of a group of people who wish to communicate securely, payload encryption might make sense.
 
   [1]: https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox
