@@ -88,7 +88,7 @@ Assuming the installer was successful, you can verify if the services are workin
    FIXME: screenshots
 - back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:
 
-        $ mosquitto_sub -t 'owntracks/#'
+        $ mosquitto_sub -v -t 'owntracks/#'
 
 - on the console you should see some output from `mosquitto_sub` which looks a bit like this:
 
