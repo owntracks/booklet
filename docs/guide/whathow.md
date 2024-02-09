@@ -1,13 +1,11 @@
 ## What OwnTracks does
 
-The OwnTracks app runs in the background on your Android or iOS device and waits for the smart phone to tell it that the device has moved, whereupon OwnTracks sends out a message with its current coordinates (and a few other details we'll discuss in a moment).
+The OwnTracks app runs in the background on your Android or iOS device and waits for the smart phone to tell it that the device has moved, whereupon OwnTracks sends out a message with its current coordinates (and a few other details we'll discuss in a moment, but these screenshots might whet your appetite).
 
 | ![Android map with user's avatar showing](images/android-paris.jpg){:.framed} | | ![Android map with user's details open](images/android-detail-jane.jpg){:.framed} |
 
 
-We'd like you to read this bit again:
-
-> _waits for the smart phone to tell it that the device has moved_
+We'd like you to read this bit again: _waits for the smart phone to tell it that the device has moved_.
 
 It is very important to understand that OwnTracks has to wait for the device's operating system to inform it of movement; only then can OwnTracks react and do something. To make matters even more complicated[^1], OwnTracks on Android runs in the background, all the time, whereas on iOS it is "killed off" by the operating system and woken up every several hundred seconds, in which it gets a teeny tiny time slot to do its thing.
 
@@ -42,6 +40,6 @@ The broker receives the data, and then? Well, it can re-distribute it, at your w
 
 The important message here, and we can't repeat this often enough: OwnTracks is designed in such a way as that you can chose what you do with your data. It's *yours*.
 
-We'll now show you how to [get started quickly](quicksetup.md).
+Before installing one of our apps on your smartphone, you need some place the app will actually connect to. We'll try to [get you started quickly](quicksetup.md).
 
 [^2]: This is a relative amount, but you can tune it a bit.

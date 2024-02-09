@@ -6,12 +6,11 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
 
 - a small dedicated Linux-capable device (e.g. a Raspberry Pi or equivalent) or a dedicated Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.
   - some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)
-  - we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.
-  - Linode, Server4you, Hetzner, Netcup, ... look around and compare
-  - we've tested this setup on Ubuntu 22.04 (_jammy_) and on Debian/Raspbian 12 (_bookworm_)
+  - we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well. But there are many others: Linode, Server4you, Hetzner, Netcup, ... look around and compare
+  - we've tested this setup on Ubuntu 22.04 (_jammy_) and on Debian/Raspbian 12 (_bookworm_); anything older or different might well cause issues, but we'll gladly help if we can
 - a DNS domain, something like `owntracks.example`, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with `owntracks.example`.
 
-Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user.
+Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user, but you will need to escalate privileges using `sudo`.
 
 - after logging in, the following program invocation should produce output similar to that shown:
 
@@ -34,14 +33,12 @@ Let's briefly describe what _quicksetup_ will actually attempt to accomplish so 
 ![Architechture](images/owntracks-quicksetup-arch.png)
 
 - we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a _cron_ job with which the Let's Encrypt certificate will automatically be renewed when required.
-- we install an Apache Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called `/usr/local/owntracks/userdata/*.pass`.
-- we install a Mosquitto [MQTT broker](broker.md) in order for our Android or iOS apps to be able to publish [location data](../features/location.md) to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our `*.otrc` files or a magic link on a Web page. The broker is configured to permit only users you specify with the same passwords we create randomly for the Web server.
+- we install an _nginx_ Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called `/usr/local/owntracks/userdata/*.pass`.
+- we install a Mosquitto [MQTT broker](broker.md) in order for our Android or iOS apps to be able to publish [location data](../features/location.md) to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted via SSL/TLS. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our `*.otrc` files or a magic link on a Web page. The broker is configured to permit access only to users you specify with the same passwords we create randomly for the Web server.
 - we install and configure our Recorder. This is a program which subscribes to MQTT (on your VPS) and receives location publishes when your OwnTracks apps change location. The data is stored and can later be viewed with Frontend.
-- you will be able to specify any number of [Friends] during the configuration below. Each of these friends can use the MQTT broker, use the Web server, login with their username and different random password.
+- you will be able to specify any number of [Friends](../features/friends.md) during the configuration below. Each of these friends can use the MQTT broker, use the Web server, login with their username and different random password.
 
-So, if everything works the way we hope it will, this ought to be a plug-and-play experience. Fingers crossed!
-
-Let us begin.
+So, if everything works the way we hope it will, this ought to be a plug-and-play experience. Fingers crossed, let us begin.
 
 ## Launching quicksetup
 
@@ -62,30 +59,69 @@ You are logged into your VPS either as `root` or as an unprivileged user. Three 
 
       - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `owntracks.example`.
       - `email` is the email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
-      - we strongly recommend you sign up for the free reverse geo service at [OpenCage](../other/opencage.md). It's free of charge, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it.
+      - we strongly recommend you sign up for the free reverse geo service at [OpenCage](../other/opencage.md). It's free of charge, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it. It's so much nicer when you can see the addresses of locations you've visited in our maps.
       - `friends` is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.
 
-4 once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
+              friends:
+                - { tid: JJ, username: jane,   devicename: nokia }
+                - { tid: ip, username: jip,    devicename: iPad }
+                - { tid: j2, username: jjolie, devicename: Phone }
+
+        each line describes a _friend_, and you should be on the first line (we'll divulge later why that is). There are three fields on each line, all three are strings which may be enclosed in quotes. The _tid_ is displayed by default on the phone and must not be longer than two characters. The _username_ (with which you also login) and the _devicename_ form the _topic_ to which your devices will publish location data.
+
+4. once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
 
         $ sudo ./bootstrap.sh
 
 This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by _quicksetup_ to begin configuring all the services as described above.
 
-FIXME: add screenshot of top of installer
+        Shall we publish a test location message when done? [y]: y
 
-If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt.
+        PLAY [OwnTracks Quick Setup] ********************************************************
 
-Should you wish to, say, add a friend at a later stage, reconfigure `configuration.yaml`, and re-run `bootstrap.sh` as you did earlier.
+        TASK [Gathering Facts] **************************************************************
+        ok: [localhost]
+
+        TASK [system: template out sys.info] ************************************************
+        changed: [localhost]
+
+        TASK [verify some requirements] *****************************************************
+        ok: [localhost] => {
+            "changed": false,
+            "msg": "All assertions passed"
+        }
+
+        TASK [detect: acme] *****************************************************************
+        ok: [localhost]
+
+        TASK [system: install OwnTracks repository key] *************************************
+        changed: [localhost]
+
+        TASK [system: install OwnTracks repository] *****************************************
+        changed: [localhost]
+
+        TASK [system: install required packages]
+        ...
+
+Go ahead and answer the first question with `y` in order to have a demo location published so you see something on our maps before you connect your phone.
+
+If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt. Some of the steps will take longer than others, for instance we install several software packages which takes a bit.
+
+Should you wish to, say, add a friend at a later stage, edit `configuration.yaml`, and re-run `./bootstrap.sh` as you did earlier. As often as you wish.
 
 ## Initial testing
 
 Assuming the installer was successful, you can verify if the services are working as we intended them to:
 
 - install OwnTracks on your [Android or iOS device](apps.md) and configure it, either by
-   - send yourself one of the files from `/usr/local/owntracks/userdata/*.otrc`
-   - visit `https://owntracks.example/owntracks/` and login with your username (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/*.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
-- in the app on the smartphone, click on publish
-   FIXME: screenshots
+      - sending yourself one of the files from `/usr/local/owntracks/userdata/*.otrc`
+      - visiting `https://owntracks.example/owntracks/` and logging with your _username_ (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/<username>.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
+- in the app on the smartphone, click on the publish _up arrow_
+
+     | Android                                         |        | iOS                              |
+     | :---------------------------------------------: | :----: | :-----: |
+     | ![Android](../features/images/ui/pub-android.jpg){:.framed} | | ![iOS](../features/images/ui/pub-ios.jpg){:.framed} |
+   
 - back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:
 
         $ mosquitto_sub -v -t 'owntracks/#'
@@ -94,7 +130,7 @@ Assuming the installer was successful, you can verify if the services are workin
 
         owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
 
-- the output on your system will differ. The first part before the first space, is called the [topic](topics.md) name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](https://owntracks.org/booklet/tech/json) if you wish.
+- the output on your system will differ. The first part before the first space, is called the [topic](topics.md) name. This is a kind of "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant `owntracks`, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (`tst`), latitude and longitude (`lat`, `lon`), and a whole bunch of other values [you can look up](../tech/json.md#_typelocation) if you wish.
 
         {
           "_type": "location",
@@ -116,19 +152,19 @@ Assuming the installer was successful, you can verify if the services are workin
         $ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
         2024-02-02T07:15:49Z	*                 	{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}
 
-- let's use a Web browser to access our site:
+- let's use a Web browser to access our site, where you'll be prompted for _username_ and _password_ as already mentioned:
 
       ![Index](qs//rabbit-10663.png){:.framed}
 
-- map with live positions. The icon on the right of the info panel is what we call a [CARD](../features/card.md)
+- live map. The icon on the right of the info panel is what we call a [CARD](../features/card.md)
 
       ![map with live positions](qs//rabbit-10664.png){:.framed}
 
-- our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
+- _Frontend_ (below) is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
 
       ![main Frontend](qs//rabbit-10665.png){:.framed}
 
-- in Frontend users can select users and devices to see, tracks to view, etc.
+- in _Frontend_ users can select users and devices to see, tracks to view, etc.
 
       ![viewing a track in Frontend](qs//rabbit-10667.png){:.framed}
 
@@ -162,7 +198,7 @@ Assuming the installer was successful, you can verify if the services are workin
           ]
         }
 
-- Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
+- Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is available because we've signed up for an account and configured our system to use [OpenCage](../other/opencage.md). If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
 
 - the data you obtain locally from our Recorder is also available [via its API](https://github.com/owntracks/recorder/blob/master/API.md)
 
