@@ -253,7 +253,7 @@ A transition message is sent, when entering or leaving a previously configured g
 * `lat` Latitude at which the event occured _(iOS,Android/float/meters/optional)_
 * `lon` Longitue at which the event occured _(iOS,Android/float/meters/optional)_
 * `tst` Timestamp at which the event occured _(iOS,Android/integer/epoch/required)_
-* `acc` Accuracy of the geographical coordinates _(iOS,Android/float/meters/required)_
+* `acc` Accuracy of the geographical coordinates _(iOS,Android/int/meters/required)_
 * `tid` Tracker ID of the _(iOS/string/none/optional)_ required in http mode.
 * `event` Event that triggered the transition (iOS,Android/string/required)
 	  - `enter` The device entered the defined geographical region or BLE Beacon range _(iOS)_
