@@ -28,6 +28,8 @@ In MQTT mode the apps publish to:
 - `owntracks/user/device/step` to report step counter
 - `owntracks/user/device/beacon` for beacon ranging
 - `owntracks/user/device/dump` for config dumps
+- `owntracks/user/device/waypoint` when a geofence is created on the device
+- `owntracks/user/device/waypoints` (plural) when exporting a list of configured waypoints from device to backend
 
 In MQTT mode apps subscribe to:
 
