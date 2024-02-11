@@ -10,7 +10,7 @@ nav:
 - Guide:
     - 'What it does': 'guide/whathow.md'
     - 'Quicksetup' : 'guide/quicksetup.md'
-    - 'Clients': 'guide/clients.md'
+#    - 'Clients': 'guide/clients.md'
 #    - 'Scenarios': 'guide/scenarios.md'
     - 'Apps': 'guide/apps.md'
 #    - 'Topics': 'guide/topics.md'

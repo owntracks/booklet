@@ -9,3 +9,8 @@ In MQTT mode, you configure our iOS and Android app to access your broker, and i
 | [![AppStore](images/appstore.png)](https://itunes.apple.com/us/app/mqttitude/id692424691?mt=8) | [![PlayStore](images/playstore.png)](https://play.google.com/store/apps/details?id=org.owntracks.android) |
 
 - [configure the Android app](app/android.md)
+- FIXME: configure the iOS app
+
+## Further clients
+
+As soon as you feel comfortable using OwnTracks you might with to [look at further clients](clients.md) and what they can do for you.
