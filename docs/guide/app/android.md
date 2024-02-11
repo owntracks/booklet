@@ -27,7 +27,7 @@
     | :------------------------------------------------------: |
     | ![Android menu is open](assets-a/sm-a-menu-open.png){:.framed} |   
 
-- Using inline configuration with Quicksetup, access your OwnTracks site and login with your _username_ and _password_. The, click on the _configure it with a click_ link which will download a ready-made configuration and launch it in OwnTracks. Clicking the checkmark on the top right will cause OwnTracks for Android to configure itself accordingly.
+- Using inline configuration with Quicksetup, access your OwnTracks site, the one you set up with Quicksetup, and login with your _username_ and _password_. The, click on the _configure it with a click_ link which will download a ready-made configuration and launch it in OwnTracks. Clicking the checkmark on the top right will cause OwnTracks for Android to configure itself accordingly.
 
     |        |         |
     | :------------------------------------------------------: | :------------------------------------------------------: |
