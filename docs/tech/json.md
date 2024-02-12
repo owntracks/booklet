@@ -327,7 +327,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `pubQos` MQTT QoS level for reported messages _(iOS,Android/integer)_
 * `ranging` Beacon ranging _(iOS/boolean)_
 * `remoteConfiguration` Allow remote configuration by sending a `setConfiguration` cmd message _(Android/boolean)_
-* `servercer` Blank separated list of certificate file names in DER format _(iOS/string)_
 * `sub` subscribe to `subTopic` via MQTT _(iOS,Android/boolean)_
 * `subTopic` A whitespace separated list of MQTT topics to which the app subscribes if `sub` is true (defaults see [topics](#topics))   _(iOS,Android/string)_
 * `subQos` _(iOS,Android/boolean)_
