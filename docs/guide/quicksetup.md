@@ -44,6 +44,13 @@ So, if everything works the way we hope it will, this ought to be a plug-and-pla
 
 You are logged into your VPS either as `root` or as an unprivileged user. Three steps will get the installer going:
 
+0. ensure you are running a supported operating system (e.g. `bookworm`) by running
+
+        $ hostnamectl
+        ...
+        Operating System: Debian GNU/Linux 12 (bookworm)
+        ...
+
 1. obtain our _quicksetup_ installer; we can't do this for you, but it's easy: you clone our repository.
 
         $ sudo apt install -y git    # not required on Ubuntu
