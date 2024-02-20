@@ -33,7 +33,7 @@ There are a few settings a friend can have we've not mentioned yet, so here they
 
 - our _quicksetup_ configuration defaults to configuring the apps (via [inline or .otrc](../features/remoteconfig.md) in MQTT mode. Setting `httpmode` to `True` changes that to HTTP for this particular friend (e.g. `httpmode: True`).
 
-- passwords are auto-generated during bootstrapping and result in different and random 20-character passwords. Should you wish to explicit configure a specific one, do so by setting `password` to a string of your choice (e.g. `password: "supersecr1t"`). Note that this password will be visible in the configuration and in the `*.pass` files.
+-different passwords are auto-generated during bootstrapping and result in distinct (per user) and random 20-character passwords. Should you wish to explicit configure a specific password, do so by setting `password` to a string of your choice (e.g. `password: "supersecr1t"`). Note that this password will be visible in the configuration and in the `*.pass` files. Further note, that all entries for a specific user will re-use the first password (specified or randomly generated) set for said user.
 
 - set up [payload encryption](../features/encrypt.md) for a particular friend by specifying a `secret` which is either the secret itself (e.g. `secret: "bla009"`) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. `secret: "/home/jane/.secret"`).
 
