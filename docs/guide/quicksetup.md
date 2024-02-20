@@ -256,3 +256,4 @@ There's a lot you can do with OwnTracks and its backend, so you might want to re
 - [MQTT broker bridging](bridge.md) is useful for connecting two backends together, yours and a friend's, say.
 - Learn what you can do with OwnTracks data with [some programming](../tech/program.md) and with [Lua hooks](../tech/lua.md).
 - See which [other settings you can use in `configuration.yaml`](../features/qs-config.md).
+- Learn about [extra features of quicksetup](../features/qs-extra.md).
