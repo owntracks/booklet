@@ -23,7 +23,7 @@ Before continuing, make sure you can login to your VPS, either as `root` or as a
 
 - if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.
 
-- also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the `ping` utility from your laptop:
+- also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the `ping` utility from your laptop. The machine might not actually be reachable, but you should see its IP address:
 
         $ ping owntracks.example
         ...
