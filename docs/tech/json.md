@@ -335,9 +335,6 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `tlsClientCrtPassword` Passphrase of the client pkcs12 file _(Android/string)_
 * `url` HTTP endpoint URL to which messages are POSTed _(iOS,Android/string)_
 * `username` Endpoint username _(iOS,Android/string)_
-* `willRetain`
-* `willTopic`
-* `willQos`
 * `ws` use MQTT over Websocket, default `false` _(iOS,Android/boolean)_
 * `waypoints` Array of waypoint messages _(iOS,Android/array)_
 
