@@ -33,7 +33,7 @@
     | :------------------------------------------------------: | :------------------------------------------------------: |
     | ![Android load inline config for quicksetup](assets-a/sm-a-inline-config-1.png){:.framed} | ![Android config is shown](assets-a/sm-a-inline-config-2.png){:.framed} |
 
-- If several Friends are using your server, you might see them on the map. Swiping the "FIXME: what's it called" panel up will reveal details of their location.
+- If several Friends are using your server, you might see them on the map. Sliding the _bottom sheet_ up will reveal details of their location.
 
     |        |         |
     | :------------------------------------------------------: | :------------------------------------------------------: |

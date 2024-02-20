@@ -9,6 +9,10 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
   - we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well. But there are many others: Linode, Server4you, Hetzner, Netcup, ... look around and compare
   - we've tested this setup on Ubuntu 22.04 (_jammy_) and on Debian/Raspbian 12 (_bookworm_); anything older or different might well cause issues, but we'll gladly help if we can
 - a DNS domain, something like `owntracks.example`, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with `owntracks.example`.
+- if your Linux machine is at home, say, you'll need to open a few TCP ports in your router:
+      - port `80` for Let's Encrypt enrollment and renewals only
+      - port `443 `(optional) if you wish to permit authenticated access to your OwnTracks Web interface from "outside"
+      - port `8883` the MQTT port
 
 Before continuing, make sure you can login to your VPS, either as `root` or as an unprivileged user, but you will need to escalate privileges using `sudo`.
 
@@ -44,25 +48,25 @@ So, if everything works the way we hope it will, this ought to be a plug-and-pla
 
 You are logged into your VPS either as `root` or as an unprivileged user. Three steps will get the installer going:
 
-0. ensure you are running a supported operating system (e.g. `bookworm`) by running
+1. ensure you are running a supported operating system (e.g. `bookworm`) by running
 
         $ hostnamectl
         ...
         Operating System: Debian GNU/Linux 12 (bookworm)
         ...
 
-1. obtain our _quicksetup_ installer; we can't do this for you, but it's easy: you clone our repository.
+2. obtain our _quicksetup_ installer; we can't do this for you, but it's easy: you clone our repository.
 
         $ sudo apt install -y git    # not required on Ubuntu
         $ git clone --depth=1 https://github.com/owntracks/quicksetup
         $ cd quicksetup
 
-2. you now have all the files on your system, so feel free to look around. If you just want to continue, make a copy of the configuration and edit it with an editor. The file's content ought to be self-explanatory, but [do ask us](https://github.com/owntracks/quicksetup/issues) if it isn't.
+3. you now have all the files on your system, so feel free to look around. If you just want to continue, make a copy of the configuration and edit it with an editor. The file's content ought to be self-explanatory, but [do ask us](https://github.com/owntracks/quicksetup/issues) if it isn't.
 
         $ cp configuration.yaml.example configuration.yaml
         $ nano configuration.yaml
 
-3. the configuration file requires the following settings:
+4. the configuration file requires the following settings:
 
       - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `owntracks.example`.
       - `email` is the email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
@@ -76,7 +80,7 @@ You are logged into your VPS either as `root` or as an unprivileged user. Three 
 
         each line describes a _friend_, and you should be on the first line (we'll divulge later why that is). There are three fields on each line, all three are strings which may be enclosed in quotes. The _tid_ is displayed by default on the phone and must not be longer than two characters. The _username_ (with which you also login) and the _devicename_ form the _topic_ to which your devices will publish location data.
 
-4. once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
+5. once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services. Did you remember to open the TCP ports in your router?
 
         $ sudo ./bootstrap.sh
 
