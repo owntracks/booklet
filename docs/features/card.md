@@ -16,7 +16,7 @@ We developed a new feature we call a _card_ which you can use when in both _MQTT
 
 ### Creating a card
 
-Cards can be created with shell scripts or with a webapp.
+Cards can be created with shell scripts, with a webapp, or on iOS with the OwnTracks app itself.
 
 #### Shell Script
 We provide several utilities for creating a _card_ in the [Recorder's repository](https://github.com/owntracks/recorder/tree/master/contrib/faces):
@@ -44,6 +44,10 @@ The source code can be found on [Github][oc-code].
 
 [oc-demo]: https://avanc.github.io/owntracks-cards/
 [oc-code]: https://github.com/avanc/owntracks-cards
+
+#### iOS OwnTracks
+
+on iOS and iPadOS the _Create Card_ option in _Settings_ permits creating a card directly on device. The app permits entering a name for the card as well as use the on-device camera to take a photograph or select from the photo library to use for the face element of the card. Hitting _Save_ in the app then publishes the card to the current user's topic.
 
 ### Generating the face image
 
