@@ -16,7 +16,7 @@ We developed a new feature we call a _card_ which you can use when in both _MQTT
 
 ### Creating a card
 
-Cards can be created with shell scripts, with a webapp, or on iOS with the OwnTracks app itself.
+Cards can be created with shell scripts, say, or on iOS with the OwnTracks app itself.
 
 #### Shell Script
 We provide several utilities for creating a _card_ in the [Recorder's repository](https://github.com/owntracks/recorder/tree/master/contrib/faces):
@@ -30,20 +30,10 @@ These utilities create a _card_ on standard output, and you typically then publi
 
 ```
 ./github2card.py defunkt > my-card.json
-mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
+mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r -q 2
 ```
 
-Note the topic branch ending in `info` and note the use of the retain flag (`-r`).
-
-#### Webapp
-
-[This is a webapp][oc-demo] to create and edit [OwnTracks cards](../features/card.md).
-It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
-Just head over to the [demo][oc-demo] and create a card. Configure your MQTT broker by clicking the connection state.
-The source code can be found on [Github][oc-code].
-
-[oc-demo]: https://avanc.github.io/owntracks-cards/
-[oc-code]: https://github.com/avanc/owntracks-cards
+Note the topic branch ending in `info` and note the use of the retain (`-r`) and qos (`-q`) flags.
 
 #### iOS OwnTracks
 
