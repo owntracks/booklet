@@ -61,3 +61,5 @@ theme:
 extra_css:
     - extra.css
 markdown_extensions: [abbr,attr_list,def_list,footnotes,tables,admonition,toc]
+exclude_docs: |
+   .*.swp
