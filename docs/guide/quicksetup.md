@@ -86,8 +86,6 @@ You are logged into your VPS either as `root` or as an unprivileged user. Three 
 
 This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by _quicksetup_ to begin configuring all the services as described above.
 
-        Shall we publish a test location message when done? [y]: y
-
         PLAY [OwnTracks Quick Setup] ********************************************************
 
         TASK [Gathering Facts] **************************************************************
@@ -113,8 +111,6 @@ This last step will install a program which will begin the actual installation. 
 
         TASK [system: install required packages]
         ...
-
-Go ahead and answer the first question with `y` in order to have a demo location published so you see something on our maps before you connect your phone.
 
 If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt. Some of the steps will take longer than others, for instance we install several software packages which takes a bit.
 
