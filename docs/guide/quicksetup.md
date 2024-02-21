@@ -222,7 +222,13 @@ Assuming the installer was successful, you can verify if the services are workin
 
 There's quite a bit going on in the background, so we want to give you some tips on how to go about debugging or finding out what's actually going on.
 
-- The MQTT broker logs information on incoming requests.
+- Verify the required services are running:
+
+        $ systemctl status ot-recorder
+        $ systemctl status mosquitto
+        $ systemctl status nginx
+
+- The MQTT broker logs information on incoming requests:
 
         $ tail -f /var/log/mosquitto/mosquitto.log
 
@@ -234,6 +240,10 @@ There's quite a bit going on in the background, so we want to give you some tips
 
         $ journalctl -u ot-recorder -f
         $ tail -f /var/log/syslog | grep ot-recorder
+
+- When `jane` has successfully published a location from her device (here: `nokia`), verify it's actually arrived at your recorder:
+
+        $ tail /var/spool/owntracks/recorder/store/jane/nokia/YYYY-MM.rec
 
 If you need more help, we'll gladly help you if we can. Even if all you've found is a glitch in our documentation, we consider that a bug [so please report it](https://github.com/owntracks/quicksetup/issues). You might want to keep a copy of the file `sys.info` handy which should have been created by bootstrapping process in the directory from which you launched it:
 
