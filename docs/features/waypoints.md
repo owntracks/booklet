@@ -18,7 +18,8 @@ So upon entering or leaving a region, the device publishes a transition event wh
 
 For example, this JSON might be published when entering a region:
 
-    {
+```json
+{
       "_type": "transition",
       "desc": "My favorite coffee shop (Delaville)",
       "event": "enter",
@@ -28,7 +29,8 @@ For example, this JSON might be published when entering a region:
       "tid": "j1",
       "tst": 1707057574,
       "wtst": 1610104395
-    }
+}
+```
 
 If you set up a region (or waypoint or geo-fence, you get the drift), the app publishes that region (with `retain=0` irrespective of your general preference) to the base topic with `/waypoint` tacked onto the topic (e.g. `owntracks/<user>/<device>/waypoint`) with the payload for `_type=waypoint` as specified in the [JSON page](../tech/json.md). Entering or leaving a waypoint will be published as a `transition` message and will contain a `wtst` (for historical purposes) with the timestamp of when the region was originally defined. (Note that that branch is `/waypoint` -- singular.)
 
@@ -83,7 +85,44 @@ On Android, regions can be configured on a separate activity. Coordinates for th
 
 Instead of configuring multiple regions on the device, they can be loaded [remotely](remoteconfig.md) with the `setWaypoints` cmd message if remote configuration is enabled on the device. 
 
-You can use this to import individual regions or groups of pre-configured regions which are merged into the existing regions definition on the device. Recall, however, that the `rid` element is like a _key_ which uniquely identifies each region / waypoint.
+You can use this to import individual regions or groups of pre-configured regions which are merged into the existing regions definition on the device. Recall, however, that the `rid` element is like a _key_ which uniquely identifies each region / waypoint; leave it unchanged when modifying and resubmitting a waypoint.
+
+```json
+{
+    "_type": "cmd",
+    "action": "setWaypoints",
+    "waypoints": {
+        "_type": "waypoints",
+        "waypoints": [
+            {
+                "_type": "waypoint",
+                "tst": 1708625557,
+                "rid": "my-region-id-1",
+                "desc": "home",
+                "rad": 100,
+                "lat": 30.0,
+                "lon": 40.0
+            },
+            {
+                "_type": "waypoint",
+                "tst": 1708625558,
+                "rid": "my-region-id-2",
+                "desc": "work",
+                "rad": 100,
+                "lat": 30.1,
+                "lon": 40.1
+            }
+        ]
+    }
+}
+```
+
+Assuming the above is in a file named `wp.json`, a user can publish that to themselves (or an authorized user to any other) as follows (note the use of `jq -c` which ensures a single line of JSON and the benefit that `jq` verifies for valid JSON):
+
+```console
+$ jq -c . wp.json |
+      mosquitto_pub -u username -P 'password' -t owntracks/jane/nokia/cmd -q 1 -l
+```
 
 ### Deleting regions
 
