@@ -37,6 +37,23 @@ There are a few settings a friend can have we've not mentioned yet, so here they
 
 - set up [payload encryption](../features/encrypt.md) for a particular friend by specifying a `secret` which is either the secret itself (e.g. `secret: "bla009"`) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. `secret: "/home/jane/.secret"`).
 
+## Friend-specific MQTT ACLs
+
+During _bootstrapping_, Quicksetup configures a default set of access control lists (ACL) for the Mosquitto broker which basically allow all friends to "see" eachother, receive their enter/leave events, and see their [cards](card.md). This will likely be the typical mode of operation you wish your OwnTracks Mosquitto broker to operate in.
+
+There might be situations, however, in which you wish to give a specific friend a particular ACL, maybe to restrict, say, whom that friend might see (e.g. your friend should see your location but not that of your spouse).
+
+To accomplish this, create a directory `acl/` in the directory in which the `bootstrap.sh` program is located and add files named `<username>.acl` to that directory. For example, the user Anouk should have the following ACL:
+
+      $ cat acl/anouk.acl
+      user anouk
+      topic readwrite owntracks/anouk/#
+      topic read owntracks/jane/nokia
+      topic read owntracks/jane/+/event
+      topic read owntracks/jane/+/info
+
+Re-running `./bootstrap.sh` will populate this specific ACL in the Mosquitto ACL file (`/etc/mosquitto/mosquitto.acl`) whereas for all other friends a built-in default will be used.
+
 ## Global
 
 - with `lua_script` you configure the path to a [Recorder Lua script](../tech/lua.md)  which is written into `/etc/defaults/ot-recorder` for the next Recorder start. Use this only after testing your Lua script as the Recorder will fail to start on error.
