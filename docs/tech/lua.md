@@ -2,9 +2,9 @@
 
 If Recorder is compiled with Lua support (which we do by default), a Lua script you provide is launched at startup. Lua is _a powerful, fast, lightweight, embeddable scripting language_. You can use this to process location publishes in any way you desire: your imagination (and Lua-scripting knowhow) set the limits. Some examples:
 
-* insert publishes into a database of your choice
+* insert received publishes into a database of your choice
 * switch on the coffee machine when your OwnTracks device reports you're entering home (but see also [mqttwarn](http://jpmens.net/2014/02/17/introducing-mqttwarn-a-pluggable-mqtt-notifier/))
-* write a file with data in a format of your choice (see `etc/example.lua`)
+* write a file with data in a format of your choice (see [etc/example.lua](https://github.com/owntracks/recorder/blob/master/etc/example.lua))
 
 Run the Recorder with the path to your Lua script specified in its `--lua-script` option (there is no default). If the script cannot be loaded (e.g. because it cannot be read or contains syntax errors), the Recorder aborts with a diagnostic.
 
@@ -25,7 +25,6 @@ This is invoked at start of Recorder. If the function returns a non-zero value, 
 ## `otr_exit`
 
 This is invoked when the Recorder stops, which it doesn't really do unless you CTRL-C it or send it a SIGTERM signal.
-
 
 ## `otr_hook`
 
@@ -64,5 +63,35 @@ the file `/tmp/lua.out` would contain
 
         written by OwnTracks Recorder version 0.3.0
         It is 17:13:33 in the year 2015 owntracks/jane/phone lat=48.858339 Avenue Anatole France, 75007 Paris, France
+
+## Republishing HTTP posts
+
+OwnTracks location (and other type) publishes submitted via HTTP are not automatically republished to MQTT. Should you wish to do this, Lua hooks can help accomplish this. The following example illustrates how to do so.
+
+      -- requires: 
+      --   a) Compile recorder with -DLUA and configure
+      --   b) OTR_LUASCRIPT = ".../repub.lua"
+      -- also requires Lua JSON from http://regex.info/blog/lua/json
+      
+      JSON = (loadfile "/etc/ot-recorder/JSON.lua")()
+      
+      function otr_init()
+      end
+      
+      function otr_exit()
+      end
+      
+      function otr_hook(topic, _type, data)
+          otr.log("DEBUG_PUB:" .. topic .. " " .. JSON:encode(data))
+          if(data['_http'] == true) then
+              if(data['_repub'] == true) then
+                 return
+              end
+              data['_repub'] = true
+              local payload = JSON:encode(data)
+              otr.publish(topic, payload, 1, 1)
+          end
+      end
+      
 
 There's [more information on this](https://github.com/owntracks/recorder/blob/master/doc/HOOKS.md) with examples, including creating a per-JSON-element hook, if you're interested.
