@@ -39,3 +39,4 @@
     | :------------------------------------------------------: | :------------------------------------------------------: |
     | ![Android friend on the map](assets-a/sm-a-friend-on-map-ck.png){:.framed}  | ![Android details of the friend](assets-a/sm-a-friend-on-map-ck-details.png){:.framed} |
 
+Here are [some specifics on our Android app](../../features/android.md)
