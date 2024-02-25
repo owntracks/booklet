@@ -56,7 +56,7 @@ Re-running `./bootstrap.sh` will populate this specific ACL in the Mosquitto ACL
 
 ## Friend-specific Waypoints (Regions)
 
-In order for, say, a family to share initial geofence configuration (e.g. `"Home"`, `"School"`, etc.) create a directory called `waypoints/` relative to `./bootstrap.sh` and populate files `<username>.json` which contain an array of [waypoints](waypoints.md) you wish to add to a particular user's initial configuration. [OTRW](beacons.md) files are likewise accepted: the list of waypoints is read from `<username>.otrw` and merged with all the others.
+In order for, say, a family to share initial geofence configuration (e.g. `"Home"`, `"School"`, etc.) create a directory called `waypoints/` relative to `./bootstrap.sh` and populate files `<username>.json` which contain an array of [waypoints](waypoints.md) you wish to add to a particular user's initial configuration. [OTRW](beacons.md) files and YAML files (`<username>.yaml`) are likewise accepted: the list of waypoints is read from `<username>.otrw` and merged with all the others.
 
 For instance, we create a file `waypoints/anouk.json` with the following content:
 
@@ -72,7 +72,14 @@ For instance, we create a file `waypoints/anouk.json` with the following content
         }
       ]
 
-These files must contain an array of valid waypoints, and must be valid JSON. Additionally, OTRW files must be of `_type: waypoints` and have a key `waypoints`.
+These files must contain an array of valid waypoints, and must be valid JSON. Additionally, OTRW files must be of `_type: waypoints` and have a key `waypoints`. As a convenience, YAML files (which may be easier to edit) containing an array of waypoints are also supported:
+
+      - desc: "Delaville Café"
+        rid: delaville-cafe
+        tst: 1708879121
+        rad: 70
+        lat: 48.870737
+        lon: 2.3491583
 
 During bootstrapping, the users' [inline or .otrc](remoteconfig.md) configuration is adjusted accordingly.
 
