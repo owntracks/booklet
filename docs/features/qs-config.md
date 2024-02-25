@@ -54,6 +54,28 @@ To accomplish this, create a directory `acl/` in the directory in which the `boo
 
 Re-running `./bootstrap.sh` will populate this specific ACL in the Mosquitto ACL file (`/etc/mosquitto/mosquitto.acl`) whereas for all other friends a built-in default will be used.
 
+## Friend-specific Waypoints (Regions)
+
+In order for, say, a family to share initial geofence configuration (e.g. `"Home"`, `"School"`, etc.) create a directory called `waypoints/` relative to `./bootstrap.sh` and populate files `<username>.json` which contain an array of [waypoints](waypoints.md) you wish to add to a particular user's initial configuration. [OTRW](beacons.md) files are likewise accepted: the list of waypoints is read from `<username>.otrw` and merged with all the others.
+
+For instance, we create a file `waypoints/anouk.json` with the following content:
+
+      [
+        {
+          "_type": "waypoint",
+          "tst": 1361636517,
+          "rid": "blauw-utrecht-nl",
+          "desc": "Restaurant Blauw",
+          "rad": 50,
+          "lat": 52.08782,
+          "lon": 5.119438
+        }
+      ]
+
+These files must contain an array of valid waypoints, and must be valid JSON. Additionally, OTRW files must be of `_type: waypoints` and have a key `waypoints`.
+
+During bootstrapping, the users' [inline or .otrc](remoteconfig.md) configuration is adjusted accordingly.
+
 ## Global
 
 - with `lua_script` you configure the path to a [Recorder Lua script](../tech/lua.md)  which is written into `/etc/defaults/ot-recorder` for the next Recorder start. Use this only after testing your Lua script as the Recorder will fail to start on error.
