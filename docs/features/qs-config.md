@@ -60,7 +60,7 @@ In order for, say, a family to share initial geofence configuration (e.g. `"Home
 
 |  iOS   | Android |
 | :----: | :-----: |
-| ![Waypointslist](../guide/app/assets-i/sm-ios-waypoints.png) |  |
+| ![Waypointslist](../guide/app/assets-i/sm-ios-waypoints.png) |  ![one waypoint](../guide/app/assets-a/sm-a-waypoint-laduree.png) |
 
 For instance, we create a file `waypoints/anouk.json` with the following content:
 
