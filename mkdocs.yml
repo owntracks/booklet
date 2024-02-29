@@ -60,6 +60,14 @@ theme:
     highlightjs: False
 extra_css:
     - extra.css
-markdown_extensions: [abbr,attr_list,def_list,footnotes,tables,admonition,toc]
+markdown_extensions:
+   - abbr
+   - attr_list
+   - def_list
+   - footnotes
+   - tables
+   - admonition
+   - toc:
+      permalink: "#"
 exclude_docs: |
    .*.swp
