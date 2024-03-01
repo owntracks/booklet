@@ -58,9 +58,9 @@ Re-running `./bootstrap.sh` will populate this specific ACL in the Mosquitto ACL
 
 In order for, say, a family to share initial geofence configuration (e.g. `"Home"`, `"School"`, etc.) create a directory called `waypoints/` relative to `./bootstrap.sh` and populate files `<username>.json` which contain an array of [waypoints](waypoints.md) you wish to add to a particular user's initial configuration. [OTRW](beacons.md) files and YAML files (`<username>.yaml`) are likewise accepted: the list of waypoints is read from `<username>.otrw` and merged with all the others.
 
-|  iOS   | Android |
-| :----: | :-----: |
-| ![Waypointslist](../guide/app/assets-i/sm-ios-waypoints.png) |  ![one waypoint](../guide/app/assets-a/sm-a-waypoint-laduree.png) |
+|  Android   |  iOS    |
+| :--------: | :-----: |
+| ![one waypoint](../guide/app/assets-a/sm-a-waypoint-laduree.png) | ![Waypointslist](../guide/app/assets-i/sm-ios-waypoints.png){:.framed} |
 
 For instance, we create a file `waypoints/anouk.json` with the following content:
 
