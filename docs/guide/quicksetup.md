@@ -68,7 +68,7 @@ You are logged into your VPS either as `root` or as an unprivileged user. Three 
 
 4. the configuration file requires the following settings:
 
-      - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `owntracks.example`.
+      - `dns_domain` is the DNS name of your system as reacheable from the Internet. You will set this to, say, `owntracks.example`. Make sure you replace this value by the correct name for your installation.
       - `email` is the email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.
       - we strongly recommend you sign up for the free reverse geo service at [OpenCage](../other/opencage.md). It's free of charge, and they provide you with an API key you add to `opencage_apikey`. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it. It's so much nicer when you can see the addresses of locations you've visited in our maps.
       - `friends` is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.
