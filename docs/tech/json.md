@@ -317,6 +317,8 @@ The device configuration can be imported and exported as JSON. The exported conf
     - `5` MQTT 5 (iOS only)
 * `notificationLocation` Show last reported location in ongoing notification _(Android/boolean)_
 * `opencageApiKey` API key for alternate Geocoding provider. See [OpenCage](../other/opencage.md) for details. _(Android/string)_
+* `osmTemplate` URL template for alternate tile provider. Defauts to `https://tile.openstreetmap.org/{z}/{x}/{y}.png`. _(iOS/string)_
+* `osmCopyright` Attribution text shown with OSM map. Defauts to `(c) OpenStreetMap contributors`. _(iOS/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
 * `password` Endpoint password _(iOS,Android/string)_
 * `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
