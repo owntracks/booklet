@@ -7,7 +7,7 @@ To get started you'll need roughly an hour of time and a bit of love of a Linux 
 - a small dedicated Linux-capable device (e.g. a Raspberry Pi or equivalent) or a dedicated Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.
   - some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)
   - we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well. But there are many others: Linode, Server4you, Hetzner, Netcup, ... look around and compare
-  - we've tested this setup on Ubuntu 22.04 (_jammy_) and on Debian/Raspbian 12 (_bookworm_); anything older or different might well cause issues, but we'll gladly help if we can
+  - we've tested this setup on Ubuntu 22.04 (_jammy_), Ubuntu 24.04 (_noble_) and on Debian/Raspbian 12 (_bookworm_); anything older or different might well cause issues, but we'll gladly help if we can
 - a DNS domain, something like `owntracks.example`, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with `owntracks.example`.
 - if your Linux machine is at home, say, you'll need to open a few TCP ports in your router:
       - port `80` for Let's Encrypt enrollment and renewals only
