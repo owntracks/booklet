@@ -122,7 +122,7 @@ Assuming the installer was successful, you can verify if the services are workin
 
 - install OwnTracks on your [Android or iOS device](apps.md) and configure it, either by
       - sending yourself one of the files from `/usr/local/owntracks/userdata/*.otrc`
-      - visiting `https://owntracks.example/owntracks/` and logging with your _username_ (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/<username>.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
+      - visiting `https://owntracks.example/owntracks/` (or `https://owntracks.example`) and logging with your _username_ (from the friends list in `configuration.yaml`) and the corresponding password from `/usr/local/owntracks/userdata/<username>.pass`. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.
 - in the app on the smartphone, click on the publish _up arrow_
 
      | Android                                         |        | iOS                              |
