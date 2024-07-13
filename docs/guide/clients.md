@@ -100,3 +100,4 @@ which are useful when using MQTT in general or OwnTracks in particular.
 * [Prometheus OwnTracks Exporter](https://github.com/linusg/prometheus-owntracks-exporter)
 * [hauk-snitch](https://github.com/tuffnerdstuff/hauk-snitch) bridges OwnTracks and [Hauk](https://github.com/bilde2910/Hauk) and makes it easy to share your current live location with other people for a given period of time. Just send them a link, all they need is a browser.
 * [mqottrace](https://sourceforge.net/projects/mqottrace/files/), written by Michael Staats is a Perl program which collects OwnTracks locations and stores them in an SQLite3 database; it also includes a tool to convert this data to GPX format.
+* There's a project which [uses our OwnTracks app](https://github.com/owntracks/booklet/issues/84) with which they feed their own backend with data.
