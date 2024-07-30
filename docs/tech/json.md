@@ -97,36 +97,6 @@ This location object describes the location of the device that reported it.
 * Elements marked with _extended data_ are only added if `extendedData=true` is configured
 
 
-### Greenwich
-
-The OwnTracks edition of the [Choral Greenwich](http://www.choral.it/greenwich&menu2=795) device reports the following additional elements in a `_type=location` message:
-
-```json
-{
-    "_type": "location",
-    elements
-}
-```
-
-* `alt` Altitude measured above sea level _(integer/meters/optional)_
-* `batt` Device battery level _(integer/percent/optional)_
-* `cog` Course over ground _(integer/degree/optional)_
-* `dist` Distance travelled since the last location report _(integer/meters/optional)_
-* `trip` Distance travelled since the last reboot _(integer/meters/optional)_
-* `vel` velocity _(integer/kmh/optional)_
-* `t` trigger for the location report _(string/optional)_
-    - `f` First publish after reboot
-    - `m` Manually requested locations (e.g. by publishing to `/cmd`)
-    - `t` Time for location published because device is moving.
-    - `T` Time for location published because of time passed while device is stationary (`maxInterval`)
-    - `k` Transitioning from _move_ to _stationary_ (park)
-    - `v` Transitioning from _stationary_ to _move_ (mo-v-e)
-    - `l` Last known position when device lost GPS fix
-    - `L` Last known position before gracefull shutdown
-
-#### Notes
-* The device can be configured to produce or not produce fields marked as _optional_
-
 ### Queclink
 
 OwnTracks works with a selection of trackers by [Queclink](http://www.queclink.com), for which the protocol conversion is done via [qtripp](https://github.com/jpmens/qtripp).
