@@ -348,6 +348,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 {"_type":"cmd", "action":"reportLocation"}
 {"_type":"cmd", "action":"reportSteps"}
 {"_type":"cmd", "action":"dump"}
+{"_type":"cmd", "action":"status"}
 {"_type":"cmd", "action":"waypoints"}
 {"_type":"cmd", "action":"clearWaypoints"}
 {"_type":"cmd", "action":"setConfiguration", "configuration":{"_type":"configuration",...}
@@ -360,6 +361,7 @@ These messages are published when beacon ranging (iOS only) is enabled. Be advis
 * `action` action to be performed by the device _(iOS,Android/string)_
     * `action` Inserts an additional _Featured Content_ tab in the UI _(iOS)_
     * `dump` Triggers the publish of a `configuration` message _(iOS)_
+    * `status` Triggers the publish of a `status` message to `../status` _(iOS)_
     * `reportSteps` Triggers the report of a `steps` messages_(iOS)_
         - `from` Timestamp _(iOS/epoch/optional)_
         - `to` Timestamp _(iOS/epoch/optional)_
