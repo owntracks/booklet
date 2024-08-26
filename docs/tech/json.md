@@ -256,6 +256,8 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `clientId` client id to use for MQTT connect. Defaults to "*user* *deviceId*" _(iOS,Android/string)_
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
+* `connectionTimeoutSeconds` (default 30) TCP timeout for establishing a connection to the MQTT / HTTP broker, _(Android/int)_
+* `debugLog` (default false) whether or not debug logs should be shown in the log viewer / exporter activity _(Android/bool)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `downgrade` battery level below which to downgrade monitoring from move mode _(iOS/integer/percent/optional)_
 * `encryptionKey` the secret key used for [payload encryption](../features/encrypt.md) _(_iOS_,_Android/string)_
@@ -292,6 +294,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `osmCopyright` Attribution text shown with OSM map. Defaults to `(c) OpenStreetMap contributors`. _(iOS/string)_
 * `passphrase` Passphrase of the client pkcs12 file _(iOS/string)_
 * `password` Endpoint password _(iOS,Android/string)_
+* `pegLocatorFastestIntervalToInterval` (default false) - if true, requests that that the device provide locations no faster than the specified interval. Location providers often use the requested interval as a "at least every" setting, and may return locations more frequencly. Some people wanted the behaviour where it also meant "no more frequently than", so this setting lets them specify this _(Android/bool)_
 * `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
 * `port` MQTT endpoint port _(iOS,Android/integer)_
 * `positions` Number of locations to keep and display _(iOS/integer)_
