@@ -260,7 +260,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `debugLog` (default false) whether or not debug logs should be shown in the log viewer / exporter activity _(Android/bool)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `downgrade` battery level below which to downgrade monitoring from move mode _(iOS/integer/percent/optional)_
-* `encryptionKey` the secret key used for [payload encryption](../features/encrypt.md) _(_iOS_,_Android/string)_
+* `encryptionKey` the secret key used for [payload encryption](../features/encrypt.md) _(iOS_,_Android/string)_
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
 * `httpHeaders` extra HTTP headers:field names and field content are separated by a colon (:), multiple fields by a backslash-n (\n) \<field-name\>:\<field-content\>\n\<field-name\>:\<field-content\>... _(iOS only/string)_
@@ -269,7 +269,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
 * `locatorDisplacement` maximum distance between location source updates _(iOS,Android/integer/meters)_
 * `locatorInterval` maximum interval between location source updates _(iOS,Android/integer/seconds)_
-* `locatorPriority` source/power setting for location updates _(Android/integer/)_
+* `locatorPriority` source/power setting for location updates _(Android/integer)_
     - `0` NO_POWER / best accuracy possible with zero additional power consumption _(Android)_
     - `1` LOW_POWER / city level accuracy _(Android)_
     - `2` BALANCED_POWER / block level accuracy based on Wifi/Cell _(Android)_
