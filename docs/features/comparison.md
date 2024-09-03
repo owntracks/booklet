@@ -30,7 +30,6 @@ Our OwnTracks apps try to be on par in terms of features, but there are differen
 | [Payload encryption](encrypt.md)          |   Y    |    Y    |
 | Submit [Points of Interest](poi.md) (POI) |   Y    |         |
 | On-device [Tour](tours.md) configuration  |   Y    |         |
-| Popup an [info tab](featured.md) on command  |   Y    |         |
 | [Debugging](debug.md) with on-device logs |   Y    |    Y    |
 | Supports POSTing [to Traccar](traccar.md) |   Y    |    Y    |
 | Configurable settings                     |   Y    |   Y     |
