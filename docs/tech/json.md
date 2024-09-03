@@ -62,7 +62,7 @@ This location object describes the location of the device that reported it.
 * `t` trigger for the location report _(iOS,Android/string/optional)_
     * `p` ping issued randomly by background task _(iOS,Android)_
     * `c` circular region enter/leave event _(iOS,Android)_
-    * `C` circular region enter/leave event for `+follow` region _(iOS)_
+    * `C` circular region enter/leave event for [+follow regions](https://owntracks.org/booklet/features/ios/#region-monitoring-with-follow) _(iOS)_
     * `b` beacon region enter/leave event _(iOS)_
     * `r` response to a reportLocation cmd message _(iOS,Android)_
     * `u` manual publish requested by the user _(iOS,Android)_
