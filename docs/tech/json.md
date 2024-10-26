@@ -96,6 +96,7 @@ This location object describes the location of the device that reported it.
 * The `acc`, `alt`, `cog`, `vac`, `vel` elements are only added if they are not zero
 * Some Android devices always return 0 for `alt` or `vel`
 * Elements marked with _extended data_ are only added if `extendedData=true` is configured
+* Android devices using a VPN might not report either of SSID/BSSID which might be expected behaviour. [#1888](https://github.com/owntracks/android/issues/1888)
 
 
 ### Queclink
