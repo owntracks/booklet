@@ -10,7 +10,7 @@ minor identifier numbers of the beacons as a decimal number ranging from 1 to 65
 Setting major or minor number to zero (`0`) means no major or minor number is specified.
 Note that you should probably not use major or minor number `0`, because the meaning of 0 is "any".
 
-If the UUID is valid, iBeacon monitoring will start. A valid UUID must be in the following format for Owntracks to recognize it as an iBeacon: `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`.
+If the UUID is valid, iBeacon monitoring will start. A valid UUID _**must**_ be in the following format for Owntracks to recognize it as an iBeacon: `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`.
 
 Examples:
 
