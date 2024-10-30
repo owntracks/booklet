@@ -78,7 +78,7 @@ You are logged into your VPS either as `root` or as an unprivileged user. Three 
                 - { tid: ip, username: jip,    devicename: iPad }
                 - { tid: j2, username: jjolie, devicename: Phone }
 
-        each line describes a _friend_, and you should be on the first line (we'll divulge later why that is). There are three fields on each line, all three are strings which may be enclosed in quotes. The _tid_ is displayed by default on the phone and must not be longer than two characters. The _username_ (with which you also login) and the _devicename_ form the _topic_ to which your devices will publish location data.
+        each line describes a _friend_, and you should be on the first line (we'll divulge later why that is). There are three fields on each line, all three are strings which may be enclosed in quotes. The _tid_ is displayed by default on the phone and must not be longer than two characters. The _username_ (with which you also login) and the _devicename_ form the _topic_ to which your devices will publish location data; these two values must be written in lowercase.
 
 5. once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services. Did you remember to open the TCP ports in your router?
 
