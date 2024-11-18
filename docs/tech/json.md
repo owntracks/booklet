@@ -197,8 +197,8 @@ Waypoints / regions denote specific geographical regions that you want to keep t
 }
 ```
 * `desc` Name of the waypoint that is included in the sent transition message, copied into the `location` message `inregions` array when a current position is within a region. _(iOS,Android,string/required)_
-* `lat` Latitude  _(iOS,Android/float/meters/optional)_
-* `lon` Longitude _(iOS,Android/float/meters/optional)_
+* `lat` Latitude  _(iOS,Android/float/degree/optional)_
+* `lon` Longitude _(iOS,Android/float/degree/optional)_
 * `rad` Radius around the latitude and longitude coordinates _(iOS,Android/integer/meters/optional)_
 * `tst` Timestamp of creation of region, copied into the `wtst` element of the transition message _(iOS,Android/integer/epoch/required)_
 * `uuid` UUID of the BLE Beacon _(iOS/string/optional)_
@@ -225,8 +225,8 @@ A transition message is sent, when entering or leaving a previously configured g
 }
 ```
 * `wtst` Timestamp of waypoint creation _(iOS,Android/integer/epoch/required)_
-* `lat` Latitude at which the event occured _(iOS,Android/float/meters/optional)_
-* `lon` Longitue at which the event occured _(iOS,Android/float/meters/optional)_
+* `lat` Latitude at which the event occured _(iOS,Android/float/degree/optional)_
+* `lon` Longitue at which the event occured _(iOS,Android/float/degree/optional)_
 * `tst` Timestamp at which the event occured _(iOS,Android/integer/epoch/required)_
 * `acc` Accuracy of the geographical coordinates _(iOS,Android/int/meters/required)_
 * `tid` Tracker ID of the _(iOS/string/none/optional)_ required in http mode.
