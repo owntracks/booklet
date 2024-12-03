@@ -12,6 +12,7 @@ OwnTracks uses [JSON](http://www.json.org) format for its message payloads. The 
 | `location`                                |   Y    |   Y     |
 | `lwt`                                     |   Y    |   Y     |
 | `request`                                 |   Y    |   N     |
+| `status`                                  |   Y    |   N     |
 | `steps`                                   |   Y    |   N     |
 | `transition`                              |   Y    |   Y     |
 | `waypoint`                                |   Y    |   Y     |
@@ -28,6 +29,7 @@ In MQTT mode the apps publish to:
 - `owntracks/user/device/step` to report step counter
 - `owntracks/user/device/beacon` for beacon ranging
 - `owntracks/user/device/dump` for config dumps
+- `owntracks/user/device/status` for status messages
 - `owntracks/user/device/waypoint` when a geofence is created on the device
 - `owntracks/user/device/waypoints` (plural) when exporting a list of configured waypoints from device to backend
 
@@ -319,6 +321,39 @@ The device configuration can be imported and exported as JSON. The exported conf
 #### Notes
 * When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a `mode` element, the mode is changed first and all remaining elements are imported for the new mode.
 * In MQTT mode the server will consider the client as dead if it the keepalive interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if `keepalive` was 60). Afterwards, an `lwt` message will be send.
+
+## `_type=status`
+The device status contains information about the settings on the device which are not configured in the app.
+
+```json
+{
+    "_type": "status",
+    "iOS": <iOS specific elements>,
+    "android": <android specific elements>
+    <other elements>
+}
+```
+* iOS specific elements\
+** `altimeterAuthorizationStatus` used for steps _(iOS/string)_ as defined in [CMAuthorizationStatus](https://developer.apple.com/documentation/coremotion/cmauthorizationstatus?language=objc)
+** `altimeterIsRelativeAltitudeAvailable` used for steps _(iOS/boolean)_ as defined in [isRelativeAltitudeAvailable](https://developer.apple.com/documentation/coremotion/cmaltimeter/isrelativealtitudeavailable()?language=objc)
+** `backgroundRefreshStatus` _(iOS/boolean)_ as defined in [UIBackgroundRefreshStatusAvailable](https://developer.apple.com/documentation/uikit/uibackgroundrefreshstatus/uibackgroundrefreshstatusavailable/)
+** `deviceIdentifierForVendor` used for default DeviceID _(iOS/string)_ as defined in [identifierForVendor](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor?language=objc)
+** `deviceModel` _(iOS/string)_ as defined in [model](https://developer.apple.com/documentation/uikit/uidevice/1620044-model?language=objc)
+** `deviceSystemName` _(iOS/string)_ as defined in [systemName](https://developer.apple.com/documentation/uikit/uidevice/1620054-systemname?language=objc)
+** `deviceSystemVersion` _(iOS/string)_ as defined in [systemVersion](https://developer.apple.com/documentation/uikit/uidevice/1620043-systemversion?language=objc)
+** `deviceUserInterfaceIdiom` _(iOS/string)_ as defined in [userInterfaceIdiom](https://developer.apple.com/documentation/uikit/uidevice/1620037-userinterfaceidiom?language=objc)
+** `locale` the current locale on the device _(iOS/string)_ as defined in [localeIdentifier](https://developer.apple.com/documentation/foundation/nslocale/1416263-localeidentifier?language=objc)
+** `localeUsesMetricSystem` _(iOS/boolean)_ as defined in [usesMetricSystem](https://developer.apple.com/documentation/foundation/nslocale/1643225-usesmetricsystem?language=objc)
+** `"locationManagerAuthorizationStatus"` used for all locations _(iOS/string)_ as defined in ["CLAuthorizationStatus"](https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc)
+** `version` version of the OwnTracks app _(iOS/string)_
+* android specific elements
+** `hib` _(Android/integer)_
+** `bo` _(Android/integer)_
+** `loc` _(Android/integer)_
+** `ps` _(Android/integer)_
+** `wifi` _(Android/integer)_
+* other elements
+** `_id` random identifier to be used by consumers to correlate & distinguish send/return messages _(Android/string)_
 
 
 ## `_type=beacon`
