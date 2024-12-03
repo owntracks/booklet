@@ -347,11 +347,11 @@ The device status contains information about the settings on the device which ar
 	- `"locationManagerAuthorizationStatus"` used for all locations _(iOS/string)_ as defined in ["CLAuthorizationStatus"](https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc)
 	- `version` version of the OwnTracks app _(iOS/string)_
 * android specific elements
-	- `hib` _(Android/integer)_
-	- `bo` _(Android/integer)_
-	- `loc` _(Android/integer)_
-	- `ps` _(Android/integer)_
-	- `wifi` _(Android/integer)_
+	- `hib` app can hibernate if not used _(Android/integer)_
+	- `bo` app is configured with battery optimizations _(Android/integer)_
+	- `loc` app location permissions _(Android/integer)_
+	- `ps` phone power save mode _(Android/integer)_
+	- `wifi` wifi is on/off _(Android/integer)_
 * other elements
 	- `_id` random identifier to be used by consumers to correlate & distinguish send/return messages _(Android/string)_
 
