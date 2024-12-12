@@ -268,7 +268,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `extendedData` Add extended data attributes to location messages _(iOS,Android/boolean)_
 * `host` MQTT endpoint host _(iOS,Android/string)_
 * `httpHeaders` extra HTTP headers:field names and field content are separated by a colon (:), multiple fields by a backslash-n (\n) \<field-name\>:\<field-content\>\n\<field-name\>:\<field-content\>... _(iOS only/string)_
-* `ignoreInaccurateLocations` Location accuracy below which reports are supressed _(iOS,Android/integer/meters)_
+* `ignoreInaccurateLocations` Location accuracy below which reports are supressed. 0 means no locations are suppressed. _(iOS,Android/integer/meters)_
 * `ignoreStaleLocations` Number of days after which location updates are assumed stale. Locations sent by friends older than the number of days specified here will not be shown on map or in friends list. Defaults to 0, which means stale locations are not filtered. _(iOS,Android/integer/days)_
 * `keepalive` MQTT endpoint keepalive _(iOS,Android/integer/seconds)_
 * `locatorDisplacement` maximum distance between location source updates _(iOS,Android/integer/meters)_
