@@ -76,6 +76,8 @@ This location object describes the location of the device that reported it.
 * `vel` velocity _(iOS,Android/integer/kmh/optional)_
 * `p` barometric pressure _(iOS/float/kPa/optional/extended data)_
 * `poi` point of interest name _(iOS/string/optional)_
+* `image` Base64 encoded image associated with the poi _(iOS/string/optional)_
+* `imagename` Name of the image associated with the poi _(iOS/string/optional)_
 * `conn` Internet connectivity status (route to host) when the message is created _(iOS,Android/string/optional/extended data)_
     * `w` phone is connected to a WiFi connection _(iOS,Android)_
     * `o` phone is offline _(iOS,Android)_
