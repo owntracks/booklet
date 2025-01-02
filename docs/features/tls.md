@@ -11,6 +11,8 @@ Configuring TLS ([Transport Layer Security](http://en.wikipedia.org/wiki/Transpo
 You can share the certificate if you want to (though not many people will want it ...)
 It's so public, that it's perfectly OK to send yourself the file by, say, e-mail.
 
+Note: as per [RFC 9525](https://www.rfc-editor.org/rfc/rfc9525#appendix-A-2.2) an existing certificate/key pair will not work if the server certificate does not have a Subject Alternative Name (SAN). To verify that your server certificate has a SAN, you can look at the certificate in x509 form (see below, in "The nitty gritty").
+
 ## Configure TLS on the Mosquitto broker
 
 We'll first show you how to set up TLS on your Mosquitto [broker](../guide/broker.md).
