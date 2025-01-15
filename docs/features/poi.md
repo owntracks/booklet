@@ -84,3 +84,4 @@ The Recorder's API will return these larger payloads transparently.
 ## Notes
 
 - POI are visible on iOS' map as long as they are locally stored on the device. This is controlled by the `positions` setting which indicates how many positions for a friend the device should keep in store. As soon as least-recently-used positions containing POI (both _simple_ and _with image_) are removed from that store, the appropriate POI will not longer be visible on the map.
+
