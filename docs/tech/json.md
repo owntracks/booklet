@@ -346,7 +346,10 @@ The device status contains information about the settings on the device which ar
 	- `deviceUserInterfaceIdiom` _(iOS/string)_ as defined in [userInterfaceIdiom](https://developer.apple.com/documentation/uikit/uidevice/1620037-userinterfaceidiom?language=objc)
 	- `locale` the current locale on the device _(iOS/string)_ as defined in [localeIdentifier](https://developer.apple.com/documentation/foundation/nslocale/1416263-localeidentifier?language=objc)
 	- `localeUsesMetricSystem` _(iOS/boolean)_ as defined in [usesMetricSystem](https://developer.apple.com/documentation/foundation/nslocale/1643225-usesmetricsystem?language=objc)
-	- `"locationManagerAuthorizationStatus"` used for all locations _(iOS/string)_ as defined in ["CLAuthorizationStatus"](https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc)
+	- `locationManagerAuthorizationStatus` used for all locations _(iOS/string)_ as defined in ["CLAuthorizationStatus"](https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc)
+	- `pedometerIsDistanceAvailable` _(iOS/boolean)_ as defined in [“isDistanceAvailable”](https://developer.apple.com/documentation/coremotion/cmpedometer/isdistanceavailable()?language=objc)
+	- `pedometerIsFloorCountingAvailable` _(iOS/boolean)_ as defined in [“isFloorCountingAvailable”](https://developer.apple.com/documentation/coremotion/cmpedometer/isfloorcountingavailable()?language=objc)
+	- `pedometerIsStepCountingAvailable` _(iOS/boolean)_ as defined in [“isStepCountingAvailable”](https://developer.apple.com/documentation/coremotion/cmpedometer/isstepcountingavailable()?language=objc)
 	- `version` version of the OwnTracks app _(iOS/string)_
 * android specific elements
 	- `hib` app can hibernate if not used _(Android/integer)_
