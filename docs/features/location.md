@@ -21,8 +21,6 @@ OwnTracks. The defaults are 100m and 300 seconds (5 minutes).
 The payoff is higher battery usage as high as in navigation or tracker app.
 So it is recommend to use _move_ mode while charging or during moves only - hence the name.
 
-Please note, _move_ mode is active when the app is active (a.k.a in foreground).
-
 #### _Significant location change_ mode
 
 iOS defines a _Significant location change_ as traveling a distance of at least
