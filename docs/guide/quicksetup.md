@@ -4,6 +4,7 @@ Using OwnTracks means having to set up and configure your own server, which can 
 
 To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:
 
+- `root` privileges on some machine, which might be:
 - a small dedicated Linux-capable device (e.g. a Raspberry Pi or equivalent) or a dedicated Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.
   - some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)
   - we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well. But there are many others: Linode, Server4you, Hetzner, Netcup, ... look around and compare
