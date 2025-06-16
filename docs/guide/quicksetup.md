@@ -37,6 +37,7 @@ Let's briefly describe what _quicksetup_ will actually attempt to accomplish so 
 
 ![Architechture](images/owntracks-quicksetup-arch.png)
 
+- **warning**: existing files and configuration used by / required by _quicksetup_  will be overwritten!
 - we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a _cron_ job with which the Let's Encrypt certificate will automatically be renewed when required.
 - we install an _nginx_ Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called `/usr/local/owntracks/userdata/*.pass`. This wipes any existing configuration for _nginx_ you may have previously installed on the machine.
 - we install a Mosquitto [MQTT broker](broker.md) in order for our Android or iOS apps to be able to publish [location data](../features/location.md) to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted via SSL/TLS. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our `*.otrc` files or a magic link on a Web page. The broker is configured to permit access only to users you specify with the same passwords we create randomly for the Web server.
