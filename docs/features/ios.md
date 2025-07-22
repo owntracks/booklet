@@ -47,6 +47,8 @@ A small blue, yellow rimmed semicircle at the perimeter indicates the course ove
 
 If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the [Friends](friends.md) list, as soon as a location update for Jane is seen by the app.
 
+## Regions
+
 ### Region Monitoring and Waypoints
 
 Regions can be created with a description and a radius. If the description is non-empty and a radius > 0 (meters) is set, the app starts monitoring the circular region around the coordinate. These regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns reddish.
@@ -112,18 +114,42 @@ Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all fu
 As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
 add a `+follow` region, which will trigger a wake up of the app when moving.
 
-### Region Monitoring with automatic battery level controlled monitoring mode change
+## Smart Monitoring Mode Changes
+
+### Automatic battery level controlled monitoring mode change
 *Available in version > 16.x.x*
 
 A new Settings parameter "downgrade" indicates the percentage of battery level which is the threshold.
 
 If the phone is in Move Mode and the battery level drops below "downgrade" percent, the app will automatically switch from Move Mode to Significant Mode.
 
-If the phone did that automatic switch and detects the charges is connected, it will automatically switch back to Move Mode.
+If the phone did that automatic switch and detects the charger is connected, it will automatically switch back to Move Mode.
 This will happen when then next location update in Significant mode is processed. 
 
 The fact the app is in "downgraded" mode is indicated in the UI by a trailing `!` to the `Significant` mode (e.g. `Significant!`).
  
+### Automatic movement controlled monitoring mode change
+*Available in version > 18.4.x*
+
+A new Settings parameter "adapt" indicates the minutes of non-movement after which the iPhone will switch from Move Mode to Significant Mode.
+"adapt" inactive if set the 0 (zero).
+
+If the phone did that automatic switch and gets the next location update, it will automatically switch back to Move Mode.
+This will happen when then next location update in Significant mode is processed. It is best practice to setup a `+follow` region as described above
+to ensure timely switching back to Move Mode.
+
+The fact the app is in "adapt" mode is indicated in the UI by a trailing `#` to the `Significant` mode (e.g. `Significant#`).
+ 
+## Miscellaneous
+
+### Offline Mode and GPX Export
+
+To avoid connection to a backend server, please select MQTT mode and use Port 0 (zero).
+
+The iPhone will keep all locations for the last number of days specified in the `days` configuration setting.
+
+On the status screen, there is a possibility to export the stored locations in GPX format.
+
 ### Remote configuration
 
 You can help your friends customize their copy of OwnTracks with [remote configuration](remoteconfig.md).

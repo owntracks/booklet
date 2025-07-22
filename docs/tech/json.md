@@ -91,6 +91,7 @@ This location object describes the location of the device that reported it.
 * `created_at` identifies the time at which the message is constructed (if it differs from `tst`, which is the timestamp of the GPS fix) _(iOS,Android/integer/epoch/optional)_
 * `m` identifies the monitoring mode at which the message is constructed (_significant_=`1`, _move_=`2`)  _(iOS/integer/optional)_
 * `_id` random identifier to be used by consumers to correlate & distinguish send/return messages _(Android/string)_
+* `motionactivities` contains a list of motion states detected by iOS' motion manager (a combination of `stationary`, `walking`, `running`, `automotive`, `cycling`, and/or `unknown`, e.g. `["cycling"]`). _(iOS/list of strings/optional)_
 
 #### Notes
 * The `tst` in a ping is a [current timestamp](https://github.com/owntracks/ios/issues/197), so that it doesn't look like a duplicate.
@@ -254,6 +255,7 @@ The device configuration can be imported and exported as JSON. The exported conf
     elements
 }
 ```
+* `adapt` time in minutes of non-movement before switching from move to significant mode. 0 (zero) means disabled. Defaults to 0 (zero) _(iOS/integer/minutes/optional)_
 * `allowRemoteLocation` Respond to reportLocation cmd message _(iOS/boolean)_
 * `allowinvalidcerts` disable TLS certificate checks **insecure**  _(iOS/boolean)_
 * `auth` Use `username` and `password` for endpoint authentication _(iOS,Android/boolean)_
@@ -263,6 +265,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `clientpkcs` Name of the client pkcs12 file _(iOS/string)_
 * `cmd` Respond to cmd messages _(iOS,Android/boolean)_
 * `connectionTimeoutSeconds` (default 30) TCP timeout for establishing a connection to the MQTT / HTTP broker, _(Android/int)_
+* `days` Number of days to keep locations stored locally. 0 means no local keeping of locations. A negative number indicates to use the `positions` value. Defaults to -1 for backward compatibility. _(iOS/integer/days)_
 * `debugLog` (default false) whether or not debug logs should be shown in the log viewer / exporter activity _(Android/bool)_
 * `deviceId` id of the device used for `pubTopicBase` and `clientId` construction. Defaults to the os name of the device  _(iOS,Android/string)_
 * `downgrade` battery level below which to downgrade monitoring from move mode _(iOS/integer/percent/optional)_
@@ -303,7 +306,7 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `pegLocatorFastestIntervalToInterval` (default false) - if true, requests that that the device provide locations no faster than the specified interval. Location providers often use the requested interval as a "at least every" setting, and may return locations more frequencly. Some people wanted the behaviour where it also meant "no more frequently than", so this setting lets them specify this _(Android/bool)_
 * `ping` Interval in which location messages of with `t`:`p` are reported _(Android/integer)_
 * `port` MQTT endpoint port _(iOS,Android/integer)_
-* `positions` Number of locations to keep and display _(iOS/integer)_
+* `positions` Number of locations to keep for friends and own device and display _(iOS/integer)_
 * `pubTopicBase` MQTT topic base to which the app publishes; `%u` is replaced by the user name, `%d` by device   _(iOS,Android/string)_
 * `pubRetain` MQTT retain flag for reported messages _(iOS,Android/boolean)_
 * `pubQos` MQTT QoS level for reported messages _(iOS,Android/integer)_
@@ -347,6 +350,8 @@ The device status contains information about the settings on the device which ar
 	- `locale` the current locale on the device _(iOS/string)_ as defined in [localeIdentifier](https://developer.apple.com/documentation/foundation/nslocale/1416263-localeidentifier?language=objc)
 	- `localeUsesMetricSystem` _(iOS/boolean)_ as defined in [usesMetricSystem](https://developer.apple.com/documentation/foundation/nslocale/1643225-usesmetricsystem?language=objc)
 	- `locationManagerAuthorizationStatus` used for all locations _(iOS/string)_ as defined in ["CLAuthorizationStatus"](https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc)
+	- `motionActivityManagerAuthorizationStatus` used for motionactivities _(iOS/string)_ as defined in [motionActivityManagerAuthorizationStatus](https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager/authorizationstatus()?language=objc)
+	- `motionActivityManagerIsActivityAvailable` used for motionactivities _(iOS/boolean)_ as defined in [motionActivityManagerIsActivityAvailable](https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager/isactivityavailable()?language=objc)
 	- `pedometerIsDistanceAvailable` _(iOS/boolean)_ as defined in [isDistanceAvailable](https://developer.apple.com/documentation/coremotion/cmpedometer/isdistanceavailable()?language=objc)
 	- `pedometerIsFloorCountingAvailable` _(iOS/boolean)_ as defined in [isFloorCountingAvailable](https://developer.apple.com/documentation/coremotion/cmpedometer/isfloorcountingavailable()?language=objc)
 	- `pedometerIsStepCountingAvailable` _(iOS/boolean)_ as defined in [isStepCountingAvailable](https://developer.apple.com/documentation/coremotion/cmpedometer/isstepcountingavailable()?language=objc)
