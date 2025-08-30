@@ -12,7 +12,7 @@ OwnTracks uses [JSON](http://www.json.org) format for its message payloads. The 
 | `location`                                |   Y    |   Y     |
 | `lwt`                                     |   Y    |   Y     |
 | `request`                                 |   Y    |   N     |
-| `status`                                  |   Y    |   N     |
+| `status`                                  |   Y    |   Y     |
 | `steps`                                   |   Y    |   N     |
 | `transition`                              |   Y    |   Y     |
 | `waypoint`                                |   Y    |   Y     |
