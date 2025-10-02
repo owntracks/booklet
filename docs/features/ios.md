@@ -135,8 +135,10 @@ A new Settings parameter "adapt" indicates the minutes of non-movement after whi
 "adapt" inactive if set the 0 (zero).
 
 If the phone did that automatic switch and gets the next location update, it will automatically switch back to Move Mode.
-This will happen when then next location update in Significant mode is processed. It is best practice to setup a `+follow` region as described above
-to ensure timely switching back to Move Mode.
+This will happen when then next location update in Significant mode is processed.
+We found the automatic switching from and timely switching back to Move Mode works best if you setup a `+follow` region
+as described above. We do check if an active `+follow` region is configured before activating adapt mode, otherwise
+the `adapt` setting is ignored.
 
 The fact the app is in "adapt" mode is indicated in the UI by a trailing `#` to the `Significant` mode (e.g. `Significant#`).
  
