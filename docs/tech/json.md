@@ -352,6 +352,8 @@ The device status contains information about the settings on the device which ar
 	- `locationManagerAuthorizationStatus` used for all locations _(iOS/string)_ as defined in ["CLAuthorizationStatus"](https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc)
 	- `motionActivityManagerAuthorizationStatus` used for motionactivities _(iOS/string)_ as defined in [motionActivityManagerAuthorizationStatus](https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager/authorizationstatus()?language=objc)
 	- `motionActivityManagerIsActivityAvailable` used for motionactivities _(iOS/boolean)_ as defined in [motionActivityManagerIsActivityAvailable](https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager/isactivityavailable()?language=objc)
+	- `noMap` setting by user to toggle map interaction _(iOS/1=enabled,-1=disabled)_
+	- `noRevgeo` setting by user to toggle reverse geolocation _(iOS/1=enabled,-1=disabled)_
 	- `pedometerIsDistanceAvailable` _(iOS/boolean)_ as defined in [isDistanceAvailable](https://developer.apple.com/documentation/coremotion/cmpedometer/isdistanceavailable()?language=objc)
 	- `pedometerIsFloorCountingAvailable` _(iOS/boolean)_ as defined in [isFloorCountingAvailable](https://developer.apple.com/documentation/coremotion/cmpedometer/isfloorcountingavailable()?language=objc)
 	- `pedometerIsStepCountingAvailable` _(iOS/boolean)_ as defined in [isStepCountingAvailable](https://developer.apple.com/documentation/coremotion/cmpedometer/isstepcountingavailable()?language=objc)
