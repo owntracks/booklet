@@ -40,8 +40,8 @@ No geo-coding is done automatically in the background to limit mobile data usage
 
 The locations of yourself, your friends and of the waypoints you set are displayed on the map. The inner area of the circle either shows a picture of yourself / your friend or the Tracker ID (tid) which is usually 2 characters and defaults to the last two characters of the publish topic.
 
-A red, yellow rimmed tachometer indicating the velocity (speed) at the reported location starts at at the 6 o'clock position and works clockwise. It uses a logarithmic scale to show slow speeds
-as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the 12 o'clock posistion a speed of 100 km/h. 3 o'clock means 180 km/h.
+A red, yellow rimmed tachometer indicating the velocity (speed) at the reported location starts at at the 7 o'clock position and works clockwise. It uses a linear scale and it is limited to 260 km/h shown at 5 o`clock position.
+The 12 o'clock posistion indicates a speed of 130 km/h.
 
 A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.
 
