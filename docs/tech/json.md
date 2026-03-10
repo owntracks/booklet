@@ -221,7 +221,7 @@ Waypoints / regions denote specific geographical regions that you want to keep t
 
 ## `_type=transition`
 
-A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.
+A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the time stamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.
 
 ```json
 {
