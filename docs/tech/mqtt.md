@@ -4,7 +4,7 @@
 
 MQTT was designed with mobile clients in mind so it doesn't require a persistent TCP connection. The broker detects a dead client if it hasn't heard from a client within the _keepalive_ interval which is set by the client.
 
-The server should send the LWT if it the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.
+The server should send the LWT if the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.
 
 From the spec:
 
