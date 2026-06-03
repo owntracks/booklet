@@ -279,10 +279,10 @@ The device configuration can be imported and exported as JSON. The exported conf
 * `locatorDisplacement` maximum distance between location source updates _(iOS,Android/integer/meters)_
 * `locatorInterval` maximum interval between location source updates _(iOS,Android/integer/seconds)_
 * `locatorPriority` source/power setting for location updates _(Android/integer)_
-    - `0` NO_POWER / best accuracy possible with zero additional power consumption _(Android)_
-    - `1` LOW_POWER / city level accuracy _(Android)_
-    - `2` BALANCED_POWER / block level accuracy based on Wifi/Cell _(Android)_
-    - `3` HIGH_POWER / most accurate accuracy based on GPS _(Android)_
+    - `0` HIGH_POWER / most accurate accuracy based on GPS _(Android)_
+    - `1` BALANCED_POWER / block level accuracy based on Wifi/Cell _(Android)_
+    - `2` LOW_POWER / city level accuracy _(Android)_
+    - `3` NO_POWER / best accuracy possible with zero additional power consumption _(Android)_
 * `locked` Locks settings screen on device for editing _(iOS/boolean)_
 * `maxHistory` Number of notifications to store historically. Zero (0) means no notifications are stored and history tab is hidden. Defaults to zero. _(iOS/integer)_
 * `mode` Endpoint protocol mode _(iOS,Android/integer)_
