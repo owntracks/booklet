@@ -6,13 +6,13 @@ Q: Can I have OwnTracks not publish location for a specific period of time?<br/>
 A: Set mode to manual (iOS) or disable automatic location reporting (Android)
 
 Q: How can I restart OwnTracks?<br/>
-A: Swipe away and start (iOS), Force close and start (Android)
+A: On iOS: Swipe away and start; On Android: Force close (e.g. from ≣ → ⏻Exit app) and start.
 
 Q: Can you remove Google Play Services from the Android app? <br/>
 A: No
 
 Q: Can you remove Google Maps from the Android app? <br/>
-A: No
+A: No.  Uninstalling [the app from Google Play Store](https://play.google.com/store/apps/details?id=org.owntracks.android) and [installing it from F-Droid](https://f-droid.org/en/packages/org.owntracks.android/) does not offer anymore the Google Default, Google Hybrid and Google Terrain map layers.  The OpenStreetMap and Wikimedia layers are available in both Google Play and F-Droid download locations.
 
 Q: Since updating to Android 6 (or higher), background location reporting does not work as before<br/>
 A: Since Android 6 Google has started to restrict background apps. We're doing our best to work against this were we can. 
