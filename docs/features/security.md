@@ -16,6 +16,8 @@ OwnTracks and its associated utilities have been designed foremost with [data pr
 
 * The apps do not send location data to any server until that server has been configured by the user (i.e., there is no preconfigured demo server).
 
+* The iOS app keeps a limited local history of points received from Friends and a history of the user's own enter/leave events.
+
 * The apps do, however, perform reverse geo location lookups.
     * For iOS these lookups are submitted to the Apple Maps infrastructure, and as reverse geo-coding is rate-limited on the iPhone we do not use it for all sent locations, but only when a location is displayed on user request, e.g. on the Friends page.
     * On Android the requests are performed via Google Play services for the non OSS release. This configuration can be optionally changed by configuring Android to use [OpenCage](../other/opencage.md) as reverse geo location provider. This functionality cannot be disabled.
