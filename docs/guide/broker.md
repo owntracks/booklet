@@ -51,6 +51,31 @@ mosquitto[1366]: Received PUBREL from jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Sending PUBCOMP to jane-5s-m-o (Mid: 7)
 ```
 
+## Proxy and firewall configuration
+
+If your MQTT broker sits behind a proxy or firewall (such as HAProxy in a pfSense deployment), you need to ensure that idle timeout settings do not interfere with MQTT's persistent connections.
+
+MQTT clients maintain long-lived TCP connections to the broker, using periodic keepalive messages to stay connected. OwnTracks clients send keepalive packets every 3600 seconds (one hour) by default. If your proxy or firewall has a shorter idle timeout, it will close these "silent" connections prematurely, causing frequent disconnections.
+
+**HAProxy configuration example:**
+
+If you are using HAProxy (e.g., on pfSense), configure the following timeouts on both the frontend and backend handling MQTT traffic (in TCP mode):
+
+- **Client timeout**: Set to at least 4200000 ms (70 minutes)
+- **Server timeout**: Set to at least 4200000 ms (70 minutes)
+- **Connection timeout**: Leave at default (only covers initial connection establishment)
+
+Both the client and server timeouts must exceed your MQTT client keepalive setting, with a safety margin. Mosquitto itself waits 1.5 times the keepalive interval before declaring a client dead.
+
+**Important notes:**
+
+- These timeout settings are per frontend/backend, so other services behind your proxy remain unaffected.
+- The `httpclose` option in HAProxy is irrelevant when operating in TCP mode.
+- After saving configuration changes, clients must reconnect for new timeouts to take effect.
+- If disconnections continue to occur only on cellular connections, consider lowering the client keepalive to 120–300 seconds to stay ahead of carrier NAT idle timeouts.
+
+Consult your proxy or firewall documentation for the specific steps to adjust these settings.
+
 ## OwnTracks
 
 So, you've configured your broker and you are familiar with the _mosquitto_ command-line

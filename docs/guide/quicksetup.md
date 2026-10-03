@@ -230,6 +230,8 @@ There's quite a bit going on in the background, so we want to give you some tips
 
         $ tail -f /var/log/mosquitto/mosquitto.log
 
+- If clients are experiencing frequent disconnections, especially over cellular networks, check your [broker configuration for proxy and firewall timeouts](broker.md#proxy-and-firewall-configuration).
+
 - You'll likely also want to see the payloads the MQTT broker is getting; do so by subscribing to all topics:
 
         $ mosquitto_sub -v -t '#'
