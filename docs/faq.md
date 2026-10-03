@@ -29,6 +29,9 @@ Q: Why are transition events delayed?<br/>
 
 Q: How can I increase reporting frequency and does that have any negative impact?<br/>
 
+Q: OwnTracks clients keep disconnecting, especially over cellular<br/>
+A: In MQTT mode, this is often caused by idle timeout settings on intermediate devices like proxies or firewalls. If your broker sits behind HAProxy, pfSense, or similar infrastructure, check that client and server timeout settings exceed your MQTT keepalive interval (default 3600 seconds). See [Proxy and firewall configuration](guide/broker.md#proxy-and-firewall-configuration) in the broker setup guide. If drops occur only on cellular, try lowering the client keepalive to 120–300 seconds to stay ahead of carrier NAT idle timeouts.
+
 Q: I have a question<br/>
 A: We love questions. Well, sometimes. If you want to ask us a question or desire feedback from other OwnTracks users, visit us at the [OwnTracks meta tracker](https://github.com/owntracks/talk).
 
