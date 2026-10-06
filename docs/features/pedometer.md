@@ -73,9 +73,9 @@ deliver the message to the the phone.
 50 22 * * * /usr/local/bin/reportsteps | mosquitto_pub -q 2 -t owntracks/jpm/5s/cmd -l
 ```
 
-#### Daily reports with Openhab
+#### Daily reports with OpenHAB
 
-With openhab it's quite easy to user rules engine from openhab and to not rely on servers crontab.
+With openHAB it's quite easy to user rules engine from openHAB and to not rely on servers crontab.
 
 At first you have to define mqtt retain broker (MQTT v. 1 is used) - simply add configuration to /etc/openhab2/services/mqtt.cfg
 
