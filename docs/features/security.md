@@ -37,3 +37,5 @@ The following changes have been implemented:
 - security-related preferences (on iOS these are `allowConfigurationByURIAndConfigFile`, `allowIntentControl`, `intentAuthKey`, and on Android these are `allowConfigurationByURIAndConfigFile`, `allowIntentControl,` `intentAuthKey`) cannot be changed via imported config files or URLs
 
 Many users will not need to concern themselves with these settings, but they might be important for OwnTracks users who wish to remotely control the OwnTracks apps.
+
+The idea is to require a user to make an informed decision and not simply "click here" to have a remote configuration installed. We know this will upset some users but think this is the safest method for the app.
