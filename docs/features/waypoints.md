@@ -77,7 +77,7 @@ developers who will wish to associate the region IDs (`rid`) with the values in
 
 On iOS you can navigate to the place where you want to place a region, Tap long and edit the Region. The region gets a default name (`Here ..`) which you will want to change to something meaningful. With a bit of practice, you can then drag the region to it's final destination on the map or, and this may be easier, edit the region and specify its exact coordinates.
 
-A maximum of 20 regions are supported on iOS.
+A maximum of 20 regions are supported on iOS, adding more than 20 regions labels each of them with an exclamation mark. This is an iOS limitation.
 
 ### Adding on Android
 
